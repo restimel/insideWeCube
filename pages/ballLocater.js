@@ -88,7 +88,7 @@ BallLocater.prototype.renderInstruction = function(movement, rowPst) {
 
 	cell = row.insertCell(-1);
 	cell.className = 'BallLocater-result';
-	cell.textContent = $$('What did you observed?');
+	cell.textContent = $$('What did you observe?');
 	cell.appendChild(this.formMvt(0, iRow));
 	cell.appendChild(this.formMvt(1, iRow));
 	// cell.appendChild(this.formMvt(2, iRow));
@@ -227,7 +227,7 @@ BallLocater.prototype.textResult = function(code) {
 	switch (code) {
 		case 0: return $$('The ball has not moved.');
 		case 1: return $$('The ball has moved.');
-		case 2: return $$('The ball has moved and falled.');
+		case 2: return $$('The ball has moved and fallen.');
 		default:
 			return $$('Something should happen but I don\'t know what :(');
 	}

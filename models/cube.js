@@ -256,6 +256,20 @@ Cube.fromDirection = function(direction) {
 		'2': { key: 'd', value: false},
 		'-3': { key: 'b', value: true},
 		'3': { key: 'b', value: false},
+		'0': { key: '?', value: false}
+	}
+	return rslt[direction];
+};
+
+Cube.getDirectionFromMvt = function(mvt) {
+	var rslt = {
+		'-r': -1,
+		'r': 1,
+		'd': -2,
+		'-d': 2,
+		'b': -3,
+		'-b': 3,
+		'?': 0
 	}
 	return rslt[direction];
 };

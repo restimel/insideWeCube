@@ -37,22 +37,9 @@ Heuristic.prototype.computePossible = function(direction, possible, pst, parent)
 	var noMove = [],
 		simpleMove = [],
 		complexMove = [],
-		position = {
-			r: pst.r,
-			d: pst.d,
-			b: pst.b
-		},
-		mvt = '?',
+		mvt = this.computeMvt(direction),
+		position = this.computePosition(pst, mvt),
 		node = {};
-
-	switch(direction) {
-		case -1: position.r = 0; mvt = '-r'; break;
-		case 1: position.r = 1; mvt = 'r'; break;
-		case -2: position.d = 1; mvt = 'd'; break;
-		case 2: position.d = 0; mvt = '-d'; break;
-		case -3: position.b = 1; mvt = 'b'; break;
-		case 3: position.b = 0; mvt = '-b'; break;
-	}
 
 	possible.forEach(function(p) {
 		var path = this.cube.getMovement(p, position, direction);
@@ -279,17 +266,51 @@ Heuristic.prototype.wayBack = function(rsp) {
 	var cell = rsp.cell,
 		target = rsp.target ? {x:4, y:4, z:6} : {x:1, y:1, z:0},
 		startPosition = rsp.position,
-		path = this.path.getPathMvt(cell, target, startPosition, this.accessible);
+		path = this.path.getPathMvt(cell, target, startPosition, this.accessible),
+		position = startPosition,
+		rsltMvt = [cell];
 
 	path = path.map(function(mvt) {
+		position = this.computePosition(position, mvt);
+		rsltMvt = this.cube.getMovement(rsltMvt[rsltMvt.length -1], position, -1);
 		return {
 			mvt: mvt,
-			position: {}, //TODO
-			result: 3 // TODO
+			position: position,
+			result: rsltMvt.length === 1 ? 0 : 1
 		};
-	});
+	}, this);
 
 	self.postMessage({data: {action: 'wayBack', data: {
 		path: path
 	}}, token: this.token});
+};
+
+/* Helper */
+Heuristic.prototype.computePosition = function(pst, mvt) {
+	var position = {
+		r: pst.r,
+		d: pst.d,
+		b: pst.b
+	};
+
+	switch (mvt) {
+		case '-r': position.r = 0; break;
+		case 'r': position.r = 1; break;
+		case '-d': position.d = 0; break;
+		case 'd': position.d = 1; break;
+		case '-b': position.b = 0; break;
+		case 'b': position.b = 1; break;
+	}
+
+	return position;
+};
+
+Heuristic.prototype.computeMvt = function(direction) {
+	var code = Cube.fromDirection(direction);
+
+	if (typeof code === 'undefined') {
+		return '?';
+	} else {
+		return (code.value ? '' : '-') + code.key;
+	}
 };
