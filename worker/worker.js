@@ -179,7 +179,9 @@ function getCubeInfo(name) {
 	var cube = store.getCube(name);
 	return {
 		name: cube.name,
-		color: cube.color
+		color: cube.color,
+		start: cube.startCell,
+		end: cube.finishCell
 	};
 }
 

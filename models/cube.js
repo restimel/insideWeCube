@@ -142,12 +142,16 @@ Cube.prototype.parse = function(json, option) {
 
 	if (Cube.checkCell(json.start)) {
 		this.startCell = json.start;
+	} else if (Cube.checkCell(json.startCell)) {
+		this.startCell = json.startCell;
 	} else {
 		this.startCell = {x: 1, y: 1, z: 0};
 	}
 
 	if (Cube.checkCell(json.end)) {
 		this.finishCell = json.end;
+	} else if (Cube.checkCell(json.finishCell)) {
+		this.finishCell = json.finishCell;
 	} else {
 		this.finishCell = {x: 4, y: 4, z: 6};
 	}

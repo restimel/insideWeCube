@@ -6,7 +6,7 @@ V1.2
 	* accept key shortcut (see how to manage them through menu)
 	
 	Build Cube
-	* Change start/Finish position
+	✓ Change start/Finish position
 	* Consider Pin on level that block the ball
 		✓ simple movement with Pin
 		* moving up/down and fall on a pin

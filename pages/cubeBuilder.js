@@ -34,8 +34,9 @@ CubeBuilder.prototype.init = function() {
 			]
 		});
 	}, this);
-	this.startCell([1,1,0]);
-	this.endCell([4,4,6]);
+
+	this.startCell();
+	this.endCell();
 	this.cubePath.setColor(this.color);
 };
 
@@ -264,6 +265,9 @@ CubeBuilder.prototype.renderLevel = function(level, i) {
 };
 
 CubeBuilder.prototype.renderInfo = function(info) {
+	if (!this.cubeInfo) {
+		return false;
+	}
 	this.cubeInfo.innerHTML = '';
 
 	var length = info.length + 1,
@@ -372,7 +376,9 @@ CubeBuilder.prototype.renderInfo = function(info) {
 };
 
 CubeBuilder.prototype.renderMiniMap = function(mapElements) {
-	this.cubeMinimap.innerHTML = mapElements.join(' ');
+	if (this.cubeMinimap) {
+		this.cubeMinimap.innerHTML = mapElements.join(' ');
+	}
 };
 
 CubeBuilder.prototype.renderMapStandalone = function() {
@@ -446,15 +452,75 @@ CubeBuilder.prototype.lookForLevelElement = function(element) {
 };
 
 CubeBuilder.prototype.startCell = function(id) {
+	var init = false;
+
+	if (id && id instanceof Array) {
+		this.startCL = {
+			x: id[0],
+			y: id[1],
+			z: id[2]
+		};
+	} else {
+		init = !!this.cubeInfo;
+		if (id) {
+			this.startCL = {
+				x: id.x,
+				y: id.y,
+				z: id.z
+			};
+		} else if (!this.startCL) {
+			this.startCL = {
+				x: 1,
+				y: 1,
+				z: 0
+			};
+		}
+		id = [this.startCL.x, this.startCL.y, this.startCL.z];
+	}
+
 	this.levels.forEach(function(lvl) {
 		lvl.startCell(id);
 	});
+
+	if (init) {
+		this.cubePath.setCell(id[0], id[1], id[2], 's', 1);
+	}
 };
 
 CubeBuilder.prototype.endCell = function(id) {
+	var init = false;
+
+	if (id && id instanceof Array) {
+		this.finishCL = {
+			x: id[0],
+			y: id[1],
+			z: id[2]
+		};
+	} else {
+		init = !!this.cubeInfo;
+		if (id) {
+			this.finishCL = {
+				x: id.x,
+				y: id.y,
+				z: id.z
+			};
+		} else if (!this.finishCL) {
+			this.finishCL = {
+				x: 1,
+				y: 1,
+				z: 0
+			};
+		}
+		id = [this.finishCL.x, this.finishCL.y, this.finishCL.z];
+	}
+
 	this.levels.forEach(function(lvl) {
 		lvl.endCell(id);
 	});
+
+	if (init) {
+		this.cubePath.setCell(id[0], id[1], id[2], 's', -1);
+	}
 };
 
 CubeBuilder.prototype.reset = function() {
@@ -516,6 +582,8 @@ CubeBuilder.prototype.changeCube = function(e) {
 
 	main.control.action('getCubeInfo', {name: name}, function(data) {
 		this.changeColor(data.info.color);
+		this.startCell(data.info.start);
+		this.endCell(data.info.end);
 	}.bind(this))
 };
 
@@ -537,7 +605,9 @@ CubeBuilder.prototype.toJSON = function() {
 	return {
 		name: this.name,
 		color: this.color,
-		levels: this.levels.map(function(l) {return l.toJSON();})
+		levels: this.levels.map(function(l) {return l.toJSON();}),
+		start: this.startCL,
+		end: this.finishCL
 	};
 };
 
@@ -546,5 +616,7 @@ CubeBuilder.prototype.parse = function(json) {
 		json = JSON.parse(json);
 	}
 	this.name = json.name;
+	this.startCL = json.start || {x: 1, y: 1, z: 0};
+	this.finishCL = json.end || {x: 4, y:4, z: 6};
 	levels: this.levels.map(function(l, i) {return l.parse(json.levels[i]);})
 };

@@ -30,7 +30,16 @@ Level.prototype.get = function (x, y) {
 };
 
 Level.prototype.toggle = function (x, y, property, value) {
-	if (typeof value === 'undefined') {
+	if (property === 's') {
+		switch (value) {
+			case 1: return 1;
+			case -1: return -1;
+			default:
+				value = this.cells[x][y][property] === value ? 0 : value;
+		}
+	}
+
+	if (typeof value === 'undefined' || value === null) {
 		value = !this.cells[x][y][property];
 	}
 

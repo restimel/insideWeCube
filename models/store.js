@@ -109,7 +109,6 @@ var store = {
 			}, 100);
 		}
 		function hasCube(cube) {
-			console.log(cube);
 			if (cube) {
 				self.saveCube(JSON.stringify(cube), {fromDB: true});
 				self.sendMessage($$('Cube "%s" has been replaced by its original version.', name));

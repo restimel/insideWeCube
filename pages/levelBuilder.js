@@ -227,18 +227,18 @@ LevelConstructor.prototype.change = function(e) {
 		case 'main':
 			switch (this.action) {
 				case 0: type = 'b'; break;
-				case 1:	type = 's1'; this.cube.startCell(id.slice(1).map(parseFloat)); break;
-				case -1: type = 's-1'; this.cube.endCell(id.slice(1).map(parseFloat)); break;
-				case 2:	type = 's2'; break;
-				case -2: type = 's-2'; break;
+				case 1:	type = 's'; val = 1; this.cube.startCell(id.slice(1).map(parseFloat)); break;
+				case -1: type = 's'; val = -1; this.cube.endCell(id.slice(1).map(parseFloat)); break;
+				case 2:	type = 's'; val = 2; break;
+				case -2: type = 's'; val = -2; break;
 				default: return;
 			}
 
-			val = this.level.toggle(id[1], id[2], type);
+			val = this.level.toggle(id[1], id[2], type, val);
 			if (type === 'b') {
 				el.className = 'cell-main-' + (val ? 'hole' : 'fill');
 			} else {
-				this.setCell(el, type, val);
+				this.setCell(el, type+val, true);
 			}
 			break;
 		case 'wallR':
@@ -270,7 +270,7 @@ LevelConstructor.prototype.startCell = function(id) {
 
 	if (id[2] === this.index) {
 		el = document.getElementById('main-' + id[0] + '-' + id[1] + '-' + id[2]);
-		this.setCell(el, 's1');
+		this.setCell(el, 's1', 1);
 		this.startCL = id.concat([]);
 	} else {
 		this.startCL = null;
@@ -291,7 +291,7 @@ LevelConstructor.prototype.endCell = function(id) {
 
 	if (id[2] === this.index) {
 		el = document.getElementById('main-' + id[0] + '-' + id[1] + '-' + id[2]);
-		this.setCell(el, 's-1');
+		this.setCell(el, 's-1', -1);
 		this.endCL = id.concat([]);
 	} else {
 		this.endCL = null;

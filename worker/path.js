@@ -116,7 +116,7 @@ Path.prototype.runCompute = function() {
 				cell = w[i];
 				w.splice(i, 1);
 
-				if (cell.z === 6 && cell.x === 4 && cell.y === 4) {
+				if (Cube.comparePosition(cell, finishCell)) {
 					info.finish = cell;
 					info.length = cell.dst;
 				}
@@ -594,69 +594,71 @@ Path.prototype.setTarget = function(target) {
  * Add information and method to cells
  */
 Path.prototype.createCell = function(cell) {
-	cell.info = {};
+	if (!cell.hasOwnProperty('direction')) {
+		cell.info = {};
 
-	var compute = false,
-		getInfo = function(search) {
-		var path;
+		var compute = false,
+			getInfo = function(search) {
+			var path;
 
-		if (typeof cell.info[this.target] === 'undefined') {
-			cell.info[this.target] = {};
+			if (typeof cell.info[this.target] === 'undefined') {
+				cell.info[this.target] = {};
 
-			if (search) {
-				compute = true;
-				this.computeDist(this.targetCell, 'dstFromTarget');
-				this.getDirections(path);
-				compute = false;
-			}
-		}
-
-		return cell.info[this.target];
-	}.bind(this);
-
-	Object.defineProperty(cell, 'direction', {
-		get: function() {
-			return getInfo(true).direction;
-		},
-		set: function(val) {
-			getInfo().direction = val;
-		}
-	});
-
-	Object.defineProperty(cell, 'preferences', {
-		get: function() {
-			return getInfo(true).preferences;
-		},
-		set: function(val) {
-			getInfo().preferences = val;
-		}
-	});
-
-	Object.defineProperty(cell, 'avoid', {
-		get: function() {
-			return getInfo(true).avoid;
-		},
-		set: function(val) {
-			getInfo().avoid = val;
-		}
-	});
-
-	Object.defineProperty(cell, 'dstFromTarget', {
-		get: function() {
-			var dstFromTarget = getInfo(true).dstFromTarget;
-
-			if (typeof dstFromTarget === 'undefined' && !compute) {
-				compute = true;
-				this.computeDist(this.targetCell, 'dstFromTarget');
-				compute = false;
+				if (search) {
+					compute = true;
+					this.computeDist(this.targetCell, 'dstFromTarget');
+					this.getDirections(path);
+					compute = false;
+				}
 			}
 
-			return getInfo(true).dstFromTarget;
-		},
-		set: function(val) {
-			getInfo().dstFromTarget = val;
-		}
-	});
+			return cell.info[this.target];
+		}.bind(this);
+
+		Object.defineProperty(cell, 'direction', {
+			get: function() {
+				return getInfo(true).direction;
+			},
+			set: function(val) {
+				getInfo().direction = val;
+			}
+		});
+
+		Object.defineProperty(cell, 'preferences', {
+			get: function() {
+				return getInfo(true).preferences;
+			},
+			set: function(val) {
+				getInfo().preferences = val;
+			}
+		});
+
+		Object.defineProperty(cell, 'avoid', {
+			get: function() {
+				return getInfo(true).avoid;
+			},
+			set: function(val) {
+				getInfo().avoid = val;
+			}
+		});
+
+		Object.defineProperty(cell, 'dstFromTarget', {
+			get: function() {
+				var dstFromTarget = getInfo(true).dstFromTarget;
+
+				if (typeof dstFromTarget === 'undefined' && !compute) {
+					compute = true;
+					this.computeDist(this.targetCell, 'dstFromTarget');
+					compute = false;
+				}
+
+				return getInfo(true).dstFromTarget;
+			},
+			set: function(val) {
+				getInfo().dstFromTarget = val;
+			}
+		});
+	}
 
 	return cell;
 };
@@ -699,7 +701,21 @@ Path.prototype.setCell = function(args) {
 		type = args.type,
 		value = args.value;
 
-	this.cube.get(x, y, z)[type] = value;
+	if (type === 's' && value === 1) {
+		this.cube.startCell = {
+			x: x,
+			y: y,
+			z: z
+		};
+	} else if (type === 's' && value === -1) {
+		this.cube.finishCell = {
+			x: x,
+			y: y,
+			z: z
+		};
+	} else {
+		this.cube.get(x, y, z)[type] = value;
+	}
 	this.calculatePath();
 };
 

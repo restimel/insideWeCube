@@ -32,9 +32,9 @@ CubePath.prototype.setCell = function(x, y, z, type, value) {
 	var data = {
 		action: 'setCell',
 		data: {
-			x: x,
-			y: y,
-			z: z,
+			x: parseInt(x, 10),
+			y: parseInt(y, 10),
+			z: parseInt(z, 10),
 			type: type,
 			value: value
 		}
@@ -80,7 +80,12 @@ CubePath.prototype.getPath = function(data) {
 
 	main.removeClass('accessible-path');
 	cells.forEach(function(cell) {
-		document.getElementById('main-' + cell.x + '-' + cell.y + '-' + cell.z).classList.add('accessible-path');
+		var el = document.getElementById('main-' + cell.x + '-' + cell.y + '-' + cell.z);
+		if (el) {
+			el.classList.add('accessible-path');
+		} else {
+			console.warn('element not found: ', cell, cells)
+		}
 	});
 };
 
