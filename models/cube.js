@@ -338,8 +338,11 @@ Cube.prototype.renderMap = function(orientation, available, uid) {
 	computeClass = computeClass.bind(this);
 
 	for(z = 0; z < 7; z++) {
-		level = ['<table'];
-		level.push(' class="mini-map color-' + this.color+'">');
+		level = [
+			'<table',
+			' id="mapLevel', uid, '-', z, '"',
+			' class="mini-map color-', this.color, '">'
+		];
 
 		for(x = 0; x < 6; x++) {
 			row = ['<tr>'];

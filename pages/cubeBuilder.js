@@ -135,7 +135,7 @@ CubeBuilder.prototype.render = function(container) {
 	minimapSection.appendChild(minimapTool);
 
 	var minimapContainer = document.createElement('div');
-	minimapContainer.onclick = this.renderMapStandalone.bind(this);
+	minimapContainer.onclick = this.mapFocus.bind(this);
 	minimapSection.appendChild(minimapContainer);
 
 	container.appendChild(minimapSection);
@@ -150,6 +150,7 @@ CubeBuilder.prototype.renderLevel = function(level, i) {
 	var sct = document.createElement('section');
 
 	sct.className = 'level-editor';
+	sct.id = 'section-editor-level-' + i;
 
 	level.render(sct);
 	this.cubeContainer.appendChild(sct);
@@ -286,6 +287,31 @@ CubeBuilder.prototype.renderMapStandalone = function() {
 		preview.document.getElementById('maps-preview').innerHTML = html.join('<br>');
 		preview.document.close();
 	});
+};
+
+CubeBuilder.prototype.mapFocus = function(event) {
+	var el = this.lookForLevelElement(event.target),
+		lvlId = el ? el.id.split('-')[1] : '',
+		elLevel = document.getElementById('section-editor-level-' + lvlId);
+
+	if (elLevel) {
+		if (elLevel.scrollIntoViewIfNeeded) {
+			elLevel.scrollIntoViewIfNeeded(true);
+		} else {
+			elLevel.scrollIntoView();
+		}
+	}
+};
+
+CubeBuilder.prototype.lookForLevelElement = function(element) {
+	while (element) {
+		if (!element.id || element.id.indexOf('mapLevel') !== 0) {
+			element = element.parentNode;
+		} else {
+			break;
+		}
+	}
+	return element;
 };
 
 CubeBuilder.prototype.reset = function() {
