@@ -16,7 +16,7 @@ V1.1
 			✓ pop-up
 			✓ change map color
 			✓ change orientation
-			* show/hide mini-map
+			✓ show/hide mini-map
 			+ give small map with different orientation (other than top/bottom)
 		+ do something (not log ?) when unexpected movement happens when rotated localy
 

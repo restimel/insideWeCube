@@ -128,3 +128,8 @@ main.removeClass = function (className, element) {
 		elem.classList.remove(className);
 	});
 };
+
+main.changeClass = function (element, oldClass, newClass) {
+	element.classList.remove(oldClass);
+	element.classList.add(newClass);
+};

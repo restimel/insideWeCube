@@ -623,6 +623,18 @@
 		"en": "Map preview",
 		"fr": "Affichage des plans"
 	},
+	"Display maps in another tab": {
+		"en": "Display maps in another tab",
+		"fr": "Affiche les plans dans un autre onglet"
+	},
+	"Reduce the maps preview": {
+		"en": "Reduce the maps preview",
+		"fr": "Réduire la zone d'affichage des plans"
+	},
+	"Show the maps preview": {
+		"en": "Show the maps preview",
+		"fr": "Agrandit la zone d'affichage des plans"
+	},
 	"Map preview: %s": {
 		"en": "Map preview: %s",
 		"fr": "Plans du cube : %s"

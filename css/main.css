@@ -158,12 +158,39 @@ summary {
 	box-shadow: 0 0 20px 5px;
 }
 
+.cube-minimap-section.hide {
+	display: none;
+}
+
+.cube-minimap-section.show~.cube-maximize-minimap-btn {
+	display: none;
+}
+
+.cube-maximize-minimap-btn {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+
+	padding: 0.5em;
+
+	box-shadow: 0 0 20px 5px;
+	font-family: fontAwesome;
+
+	cursor: pointer;
+}
+
 .cube-minimap-section .tool label {
 	display: inline-block;
 }
 
 .cube-minimap-section .mini-map {
 	display: inline-block;
+	cursor: pointer;
+}
+
+.tool .reduce-btn {
+	float: right;
+	font-family: fontAwesome;
 	cursor: pointer;
 }
 

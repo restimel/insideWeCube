@@ -118,8 +118,9 @@ CubeBuilder.prototype.render = function(container) {
 	this.cubeInfo = info;
 
 	/* Section Minimap */
+	var showHide = document.body.offsetWidth > 1100 ? 'show' : 'hide';
 	var minimapSection = document.createElement('section');
-	minimapSection.className = 'cube-minimap-section';
+	minimapSection.className = 'cube-minimap-section ' + showHide;
 
 	var minimapTool = document.createElement('div');
 	minimapTool.className = 'tool';
@@ -129,7 +130,15 @@ CubeBuilder.prototype.render = function(container) {
 
 	btn = document.createElement('button');
 	btn.textContent = $$('Map preview');
+	btn.title = $$('Display maps in another tab');
 	btn.onclick = this.renderMapStandalone.bind(this);
+	minimapTool.appendChild(btn);
+
+	btn = document.createElement('button');
+	btn.textContent = '\uf00D'; // X (with fontawesome)
+	btn.className = 'reduce-btn';
+	btn.title = $$('Reduce the maps preview');
+	btn.onclick = main.changeClass.bind(this, minimapSection, 'show', 'hide');
 	minimapTool.appendChild(btn);
 
 	minimapSection.appendChild(minimapTool);
@@ -140,6 +149,13 @@ CubeBuilder.prototype.render = function(container) {
 
 	container.appendChild(minimapSection);
 	this.cubeMinimap = minimapContainer;
+
+	btn = document.createElement('button');
+	btn.textContent = '\uf009'; // 4 squares (with fontawesome)
+	btn.className = 'cube-maximize-minimap-btn';
+	btn.title = $$('Show the maps preview');
+	btn.onclick = main.changeClass.bind(this, minimapSection, 'hide', 'show');
+	container.appendChild(btn);
 
 	/* render Levels */
 	this.levels.forEach(this.renderLevel, this);
