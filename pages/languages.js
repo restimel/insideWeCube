@@ -11,7 +11,7 @@ function Languages(refresh) {
 }
 
 Languages.prototype.setLng = function(container) {
-	var lng = 'lng-' + $$.getCurrentLng();
+	var lng = 'lng-' + $$.getLocale();
 	main.changeClass(main.container, this.lastLng, lng);
 	this.lastLng = lng;
 };
@@ -31,7 +31,7 @@ Languages.prototype.render = function(container) {
 
 
 Languages.prototype.renderClose = function() {
-	var lng = $$.getCurrentLng();
+	var lng = $$.getLocale();
 	this.isOpen = false;
 
 	this.section.classList.remove('menu-open');
@@ -49,14 +49,14 @@ Languages.prototype.renderClose = function() {
 
 Languages.prototype.renderOpen = function() {
 	var section = this.section,
-		clng = $$.getCurrentLng();
+		clng = $$.getLocale();
 	this.isOpen = true;
 	section.classList.remove('menu-close');
 	section.classList.add('menu-open');
 
 	section.innerHTML = '';
 
-	$$.getLng().forEach(function(lng){
+	$$.getLocales().forEach(function(lng){
 		var div = document.createElement('div'),
 			img = document.createElement('img');
 		img.src = './img/' + lng + '.png';
@@ -74,8 +74,8 @@ Languages.prototype.renderOpen = function() {
 };
 
 Languages.prototype.changeLng = function(lng) {
-	if ($$.getCurrentLng() !== lng) {
-		$$.changeLng(lng);
+	if ($$.getLocale() !== lng) {
+		$$.setLocale(lng);
 		main.control.action('changeLng', lng);
 		this.setLng();
 		this.callBack();

@@ -12,7 +12,14 @@
 	<link rel="stylesheet" type="text/css" href="css/cube3D.css">
 
 	<!-- libs -->
-	<script src="libs/i18n/translate-i18n.js"></script>
+	<script type="text/javascript">
+	var _i18n_config = {
+		alias: '$$'
+	};
+	</script>
+	<script src="libs/i18n-js-parser/pages/lib/i18n-js-formatter/i18n-js-formatter.js"></script>
+	<script src="libs/i18n-js-parser/pages/lib/i18n-js-formatter/script/s_formatter.js"></script>
+	<!-- <script src="libs/i18n/translate-i18n.js"></script> -->
 	<script src="common/helpers.js"></script>
 	<script src="common/control.js"></script>
 	<script src="common/cubePath.js"></script>
@@ -43,9 +50,18 @@
 <body>
 
 <script>
-	$$.onready(function() {
-		main(document.body);
+	$$.configuration({
+		locales: ['en', 'fr', 'it'],
+		localeName: {en: 'English', fr: 'Français', it: 'Italiano'},
+	    dictionary: 'ressources/dictionary.json',
+	    storage: ['localStorage:language', 'cookie:language'],
+	    onLocaleReady: function() {
+			main(document.body);
+		}
 	});
+	// $$.onready(function() {
+	// 	main(document.body);
+	// });
 	Helper.cssPath = ['css/main.css', 'css/cube3D.css'];
 	Helper.mainPath = self.location.href.replace(/\/[^/]*$/, '');
 </script>

@@ -115,9 +115,9 @@ var store = {
 
 		var compare;
 		if (typeof Intl === 'function') {
-			compare = new Intl.Collator($$.getCurrentLng(), {sensitivity: 'base'}).compare;
+			compare = new Intl.Collator($$.getLocale(), {sensitivity: 'base'}).compare;
 		} else {
-			compare = function(a, b) {return a.localeCompare(b, $$.getCurrentLng(), {sensitivity: 'base'});};
+			compare = function(a, b) {return a.localeCompare(b, $$.getLocale(), {sensitivity: 'base'});};
 		}
 
 		return list.sort(function(e1, e2) {

@@ -6,7 +6,7 @@ function main(container){
 	main.language = new Languages(main.refresh);
 
 	main.createBody(container);
-	main.control.action('changeLng', $$.getCurrentLng());
+	main.control.action('changeLng', $$.getLocale());
 	main.refresh();
 
 	if (self.compatibility.errors.length) {
