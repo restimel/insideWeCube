@@ -23,6 +23,7 @@ LevelConstructor.prototype.render = function(container) {
 
 	var select = document.createElement('select');
 	select.onchange = this.changeLevel.bind(this);
+	select.appendChild(document.createElement('option'));
 	controller.action('getLevels', null, function(data) {
 		data.forEach(function(name) {
 			var option = document.createElement('option');

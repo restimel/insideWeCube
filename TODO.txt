@@ -15,4 +15,4 @@ Cube Solver
 
 
 Bugs
-* First level could not been selected
+X First level could not been selected
