@@ -4,6 +4,7 @@ V1.0
 	* main page
 	~ translate words
 		~ Make a tool script to parse sentences
+		* use default language
 
 	Build Cube
 	* display small format map (and with reverse side)
@@ -16,7 +17,7 @@ V1.0
 		* BallLocater
 			* Reset (ball lost → restart)
 
-	* Add interaction with cube to find place
+	X Add interaction with cube to find place
 		X make a form to give cube position
 
 	Skinning
@@ -50,5 +51,6 @@ V1.1
 		* change Cube color
 
 	Analyze Cube
+		* give position of possible cells
 		→ give better help on impossible help (direct movement or position)
 		→ (bonus) identify in which cube we are if no positions match

@@ -104,7 +104,7 @@ BallLocater.prototype.renderCube = function(container) {
 	this.cubeSelectorContainer = document.createElement('section');
 	container.appendChild(this.cubeSelectorContainer);
 
-	// TODO add listener
+	this.cubeSelectorContainer.onclick = this.selectCell.bind(this);
 
 	this.getCubeMap();
 };
@@ -262,6 +262,20 @@ BallLocater.prototype.findWay = function(cell, container, cellEnd, position) {
 	}}, this.token);
 
 	this.wayContainer = container;
+};
+
+BallLocater.prototype.selectCell = function(event) {
+	var location = event.target.id.split('-'),
+		cell = {
+			x: parseInt(location[1], 10),
+			y: parseInt(location[2], 10),
+			z: parseInt(location[3], 10)
+		},
+		position = this.position;
+
+	if (location[0] === 'map' && !event.target.classList.contains('unavailable')) {
+		this.findCallback(cell, position);
+	}
 };
 
 /* Helper */

@@ -191,11 +191,20 @@ body {
 	height: 10px;
 	border: 2px solid darkblue;
 }
+.mini-map td:not(.unavailable){
+	cursor: pointer;
+}
+.mini-map td:not(.unavailable):hover{
+	box-shadow: inset 0 0 2px 0 mediumblue, inset 0 0 3px 2px yellow;
+}
 .mini-map .unavailable {
 	background-color: darkblue;
 }
 .mini-map .hole {
 	box-shadow: inset 0 0 3px 2px mediumblue, inset 0 0 0 10px darkblue;
+}
+.mini-map td.hole:hover {
+	box-shadow: inset 0 0 2px 0 mediumblue, inset 0 0 3px 2px yellow, inset 0 0 0 10px darkblue;
 }
 .mini-map .passage-down {
 	border-bottom: 2px solid transparent;

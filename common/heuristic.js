@@ -280,14 +280,13 @@ Heuristic.prototype.renderCube = function(rsp, count) {
 	var cubeName = rsp.cubeName,
 		orientation = rsp.orientation;
 
-	if (count > 3) {
+	if (count > 5) {
 		console.error('cube name doesn\'t match (%s → %s)', cubeName, this.cube.name);
 		return;
 	}
 
-	if (this.cube.name !== cubeName) {
-		console.log('nom incorrect %s → %s', cubeName, orientation, this.cube.name);
-		setTimeout(this.renderCube.bind(this, rsp, count+1), 30);
+	if (this.cube.name !== cubeName || !(this.accessible instanceof Array)) {
+		setTimeout(this.renderCube.bind(this, rsp, count+1), 40);
 		return;
 	}
 
