@@ -84,7 +84,7 @@ CubePath.prototype.getMaps = function(callback) {
 };
 
 CubePath.prototype.getPath = function(data) {
-	var cells = data.accessible;
+	var cells = data.allAccessible;
 	this.accessible = cells;
 
 	main.control.action('path', {action: 'getCubeMap', data: {orientation: this.mapOrientation, accessible: cells}}, this.token);

@@ -56,15 +56,22 @@ Path.prototype.getAvailableCells = function(cell) {
 
 	var searchCell = function(cell) {
 		var i;
-		for (i = list.length -1; i; i--) {
-			if (Cube.comparePosition(list[i], cell)) {
-				return list[i];
+
+		i = list.length -1;
+		if (i>0) {
+			for (; i; i--) {
+				if (Cube.comparePosition(list[i], cell)) {
+					return list[i];
+				}
 			}
 		}
 
-		for (i = toAnalyzed.length -1; i; i--) {
-			if (Cube.comparePosition(toAnalyzed[i], cell)) {
-				return toAnalyzed[i];
+		i = toAnalyzed.length -1;
+		if (i>0) {
+			for (; i; i--) {
+				if (Cube.comparePosition(toAnalyzed[i], cell)) {
+					return toAnalyzed[i];
+				}
 			}
 		}
 
@@ -209,12 +216,14 @@ Path.prototype.runCompute = function() {
 	if (info.finish) {
 		hash = this.cube.getHash(true);
 	}
-	//TODO p must also include possibilities of phantom bals (regarding options)
-	if (watchGhost) {
-		for all ghost 
-			moreAvvailable = this.getAvailableCells(ghost);
+	// allAccessible must also include possibilities of phantom bals (regarding options)
+	allAccessible = allCells;
+	if (Helper.config.phantomBalls) {
+		this.cube.phantomBalls.forEach(function(ghost) {
+			allAccessible = allAccessible.concat(this.getAvailableCells(ghost));
+		}, this);
 	}
-	this.result({accessible: allCells, info: info, hash: hash});
+	this.result({accessible: allCells, allAccessible: allAccessible, info: info, hash: hash});
 };
 
 /* could be override to use results elsewhere */
@@ -850,7 +859,7 @@ Path.prototype.setColor = function(args) {
  */
 Path.prototype.getCubeMap = function(data) {
 	var orientation = data.orientation || 'top',
-		accessiblePath = data.accessible || [];
+		accessiblePath = data.allAccessible || data.accessible || [];
 
 	self.postMessage({data: {
 		action: 'getCubeMap',
@@ -863,35 +872,35 @@ Path.prototype.getCubeMap = function(data) {
  */
 Path.prototype.getCubeMaps = function(data) {
 	var accessiblePath = data.accessible || [],
-		data = [];
+		maps = [];
 
-	data.push({
+	maps.push({
 		orientation: $$('The INSIDE³ side'),
 		html: this.cube.renderMap('top', accessiblePath)
 	});
 
-	data.push({
+	maps.push({
 		orientation: $$('The InsideZeCube.com side'),
 		html: this.cube.renderMap('bottom', accessiblePath)
 	});
 
 	if (Helper.config.stickerMaps) {
-		data.push({
+		maps.push({
 			orientation: $$('The right side'),
 			html: this.cube.renderMap('right', accessiblePath)
 		});
 
-		data.push({
+		maps.push({
 			orientation: $$('The front side'),
 			html: this.cube.renderMap('front', accessiblePath)
 		});
 
-		data.push({
+		maps.push({
 			orientation: $$('The left side'),
 			html: this.cube.renderMap('left', accessiblePath)
 		});
 
-		data.push({
+		maps.push({
 			orientation: $$('The rear side'),
 			html: this.cube.renderMap('back', accessiblePath)
 		});
@@ -899,7 +908,7 @@ Path.prototype.getCubeMaps = function(data) {
 
 	self.postMessage({data: {
 		action: 'getCubeMaps',
-		data: data
+		data: maps
 	}, token: this.token});
 };
 

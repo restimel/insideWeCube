@@ -263,6 +263,7 @@ Heuristic.prototype.reset = function(args) {
 
 	this.path.result = function(rslt) {
 		this.accessible = rslt.accessible;
+		this.allAccessible = rslt.allAccessible;
 		this.originPosition = position || {
 			r: 0,
 			d: 1,
@@ -299,7 +300,7 @@ Heuristic.prototype.renderCube = function(rsp, count) {
 	}
 
 	self.postMessage({data: {action: 'renderCube', data: {
-		cube: this.cube.renderMap(orientation, this.accessible),
+		cube: this.cube.renderMap(orientation, this.allAccessible),
 		orientation: orientation
 	}}, token: this.token});
 };
