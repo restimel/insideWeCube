@@ -4,7 +4,7 @@ V1.0
 	* main page
 	~ translate words
 		~ Make a tool script to parse sentences
-		* use default language
+		X use default language
 
 	Build Cube
 	* display small format map (and with reverse side)

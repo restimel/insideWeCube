@@ -68,6 +68,7 @@ Languages.prototype.renderOpen = function() {
 Languages.prototype.changeLng = function(lng) {
 	if ($$.getCurrentLng() !== lng) {
 		$$.changeLng(lng);
+		main.control.action('changeLng', lng);
 		this.callBack();
 	}
 	this.close();

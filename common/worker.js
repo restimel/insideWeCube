@@ -80,6 +80,9 @@ self.onmessage = function(e) {
 		case 'heuristic':
 			heuristic.router(args, token);
 			break;
+		case 'changeLng':
+			$$.changeLng(args);
+			break;
 	}
 };
 

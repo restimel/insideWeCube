@@ -2,7 +2,14 @@ var $$ = (function() {
 	var languages = ['en', 'fr'];
 	var translation = {};
 
-	var lng = 'en';
+	var lng = self.navigator.language;
+	if ((lng || '').indexOf('-') !== -1) {
+		lng = lng.split('-')[0];
+	}
+
+	if (languages.indexOf(lng) === -1) {
+		lng = 'en';
+	}
 
 	/**
 	 * replace token key by matching translation
