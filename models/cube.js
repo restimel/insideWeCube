@@ -217,7 +217,7 @@ Cube.prototype.getMovement = function(cellPos, cubePosition, from) {
 		rslt = [cellPos],
 		isFalling = [3, -3].indexOf(from) !== -1;
 
-	if (typeof cell.r === 'undefined') {
+	if (typeof cell === 'undefined') {
 		return [];
 	}
 
