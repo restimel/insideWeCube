@@ -1,8 +1,12 @@
 var rowSize = [1,2,3,4,5,6];
 
 function Level (name) {
-	this.name = name;
-	this.cells = rowSize.map(initRow);
+	if (typeof name === 'object') {
+		this.parse(name);
+	} else {
+		this.name = name;
+		this.cells = rowSize.map(initRow);
+	}
 }
 
 Level.prototype.get = function (x, y) {
@@ -15,6 +19,21 @@ Level.prototype.toggle = function (x, y, property, value) {
 	}
 
 	return this.cells[x][y][property] = value;
+};
+
+Level.prototype.toJSON = function() {
+	return {
+		name: this.name || '',
+		cells: this.cells
+	};
+};
+
+Level.prototype.parse = function(json) {
+	if (typeof json === 'string') {
+		json = JSON.parse(json);
+	}
+	this.name = json.name;
+	this.cells = json.cells;
 };
 
 function initRow() {

@@ -6,6 +6,7 @@ CubeBuilder.prototype.init = function() {
 	this.levels = [1, 2, 3, 4, 5, 6, 7].map(function(_, i) {
 		return new LevelConstructor();
 	});
+	this.name = '';
 };
 
 CubeBuilder.prototype.render = function(container) {
@@ -46,9 +47,24 @@ CubeBuilder.prototype.reset = function() {
 };
 
 CubeBuilder.prototype.changeName = function(e) {
-	console.log('todo changeName', e.currentTarget.value);
+	this.name = e.target.value;
 };
 
 CubeBuilder.prototype.save = function() {
-	console.log('todo save');
+	controller.action('saveCube', JSON.stringify(this));
+};
+
+CubeBuilder.prototype.toJSON = function() {
+	return {
+		name: this.name,
+		levels: this.levels.map(function(l) {return l.toJSON();})
+	};
+};
+
+CubeBuilder.prototype.parse = function(json) {
+	if (typeof json === 'string') {
+		json = JSON.parse(json);
+	}
+	this.name = json.name;
+	levels: this.levels.map(function(l, i) {return l.parse(json.levels[i]);})
 };

@@ -1,10 +1,10 @@
-var mainRouter;
+var mainRouter, controller;
 
 function main(container){
 	mainRouter = new Router();
 
 	createBody(container);
-	// constructor();
+	controller = new Control();
 }
 
 function createBody(container) {

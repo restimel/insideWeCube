@@ -3,6 +3,13 @@ function LevelConstructor() {
 }
 
 LevelConstructor.prototype.render = function(container) {
+	if (container) {
+		this.container = container;
+	} else {
+		container = this.container;
+		container.innerHTML = '';
+	}
+
 	var btn = document.createElement('button');
 	btn.textContent = $$('reset level');
 	btn.onclick = this.reset.bind(this);
@@ -14,6 +21,19 @@ LevelConstructor.prototype.render = function(container) {
 	inputName.onchange = this.changeName.bind(this);
 	container.appendChild(inputName);
 
+	var select = document.createElement('select');
+	select.onchange = this.changeLevel.bind(this);
+	controller.action('getLevels', null, function(data) {
+		data.forEach(function(name) {
+			var option = document.createElement('option');
+			
+			option.value = option.textContent = name;
+			select.appendChild(option);
+		});
+	});
+	container.appendChild(select);
+	//TODO getLevels
+
 	// btn = document.createElement('button');
 	// btn.textContent = $$('save level');
 	// btn.onclick = this.save.bind(this);
@@ -23,6 +43,10 @@ LevelConstructor.prototype.render = function(container) {
 };
 
 LevelConstructor.prototype.renderLevel = function(container) {
+	if (!container) {
+		container = this.container;
+	}
+
 	var table = document.createElement('table'),
 		row1, row2,	el, cell, x, y;
 
@@ -71,6 +95,18 @@ LevelConstructor.prototype.changeName = function(e) {
 	this.level.name = e.currentTarget.value;
 }
 
+LevelConstructor.prototype.changeLevel = function(e) {
+	var lvl = e.currentTarget.value;
+	controller.action('getLevel', lvl, function(l) {
+		if (l) {
+			this.parse(l);
+			this.render();
+		} else {
+			console.warn('could not change to level ' + lvl + ' because it is not found');
+		}
+	}.bind(this));
+};
+
 LevelConstructor.prototype.change = function(e) {
 	var el = e.target,
 		id = el.id;
@@ -95,5 +131,14 @@ LevelConstructor.prototype.change = function(e) {
 };
 
 LevelConstructor.prototype.save = function() {
+	//To be kept???
 	console.log('check name & save level '+ this.level.name);
+};
+
+LevelConstructor.prototype.toJSON = function() {
+	return this.level.toJSON();
+};
+
+LevelConstructor.prototype.parse = function(json) {
+	this.level.parse(json);
 };
