@@ -65,7 +65,7 @@ BallLocater.prototype.render = function(container) {
 	].join('<br>');
 
 	cell = row.insertCell(-1);
-	Cube3D.render(cell, position);
+	Cube3D.render(cell, position, {name: this.cubeName});
 
 	cell = row.insertCell(-1);
 	cell.textContent = '';
@@ -127,7 +127,7 @@ BallLocater.prototype.renderInstruction = function(movement, rowPst, position) {
 	cell.textContent = this.textIntruction(movement);
 
 	cell = row.insertCell(-1);
-	Cube3D.render(cell, position);
+	Cube3D.render(cell, position, {name: this.cubeName});
 
 	cell = row.insertCell(-1);
 	cell.className = 'BallLocater-result';

@@ -36,7 +36,7 @@ V1.0
 	→ do something (not log ?) when unexpected movement happens when rotated localy
 
 		Cube solver
-	→ rotate correctly position image
+	X rotate correctly position image
 	→ change cube does not display the correct map
 
 

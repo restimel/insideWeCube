@@ -2,8 +2,10 @@ function Cube3D() {
 
 }
 
-Cube3D.render = function(container, position, color) {
-	color = color || 'blue';
+Cube3D.render = function(container, position, cube) {
+	cube = cube || {};
+	var color = cube.color || 'blue';
+	var name = cube.name || 'Cube';
 
 	var cube3d = document.createElement('div');
 	cube3d.className = 'conteneur3d cube-'+color;
@@ -19,7 +21,7 @@ Cube3D.render = function(container, position, color) {
 	face.className = 'face cote5 light-face';
 	var text = document.createElement('span');
 	text.className = 'cube-title';
-	text.textContent = 'INSIDE3';
+	text.textContent = 'INSIDE³';
 	face.appendChild(text);
 	var hole = document.createElement('div');
 	hole.className = 'ball-hole';
@@ -32,13 +34,16 @@ Cube3D.render = function(container, position, color) {
 
 	face = document.createElement('div'); /* bottom */
 	face.className = 'face cote4';
+	var cnt = document.createElement('div');
+	cnt.className = 'cube-face-bottom';
 	text = document.createElement('span');
-	text.className = 'cube-title';
-	text.textContent = 'INSIDE3';
-	face.appendChild(text);
+	text.className = 'cube-title-site';
+	text.textContent = 'insidezecube.com';
+	cnt.appendChild(text);
 	hole = document.createElement('div');
 	hole.className = 'ball-hole';
-	face.appendChild(hole);
+	cnt.appendChild(hole);
+	face.appendChild(cnt);
 	parent.appendChild(face);
 
 	face = document.createElement('div'); /* left */
@@ -54,8 +59,23 @@ Cube3D.render = function(container, position, color) {
 	parent.appendChild(face);
 	cube3d.appendChild(parent);
 
+	/* Shadow grid */
 	var shadow = document.createElement('div');
 	shadow.className = 'cube-shadow';
+
+	var grid = document.createElement('table'),
+		row, i, j;
+
+	i = 5;
+	while (i--) {
+		row = grid.insertRow(-1);
+		row.className = 'grid';
+		j = 5;
+		while (j--) {
+			row.insertCell(-1);
+		}
+	}
+	shadow.appendChild(grid);
 	cube3d.appendChild(shadow);
 
 	Cube3D.position(cube3d, position);

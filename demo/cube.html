@@ -13,7 +13,15 @@
       <div class="face cote2 light-face">Cote2</div><!--droite-->
       <div class="face cote1 light-face">Start</div><!--front-->
    </div>
-   <div class="cube-shadow"></div>
+   <div class="cube-shadow">
+      <table>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      </table>
+   </div>
    <div style="z-index:1000;width:30px;height:30px;border-radius:1000px;border:10px solid red;position:absolute;top:115px;left:175px;"></div>
    <div style="z-index:1000;width:30px;height:30px;border-radius:1000px;border:10px solid green;position:absolute;top:-150px;left:155px;"></div>
    <div style="z-index:1000;width:30px;height:30px;border-radius:1000px;border:10px solid yellow;position:absolute;top:195px;left:302px;"></div>
@@ -66,7 +74,7 @@
 	text-align: center;
 	font-size: 80px;
 	font-size: 40px;
-	opacity: 0.5;
+	opacity: 0.95;
 	border: solid 4px black;
 	background-color: mediumblue;
 	box-shadow: 0 0 150px 0 rgba(0,0,0,0.5) inset;
@@ -74,51 +82,52 @@
 .light-face {
 	/*background-color: lightblue;*/
 	box-shadow: 0 0 200px 0 #FFF inset;
-   opacity: 0.5;
+   opacity: 1;
 }
 .cote1{
 /*	background-color: silver;*/
 	z-index: 10;
-   opacity: 0;
+   opacity: 1;
+   -webkit-transform: translateZ(150px);
 }
 .cote2{
    -webkit-transform: translateX(150px) rotateY(90deg);
-   -moz-transform: translateZ(-150px) translateX(150px) rotateY(90deg);
+   /*-moz-transform: translateZ(-150px) translateX(150px) rotateY(90deg);
    -o-transform: translateZ(-150px) translateX(150px) rotateY(90deg);
    -ms-transform: translateZ(-150px) translateX(150px) rotateY(90deg);
-   transform: translateZ(-150px) translateX(150px) rotateY(90deg);
+   transform: translateZ(-150px) translateX(150px) rotateY(90deg);*/
    z-index: 10;
 }
 .cote3{
-   -webkit-transform: translateZ(-150px) translateX(-150px) rotateY(-90deg);
-   -moz-transform: translateZ(-150px) translateX(-150px) rotateY(-90deg);
+   -webkit-transform: translateX(-150px) rotateY(-90deg);
+   /*-moz-transform: translateZ(-150px) translateX(-150px) rotateY(-90deg);
    -o-transform: translateZ(-150px) translateX(-150px) rotateY(-90deg);
    -ms-transform: translateZ(-150px) translateX(-150px) rotateY(-90deg);
-   transform: translateZ(-150px) translateX(-150px) rotateY(-90deg);
+   transform: translateZ(-150px) translateX(-150px) rotateY(-90deg);*/
 }
 .cote4{
-   -webkit-transform: translateZ(-150px) translateY(150px) rotateX(-90deg);
-   -moz-transform: translateZ(-150px) translateY(150px) rotateX(90deg);
+   -webkit-transform: translateY(150px) rotateX(-90deg);
+   /*-moz-transform: translateZ(-150px) translateY(150px) rotateX(90deg);
    -o-transform: translateZ(-150px) translateY(150px) rotateX(-90deg);
    -ms-transform: translateZ(-150px) translateY(150px) rotateX(-90deg);
-   transform: translateZ(-150px) translateY(150px) rotateX(-90deg);
+   transform: translateZ(-150px) translateY(150px) rotateX(-90deg);*/
 }
 .cote5{
-   -webkit-transform: translateZ(-150px) translateY(-150px) rotateX(90deg);
-   -moz-transform: translateZ(-150px) translateY(-150px) rotateX(90deg);
+   -webkit-transform: translateY(-150px) rotateX(90deg);
+   /*-moz-transform: translateZ(-150px) translateY(-150px) rotateX(90deg);
    -o-transform: translateZ(-150px) translateY(-150px) rotateX(90deg);
    -ms-transform: translateZ(-150px) translateY(-150px) rotateX(90deg);
-   transform: translateZ(-150px) translateY(-150px) rotateX(90deg);
+   transform: translateZ(-150px) translateY(-150px) rotateX(90deg);*/
 }
 .cote6{
-   -webkit-transform: translateZ(-300px) rotateX(180deg) rotateZ(180deg);
-   -moz-transform: translateZ(-300px) rotateX(180deg) rotateZ(180deg);
+   -webkit-transform: translateZ(-150px) rotateX(180deg) rotateZ(180deg);
+   /*-moz-transform: translateZ(-300px) rotateX(180deg) rotateZ(180deg);
    -o-transform: translateZ(-300px) rotateX(180deg) rotateZ(180deg);
    -ms-transform: translateZ(-300px) rotateX(180deg) rotateZ(180deg);
-   transform: translateZ(-300px) rotateX(180deg) rotateZ(180deg);
+   transform: translateZ(-300px) rotateX(180deg) rotateZ(180deg);*/
 }
 
-.cube-shadow {
+/*.cube-shadow {
 	opacity: 0.6;
 z-index: 1;
 width: 100px;
@@ -126,8 +135,27 @@ height: 500px;
 -webkit-transform-style: preserve-3d;
 -webkit-transform: rotateZ(0deg) rotateY(0deg) rotateX(84deg) translate(50px, -1500px);
 box-shadow: 0 0 200px 250px #000, 0 0 200px 250px #000 inset;
+}*/
+
+.cube-shadow {
+   opacity: 0.6;
+z-index: 1;
+width: 400px;
+height: 400px;
+-webkit-transform-style: preserve-3d;
+-webkit-transform: translateX(-30px) translateY(-200px) rotateX(-135deg);
+/*background-color: red;*/
+/*box-shadow: 0 0 200px 250px #000, 0 0 200px 250px #000 inset;*/
 }
 
+.cube-shadow td{
+   border: 5px solid black;
+   border-collapse: collapse;
+}
+.cube-shadow td{
+   width: 85px;
+   height: 85px;
+}
 .parent{
 	z-index: 2;
 	position: relative;
@@ -149,35 +177,43 @@ box-shadow: 0 0 200px 250px #000, 0 0 200px 250px #000 inset;
 	-webkit-transform: rotateZ(21deg) rotateY(30deg) rotateX(30deg);
 	-webkit-transform: rotateZ(15deg) rotateY(15deg) rotateX(30deg);
 	-webkit-transform: rotateZ(15deg) rotateY(30deg) rotateX(30deg) translateX(-100px) translateY(-100px);
-	-webkit-transform: rotateZ(36deg) rotateY(55deg) rotateX(45deg) translateX(270px) translateY(-210px);
+   -webkit-transform: rotateZ(36deg) rotateY(55deg) rotateX(45deg) translateX(270px) translateY(-210px);
+	-webkit-transform: rotateZ(15deg) rotateY(15deg) rotateX(-60deg);
 } /* good bas droite back*/
 .position1 .parent {
 	-webkit-transform: rotateZ(15deg) rotateY(15deg) rotateX(-15deg);
 	-webkit-transform: rotateZ(15deg) rotateY(-15deg) rotateX(-30deg);
-	-webkit-transform: rotateZ(25deg) rotateY(44deg) rotateX(-57deg) translateX(100px) translateY(110px);
+   -webkit-transform: rotateZ(25deg) rotateY(44deg) rotateX(-57deg) translateX(100px) translateY(110px);
+	-webkit-transform: rotateZ(-15deg) rotateY(-15deg) rotateX(-60deg);
 } /* bas droite face */
 .position2 .parent {
 	-webkit-transform: rotateZ(-30deg) rotateY(30deg) rotateX(-30deg);
 	-webkit-transform: rotateZ(-30deg) rotateY(20deg) rotateX(-35deg);
 	-webkit-transform: rotateZ(-15deg) rotateY(15deg) rotateX(-30deg);
-	-webkit-transform: rotateZ(-15deg) rotateY(-25deg) rotateX(-65deg) translateX(-100px) translateY(150px);
+   -webkit-transform: rotateZ(-15deg) rotateY(-25deg) rotateX(-65deg) translateX(-100px) translateY(150px);
+	-webkit-transform: rotateZ(15deg) rotateY(15deg) rotateX(-15deg);
 } /* good bas gauche face*/
 .position3 .parent {
 	-webkit-transform: rotateZ(-30deg) rotateY(-30deg) rotateX(30deg);
 	-webkit-transform: rotateZ(-15deg) rotateY(-15deg) rotateX(30deg);
-	-webkit-transform: rotateZ(-17deg) rotateY(-34deg) rotateX(35deg) translateX(-140px) translateY(-190px);
+   -webkit-transform: rotateZ(-17deg) rotateY(-34deg) rotateX(35deg) translateX(-140px) translateY(-190px);
+	-webkit-transform: rotateZ(-15deg) rotateY(-15deg) rotateX(-15deg);
 } /* good bas gauche back */
 .position4 .parent {
-	-webkit-transform: rotateZ(32deg) rotateY(53deg) rotateX(218deg) translateX(-190px) translateY(-10px) translateZ(60px);
+   -webkit-transform: rotateZ(32deg) rotateY(53deg) rotateX(218deg) translateX(-190px) translateY(-10px) translateZ(60px);
+	-webkit-transform: rotateZ(15deg) rotateY(15deg) rotateX(120deg);
 } /* good top droite face*/
 .position5 .parent {
 	-webkit-transform: rotateZ(15deg) rotateY(-15deg) rotateX(150deg) translateX(-140px) translateY(-190px);
+   -webkit-transform: rotateZ(-15deg) rotateY(-15deg) rotateX(120deg);
 } /* top droite back */
 .position6 .parent {
 	-webkit-transform: rotateZ(-30deg) rotateY(17deg) rotateX(141deg) translateX(-60px) translateY(280px);
+   -webkit-transform: rotateZ(15deg) rotateY(15deg) rotateX(165deg);
 } /* good top gauche back*/
 .position7 .parent {
 	-webkit-transform: rotateZ(-15deg) rotateY(-15deg) rotateX(210deg) translateX(-140px) translateY(-190px);
+   -webkit-transform: rotateZ(-15deg) rotateY(-15deg) rotateX(165deg);
 } /* good →top gauche face */
 
 /* on déclare pour l'élément <div> parent l'animation qui sera appliquée : */
