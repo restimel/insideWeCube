@@ -1,19 +1,18 @@
 
 General
-* Create a store
 * translate words
 * Add change language button
-
-Build level
-* Save Level
-* Load Level
+* export our cube build
 
 Build Cube
-* Save a cube
-* Load a cube
+* Load preBuild Cube
 * Analyze feasiblity of cube during constrution
 
 Cube Solver
 * Select a cube
 * Add interaction to find place
-* 
+* identify in which cube we are
+
+
+Bugs
+* First level could not been selected
