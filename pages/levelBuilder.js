@@ -83,6 +83,12 @@ LevelConstructor.prototype.render = function(container) {
 		container.appendChild(label);
 	}
 
+	var textarea = document.createElement('textarea');
+	textarea.placeholder = $$('note about this level');
+	textarea.value = this.level.cmt || '';
+	textarea.onchange = this.onCommentChange.bind(this);
+	container.appendChild(textarea);
+
 	this.renderLevel(container);
 };
 
@@ -188,6 +194,10 @@ LevelConstructor.prototype.reset = function(options) {
 
 LevelConstructor.prototype.changeName = function(e) {
 	this.level.name = e.currentTarget.value;
+};
+
+LevelConstructor.prototype.onCommentChange = function(e) {
+	this.level.cmt = e.currentTarget.value;
 };
 
 LevelConstructor.prototype.changeColor = function(color) {

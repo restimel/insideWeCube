@@ -99,6 +99,10 @@
 		"en": "rotate levels",
 		"fr": "rotation des plateaux"
 	},
+	"note about this level": {
+		"en": "note about this level",
+		"fr": "remarques sur ce plateau"
+	},
 	"Select all levels that can be put inside the cube. (You need to select at least 7 levels)": {
 		"en": "Select all levels that can be put inside the cube. (You need to select at least 7 levels)",
 		"fr": "Sélectionnez tous les plateaux que vous voulez éventuellement mettre dans le cube. (Vous devez choisir au moins 7 plateaux)"

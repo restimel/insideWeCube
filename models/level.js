@@ -9,6 +9,7 @@ function Level (name, options) {
 		this.name = name;
 		this.lid = !!options.lid;
 		this.cells = rowSize.map(initRow);
+		this.cmt = '';
 
 		if (options.s instanceof Array) {
 			options.s.forEach(function(cell) {
@@ -127,6 +128,10 @@ Level.prototype.toJSON = function() {
 		obj.lid = this.lid;
 	}
 
+	if (this.cmt && !/^\s*$/.test(this.cmt)) {
+		obj.cmt = this.cmt;
+	}
+
 	obj.cells = JSON.parse(JSON.stringify(this.cells)
 		.replace(/"[^"]+":(0|false|""),?/g, '')
 		.replace(/:true/g, ':1')
@@ -142,6 +147,7 @@ Level.prototype.parse = function(json) {
 	this.name = json.name || '';
 	this.lid = !!json.lid;
 	this.cells = json.cells;
+	this.cmt = json.cmt;
 
 	this.normalizeCells();
 };
