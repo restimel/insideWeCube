@@ -4,7 +4,7 @@ function main(container){
 	mainRouter = new Router();
 
 	createBody(container);
-	constructor();
+	// constructor();
 }
 
 function createBody(container) {

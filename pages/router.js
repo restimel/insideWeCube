@@ -1,14 +1,11 @@
 
 function Router(contentContainer) {
+	var cube = new CubeBuilder();
 	this.routes = [
 		{
-			name: 'Create levels',
-			route: 'constructor',
-			object: constructor
-		},
-		{
-			name: 'Build Cube',
-			route: 'builder'
+			name: 'Build levels',
+			route: 'builder',
+			object: cube
 		},
 		{
 			name: 'Analyze Cube',

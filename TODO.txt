@@ -1,0 +1,19 @@
+
+General
+* Create a store
+* translate words
+* Add change language button
+
+Build level
+* Save Level
+* Load Level
+
+Build Cube
+* Save a cube
+* Load a cube
+* Analyze feasiblity of cube during constrution
+
+Cube Solver
+* Select a cube
+* Add interaction to find place
+* 
