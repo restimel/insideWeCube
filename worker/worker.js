@@ -1,8 +1,8 @@
 'use strict';
 
 (function(){
-	var path = location.pathname.split('/'),
-		i = path.indexOf('worker');
+	var path = location.pathname.split('/');
+	var i = path.indexOf('worker');
 
 	path = path.slice(0, i);
 	path = path.join('/');
@@ -10,7 +10,8 @@
 		path = '/' + path;
 	}
 
-	self.$$configuration = {path: path};
+	self.rootPath = path;
+
 })();
 
 if (typeof console === 'undefined') {
@@ -55,6 +56,10 @@ if (typeof console === 'undefined') {
 	};
 }
 
+var _i18n_config = {
+	alias: '$$'
+};
+
 importScripts(
 	'indexDB.js',
 	'../models/store.js',
@@ -64,9 +69,18 @@ importScripts(
 	'generator.js',
 	'heuristic.js',
 	'createWorker.js',
-	'../libs/i18n/translate-i18n.js',
+	'../libs/i18n-js-parser/pages/lib/i18n-js-formatter/i18n-js-formatter.js',
+	'../libs/i18n-js-parser/pages/lib/i18n-js-formatter/script/s_formatter.js',
 	'../common/helpers.js'
 );
+
+$$.configuration({
+	locales: ['en', 'fr', 'it'],
+	localeName: {en: 'English', fr: 'Français', it: 'Italiano'},
+    dictionary: self.rootPath + 'ressources/dictionary.json',
+    storage: ['localStorage:language', 'cookie:language'],
+    syncLoading: true
+});
 
 self.onmessage = function(e) {
 	var data = e.data,
@@ -117,7 +131,7 @@ self.onmessage = function(e) {
 			heuristic.router(args, token);
 			break;
 		case 'changeLng':
-			$$.changeLng(args);
+			$$.setLocale(args);
 			break;
 		case 'config':
 			Object.keys(args).forEach(setConfig.bind(self, args));

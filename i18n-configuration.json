@@ -1,0 +1,23 @@
+{
+	"path": {
+		"parser": {
+			"files": ["./index.html", "./*.js"],
+			"except": ["*/libs/*", "/demo/*", "/utils/*"]
+		},
+		"parsedFile": "./ressources/parsed.json",
+		"rawDictionary": "./ressources/rawDictionary.json",
+		"dictionary": "./ressources/local_dictionary.json"
+	},
+	"parser": {
+		"keys": ["$$"]
+	},
+	"templates": {
+		"item": "\"@KEY~esc@\": {@context{CONTEXT}@ @label[LABELS](,)@}",
+		"context": "\"context\":\"@CONTEXT~esc@\",",
+		"label": "\"@LNG@\":\"@LABEL~esc@\""
+	},
+	"output": [{
+		"path": "./ressources/dictionary.json",
+		"format": "{@item[ITEMS](,)@}"
+	}]
+}
