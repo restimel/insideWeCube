@@ -18,6 +18,12 @@ BallLocater.prototype.reset = function(cubeName) {
 
 /* Render */
 BallLocater.prototype.render = function(container) {
+	var position = {
+		r: 0,
+		d: 1,
+		b: 1
+	};
+
 	main.control.action('heuristic', {action: 'reset', data: this.cubeName}, this.token);
 
 	if (typeof container === 'undefined') {
@@ -53,16 +59,12 @@ BallLocater.prototype.render = function(container) {
 	cell = row.insertCell(-1);
 	cell.innerHTML = [
 		$$('Put your cube with the INSIDE³ face at top. INSIDE³ must face you and is readable.'),
-		this.textIntruction('-r'),
-		this.textIntruction('d')
+		this.textIntruction('-r', position),
+		this.textIntruction('d', position)
 	].join('<br>');
 
 	cell = row.insertCell(-1);
-	this.displayPosition(cell, {
-		r: 0,
-		d: 1,
-		b: 1
-	});
+	this.displayPosition(cell, position);
 
 	cell = row.insertCell(-1);
 	cell.textContent = '';
@@ -92,6 +94,8 @@ BallLocater.prototype.renderInstruction = function(movement, rowPst) {
 	cell.appendChild(this.formMvt(0, iRow));
 	cell.appendChild(this.formMvt(1, iRow));
 	// cell.appendChild(this.formMvt(2, iRow));
+
+	row.scrollIntoViewIfNeeded();
 };
 
 BallLocater.prototype.renderWayBack = function(path) {
@@ -113,11 +117,12 @@ BallLocater.prototype.renderWayBack = function(path) {
 	cell = document.createElement('th');
 	cell.textContent = $$('Expected results');
 	row.appendChild(cell);
+	row.scrollIntoViewIfNeeded();
 
 	path.forEach(function(instruction) {
 		row = table.insertRow(-1);
 		cell = row.insertCell(-1);
-		cell.textContent = this.textIntruction(instruction.mvt);
+		cell.textContent = this.textIntruction(instruction.mvt, instruction.position);
 
 		cell = row.insertCell(-1);
 		this.displayPosition(cell, instruction.position);
@@ -210,16 +215,41 @@ BallLocater.prototype.displayPosition = function(elCell, position) {
 
 /* Text and messages */
 
-BallLocater.prototype.textIntruction = function(mvt) {
-	switch (mvt) {
-		case 'r': return $$('Rotate your cube slightly to the right.');
-		case '-r': return $$('Rotate your cube slightly to the left.');
-		case 'd': return $$('Rotate your cube slightly upward.');
-		case '-d': return $$('Rotate your cube slightly downward.');
-		case 'b': return $$('Rotate your cube to have the face INSIDE³ at the top.');
-		case '-b': return $$('Rotate your cube to have the face INSIDE³ at the bottom.');
-		default:
-			return $$('I am sorry, I can\'t help you here :(');
+BallLocater.prototype.textIntruction = function(mvt, position) {
+	position = position || this.position;
+
+	if (position.b) {
+		switch (mvt) {
+			case 'r': return $$('Rotate your cube slightly to the right.');
+			case '-r': return $$('Rotate your cube slightly to the left.');
+			case 'd': return $$('Rotate your cube slightly backward.');
+			case '-d': return $$('Rotate your cube slightly forward.');
+			case 'b': return $$('Rotate your cube to have the face INSIDE³ at the top.');
+			case '-b':
+				if (position.d) {
+					return $$('Rotate your cube backward to have the face INSIDE³ at the bottom.');
+				} else {
+					return $$('Rotate your cube forward to have the face INSIDE³ at the bottom.');
+				}
+			default:
+				return $$('I am sorry, I can\'t help you here :(');
+		}
+	}else {
+		switch (mvt) {
+			case 'r': return $$('Rotate your cube slightly to the right.');
+			case '-r': return $$('Rotate your cube slightly to the left.');
+			case 'd': return $$('Rotate your cube slightly forward.');
+			case '-d': return $$('Rotate your cube slightly backward.');
+			case 'b':
+				if (position.d) {
+					return $$('Rotate your cube forward to have the face INSIDE³ at the top.');
+				} else {
+					return $$('Rotate your cube backward to have the face INSIDE³ at the top.');
+				}
+			case '-b': return $$('Rotate your cube to have the face INSIDE³ at the top.');
+			default:
+				return $$('I am sorry, I can\'t help you here :(');
+		}
 	}
 };
 

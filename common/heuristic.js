@@ -273,10 +273,14 @@ Heuristic.prototype.wayBack = function(rsp) {
 	path = path.map(function(mvt) {
 		position = this.computePosition(position, mvt);
 		rsltMvt = this.cube.getMovement(rsltMvt[rsltMvt.length -1], position, -1);
+		var result = rsltMvt.length === 1 ? 0 : 1;
+		if (mvt === '?') {
+			result = -1;
+		}
 		return {
 			mvt: mvt,
 			position: position,
-			result: rsltMvt.length === 1 ? 0 : 1
+			result: result
 		};
 	}, this);
 
