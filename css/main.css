@@ -5,3 +5,35 @@ body {
 .route-menu-item {
 	cursor: pointer;
 }
+
+.constructor-table {
+	border-collapse: collapse;
+}
+
+.cell-main-hole, .cell-main-fill {
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+
+.cell-wallR-hole, .cell-wallR-fill {
+	width: 5px;
+	height: 20px;
+	cursor: pointer;
+}
+
+.cell-wallD-hole, .cell-wallD-fill {
+	width: 20px;
+	height: 5px;
+	cursor: pointer;
+}
+
+.cell-main-fill, .cell-wallR-hole, .cell-wallD-hole, .cell-none {
+	background-color: rgb(50, 150, 200);
+}
+.cell-main-hole {
+	background-color: rgb(20, 70, 90);
+}
+.cell-wallR-fill, .cell-wallD-fill {
+	background-color: rgb(0, 0, 0);	
+}

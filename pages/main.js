@@ -1,9 +1,10 @@
-var mainRoute;
+var mainRouter;
 
 function main(container){
 	mainRouter = new Router();
 
 	createBody(container);
+	constructor();
 }
 
 function createBody(container) {
@@ -17,4 +18,6 @@ function createBody(container) {
 
 	container.appendChild(navHeader);
 	container.appendChild(contents);
+
+	mainRouter.setContainer(contents);
 }

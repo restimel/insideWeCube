@@ -1,13 +1,15 @@
-function level (name) {
+var rowSize = [1,2,3,4,5,6];
+
+function Level (name) {
 	this.name = name;
-	this.cells = (new Array(6)).map(initRow);
+	this.cells = rowSize.map(initRow);
 }
 
-level.prototype.get = function (x, y) {
+Level.prototype.get = function (x, y) {
 	return this.cells[x][y];
 };
 
-level.prototype.toggle = function (x, y, property, value) {
+Level.prototype.toggle = function (x, y, property, value) {
 	if (typeof value === 'undefined') {
 		value = !this.cells[x][y][property];
 	}
@@ -16,7 +18,7 @@ level.prototype.toggle = function (x, y, property, value) {
 };
 
 function initRow() {
-	var row = (new Array(6)).map(function() {
+	var row = rowSize.map(function() {
 		return {
 			r: false, //move to Right
 			d: false, //move to Down
@@ -24,4 +26,5 @@ function initRow() {
 			s: 0 // 0: normal, 1: start, -1: finish
 		};
 	});
+	return row;
 }
