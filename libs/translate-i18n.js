@@ -10,7 +10,7 @@ var $$ = (function() {
 	 * replace token key by matching translation
 	 * strings are replace by words depending of rplcW
 	 */
-	function mathing(key, rplcW) {
+	function matching(key, rplcW) {
 		var w = translation[key];
 
 		if (typeof w === 'undefined') {

@@ -1,3 +1,7 @@
 body {
-	background-color: rgb(100, 100, 50);
+	background-color: rgb(158, 219, 129);
+}
+
+.route-menu-item {
+	cursor: pointer;
 }
