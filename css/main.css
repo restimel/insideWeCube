@@ -741,3 +741,32 @@ img.start-main {
 	margin-right: auto;
 	margin-left: auto;
 }
+
+/* Easter Eggs */
+.lordCube {
+	position: absolute;
+	top: 10px;
+	bottom: 10px;
+	left: 10px;
+	right:	10px;
+}
+.lordCube .conteneur3d {
+	transform: scale(2);
+	top: 200px;
+}
+.lordCube .parent {
+	transform: rotateY(720deg) rotateX(-30deg) rotateZ(-30deg);
+
+	-ms-transition: transform 30s;
+	-webkit-transition: transform 30s;
+	transition: transform 30s;
+}
+
+.lordCube:hover .parent,
+.lordCube .parent:hover {
+	transform: rotateY(0deg) rotateX(-30deg) rotateZ(30deg);
+}
+
+.lordCube .quoted {
+	font-size: 2em;
+}

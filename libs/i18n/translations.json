@@ -1019,6 +1019,26 @@
 		"en": "Instructions summary (%d)",
 		"fr": "Résumé des instructions (%d)"
 	},
+	"The lord of the cubes": {
+		"en": "The lord of the cubes",
+		"fr": "Le seigneur des cubes"
+	},
+	"One cube to rule them all": {
+		"en": "One cube to rule them all",
+		"fr": "Un cube pour les gouverner tous"
+	},
+	"One cube to find them": {
+		"en": "One cube to find them",
+		"fr": "Un cube pour les trouver"
+	},
+	"One cube to bring them all": {
+		"en": "One cube to bring them all",
+		"fr": "Un cube pour les amener tous"
+	},
+	"And in the darkness to bind them": {
+		"en": "And in the darkness to bind them",
+		"fr": "Et dans les ténèbres les lier"
+	},
 	"Cube \"%s\" has been replaced by its original version.": {
 		"en": "Cube \"%s\" has been replaced by its original version.",
 		"fr": "Le cube \"%s\" a été remplacé par sa version originale."

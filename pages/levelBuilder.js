@@ -228,7 +228,11 @@ LevelConstructor.prototype.changeName = function(e) {
 };
 
 LevelConstructor.prototype.onCommentChange = function(e) {
-	this.level.cmt = e.currentTarget.value;
+	var cmt = e.currentTarget.value;
+	this.level.cmt = cmt;
+	if (/^(?:the\s*lord\s*of\s*the\s*cubes|le\s*seigneur\s*des\s*cubes)/i.test(cmt)) {
+		EasterEggs.lordOfTheCubes();
+	}
 };
 
 LevelConstructor.prototype.changeColor = function(color) {
