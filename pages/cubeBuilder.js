@@ -714,6 +714,7 @@ CubeBuilder.prototype.changeCube = function(e) {
 	main.control.action('getCubeInfo', {name: name}, function(data) {
 		this.cube.size = data.info.size;
 		this.cube.mapSize = data.info.mapSize;
+		this.cube.phantomBalls = data.info.phantomBalls;
 		this.changeColor(data.info.color);
 		this.startCell(data.info.start);
 		this.endCell(data.info.end);

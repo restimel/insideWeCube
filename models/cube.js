@@ -151,10 +151,13 @@ Cube.prototype.toJSON = function() {
 		name: this.name,
 		color: this.color,
 		levels: this.levels.map(function(l) {return l.toJSON();}),
-		ghost: this.phantomBalls.map(Cube.convertFromCell).filter(function(c) { return !!c; }),
 		size: this.size,
 		mapSize: this.mapSize
 	};
+
+	if (this.phantomBalls && this.phantomBalls.length) {
+		json.ghost = this.phantomBalls.map(Cube.convertFromCell).filter(function(c) { return !!c; });
+	}
 
 	if (this.startCell.x !== 1 || this.startCell.y !== 1 || this.startCell.z !== 0) {
 		json.start = {
@@ -186,14 +189,14 @@ Cube.prototype.parse = function(json, option) {
 	this.size = json.size || 7;
 	this.mapSize = json.mapSize || 6;
 
-	if (typeof json.ghost === 'object' && json.ghost instanceof Array) {
+	if (typeof json.ghost === 'object' && json.ghost instanceof Array && json.ghost.length) {
 		this.phantomBalls = json.ghost.map(function(cell) {
 			return Cube.convertToCell(cell);
 		}).filter(function(cell) {
 			return Cube.checkCell(cell);
 		});
 	} else {
-		this.phantomBalls = [];
+		this.phantomBalls = json.phantomBalls || [];
 	}
 
 	if (Cube.checkCell(json.start)) {

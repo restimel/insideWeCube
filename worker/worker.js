@@ -237,7 +237,8 @@ function getCubeInfo(name) {
 		start: cube.startCell,
 		end: cube.finishCell,
 		size: cube.size,
-		mapSize: cube.mapSize
+		mapSize: cube.mapSize,
+		phantomBalls: cube.phantomBalls
 	};
 }
 
