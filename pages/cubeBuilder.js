@@ -1,6 +1,15 @@
 function CubeBuilder(cubePath) {
 	this.cubePath = cubePath;
 	this.cubeRemover = new CubeRemover();
+	this.advancedOptions = new AdvancedOptions({
+		call_lid: function() {
+			this.levels[this.levels.length-1].render();
+		}.bind(this),
+		call_pin: function() {
+			this.cubePath.computePath();
+		}.bind(this),
+		call_adv: this.renderAdvTools.bind(this)
+	});
 	cubePath.setBuilder(this);
 	this.init();
 }
@@ -74,7 +83,9 @@ CubeBuilder.prototype.render = function(container) {
 	this.elemColor = select;
 
 	var btn = document.createElement('button');
-	btn.textContent = $$('Save cube');
+	btn.className = 'font-awesome'
+	btn.textContent = '\uf0c7'; //save
+	btn.title = $$('Save cube');
 	btn.onclick = this.save.bind(this);
 	cubeProperty.appendChild(btn);
 
@@ -105,16 +116,25 @@ CubeBuilder.prototype.render = function(container) {
 	manager.appendChild(select);
 
 	btn = document.createElement('button');
-	btn.textContent = $$('Reset cube');
+	btn.className = 'font-awesome';
+	btn.textContent = '\uf021'; // refresh
+	btn.title = $$('Reset cube');
 	btn.onclick = this.reset.bind(this);
 	manager.appendChild(btn);
 
 	btn = document.createElement('button');
-	btn.textContent = $$('Delete cubes');
+	btn.className = 'font-awesome';
+	btn.textContent = '\uf1b3\uf014'; // cubes trash
+	btn.title = $$('Delete cubes');
 	btn.onclick = this.removeCubes.bind(this);
 	manager.appendChild(btn);
 
-	manager.appendChild(this.renderAdvancedTool());
+	btn = document.createElement('button');
+	btn.className = 'font-awesome';
+	btn.textContent = '\uf085'; // cogs
+	btn.title = $$('Manage options');
+	btn.onclick = this.renderAdvancedTool.bind(this);
+	manager.appendChild(btn);
 
 	header.appendChild(manager);
 
@@ -152,7 +172,7 @@ CubeBuilder.prototype.render = function(container) {
 
 	btn = document.createElement('button');
 	btn.className = 'font-awesome';
-	btn.textContent = '^';
+	btn.textContent = '\uf077'; // ^
 	btn.title = $$('Pin inside maze');
 	btn.onclick = this.setAction.bind(this);
 	btn.value = 2;
@@ -160,7 +180,7 @@ CubeBuilder.prototype.render = function(container) {
 
 	btn = document.createElement('button');
 	btn.className = 'font-awesome';
-	btn.textContent = 'v';
+	btn.textContent = '\uf078'; // v
 	btn.title = $$('Pin at the bottom of level');
 	btn.onclick = this.setAction.bind(this);
 	btn.value = -2;
@@ -377,56 +397,7 @@ CubeBuilder.prototype.renderMapStandalone = function() {
 };
 
 CubeBuilder.prototype.renderAdvancedTool = function() {
-	var option;
-	var select = document.createElement('select');
-	select.className = 'font-awesome';
-
-	option = document.createElement('option');
-	option.textContent = $$('Advanced option');
-	option.defaultSelected = true;
-	option.selected = true;
-	option.disabled = true;
-	select.add(option);
-
-	/*TODO instead title, add info box*/
-
-	option = document.createElement('option');
-	option.textContent = (Helper.config.lid ? '\uf046' : '\uf096') + ' ' + $$('lid only');
-	option.title = $$('If not selected non-lid levels can be chosen at last level');
-	option.value = 'lid';
-	option.callBack = function() {
-		this.levels[this.levels.length-1].render();
-	}.bind(this);
-	select.add(option);
-
-	option = document.createElement('option');
-	option.textContent = (Helper.config.pin ? '\uf046' : '\uf096') + ' ' + $$('through pin');
-	option.title = $$('If selected the pins do not block ball inside levels');
-	option.value = 'pin';
-	option.callBack = function() {
-		this.cubePath.computePath();
-	}.bind(this);
-	select.add(option);
-
-	option = document.createElement('option');
-	option.textContent = (Helper.config.advanced ? '\uf046' : '\uf096') + ' ' + $$('more tools');
-	option.title = $$('If selected more tools are available to edit levels (like setting pin, start Cell, ...)');
-	option.value = 'advTools';
-	option.callBack = this.renderAdvTools.bind(this);
-	select.add(option);
-
-	select.onchange = function() {
-		var value = !Helper.config[this.value],
-			option = this.selectedOptions[0],
-			content = option.textContent.substring(1);
-
-		Helper.config[this.value] = value;
-		option.textContent = (value ? '\uf046' : '\uf096') + content;
-		this.options[0].selected = true;
-		option.callBack(value);
-	};
-
-	return select;
+	this.advancedOptions.render();
 };
 
 CubeBuilder.prototype.renderAdvTools = function(val) {

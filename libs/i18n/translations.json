@@ -35,13 +35,29 @@
 		"en": "Import",
 		"fr": "Importer"
 	},
-	"Advanced option": {
+	"Advanced options": {
 		"en": "Advanced options",
 		"fr": "Options avancées"
+	},
+	"Manage options": {
+		"en": "Manage options",
+		"fr": "Configuration d'options"
 	},
 	"save level": {
 		"en": "Save level",
 		"fr": "Sauver le niveau"
+	},
+	"Set holes": {
+		"en": "Set holes",
+		"fr": "Ajoute des trous"
+	},
+	"Pin inside maze": {
+		"en": "Pin inside maze",
+		"fr": "Embossement dans le labyrinthe"
+	},
+	"Pin at the bottom of level": {
+		"en": "Pin at the bottom of level",
+		"fr": "Embossement à l'arrière du plateau"
 	},
 	"S": {
 		"en": "S",
@@ -754,6 +770,10 @@
 	"Your browser is not compatible. main feature will not work!": {
 		"en": "Your browser is not compatible. main feature will not work!",
 		"fr": "Votre navigateur n'est pas compatible. Des fonctionnalités importantes ne marcherons pas !"
+	},
+	"A newer version of insideWeCube is running in another tab. You can't save anymore your change.<br>Please refresh the page.": {
+		"en": "A newer version of insideWeCube is running in another tab. You can't save anymore your change.<br>Please refresh the page.",
+		"fr": "Une nouvelle version de insideWeCube a été lancée dans un autre onglet. Vous ne pouvez plus sauvegarder vos changements dans cette page."
 	},
 	"Some features will not work correctly with your browser:": {
 		"en": "Some features will not work correctly with your browser:",

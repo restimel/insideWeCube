@@ -237,6 +237,7 @@ summary {
 	cursor: pointer;
 	text-align: center;
 	font-size: 15px;
+	font-family: 'fontAwesome';
 }
 
 .cell-wall {

@@ -198,12 +198,12 @@ LevelConstructor.prototype.setCell = function(el, type, val) {
 				o.title = $$('Finish');
 				break;
 			case 's2':
-				o.textContent = '^';
-				o.title = $$('pin inside the maze');
+				o.textContent = '\uf077'; // ^
+				o.title = $$('Pin inside maze');
 				break;
 			case 's-2':
-				o.textContent = 'v';
-				o.title = $$('pin at the bottom of level');
+				o.textContent = '\uf078'; // v
+				o.title = $$('Pin at the bottom of level');
 				break;
 		}
 	}

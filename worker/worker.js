@@ -131,7 +131,7 @@ function setConfig(o, key) {
 var tempCube = new Cube();
 
 function sendMessage(message, type, option) {
-	optin = option || {};
+	option = option || {};
 	type = type || 'success';
 	var time = typeof option.time === 'undefined' ? 10000 : option.time;
 	var html = option.html || false;

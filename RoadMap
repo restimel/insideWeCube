@@ -18,12 +18,12 @@ V1.2
 		→ FAQ: What is draft cube
 	* key Shortcut (Ctrl+S / Ctrl+z)
 	* create an advanced tool for different options
-		* level7
-		* blockers cell
+		✓ level7
+		✓ blockers cell
 		* cell tools
-			* hole (default)
-			* Start/Finish
-			* pin
+			✓ hole (default)
+			✓ Start/Finish
+			✓ pin
 			* Not accessible cell
 	* add comments to levels
 	* switch level (need idea about design)
