@@ -27,16 +27,14 @@ Cube Solver
 		X display instruction at the correct place
 		X send Results
 		X display correct position
-			→ display image
+			*→ display image
 		X Communication between BallLocater and Analyzer to go to step 3
-		* Step3: display result
+		X Step3: display result
 			X find the movements list
 			X give path to find start
 				X (+ end?)
 			X display instructions
-				* display position
-				* display movement
-		→ Nice to have: an answer 'I am not sure what happens'
+		*→ Nice to have: an answer 'I am not sure what happens'
 	* BallLocater
 		* Reset (ball lost → restart)
 	→ (bonus) identify in which cube we are

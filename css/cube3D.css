@@ -1,0 +1,188 @@
+.ball-hole {
+	position: absolute;
+	width: 250px;
+	left: 25px;
+	top: 75px;
+	height: 25px;
+   border-radius: 50px;
+	background-color: black;
+}
+
+/* le conteneur global est l'endroit adéquat dans lequel définir la notion de perspective pour des transformations 3D. Elle est initialisée avec les styles CSS perspective et perspective-origin.*/
+#conteneur{
+   width: position: relative;
+   width: 300px;
+   height: 200px;
+   margin: 0px auto;
+   -webkit-perspective: 2800px;
+   -webkit-perspective-origin: 50% 50%;
+   -moz-perspective: 2800px;
+   -moz-perspective-origin: 50% 50%;
+   -o-perspective: 2800px;
+   -o-perspective-origin: 50% 50%;
+   background-color: rgba(200,0,200,0.5);
+   -webkit-transform: scale(0.3);
+}
+/* définir le positionnement des div pour former le cube : */
+.face{
+	width: 300px;
+	height: 300px;
+	position: absolute;
+	/*   line-height: 300px;*/
+	text-align: center;
+	font-size: 80px;
+	font-size: 40px;
+	opacity: 1;
+	border: solid 4px black;
+	background-color: mediumblue;
+	box-shadow: 0 0 150px 0 rgba(0,0,0,0.5) inset;
+}
+.light-face {
+	/*background-color: lightblue;*/
+	box-shadow: 0 0 200px 0 #FFF inset;
+}
+.cote1{
+/*	background-color: silver;*/
+	z-index: 10;
+}
+.cote2{
+   -webkit-transform: translateZ(-150px) translateX(150px) rotateY(90deg);
+   -moz-transform: translateZ(-150px) translateX(150px) rotateY(90deg);
+   -o-transform: translateZ(-150px) translateX(150px) rotateY(90deg);
+   -ms-transform: translateZ(-150px) translateX(150px) rotateY(90deg);
+   transform: translateZ(-150px) translateX(150px) rotateY(90deg);
+}
+.cote3{
+   -webkit-transform: translateZ(-150px) translateX(-150px) rotateY(-90deg);
+   -moz-transform: translateZ(-150px) translateX(-150px) rotateY(-90deg);
+   -o-transform: translateZ(-150px) translateX(-150px) rotateY(-90deg);
+   -ms-transform: translateZ(-150px) translateX(-150px) rotateY(-90deg);
+   transform: translateZ(-150px) translateX(-150px) rotateY(-90deg);
+}
+.cote4{
+   -webkit-transform: translateZ(-150px) translateY(150px) rotateX(-90deg);
+   -moz-transform: translateZ(-150px) translateY(150px) rotateX(90deg);
+   -o-transform: translateZ(-150px) translateY(150px) rotateX(-90deg);
+   -ms-transform: translateZ(-150px) translateY(150px) rotateX(-90deg);
+   transform: translateZ(-150px) translateY(150px) rotateX(-90deg);
+}
+.cote5{
+   -webkit-transform: translateZ(-150px) translateY(-150px) rotateX(90deg);
+   -moz-transform: translateZ(-150px) translateY(-150px) rotateX(90deg);
+   -o-transform: translateZ(-150px) translateY(-150px) rotateX(90deg);
+   -ms-transform: translateZ(-150px) translateY(-150px) rotateX(90deg);
+   transform: translateZ(-150px) translateY(-150px) rotateX(90deg);
+}
+.cote6{
+   -webkit-transform: translateZ(-300px) rotateX(180deg) rotateZ(180deg);
+   -moz-transform: translateZ(-300px) rotateX(180deg) rotateZ(180deg);
+   -o-transform: translateZ(-300px) rotateX(180deg) rotateZ(180deg);
+   -ms-transform: translateZ(-300px) rotateX(180deg) rotateZ(180deg);
+   transform: translateZ(-300px) rotateX(180deg) rotateZ(180deg);
+}
+
+.cube-shadow {
+	opacity: 0.6;
+z-index: 1;
+width: 100px;
+height: 500px;
+-webkit-transform-style: preserve-3d;
+-webkit-transform: rotateZ(0deg) rotateY(0deg) rotateX(84deg) translate(50px, -1500px);
+box-shadow: 0 0 200px 250px #000, 0 0 200px 250px #000 inset;
+}
+
+.parent{
+	z-index: 2;
+	position: relative;
+	width: 300px;
+	height: 300px;
+ /*  animation: AnimCube 5s linear infinite; */
+   transform-style: preserve-3d;
+   /* -webkit-animation: AnimCube 5s linear infinite; */
+   -webkit-transform-style: preserve-3d;
+   /*-moz-animation: AnimCube 5s linear infinite; */
+   -moz-transform-style: preserve-3d;
+   /*-o-animation: AnimCube 5s linear infinite; */
+   -o-transform-style: preserve-3d;
+   /* -ms-animation: AnimCube 5s linear infinite; */
+   -ms-transform-style: preserve-3d;
+}
+
+.position0 .parent {
+	-webkit-transform: rotateZ(21deg) rotateY(30deg) rotateX(30deg);
+	-webkit-transform: rotateZ(15deg) rotateY(15deg) rotateX(30deg);
+	-webkit-transform: rotateZ(15deg) rotateY(30deg) rotateX(30deg) translateX(-100px) translateY(-100px);
+	-webkit-transform: rotateZ(36deg) rotateY(55deg) rotateX(45deg) translateX(270px) translateY(-210px);
+} /* good bas droite back*/
+.position1 .parent {
+	-webkit-transform: rotateZ(15deg) rotateY(15deg) rotateX(-15deg);
+	-webkit-transform: rotateZ(15deg) rotateY(-15deg) rotateX(-30deg);
+	-webkit-transform: rotateZ(25deg) rotateY(44deg) rotateX(-57deg) translateX(100px) translateY(110px);
+} /* bas droite face */
+.position2 .parent {
+	-webkit-transform: rotateZ(-30deg) rotateY(30deg) rotateX(-30deg);
+	-webkit-transform: rotateZ(-30deg) rotateY(20deg) rotateX(-35deg);
+	-webkit-transform: rotateZ(-15deg) rotateY(15deg) rotateX(-30deg);
+	-webkit-transform: rotateZ(-15deg) rotateY(-25deg) rotateX(-65deg) translateX(-100px) translateY(150px);
+} /* good bas gauche face*/
+.position3 .parent {
+	-webkit-transform: rotateZ(-30deg) rotateY(-30deg) rotateX(30deg);
+	-webkit-transform: rotateZ(-15deg) rotateY(-15deg) rotateX(30deg);
+	-webkit-transform: rotateZ(-17deg) rotateY(-34deg) rotateX(35deg) translateX(-140px) translateY(-190px);
+} /* good bas gauche back */
+.position4 .parent {
+	-webkit-transform: rotateZ(32deg) rotateY(53deg) rotateX(218deg) translateX(-190px) translateY(-10px) translateZ(60px);
+} /* good top droite face*/
+.position5 .parent {
+	-webkit-transform: rotateZ(15deg) rotateY(-15deg) rotateX(150deg) translateX(-140px) translateY(-190px);
+} /* top droite back */
+.position6 .parent {
+	-webkit-transform: rotateZ(-30deg) rotateY(17deg) rotateX(141deg) translateX(-60px) translateY(280px);
+} /* good top gauche back*/
+.position7 .parent {
+	-webkit-transform: rotateZ(-15deg) rotateY(-15deg) rotateX(210deg) translateX(-140px) translateY(-190px);
+} /* good →top gauche face */
+
+/* on déclare pour l'élément <div> parent l'animation qui sera appliquée : */
+/*
+.parent{
+   position: relative;
+   width: 300px;
+   height: 300px;
+   animation: AnimCube 5s linear infinite;
+   transform-style: preserve-3d;
+   -webkit-animation: AnimCube 5s linear infinite;
+   -webkit-transform-style: preserve-3d;
+   -moz-animation: AnimCube 5s linear infinite;
+   -moz-transform-style: preserve-3d;
+   -o-animation: AnimCube 5s linear infinite;
+   -o-transform-style: preserve-3d;
+   -ms-animation: AnimCube 5s linear infinite;
+   -ms-transform-style: preserve-3d;
+}
+@keyframes AnimCube{
+   from {}
+   to{ transform-origin: 50% 50%; transform: rotateZ(360deg)
+   rotateY(360deg) rotateX(360deg); }
+}
+@-webkit-keyframes AnimCube{
+   from {}
+   to{ -webkit-transform-origin: 50% 50%; -webkit-transform: rotateZ(360deg)
+   rotateY(360deg) rotateX(360deg); }
+}
+@-moz-keyframes AnimCube{
+   from {}
+   to{ -moz-transform-origin: 50% 50%; -moz-transform: rotateZ(360deg)
+   rotateY(360deg) rotateX(360deg); }
+}
+@-o-keyframes AnimCube{
+   from {}
+   to{ -o-transform-origin: 50% 50%; -o-transform: rotateZ(360deg)
+   rotateY(360deg) rotateX(360deg); }
+}
+@-ms-keyframes AnimCube{
+   from {}
+   to{ -ms-transform-origin: 50% 50%; -ms-transform: rotateZ(360deg)
+   rotateY(360deg) rotateX(360deg); }
+}
+/**/
