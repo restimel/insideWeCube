@@ -89,12 +89,12 @@ LevelConstructor.prototype.renderLevel = function(container) {
 			el.className = 'cell-main-' + (cell.b ? 'hole' : 'fill');
 
 			if (this.startCL && x === this.startCL[0] && y === this.startCL[1]) {
-				this.setCell(el, 's1');
+				this.setCell(el, 's1', true);
 			} else if (this.endCL && x === this.endCL[0] && y === this.endCL[1]) {
-				this.setCell(el, 's-1');
+				this.setCell(el, 's-1', true);
 			}
 			if (cell.s) {
-				this.setCell(el, 's'+cell.s);
+				this.setCell(el, 's'+cell.s, true);
 			}
 			row1.appendChild(el);
 
@@ -206,14 +206,6 @@ LevelConstructor.prototype.setCell = function(el, type, val) {
 				o.title = $$('Pin at the bottom of level');
 				break;
 		}
-	}
-
-	// will be remove
-	if (el.textContent === o.textContent) {
-		o = {
-			textContent: '',
-			title: ''
-		};
 	}
 
 	el.textContent = o.textContent;
