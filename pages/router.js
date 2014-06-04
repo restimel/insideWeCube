@@ -1,6 +1,7 @@
 
 function Router(contentContainer) {
-	var cube = new CubeBuilder();
+	var cube = new CubeBuilder(),
+		importExport = new exportImport();
 	this.routes = [
 		{
 			name: 'Build levels',
@@ -10,6 +11,11 @@ function Router(contentContainer) {
 		{
 			name: 'Analyze Cube',
 			route: 'analyzer'
+		},
+		{
+			name: 'Import/Export',
+			route: 'importExport',
+			object: importExport
 		}
 	];
 
