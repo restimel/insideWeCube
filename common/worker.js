@@ -61,3 +61,21 @@ function saveCubes(data) {
 		return 1;
 	}
 }
+
+function preloadCubes(){
+	var xhr = new XMLHttpRequest(),
+		user = '',
+		password = '';
+	
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+			saveCubes(xhr.responseText);
+		}
+	};
+	
+	xhr.open("GET", "cubes.json", true, user, password);
+	xhr.send();
+}
+
+/* init worker */
+preloadCubes();

@@ -2,10 +2,9 @@
 General
 * translate words
 * Add change language button
-* export our cube build
+* select which cube to export
 
 Build Cube
-* Load preBuild Cube
 * Analyze feasiblity of cube during constrution
 
 Cube Solver
@@ -15,4 +14,4 @@ Cube Solver
 
 
 Bugs
-X First level could not been selected
+* Only one cube is saved (or exported)

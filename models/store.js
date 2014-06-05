@@ -35,7 +35,7 @@ var store = {
 				if (level.name && list.indexOf(level.name === -1)) {
 					list.push(level.name);
 				} else {
-					list.push(cube.name + '-' + i);
+					list.push(cube.name + '-' + (i+1));
 				}
 			});
 		});
@@ -46,7 +46,7 @@ var store = {
 		this.cubes.some(function(cube) {
 			return cube.levels.some(function(level, i) {
 				if ((level.name && level.name === name)
-				||	 cube.name + '-' + i === name) {
+				||	 cube.name + '-' + (i+1) === name) {
 					lvl = level;
 					return true;
 				}
