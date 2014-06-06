@@ -14,4 +14,4 @@ Cube Solver
 
 
 Bugs
-* Only one cube is saved (or exported)
+X Only one cube is saved (or exported)

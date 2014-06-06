@@ -3,6 +3,13 @@ function Cube (name) {
 	this.levels = [];
 }
 
+Cube.prototype.clone = function() {
+	var cube = new Cube();
+	cube.parse(this.toJSON());
+
+	return cube;
+};
+
 Cube.prototype.addLevel = function (z, level) {
 	this.levels[z] = level;
 };

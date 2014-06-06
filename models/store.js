@@ -11,9 +11,9 @@ var store = {
 
 		i = this.search(item, store.cubes);
 		if (i === -1) {
-			store.cubes.push(item);
+			store.cubes.push(item.clone());
 		} else {
-			store.cubes[i] = item;
+			store.cubes[i] = item.clone();
 		}
 	},
 	search: function(item, list) {
