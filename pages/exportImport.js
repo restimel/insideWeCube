@@ -43,14 +43,10 @@ exportImport.prototype.import = function() {
 			message = $$('%d cubes loaded', message);
 		}
 
-		this.message(message);
+		dspMessage(message);
 	}.bind(this));
 };
 
 exportImport.prototype.export = function(element) {
 	controller.action('getCubes', null, function(data) {element.value = data;});
-};
-
-exportImport.prototype.message = function(message) {
-	console.warn('TODO message', message);
 };
