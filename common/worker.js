@@ -2,6 +2,7 @@ importScripts(
 	'../models/store.js',
 	'../models/level.js',
 	'../models/cube.js',
+	'path.js',
 	'../libs/translate-i18n.js'
 );
 
@@ -31,16 +32,17 @@ self.onmessage = function(e) {
 		case 'getLevel':
 			self.postMessage({data: store.getLevel(args), token: token});
 			break;
-		case 'setCell':
+		case 'path':
+			path.router(args, token);
 			break;
 	}
 };
 
-var currentCube = new Cube();
+var tempCube = new Cube();
 
 function saveCube(data) {
-	currentCube.parse(data);
-	store.save(currentCube);
+	tempCube.parse(data);
+	store.save(tempCube);
 	return true; //TODO analyze if all is ok
 }
 
@@ -79,3 +81,4 @@ function preloadCubes(){
 
 /* init worker */
 preloadCubes();
+path = new Path();

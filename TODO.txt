@@ -5,7 +5,12 @@ General
 * select which cube to export
 
 Build Cube
+* select a cube
 * Analyze feasiblity of cube during constrution
+	X update virtual cube
+	X find available cells
+	* display available Cells
+	* display information (cube feasability, difficulty)
 
 Cube Solver
 * Select a cube
@@ -14,4 +19,4 @@ Cube Solver
 
 
 Bugs
-X Only one cube is saved (or exported)
+* when a level is modified, it saves it automatically.

@@ -1,10 +1,13 @@
-function CubeBuilder() {
+function CubeBuilder(cubePath) {
+	this.cubePath = cubePath;
 	this.init();
 }
 
 CubeBuilder.prototype.init = function() {
+	var cubePath = this.cubePath;
+
 	this.levels = [1, 2, 3, 4, 5, 6, 7].map(function(_, i) {
-		return new LevelConstructor();
+		return new LevelConstructor(i, cubePath);
 	});
 	this.name = '';
 };
@@ -19,7 +22,7 @@ CubeBuilder.prototype.render = function(container) {
 
 	var inputName = document.createElement('input');
 	inputName.placeholder = $$('Cube name');
-	inputName.value = ''; //this.cube.name;
+	inputName.value = this.name || '';
 	inputName.onchange = this.changeName.bind(this);
 	container.appendChild(inputName);
 

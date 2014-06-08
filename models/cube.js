@@ -3,6 +3,15 @@ function Cube (name) {
 	this.levels = [];
 }
 
+Cube.prototype.init = function() {
+	var nb = 7,
+		i;
+
+	for (i = 0; i < nb; i++) {
+		this.levels[i] = new Level();
+	}
+};
+
 Cube.prototype.clone = function() {
 	var cube = new Cube();
 	cube.parse(this.toJSON());
@@ -14,12 +23,69 @@ Cube.prototype.addLevel = function (z, level) {
 	this.levels[z] = level;
 };
 
-Cube.prototype.getCells = function (x, y, z) {
+Cube.prototype.get = function (x, y, z) {
 	return this.levels[z].get(x, y);
 };
 
 Cube.prototype.getDirection = function (x, y, z) {
+	var directions = [],
+		cell = this.get(x, y, z);
 
+	// down
+	if (x < 5 && cell.d) {
+		directions.push({
+			x: x + 1,
+			y: y,
+			z: z
+		});
+	}
+
+	// right
+	if (y < 5 && cell.r) {
+		directions.push({
+			x: x ,
+			y: y + 1,
+			z: z
+		});
+	}
+
+	// bottom
+	if (z < 6 && cell.b) {
+		directions.push({
+			x: x ,
+			y: y ,
+			z: z + 1
+		});
+	}
+
+	// up
+	if (x > 0 && this.get(x - 1, y, z).d) {
+		directions.push({
+			x: x -1,
+			y: y,
+			z: z
+		});
+	}
+
+	// left
+	if (y > 0 && this.get(x, y - 1, z).r) {
+		directions.push({
+			x: x ,
+			y: y - 1,
+			z: z
+		});
+	}
+
+	// top
+	if (z > 0 && this.get(x, y, z -1).b) {
+		directions.push({
+			x: x ,
+			y: y,
+			z: z - 1
+		});
+	}
+
+	return directions;
 };
 
 Cube.prototype.toJSON = function() {

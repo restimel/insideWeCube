@@ -1,10 +1,12 @@
 var mainRouter, controller;
 
 function main(container){
+	controller = new Control();
 	mainRouter = new Router();
 
-	createBody(container);
-	controller = new Control();
+	main.container = container;
+
+	main.createBody(container);
 }
 
 var dspMessage = (function() {
@@ -37,7 +39,7 @@ var dspMessage = (function() {
 	return f;
 })();
 
-function createBody(container) {
+main.createBody = function(container) {
 	var navHeader = document.createElement('nav'),
 		messageSct = document.createElement('section'),
 		contents = document.createElement('section');
@@ -54,4 +56,14 @@ function createBody(container) {
 	container.appendChild(contents);
 
 	mainRouter.setContainer(contents);
-}
+};
+
+main.removeClass = function (className, element) {
+	if (typeof element === 'undefined') {
+		element = main.container;
+	}
+
+	Array.prototype.forEach.bind(element.querySelectorAll('.' + className))(function(elem) {
+		elem.classList.remove(className);
+	});
+};

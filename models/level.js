@@ -9,6 +9,13 @@ function Level (name) {
 	}
 }
 
+Level.prototype.clone = function() {
+	var lvl = new Level();
+	lvl.parse(this.toJSON());
+
+	return lvl;
+};
+
 Level.prototype.get = function (x, y) {
 	return this.cells[x][y];
 };

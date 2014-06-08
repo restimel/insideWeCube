@@ -7,11 +7,15 @@ function Control(){
 }
 
 Control.prototype.onmessage = function(e) {
-	var data = e.data;
+	var data = e.data,
+		callback;
 
 	if (data.token) {
-		this.callbacks[data.token](data.data);
-		delete this.callbacks[data.token];
+		callback = this.callbacks[data.token];
+		callback(data.data);
+		if (!callback.persistent) {
+			delete this.callbacks[data.token];
+		}
 	}
 };
 
@@ -21,6 +25,16 @@ Control.prototype.action = function(code, data, callback) {
 		this.token++;
 		this.callbacks[this.token] = callback;
 		message.token = this.token;
+	} else if (typeof callback === 'number') {
+		message.token = callback;
 	}
+
 	this.worker.postMessage(message);
+};
+
+Control.prototype.add = function(callback) {
+	this.token++;
+	this.callbacks[this.token] = callback;
+	callback.persistent = true;
+	return this.token;
 };

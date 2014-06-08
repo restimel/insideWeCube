@@ -1,6 +1,6 @@
 
 function Router(contentContainer) {
-	var cube = new CubeBuilder(),
+	var cube = new CubeBuilder(new CubePath()),
 		importExport = new exportImport();
 	this.routes = [
 		{

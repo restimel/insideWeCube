@@ -1,5 +1,7 @@
-function LevelConstructor() {
+function LevelConstructor(index, cubePath) {
 	this.reset();
+	this.index = index;
+	this.cubePath = cubePath;
 }
 
 LevelConstructor.prototype.render = function(container) {
@@ -17,7 +19,7 @@ LevelConstructor.prototype.render = function(container) {
 
 	var inputName = document.createElement('input');
 	inputName.placeholder = $$('level identifier');
-	inputName.value = this.level.name;
+	inputName.value = this.level.name || '';
 	inputName.onchange = this.changeName.bind(this);
 	container.appendChild(inputName);
 
@@ -33,7 +35,6 @@ LevelConstructor.prototype.render = function(container) {
 		});
 	});
 	container.appendChild(select);
-	//TODO getLevels
 
 	// btn = document.createElement('button');
 	// btn.textContent = $$('save level');
@@ -61,17 +62,17 @@ LevelConstructor.prototype.renderLevel = function(container) {
 			cell = this.level.get(x, y);
 
 			el = document.createElement('td');
-			el.id = 'main-' + x + '-' + y;
+			el.id = 'main-' + x + '-' + y + '-' + this.index;
 			el.className = 'cell-main-' + (cell.b ? 'hole' : 'fill');
 			row1.appendChild(el);
 
 			el = document.createElement('td');
-			el.id = 'wallR-' + x + '-' + y;
+			el.id = 'wallR-' + x + '-' + y + '-' + this.index;
 			el.className = 'cell-wallR-' + (cell.r ? 'hole' : 'fill');
 			row1.appendChild(el);
 
 			el = document.createElement('td');
-			el.id = 'wallD-' + x + '-' + y;
+			el.id = 'wallD-' + x + '-' + y + '-' + this.index;
 			el.className = 'cell-wallD-' + (cell.d ? 'hole' : 'fill');
 			row2.appendChild(el);
 
@@ -106,11 +107,14 @@ LevelConstructor.prototype.changeLevel = function(e) {
 			console.warn('could not change to level ' + lvl + ' because it is not found');
 		}
 	}.bind(this));
+
+	this.cubePath.loadLevel(this.index, lvl);
 };
 
 LevelConstructor.prototype.change = function(e) {
 	var el = e.target,
-		id = el.id;
+		id = el.id,
+		val;
 
 	if (!id) {
 		return false;
@@ -120,15 +124,23 @@ LevelConstructor.prototype.change = function(e) {
 
 	switch (id[0]){
 		case 'main':
-			el.className = 'cell-main-' + (this.level.toggle(id[1], id[2], 'b') ? 'hole' : 'fill');
+			type = 'b';
+			val = this.level.toggle(id[1], id[2], type);
+			el.className = 'cell-main-' + (val ? 'hole' : 'fill');
 			break;
 		case 'wallR':
-			el.className = 'cell-wallR-' + (this.level.toggle(id[1], id[2], 'r') ? 'hole' : 'fill');
+			type = 'r';
+			val = this.level.toggle(id[1], id[2], type);
+			el.className = 'cell-wallR-' + (val ? 'hole' : 'fill');
 			break;
 		case 'wallD':
-			el.className = 'cell-wallD-' + (this.level.toggle(id[1], id[2], 'd') ? 'hole' : 'fill');
+			type = 'd';
+			val = this.level.toggle(id[1], id[2], type);
+			el.className = 'cell-wallD-' + (val ? 'hole' : 'fill');
 			break;
 	}
+
+	this.cubePath.setCell(id[1], id[2], this.index, type, val);
 };
 
 LevelConstructor.prototype.save = function() {
