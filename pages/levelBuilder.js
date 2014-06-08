@@ -12,10 +12,10 @@ LevelConstructor.prototype.render = function(container) {
 		container.innerHTML = '';
 	}
 
-	var btn = document.createElement('button');
-	btn.textContent = $$('reset level');
-	btn.onclick = this.reset.bind(this);
-	container.appendChild(btn);
+	// var btn = document.createElement('button');
+	// btn.textContent = $$('reset level');
+	// btn.onclick = this.reset.bind(this);
+	// container.appendChild(btn);
 
 	var inputName = document.createElement('input');
 	inputName.placeholder = $$('level identifier');
@@ -26,7 +26,7 @@ LevelConstructor.prototype.render = function(container) {
 	var select = document.createElement('select');
 	select.onchange = this.changeLevel.bind(this);
 	select.appendChild(document.createElement('option'));
-	controller.action('getLevels', null, function(data) {
+	main.control.action('getLevels', null, function(data) {
 		data.forEach(function(name) {
 			var option = document.createElement('option');
 			
@@ -98,13 +98,20 @@ LevelConstructor.prototype.changeName = function(e) {
 }
 
 LevelConstructor.prototype.changeLevel = function(e) {
-	var lvl = e.currentTarget.value;
-	controller.action('getLevel', lvl, function(l) {
+	var lvl;
+
+	if (typeof e === 'string') {
+		lvl = e;
+	} else {
+		lvl = e.currentTarget.value;
+	}
+
+	main.control.action('getLevel', lvl, function(l) {
 		if (l) {
 			this.parse(l);
 			this.render();
 		} else {
-			console.warn('could not change to level ' + lvl + ' because it is not found');
+			main.message($$('Level %s is not found.', lvl));
 		}
 	}.bind(this));
 

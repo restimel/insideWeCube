@@ -25,11 +25,25 @@ CubeBuilder.prototype.render = function(container) {
 	inputName.value = this.name || '';
 	inputName.onchange = this.changeName.bind(this);
 	container.appendChild(inputName);
+	this.elemName = inputName;
 
 	btn = document.createElement('button');
 	btn.textContent = $$('Save cube');
 	btn.onclick = this.save.bind(this);
 	container.appendChild(btn);
+
+	var select = document.createElement('select');
+	select.onchange = this.changeCube.bind(this).bind(this);
+	select.appendChild(document.createElement('option'));
+	main.control.action('getCubes', null, function(data) {
+		data.forEach(function(name) {
+			var option = document.createElement('option');
+			
+			option.value = option.textContent = name;
+			select.appendChild(option);
+		});
+	});
+	container.appendChild(select);
 
 	this.levels.forEach(this.renderLevel, this);
 };
@@ -50,11 +64,46 @@ CubeBuilder.prototype.reset = function() {
 };
 
 CubeBuilder.prototype.changeName = function(e) {
-	this.name = e.target.value;
+	if (typeof e === 'string') {
+		this.name = e;
+		this.elemName.value = e;
+	} else {
+		this.name = e.target.value;
+	}
+};
+
+CubeBuilder.prototype.changeCube = function(e) {
+	var name;
+
+	if (typeof e === 'string') {
+		name = e;
+	} else {
+		name = e.currentTarget.value;
+	}
+
+	if (name === '') {
+		return false;
+	}
+
+	this.changeName(name);
+
+	this.levels.forEach(function(lvl, i) {
+		lvl.changeLevel(name + '-' + (i + 1));
+	});
 };
 
 CubeBuilder.prototype.save = function() {
-	controller.action('saveCube', JSON.stringify(this));
+	var name = this.name;
+	if (name === '') {
+		main.message($$('Please enter a name for the cube.'));
+		return false;
+	}
+
+	main.control.action('saveCube', JSON.stringify(this), function(data) {
+		if (data === 1) {
+			main.message($$('cube "%s" saved.', name));
+		}
+	});
 };
 
 CubeBuilder.prototype.toJSON = function() {

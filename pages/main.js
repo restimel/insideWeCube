@@ -1,15 +1,13 @@
-var mainRouter, controller;
-
 function main(container){
-	controller = new Control();
-	mainRouter = new Router();
+	main.control = new Control();
+	main.router = new Router();
 
 	main.container = container;
 
 	main.createBody(container);
 }
 
-var dspMessage = (function() {
+main.message = (function() {
 	var container = document.createDocumentFragment();
 
 	function f(msg, keep) {
@@ -45,17 +43,17 @@ main.createBody = function(container) {
 		contents = document.createElement('section');
 
 	navHeader.className = 'route-menu';
-	mainRouter.renderMenu(navHeader);
+	main.router.renderMenu(navHeader);
 	container.appendChild(navHeader);
 
 	messageSct.className = 'message';
-	dspMessage.builder(messageSct);
+	main.message.builder(messageSct);
 	container.appendChild(messageSct);
 
 	contents.className = 'main-content';
 	container.appendChild(contents);
 
-	mainRouter.setContainer(contents);
+	main.router.setContainer(contents);
 };
 
 main.removeClass = function (className, element) {

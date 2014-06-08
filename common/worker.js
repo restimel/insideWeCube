@@ -10,21 +10,23 @@ self.onmessage = function(e) {
 	var data = e.data,
 		action = data.action,
 		args = data.args,
-		token = data.token,
-		message;
+		token = data.token;
 
 	switch (action) {
 		case 'test':
 			self.postMessage({data: 'toto', token: token})
 			break;
 		case 'saveCube':
-			saveCube(args);
+			self.postMessage({data: saveCube(args), token: token});
 			break;
-		case 'loadCubes':
+		case 'importCubes':
 			self.postMessage({data: saveCubes(args), token: token});
 			break;
-		case 'getCubes':
+		case 'exportCubes':
 			self.postMessage({data: JSON.stringify(store.cubes), token: token});
+			break;
+		case 'getCubes':
+			self.postMessage({data: store.getCubes(), token: token});
 			break;
 		case 'getLevels':
 			self.postMessage({data: store.getLevels(), token: token});
@@ -43,7 +45,7 @@ var tempCube = new Cube();
 function saveCube(data) {
 	tempCube.parse(data);
 	store.save(tempCube);
-	return true; //TODO analyze if all is ok
+	return 1;
 }
 
 function saveCubes(data) {

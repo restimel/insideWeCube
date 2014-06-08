@@ -1,6 +1,7 @@
 var store = {
 	cubes: [],
 	levels: [],
+
 	save: function(item) {
 		var i, list;
 		// if (item instanceof Cube) {
@@ -16,6 +17,7 @@ var store = {
 			store.cubes[i] = item.clone();
 		}
 	},
+
 	search: function(item, list) {
 		var pos = -1;
 
@@ -28,6 +30,15 @@ var store = {
 		});
 		return pos;
 	},
+
+
+	getCubes: function() {
+		var list = this.cubes.map(function(cube) {
+			return cube.name
+		});
+		return list.sort();
+	},
+
 	getLevels: function() {
 		var list = [];
 		this.cubes.forEach(function(cube) {
@@ -39,8 +50,9 @@ var store = {
 				}
 			});
 		});
-		return list;
+		return list.sort();
 	},
+
 	getLevel: function(name) {
 		var lvl = null;
 		this.cubes.some(function(cube) {

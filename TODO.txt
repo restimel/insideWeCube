@@ -5,12 +5,13 @@ General
 * select which cube to export
 
 Build Cube
-* select a cube
+X select a cube
 * Analyze feasiblity of cube during constrution
 	X update virtual cube
 	X find available cells
-	* display available Cells
+	X display available Cells
 	* display information (cube feasability, difficulty)
+* display small format map (and with reverse side)
 
 Cube Solver
 * Select a cube

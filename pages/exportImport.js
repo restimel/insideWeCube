@@ -38,15 +38,15 @@ exportImport.prototype.render = function(container) {
 exportImport.prototype.import = function() {
 	var data = document.getElementById('importData').value;
 
-	controller.action('loadCubes', data, function(message){
+	main.control.action('importCubes', data, function(message){
 		if (typeof message === 'number') {
 			message = $$('%d cubes loaded', message);
 		}
 
-		dspMessage(message);
+		main.message(message);
 	}.bind(this));
 };
 
 exportImport.prototype.export = function(element) {
-	controller.action('getCubes', null, function(data) {element.value = data;});
+	main.control.action('exportCubes', null, function(data) {element.value = data;});
 };
