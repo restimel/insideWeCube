@@ -4,12 +4,12 @@ function Router(contentContainer) {
 		importExport = new exportImport();
 	this.routes = [
 		{
-			name: 'Build levels',
+			name: 'Build cube',
 			route: 'builder',
 			object: cube
 		},
 		{
-			name: 'Analyze Cube',
+			name: 'Analyze cube',
 			route: 'analyzer'
 		},
 		{
@@ -29,10 +29,11 @@ Router.prototype.setContainer = function (contentContainer) {
 };
 
 Router.prototype.renderMenu = function(container) {
+	this.container = container;
 	this.routes.forEach(createElement.bind(this));
 
 	function createElement (route) {
-		var el = document.createElement('li');
+		var el = document.createElement('div');
 		el.className = 'route-menu-item';
 		el.textContent = $$(route.name);
 		el.onclick = this.navigation.bind(this, route.route);
@@ -41,7 +42,7 @@ Router.prototype.renderMenu = function(container) {
 	}
 }
 
-Router.prototype.navigation = function(route) {
+Router.prototype.navigation = function(route, evt) {
 	var r = null,
 		s = this.routes.some(function(ro) {
 			if (ro.route === route) {
@@ -60,4 +61,6 @@ Router.prototype.navigation = function(route) {
 	if (typeof r.object === 'function' || typeof r.object === 'object') {
 		r.object.render(this.content);
 	}
+	main.removeClass('active', this.container);
+	evt.target.classList.add('active');
 };

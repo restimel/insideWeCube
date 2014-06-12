@@ -1,9 +1,42 @@
 body {
-	background-color: rgb(158, 219, 129);
+	background-color: #ffffff;
+}
+
+.message section {
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	padding: 0.5em;
+	padding-left: 2em;
+	margin-bottom: 0.2em;
+	cursor: pointer;
+}
+
+.message .info {
+	box-shadow:	0px 4px 6px 0px #84eaf6
+}
+
+.message .success {
+	box-shadow:	0px 4px 6px 0px #59d86c
+}
+
+.message .error {
+	box-shadow:	0px 4px 6px 0px #f68484
 }
 
 .route-menu-item {
+	display: inline-block;
 	cursor: pointer;
+	color: #fff;
+	background-color: #000;
+
+	padding: 1em;
+	margin-left: 1em;
+}
+.route-menu-item:hover{
+	color: #ff0;
+}
+.route-menu-item.active{
+	background-color: #f3a023;
 }
 
 .constructor-table {

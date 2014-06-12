@@ -39,11 +39,13 @@ exportImport.prototype.import = function() {
 	var data = document.getElementById('importData').value;
 
 	main.control.action('importCubes', data, function(message){
+		var type = 'error';
 		if (typeof message === 'number') {
 			message = $$('%d cubes loaded', message);
+			type = 'success';
 		}
 
-		main.message(message);
+		main.message(message, type);
 	}.bind(this));
 };
 

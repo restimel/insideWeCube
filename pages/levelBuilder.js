@@ -111,7 +111,7 @@ LevelConstructor.prototype.changeLevel = function(e) {
 			this.parse(l);
 			this.render();
 		} else {
-			main.message($$('Level %s is not found.', lvl));
+			main.message($$('Level %s is not found.', lvl), 'error');
 		}
 	}.bind(this));
 

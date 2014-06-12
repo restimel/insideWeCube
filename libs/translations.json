@@ -1,6 +1,30 @@
 {
-	"Cube Name": {
-		"en": "Cube Name",
+	"Cube name": {
+		"en": "Cube name",
 		"fr": "Nom du cube"
+	},
+	"Build cube": {
+		"en": "Build levels",
+		"fr": "Construire son cube"
+	},
+	"Analyze cube": {
+		"en": "Analyze Cube",
+		"fr": "Analiser son cube"
+	},
+	"Import/Export": {
+		"en": "Import/Export",
+		"fr": "Importer/Exporter"
+	},
+	"level identifier": {
+		"en": "level identifier",
+		"fr": "identification du niveau"
+	},
+	"Save cube": {
+		"en": "Save cube",
+		"fr": "Enregistrer le cube"
+	},
+	"import": {
+		"en": "import",
+		"fr": "importer"
 	}
 }

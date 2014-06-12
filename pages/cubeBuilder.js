@@ -95,13 +95,13 @@ CubeBuilder.prototype.changeCube = function(e) {
 CubeBuilder.prototype.save = function() {
 	var name = this.name;
 	if (name === '') {
-		main.message($$('Please enter a name for the cube.'));
+		main.message($$('Please enter a name for the cube.'), 'error');
 		return false;
 	}
 
 	main.control.action('saveCube', JSON.stringify(this), function(data) {
 		if (data === 1) {
-			main.message($$('cube "%s" saved.', name));
+			main.message($$('cube "%s" saved.', name), 'success');
 		}
 	});
 };

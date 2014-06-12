@@ -10,13 +10,17 @@ function main(container){
 main.message = (function() {
 	var container = document.createDocumentFragment();
 
-	function f(msg, keep) {
+	function f(msg, type, keep) {
 		if (!keep) {
 			f.clear();
+		}
+		if (!type) {
+			type = 'info';
 		}
 
 		var elem = document.createElement('section');
 		elem.textContent = msg;
+		elem.className = type;
 		elem.onclick = f.close;
 
 		container.appendChild(elem);
