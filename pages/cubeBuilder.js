@@ -50,10 +50,8 @@ CubeBuilder.prototype.render = function(container) {
 
 CubeBuilder.prototype.renderLevel = function(level, i) {
 	var sct = document.createElement('section');
-	var header = document.createElement('header');
 
-	header.textContent = (i+1) + '-';
-	this.container.appendChild(header);
+	sct.className = 'level-editor';
 
 	level.render(sct);
 	this.container.appendChild(sct);

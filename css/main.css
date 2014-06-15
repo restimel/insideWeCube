@@ -12,15 +12,15 @@ body {
 }
 
 .message .info {
-	box-shadow:	0px 4px 6px 0px #84eaf6
+	box-shadow:	0px 4px 6px 0px #84eaf6;
 }
 
 .message .success {
-	box-shadow:	0px 4px 6px 0px #59d86c
+	box-shadow:	0px 4px 6px 0px #59d86c;
 }
 
 .message .error {
-	box-shadow:	0px 4px 6px 0px #f68484
+	box-shadow:	0px 4px 6px 0px #f68484;
 }
 
 .route-menu-item {
@@ -32,21 +32,50 @@ body {
 	padding: 1em;
 	margin-left: 1em;
 }
-.route-menu-item:hover{
+.route-menu-item:hover {
 	color: #ff0;
 }
-.route-menu-item.active{
+.route-menu-item.active {
 	background-color: #f3a023;
+}
+
+.field-import-export {
+	width: 50%;
+	margin-left: 0;
+	margin-right: 0;
+	float: left;
+}
+
+.field-import-export fieldset {
+	border-color: #0033ff;
+}
+
+.field-import-export textarea {
+	height: 100px;
+	width: 100%;
+	display: block;
+}
+
+.level-editor {
+	margin-bottom: 1em;
 }
 
 .constructor-table {
 	border-collapse: collapse;
+	box-shadow:	4px 4px 16px 0 #000;
 }
 
 .cell-main-hole, .cell-main-fill {
 	width: 20px;
 	height: 20px;
 	cursor: pointer;
+	text-align: center;
+	font-size: 15px;
+}
+
+.cell-wall {
+	height: 5px;
+	width: 5px;
 }
 
 .cell-wallR-hole, .cell-wallR-fill {
@@ -66,8 +95,9 @@ body {
 }
 .cell-main-hole {
 	background-color: rgb(20, 70, 90);
+	box-shadow: inset 0px 0px 10px 2px rgb(50, 150, 200);
 }
-.cell-wallR-fill, .cell-wallD-fill {
+.cell-wall, .cell-wallR-fill, .cell-wallD-fill {
 	background-color: rgb(0, 0, 0);	
 }
 

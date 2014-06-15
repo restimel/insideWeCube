@@ -12,10 +12,10 @@ LevelConstructor.prototype.render = function(container) {
 		container.innerHTML = '';
 	}
 
-	// var btn = document.createElement('button');
-	// btn.textContent = $$('reset level');
-	// btn.onclick = this.reset.bind(this);
-	// container.appendChild(btn);
+	var header = document.createElement('header');
+
+	header.textContent = (this.index + 1) + '-';
+	container.appendChild(header);
 
 	var inputName = document.createElement('input');
 	inputName.placeholder = $$('level identifier');
@@ -50,9 +50,20 @@ LevelConstructor.prototype.renderLevel = function(container) {
 	}
 
 	var table = document.createElement('table'),
-		row1, row2,	el, cell, x, y;
+		row1, row2,	el, cell, x, y, bord;
+
+	bord = document.createElement('td');
+	bord.className = 'cell-wall';
 
 	table.className = 'constructor-table';
+
+	row1  = document.createElement('tr');
+	row1.appendChild(bord.cloneNode());
+	for (x = 0; x < 6; x++) {
+		row1.appendChild(bord.cloneNode());
+		row1.appendChild(bord.cloneNode());
+	}
+	table.appendChild(row1);
 
 	for (x = 0; x < 6; x++) {
 		row1  = document.createElement('tr');
@@ -61,24 +72,50 @@ LevelConstructor.prototype.renderLevel = function(container) {
 		for (y = 0; y < 6; y++) {
 			cell = this.level.get(x, y);
 
+			if (y === 0) {
+				row1.appendChild(bord.cloneNode());
+				row2.appendChild(bord.cloneNode());
+			}
+
 			el = document.createElement('td');
 			el.id = 'main-' + x + '-' + y + '-' + this.index;
 			el.className = 'cell-main-' + (cell.b ? 'hole' : 'fill');
+
+			if (this.index === 0 && x === 1 && y === 1) {
+				el.textContent = $$('S');
+				el.title = $$('Start');
+			} else if (this.index === 6 && x === 4 && y === 4) {
+				el.textContent = $$('F');
+				el.title = $$('Finish');
+			}
 			row1.appendChild(el);
 
-			el = document.createElement('td');
-			el.id = 'wallR-' + x + '-' + y + '-' + this.index;
-			el.className = 'cell-wallR-' + (cell.r ? 'hole' : 'fill');
-			row1.appendChild(el);
+			if (y === 5) {
+				row1.appendChild(bord.cloneNode());
+			} else {
+				el = document.createElement('td');
+				el.id = 'wallR-' + x + '-' + y + '-' + this.index;
+				el.className = 'cell-wallR-' + (cell.r ? 'hole' : 'fill');
+				row1.appendChild(el);
+			}
 
-			el = document.createElement('td');
-			el.id = 'wallD-' + x + '-' + y + '-' + this.index;
-			el.className = 'cell-wallD-' + (cell.d ? 'hole' : 'fill');
-			row2.appendChild(el);
+			if (x === 5) {
+				row2.appendChild(bord.cloneNode());
+				row2.appendChild(bord.cloneNode());
+			} else {
+				el = document.createElement('td');
+				el.id = 'wallD-' + x + '-' + y + '-' + this.index;
+				el.className = 'cell-wallD-' + (cell.d ? 'hole' : 'fill');
+				row2.appendChild(el);
 
-			el = document.createElement('td');
-			el.className = 'cell-none';
-			row2.appendChild(el);
+				if (y === 5) {
+					row2.appendChild(bord.cloneNode());
+				} else {
+					el = document.createElement('td');
+					el.className = 'cell-' + (cell.r && cell.d ? 'none' : 'wall');
+					row2.appendChild(el);
+				}
+			}
 		}
 
 		table.appendChild(row1);

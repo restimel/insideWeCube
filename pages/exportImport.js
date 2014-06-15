@@ -2,10 +2,13 @@ function exportImport() {}
 
 exportImport.prototype.render = function(container) {
 	/* import */
-	var fieldset = document.createElement('fieldset'),
+	var box = document.createElement('div'),
+		fieldset = document.createElement('fieldset'),
 		legend = document.createElement('legend'),
 		textarea = document.createElement('textarea'),
 		button = document.createElement('button');
+
+	box.className = 'field-import-export';
 
 	legend.textContent = $$('import cubes');
 	fieldset.appendChild(legend);
@@ -17,13 +20,17 @@ exportImport.prototype.render = function(container) {
 	button.onclick = this.import.bind(this);
 	fieldset.appendChild(button);
 
-	container.appendChild(fieldset);
+	box.appendChild(fieldset);
+	container.appendChild(box);
 
 	/* export */
+	box = document.createElement('div');
 	fieldset = document.createElement('fieldset');
 	legend = document.createElement('legend');
 	textarea = document.createElement('textarea');
 	button = document.createElement('button');
+
+	box.className = 'field-import-export';
 
 	legend.textContent = $$('export cubes');
 	fieldset.appendChild(legend);
@@ -32,7 +39,8 @@ exportImport.prototype.render = function(container) {
 	this.export(textarea);
 	fieldset.appendChild(textarea);
 
-	container.appendChild(fieldset);
+	box.appendChild(fieldset);
+	container.appendChild(box);
 };
 
 exportImport.prototype.import = function() {
