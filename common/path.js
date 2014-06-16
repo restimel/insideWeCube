@@ -34,6 +34,11 @@ Path.prototype.calculatePath = function() {
 				z: 0,
 				dst: 0
 			}],
+			info = {
+				finish: false,
+				length: 0,
+				deadEnd: 0
+			},
 			compare = function (o1, o2) {
 				return o1.x === o2.x && o1.y === o2.y && o1.z === o2.z;
 			},
@@ -59,7 +64,7 @@ Path.prototype.calculatePath = function() {
 				return false;
 			},
 			addCell = function(cell) {
-				var dst = cell.dst + 1;
+				var dst = cell.dst + 1,
 					nextCells = this.cube.getDirection(cell.x, cell.y, cell.z);
 				p.push(cell);
 
@@ -67,6 +72,10 @@ Path.prototype.calculatePath = function() {
 					cell.dst = dst;
 					if (!searchCell(cell)) {
 						w.push(cell);
+					} else {
+						if (nextCells.length === 1) {
+							info.deadEnd++;
+						}
 					}
 				});
 			}.bind(this),
@@ -91,12 +100,17 @@ Path.prototype.calculatePath = function() {
 					cell = w[i];
 					w.splice(i, 1);
 
+					if (cell.z === 6 && cell.x === 4 && cell.y === 4) {
+						info.finish = true;
+						info.length = cell.dst;
+					}
+
 					addCell(cell);
 				}
 			};
 		createPath();
 
-		this.result(p);
+		this.result({accessible: p, info: info});
 	}.bind(this), 10);
 };
 

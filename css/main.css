@@ -56,6 +56,13 @@ body {
 	display: block;
 }
 
+.cube-builder-section, .cube-info-section {
+	width: 50%;
+	margin-left: 0;
+	margin-right: 0;
+	float: left;
+}
+
 .level-editor {
 	margin-bottom: 1em;
 }
@@ -103,4 +110,28 @@ body {
 
 .accessible-path {
 	box-shadow: inset 0px 0px 23px 0px rgb(40, 180, 220);
+}
+
+.info {
+	margin-top: 0.5em;
+	display: block;
+}
+
+.noInfo {
+	display: none;
+}
+
+.finish-yes, .finish-no {
+	margin-top: 1em;
+	display: block;
+}
+
+.finish-yes:before {
+	content: '✓';
+	color: rgb(25, 125, 25);
+}
+
+.finish-no:before {
+	content: '✗';
+	color: rgb(190, 25, 25);
 }
