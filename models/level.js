@@ -31,7 +31,7 @@ Level.prototype.toggle = function (x, y, property, value) {
 Level.prototype.toJSON = function() {
 	return {
 		name: this.name || '',
-		cells: this.cells
+		cells: JSON.parse(JSON.stringify(this.cells))
 	};
 };
 
@@ -46,9 +46,9 @@ Level.prototype.parse = function(json) {
 function initRow() {
 	var row = rowSize.map(function() {
 		return {
-			r: false, //move to Right
-			d: false, //move to Down
-			b: false, //move bottom side (through level)
+			r: 0, //move to Right
+			d: 0, //move to Down
+			b: 0, //move bottom side (through level)
 			s: 0 // 0: normal, 1: start, -1: finish
 		};
 	});

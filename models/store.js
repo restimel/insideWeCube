@@ -3,12 +3,7 @@ var store = {
 	levels: [],
 
 	save: function(item) {
-		var i, list;
-		// if (item instanceof Cube) {
-		// 	list = this.cubes;
-		// } else if (item instanceof Level) {
-		// 	list = this.levels;
-		// }
+		var i;
 
 		i = this.search(item, store.cubes);
 		if (i === -1) {

@@ -123,7 +123,7 @@ Path.prototype.loadLevel = function(args) {
 	var index = args.index,
 		levelName = args.levelName;
 
-	this.cube.levels[index].parse(store.getLevel(levelName).clone());
+	this.cube.levels[index].parse(store.getLevel(levelName).toJSON());
 	this.calculatePath();
 };
 

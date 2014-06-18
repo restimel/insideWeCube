@@ -1,12 +1,13 @@
 
 General
 * translate words
+	* Make a tool script to parse sentences
 * Add change language button
 * select which cube to export
 
 Build Cube
 X select a cube
-* Analyze feasiblity of cube during constrution
+→ Analyze feasiblity of cube during constrution
 	X update virtual cube
 	X find available cells
 	X display available Cells
@@ -20,4 +21,4 @@ Cube Solver
 
 
 Bugs
-* when a level is modified, it saves it automatically.
+X when a level is modified, it saves it automatically.

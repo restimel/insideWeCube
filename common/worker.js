@@ -13,9 +13,6 @@ self.onmessage = function(e) {
 		token = data.token;
 
 	switch (action) {
-		case 'test':
-			self.postMessage({data: 'toto', token: token})
-			break;
 		case 'saveCube':
 			self.postMessage({data: saveCube(args), token: token});
 			break;
