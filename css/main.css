@@ -145,7 +145,8 @@ body {
 	box-shadow: inset 0px 0px 23px 0px rgb(40, 180, 220);
 }
 
-.info {
+.info, .finish-yes, .finish-no {
+	margin-left: 1em;
 	margin-top: 0.5em;
 	display: block;
 }
@@ -155,8 +156,8 @@ body {
 }
 
 .finish-yes, .finish-no {
+	font-size: x-large;
 	margin-top: 1em;
-	display: block;
 }
 
 .finish-yes:before {

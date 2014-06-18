@@ -31,7 +31,7 @@ Level.prototype.toggle = function (x, y, property, value) {
 Level.prototype.toJSON = function() {
 	return {
 		name: this.name || '',
-		cells: JSON.parse(JSON.stringify(this.cells))
+		cells: JSON.parse(JSON.stringify(this.cells).replace(/:false,/g, ':0,').replace(/:true,/g, ':1,'))
 	};
 };
 
