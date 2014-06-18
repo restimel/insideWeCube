@@ -2,27 +2,54 @@ body {
 	background-color: #ffffff;
 }
 
+.route-menu {
+	height: 3.5em;
+	top: 0;
+	left: 0;
+	position: absolute;
+	margin: 0;
+}
+
+.main-content {
+	top: 3.5em;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	position: absolute;
+	overflow: auto;
+	margin: 0;
+}
+
+.message {
+	position: absolute;
+	top: 1.7em;
+	right: 0;
+}
+
+/* Message */
 .message section {
-	border-bottom-right-radius: 10px;
+	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
 	padding: 0.5em;
 	padding-left: 2em;
 	margin-bottom: 0.2em;
 	cursor: pointer;
+	background-color: rgba(255, 255, 255, 0.6);
 }
 
 .message .info {
-	box-shadow:	0px 4px 6px 0px #84eaf6;
+	box-shadow:	-4px 0px 6px 0px #84eaf6;
 }
 
 .message .success {
-	box-shadow:	0px 4px 6px 0px #59d86c;
+	box-shadow:	-4px 0px 6px 0px #59d86c;
 }
 
 .message .error {
-	box-shadow:	0px 4px 6px 0px #f68484;
+	box-shadow:	-4px 0px 6px 0px #f68484;
 }
 
+/* Route Menu */
 .route-menu-item {
 	display: inline-block;
 	cursor: pointer;
@@ -38,6 +65,8 @@ body {
 .route-menu-item.active {
 	background-color: #f3a023;
 }
+
+/* Import / Export */
 
 .field-import-export {
 	width: 50%;
@@ -56,11 +85,15 @@ body {
 	display: block;
 }
 
+/* Cube Builder */
+
 .cube-builder-section, .cube-info-section {
 	width: 50%;
 	margin-left: 0;
 	margin-right: 0;
 	float: left;
+	height: 100%;
+	overflow: auto;
 }
 
 .level-editor {

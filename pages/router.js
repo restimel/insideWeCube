@@ -57,6 +57,8 @@ Router.prototype.navigation = function(route, evt) {
 		return false;
 	}
 
+	main.message.clear();
+
 	this.content.innerHTML = '';
 	if (typeof r.object === 'function' || typeof r.object === 'object') {
 		r.object.render(this.content);
