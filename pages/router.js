@@ -2,6 +2,7 @@
 function Router(contentContainer) {
 	var cube = new CubeBuilder(new CubePath()),
 		importExport = new exportImport(),
+		cubeAnalyzer = new CubeAnalyzer(),
 		about = new About();
 	this.routes = [
 		{
@@ -11,7 +12,8 @@ function Router(contentContainer) {
 		},
 		{
 			name: 'Analyze cube',
-			route: 'analyzer'
+			route: 'analyzer',
+			object: cubeAnalyzer
 		},
 		{
 			name: 'Import/Export',

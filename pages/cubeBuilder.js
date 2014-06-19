@@ -37,7 +37,7 @@ CubeBuilder.prototype.render = function(container) {
 	cubeBuilder.appendChild(btn);
 
 	var select = document.createElement('select');
-	select.onchange = this.changeCube.bind(this).bind(this);
+	select.onchange = this.changeCube.bind(this);
 	select.appendChild(document.createElement('option'));
 	main.control.action('getCubes', null, function(data) {
 		data.forEach(function(name) {

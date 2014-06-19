@@ -176,3 +176,26 @@ body {
 	content: '✗';
 	color: rgb(190, 25, 25);
 }
+
+/* Analyzer */
+.analyze-step2>.label {
+	width: 100%;
+	float: left;
+	text-align: center;
+	margin-bottom: 1em;
+}
+
+.analyze-step2 section {
+	margin: 0;
+	width: 50%;
+	float: left;
+}
+
+.analyze-step2 .locate-by-euristic table {
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+
+.analyze-step2 .locate-by-euristic td {
+	border: 1px solid black;
+}
