@@ -1,11 +1,4 @@
 var $$ = (function() {
-	if (typeof console === 'undefined') {
-		console = {};
-		console.log = console.warn = console.error = function(){
-			self.postMessage({log: JSON.stringify(arguments)});
-		};
-	}
-
 	var languages = ['en', 'fr'];
 	var translation = {};
 

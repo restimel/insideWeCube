@@ -1,7 +1,8 @@
 
 function Router(contentContainer) {
 	var cube = new CubeBuilder(new CubePath()),
-		importExport = new exportImport();
+		importExport = new exportImport(),
+		about = new About();
 	this.routes = [
 		{
 			name: 'Build cube',
@@ -16,6 +17,11 @@ function Router(contentContainer) {
 			name: 'Import/Export',
 			route: 'importExport',
 			object: importExport
+		},
+		{
+			name: '?',
+			route: 'about',
+			object: about
 		}
 	];
 
@@ -34,7 +40,7 @@ Router.prototype.renderMenu = function(container) {
 
 	function createElement (route) {
 		var el = document.createElement('div');
-		el.className = 'route-menu-item';
+		el.className = 'route-menu-item ' + route.route;
 		el.textContent = $$(route.name);
 		el.onclick = this.navigation.bind(this, route.route);
 

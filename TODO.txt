@@ -1,5 +1,6 @@
 
 General
+* Make a main page
 * translate words
 	* Make a tool script to parse sentences
 * Add change language button

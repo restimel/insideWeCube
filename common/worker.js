@@ -6,6 +6,13 @@ importScripts(
 	'../libs/translate-i18n.js'
 );
 
+if (typeof console === 'undefined') {
+	console = {};
+	console.log = console.warn = console.error = function(){
+		self.postMessage({log: JSON.stringify(arguments)});
+	};
+}
+
 self.onmessage = function(e) {
 	var data = e.data,
 		action = data.action,
