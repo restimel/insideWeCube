@@ -35,17 +35,24 @@ CubePath.prototype.setCell = function(x, y, z, type, value) {
 };
 
 CubePath.prototype.onMessage = function(data) {
-	var cells = data.accessible,
-		last = cells[cells.length - 1];
-	if ( last.z === 6 && last.x === 4 && last.y === 4) {
-		//To remove end is not obviously the last
-		console.log('could be finished in ' + last.dst + ' movements ('+ (100 * (last.dst+1)/cells.length) + ' %)')
+	if (typeof this[data.action] === 'function') {
+		this[data.action](data.data);
+	} else {
+		console.warn('Path action unknown', data.action, data);
 	}
+};
 
-	this.cubeBuilder.renderInfo(data.info, cells);
+CubePath.prototype.getPath = function(data) {
+	var cells = data.accessible;
+
+	main.control.action('path', {action: 'getPathInfo', data: data}, this.token);
 
 	main.removeClass('accessible-path');
 	cells.forEach(function(cell) {
 		document.getElementById('main-' + cell.x + '-' + cell.y + '-' + cell.z).classList.add('accessible-path');
 	});
+};
+
+CubePath.prototype.getPathInfo = function(info) {
+	this.cubeBuilder.renderInfo(info);
 };

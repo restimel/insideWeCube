@@ -1,25 +1,27 @@
 
 General
-* Make a main page
+* main page
 * translate words
 	* Make a tool script to parse sentences
 * Add change language button
 * select which cube to export
 
 Build Cube
-X select a cube
 → Analyze feasiblity of cube during constrution
-	X update virtual cube
-	X find available cells
-	X display available Cells
 	* display information (cube feasability, difficulty)
+		→ calculate number of move
+		→ calculate difficulty
 * display small format map (and with reverse side)
 
 Cube Solver
-* Select a cube
+X Select a cube
 * Add interaction to find place
-* identify in which cube we are
+	* (bonus) identify in which cube we are
+* give path to find start (+ end?)
 
+Skinning
+* Helper for direction
+* cube solver
 
 Bugs
 X when a level is modified, it saves it automatically.

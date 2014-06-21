@@ -70,40 +70,93 @@ CubeBuilder.prototype.renderLevel = function(level, i) {
 	this.cubeContainer.appendChild(sct);
 };
 
-CubeBuilder.prototype.renderInfo = function(info, path) {
+CubeBuilder.prototype.renderInfo = function(info) {
 	this.cubeInfo.innerHTML = '';
+
+	var length = info.length + 1,
+		available = info.available,
+		deadEnd = info.deadEnd,
+		chgLevel = info.chgLevel,
+		chgDirection = info.chgDirection,
+		chgTop = info.chgTop,
+		nbMovement = info.nbMovement,
+		nbMvtOutPath = info.nbMvtOutPath,
+		nbDifficultCrossing = info.nbDifficultCrossing,
+		difficulty = available * 1 + 
+					 chgDirection * 0.4 +
+					 chgLevel * 0.3 +
+					 chgTop * 1 +
+					 nbMovement * 1 +
+					 nbMvtOutPath * 1 +
+					 nbDifficultCrossing * 2,
+		maxDifficulty = 6*6*7 * 1.1 * 1.3, //TODO add chgTop, nbMouvement, nbMvOutPath, nbDiff
+		lowDifficulty = maxDifficulty / 3,
+		highDifficulty = maxDifficulty * 2 / 3;
 
 	var finish = document.createElement('section'),
 		pathLength = document.createElement('section'),
 		availability = document.createElement('section'),
-		deadEnd =  document.createElement('section');
+		elDeadEnd =  document.createElement('section'),
+		elDifficulty = document.createElement('section'),
+		elChgDirection = document.createElement('section'),
+		elChgLevel = document.createElement('section'),
+		meter, label;
 
 	availability.className = 'info';
-	deadEnd.className = 'info';
+	elDeadEnd.className = 'info';
 
 	if (info.finish) {
 		finish.className = 'finish-yes';
 		finish.textContent = $$('Cube could be solved.');
 
 		pathLength.className = 'info';
-		pathLength.textContent = $$('%i cells must be crossed (%2%%).', info.length, 100 * info.length/path.length);
+		pathLength.textContent = $$('%i cells must be crossed (%2%%).', length, 100 * length/available);
 
-		deadEnd.textContent = $$('%i dead-ends (%2%%)', info.deadEnd, 100 * (path.length - info.length)/path.length);
+		elDeadEnd.textContent = $$('%i dead-ends (%2%%)', deadEnd, 100 * (available - length)/available);
+
+		elChgDirection.className = 'info';
+		elChgDirection.textContent = $$('%i change of direction (%2%%)', chgDirection, 100 * chgDirection/length);
+
+		elChgLevel.className = 'info';
+		elChgLevel.textContent = $$('%i movements through levels (%2%%)', chgLevel, 100 * chgLevel/length);
+
+		elDifficulty.className = 'info';
+		label = document.createElement('label');
+		label.textContent = $$('Cube difficulty: ');
+
+		meter = document.createElement('meter');
+		meter.value = difficulty;
+		meter.optimum = 0;
+		meter.low = lowDifficulty;
+		meter.high = highDifficulty;
+		meter.max = maxDifficulty;
+		meter.value = difficulty;
+		meter.textContent = difficulty;
+		label.appendChild(meter);
+
+		elDifficulty.appendChild(label);
 	} else {
 		finish.className = 'finish-no';
 		finish.textContent = $$('Cube is not solvable.');
 
 		pathLength.className = 'noInfo';
 
-		deadEnd.textContent = $$('%i dead-ends', info.deadEnd);
+		elDeadEnd.textContent = $$('%i dead-ends', deadEnd);
+
+		elChgDirection.className = 'noInfo';
+		elChgLevel.className = 'noInfo';
+		elDifficulty.className = 'noInfo';
 	}
 
-	availability.textContent = $$('%i cells are accessible (%2%%).', path.length, 10 * path.length / 24);
+	availability.textContent = $$('%i cells are accessible (%2%%).', available, 10 * available / 24);
 
 	this.cubeInfo.appendChild(finish);
-	this.cubeInfo.appendChild(pathLength);
-	this.cubeInfo.appendChild(deadEnd);
+	this.cubeInfo.appendChild(elDifficulty);
 	this.cubeInfo.appendChild(availability);
+	this.cubeInfo.appendChild(pathLength);
+	this.cubeInfo.appendChild(elDeadEnd);
+	this.cubeInfo.appendChild(elChgLevel);
+	this.cubeInfo.appendChild(elChgDirection);
 };
 
 CubeBuilder.prototype.reset = function() {

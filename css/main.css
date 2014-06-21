@@ -67,8 +67,10 @@ body {
 }
 
 .route-menu-item.about {
-	padding-left: 1.5em;
-	padding-right: 1.5em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	padding-left: 0.9em;
+	padding-right: 0.9em;
 	border-radius: 5em;
 	margin-left: 2em;
 }

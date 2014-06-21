@@ -36,7 +36,8 @@ Cube.prototype.getDirection = function (x, y, z) {
 		directions.push({
 			x: x + 1,
 			y: y,
-			z: z
+			z: z,
+			from: -2
 		});
 	}
 
@@ -45,7 +46,8 @@ Cube.prototype.getDirection = function (x, y, z) {
 		directions.push({
 			x: x ,
 			y: y + 1,
-			z: z
+			z: z,
+			from: 1
 		});
 	}
 
@@ -54,7 +56,8 @@ Cube.prototype.getDirection = function (x, y, z) {
 		directions.push({
 			x: x ,
 			y: y ,
-			z: z + 1
+			z: z + 1,
+			from: -3
 		});
 	}
 
@@ -63,7 +66,8 @@ Cube.prototype.getDirection = function (x, y, z) {
 		directions.push({
 			x: x -1,
 			y: y,
-			z: z
+			z: z,
+			from: 2
 		});
 	}
 
@@ -72,7 +76,8 @@ Cube.prototype.getDirection = function (x, y, z) {
 		directions.push({
 			x: x ,
 			y: y - 1,
-			z: z
+			z: z,
+			from: -1
 		});
 	}
 
@@ -81,7 +86,8 @@ Cube.prototype.getDirection = function (x, y, z) {
 		directions.push({
 			x: x ,
 			y: y,
-			z: z - 1
+			z: z - 1,
+			from: 3
 		});
 	}
 
