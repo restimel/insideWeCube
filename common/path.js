@@ -155,7 +155,9 @@ Path.prototype.getDirections = function(path) {
 		}
 	}
 
-	cell.from = 0; /* start */
+	if (!cell.from) {
+		cell.from = -cell.direction;
+	}
 };
 
 Path.prototype.avoid = function(cell, nCell) {
@@ -207,7 +209,7 @@ Path.prototype.countMovement = function(path, info) {
 		currCell, pref,
 		pos, verif;
 
-	while(iPath < path.length) {
+	while (iPath < path.length) {
 		currCell = path[iPath];
 
 		if (iBallMvt >= ballMvt.length -1) {
@@ -266,6 +268,11 @@ Path.prototype.countMovement = function(path, info) {
 		if (ballLocation.x !== currCell.x || ballLocation.y !== currCell.y || ballLocation.z !== currCell.z) {
 			info.nbMvtOutPath += ballMvt.length - iBallMvt;
 
+			// find the way back
+			// computeDist
+			// computePref
+			// test cube orientation to find the way back
+
 			console.log('TODO: find rotations mouvement to come back in the path',iPath, currCell, ballLocation, iBallMvt, ballMvt);
 			info.nbDifficultCrossing++;
 
@@ -300,7 +307,6 @@ Path.prototype.computeDist = function (fromCell, attr) {
 		};
 
 	fromCell[attr] = 0;
-	console.log('fromCell', fromCell)
 
 	while (remain.length) {
 		pos = findClosest();
@@ -322,21 +328,28 @@ Path.prototype.computeDist = function (fromCell, attr) {
 	}
 };
 
-Path.prototype.computePref = function(path) {
-	/* avoid */
-	
-	cell.preferences = {
-		r: nCell.preferences.r,
-		d: nCell.preferences.d,
-		b: nCell.preferences.b
-	};
+Path.prototype.computePref = function(cell, nCell) {
+	var posFrom = Cube.fromDirection(cell.from);
 
-	cell.avoid.forEach(function(dir) {
-		var p = Cube.fromDirection(dir);
-		if (p) {
-			cell.preferences[p.key] = !p.value;
+	if (!cell.preferences) {
+		cell.preferences = {
+			r: nCell.preferences.r,
+			d: nCell.preferences.d,
+			b: nCell.preferences.b
+		};
+
+		cell.avoid.forEach(function(dir) {
+			var p = Cube.fromDirection(dir);
+			if (p) {
+				cell.preferences[p.key] = !p.value;
+			}
+		});
+
+		if (typeof posFrom !== 'undefined') {
+			cell.preferences[posFrom.key] = posFrom.value;
 		}
-	});
+		cell.preferences[pos.key] = pos.value;
+	}
 };
 
 /**
