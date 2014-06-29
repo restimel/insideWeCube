@@ -17,7 +17,11 @@ Control.prototype.onmessage = function(e) {
 			delete this.callbacks[data.token];
 		}
 	} else {
-		console.log(data);
+		try {
+			console.log(JSON.parse(data.log));
+		} catch(e) {
+			console.log(data);
+		}
 	}
 };
 

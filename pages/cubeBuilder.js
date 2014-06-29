@@ -89,7 +89,7 @@ CubeBuilder.prototype.renderInfo = function(info) {
 					 nbMovement * 1 +
 					 nbMvtOutPath * 1 +
 					 nbDifficultCrossing * 2,
-		maxDifficulty = 6*6*7 * 1.1 * 1.3, //TODO add chgTop, nbMouvement, nbMvOutPath, nbDiff
+		maxDifficulty = 6*6*7 * 1.1 * 1.3 + 100, //TODO add chgTop, nbMouvement, nbMvOutPath, nbDiff
 		lowDifficulty = maxDifficulty / 3,
 		highDifficulty = maxDifficulty * 2 / 3;
 
@@ -100,6 +100,8 @@ CubeBuilder.prototype.renderInfo = function(info) {
 		elDifficulty = document.createElement('section'),
 		elChgDirection = document.createElement('section'),
 		elChgLevel = document.createElement('section'),
+		elMovement = document.createElement('section'),
+		elHardCells = document.createElement('section'),
 		meter, label;
 
 	availability.className = 'info';
@@ -115,10 +117,16 @@ CubeBuilder.prototype.renderInfo = function(info) {
 		elDeadEnd.textContent = $$('%i dead-ends (%2%%)', deadEnd, 100 * (available - length)/available);
 
 		elChgDirection.className = 'info';
-		elChgDirection.textContent = $$('%i change of direction (%2%%)', chgDirection, 100 * chgDirection/length);
+		elChgDirection.textContent = $$('%i turns inside levels (%2%%)', chgDirection, 100 * chgDirection/length);
 
 		elChgLevel.className = 'info';
 		elChgLevel.textContent = $$('%i movements through levels (%2%%)', chgLevel, 100 * chgLevel/length);
+
+		elMovement.className = 'info';
+		elMovement.textContent = $$('%i cube rotations are needed (at least)', nbMovement);
+
+		elHardCells.className = 'info';
+		elHardCells.textContent = $$('%i hardcore passage', nbDifficultCrossing);
 
 		elDifficulty.className = 'info';
 		label = document.createElement('label');
@@ -146,6 +154,8 @@ CubeBuilder.prototype.renderInfo = function(info) {
 		elChgDirection.className = 'noInfo';
 		elChgLevel.className = 'noInfo';
 		elDifficulty.className = 'noInfo';
+		elMovement.className = 'noInfo';
+		elHardCells.className = 'noInfo';
 	}
 
 	availability.textContent = $$('%i cells are accessible (%2%%).', available, 10 * available / 24);
@@ -157,6 +167,8 @@ CubeBuilder.prototype.renderInfo = function(info) {
 	this.cubeInfo.appendChild(elDeadEnd);
 	this.cubeInfo.appendChild(elChgLevel);
 	this.cubeInfo.appendChild(elChgDirection);
+	this.cubeInfo.appendChild(elMovement);
+	this.cubeInfo.appendChild(elHardCells);
 };
 
 CubeBuilder.prototype.reset = function() {

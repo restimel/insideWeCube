@@ -33,32 +33,31 @@ Path.prototype.calculatePath = function() {
 				y: 1,
 				z: 0,
 				dst: 0,
-				parent: null
+				parent: null,
+				linked: []
 			}],
 			info = {
 				finish: false,
 				length: 1,
 				deadEnd: -1
 			},
-			compare = function (o1, o2) {
-				return o1.x === o2.x && o1.y === o2.y && o1.z === o2.z;
-			},
 			searchCell = function(cell) {
 				var i, li = p.length;
 				
 				for (i = li - 1; i >= 0; i--) {
-					if (compare(p[i], cell)) {
-						return true;
+					if (Cube.comparePosition(p[i], cell)) {
+						return p[i];
 					}
 				}
 
 				li = w.length;
 				for (i = 0; i < li; i++) {
-					if (compare(w[i], cell)) {
+					if (Cube.comparePosition(w[i], cell)) {
 						if (w[i].dst > cell.dst) {
-							w[i] = cell;
+							w[i].dst = cell.dst;
+							w[i].parent = cell.parent;
 						}
-						return true;
+						return w[i];
 					}
 				}
 
@@ -66,18 +65,24 @@ Path.prototype.calculatePath = function() {
 			},
 			addCell = function(ocell) {
 				var dst = ocell.dst + 1,
-					nextCells = this.cube.getDirection(ocell.x, ocell.y, ocell.z);
+					nextCells = this.cube.getNeighbours(ocell.x, ocell.y, ocell.z);
 				p.push(ocell);
+
+				ocell.linked = [];
 
 				nextCells.forEach(function(cell){
 					cell.dst = dst;
-					if (!searchCell(cell)) {
+
+					var f = searchCell(cell);
+					if (!f) {
 						cell.parent = ocell;
 						w.push(cell);
+						ocell.linked.push(cell);
 					} else {
 						if (nextCells.length === 1) {
 							info.deadEnd++;
 						}
+						ocell.linked.push(f);
 					}
 				});
 			}.bind(this),
@@ -130,25 +135,36 @@ Path.prototype.getDirections = function(path) {
 		nCell,
 		cell = path[0];
 
-	cell.avoid = [];
-	cell.direction = 0; /* finish */
+	if (!cell.direction) {
+		cell.avoid = [];
+		cell.preferences = {};
+		cell.direction = 0; /* finish */
+	}
 
 	for (i = 1; i < li; i++) {
 		nCell = cell;
 		cell = path[i];
 
-		cell.direction = nCell.from;
-		cell.avoid = this.avoid(cell, nCell);
+		if (!cell.direction) {
+			if (nCell.from) {
+				cell.direction = nCell.from;
+			} else {
+				cell.direction = Cube.getDirection(cell, nCell);
+			}
+			cell.avoid = this.avoid(cell, nCell);
+		}
 	}
 
 	cell.from = 0; /* start */
 };
 
 Path.prototype.avoid = function(cell, nCell) {
-	var directions = this.cube.getDirection(cell.x, cell.y, cell.z).map(function(c) {
+	var directions = this.cube.getNeighbours(cell.x, cell.y, cell.z).map(function(c) {
 			return c.from;
 		}),
-		mvt = [cell.direction, -cell.direction, cell.from, -cell.from];
+		mvt = [cell.direction, -cell.direction, cell.from, -cell.from],
+		pos = Cube.fromDirection(cell.direction),
+		posFrom = Cube.fromDirection(cell.from);
 
 	cell.avoid = directions.concat(nCell.avoid)
 		.reduce(function(list, dir) {
@@ -158,9 +174,174 @@ Path.prototype.avoid = function(cell, nCell) {
 
 			return list;
 		}, []);
+
+	/* estimate preference */
+	cell.preferences = {
+		r: nCell.preferences.r,
+		d: nCell.preferences.d,
+		b: nCell.preferences.b
+	};
+
+	cell.avoid.forEach(function(dir) {
+		var p = Cube.fromDirection(dir);
+		if (p) {
+			cell.preferences[p.key] = !p.value;
+		}
+	});
+
+	if (typeof posFrom !== 'undefined') {
+		cell.preferences[posFrom.key] = posFrom.value;
+	}
+	cell.preferences[pos.key] = pos.value;
 };
 
-// called function
+Path.prototype.countMovement = function(path, info) {
+	var position = {
+			r: false,
+			d: true,
+			b: true
+		},
+		rotations = [],
+		iPath = 0,
+		ballMvt = [], iBallMvt = 0, ballLocation,
+		currCell, pref,
+		pos, verif;
+
+	while(iPath < path.length) {
+		currCell = path[iPath];
+
+		if (iBallMvt >= ballMvt.length -1) {
+			if (typeof ballMvt[iBallMvt] !== 'undefined') {
+				checkPosition(currCell, ballMvt[iBallMvt]);
+			}
+
+			pref = currCell.preferences;
+			if ( position.r !== pref.r && Math.abs(currCell.direction) !== 1) {
+				position.r = pref.r;
+				rotations.push(pref.r ? 'r' : '-r');
+				verif = this.cube.getMovement(currCell, position, currCell.from);
+				if (verif.length > 1) {
+					console.warn('Movement unexpected Right',iPath, currCell, position, verif);
+				}
+			}
+
+			if ( position.d !== pref.d && Math.abs(currCell.direction) !== 2) {
+				position.d = pref.d;
+				rotations.push(pref.d ? 'd' : '-d');
+				verif = this.cube.getMovement(currCell, position, currCell.from);
+				if (verif.length > 1) {
+					console.warn('Movement unexpected Down',iPath, currCell, position, verif);
+				}
+			}
+
+			if ( position.b !== pref.b && Math.abs(currCell.direction) !== 3) {
+				position.b = pref.b;
+				rotations.push(pref.b ? 'b' : '-b');
+				verif = this.cube.getMovement(currCell, position, currCell.from);
+				if (verif.length > 1) {
+					console.warn('Movement unexpected Bottom',iPath, currCell, position, verif);
+				}
+			}
+
+			pos = Cube.fromDirection(currCell.direction);
+			position[pos.key] = pos.value;
+			rotations.push(pos.value ? pos.key: '-' + pos.key);
+
+			ballMvt = this.cube.getMovement(currCell, position, currCell.from);
+			console.log('Debug',iPath,position, ballMvt)
+			iBallMvt = 0;
+		}
+		ballLocation = ballMvt[iBallMvt];
+		
+		checkPosition(currCell, ballLocation);
+
+		iPath++;
+		iBallMvt++;
+	}
+
+	info.nbMovement = rotations.length;
+	info.rotations = rotations;
+
+	function checkPosition(currCell, ballLocation) {
+		if (ballLocation.x !== currCell.x || ballLocation.y !== currCell.y || ballLocation.z !== currCell.z) {
+			info.nbMvtOutPath += ballMvt.length - iBallMvt;
+
+			console.log('TODO: find rotations mouvement to come back in the path',iPath, currCell, ballLocation, iBallMvt, ballMvt);
+			info.nbDifficultCrossing++;
+
+			iBallMvt = ballMvt.length;
+
+			return false;
+		}
+		return true;
+	}
+};
+
+Path.prototype.computeDist = function (fromCell, attr) {
+	var remain = [fromCell],
+		done = [],
+		cell, pos, dist,
+		hasBeenWatch = function(c) {
+			return done.some(Cube.comparePosition.bind(Cube, c)) || remain.some(Cube.comparePosition.bind(Cube, c));
+		}
+		findClosest = function() {
+			var dst = Infinity,
+				pos = -1,
+				i, li = remain.length;
+
+			for (i = 0; i < li; i++) {
+				if (remain[i][attr] < dst) {
+					dst = remain[i][attr];
+					pos = i;
+				}
+			}
+
+			return pos;
+		};
+
+	fromCell[attr] = 0;
+	console.log('fromCell', fromCell)
+
+	while (remain.length) {
+		pos = findClosest();
+		cell = remain[pos];
+		done.push(cell);
+		remain.splice(pos, 1);
+
+		dist = cell[attr] + 1;
+
+		if (!cell.linked) {
+			console.warn('no linked', cell);
+		}
+		cell.linked.forEach(function(c) {
+			if (!hasBeenWatch(c)) {
+				c[attr] = dist;
+				remain.push(c);
+			}
+		});
+	}
+};
+
+Path.prototype.computePref = function(path) {
+	/* avoid */
+	
+	cell.preferences = {
+		r: nCell.preferences.r,
+		d: nCell.preferences.d,
+		b: nCell.preferences.b
+	};
+
+	cell.avoid.forEach(function(dir) {
+		var p = Cube.fromDirection(dir);
+		if (p) {
+			cell.preferences[p.key] = !p.value;
+		}
+	});
+};
+
+/**
+ * called function
+ */
 Path.prototype.loadLevel = function(args) {
 	var index = args.index,
 		levelName = args.levelName;
@@ -189,6 +370,9 @@ Path.prototype.getPathInfo = function(data) {
 
 	info.available = cells.length;
 	if (info.finish) {
+		/* compute distance from end */
+		this.computeDist(info.finish, 'fromEnd');
+
 		cell = info.finish.parent;
 		while (cell) {
 			path.push(cell);
@@ -218,8 +402,9 @@ Path.prototype.getPathInfo = function(data) {
 			}
 		}
 
-		// todo fill info mouvmeent from this path
+		this.countMovement(path, info);
 	}
 
 	self.postMessage({data: {action: 'getPathInfo', data: info}, token: this.token});
 };
+

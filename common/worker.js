@@ -9,7 +9,42 @@ importScripts(
 if (typeof console === 'undefined') {
 	console = {};
 	console.log = console.warn = console.error = function(){
-		self.postMessage({log: JSON.stringify(arguments)});
+		try {
+			self.postMessage({log: JSON.stringify(arguments)});
+		} catch (e) {
+			self.postMessage({log: JSON.stringify(
+				Array.prototype.map.call(arguments, getValue)
+			)});
+		}
+
+		function getValue(v, noDeep) {
+			var t = typeof v,
+				o, x;
+
+			noDeep = typeof noDeep === 'boolean' ? noDeep : false;
+
+			switch(t) {
+				case 'object':
+					if (v instanceof Array) {
+						return v.map(function (o){
+							return getValue(o, noDeep);
+						});
+					} else {
+						if (noDeep) {
+							return '(Object [not displayed])';
+						} else {
+							o = {};
+							for (x in v) {
+								o[x] = getValue(v[x], true);
+							}
+							return o;
+						}
+					}
+					break;
+				default: 
+					return v;
+			}
+		}
 	};
 }
 
