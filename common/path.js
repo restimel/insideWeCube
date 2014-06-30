@@ -197,7 +197,23 @@ Path.prototype.avoid = function(cell, nCell) {
 	cell.preferences[pos.key] = pos.value;
 };
 
-Path.prototype.countMovement = function(path, info) {
+Path.prototype.countMovement = function(path, info, available) {
+	var checkPosition = function(currCell, ballLocation) {
+		if (ballLocation.x !== currCell.x || ballLocation.y !== currCell.y || ballLocation.z !== currCell.z) {
+			info.nbMvtOutPath += ballMvt.length - iBallMvt;
+
+			var rslt = this.goFrom(available.filter(Cube.comparePosition.bind(Cube, ballLocation))[0], path, currCell);
+
+			console.log('TODO: find rotations mouvement to come back in the path',iPath, currCell, ballLocation, iBallMvt, ballMvt);
+			info.nbDifficultCrossing++;
+
+			iBallMvt = ballMvt.length;
+
+			return false;
+		}
+		return true;
+	}.bind(this);
+
 	var position = {
 			r: false,
 			d: true,
@@ -263,25 +279,39 @@ Path.prototype.countMovement = function(path, info) {
 
 	info.nbMovement = rotations.length;
 	info.rotations = rotations;
+};
 
-	function checkPosition(currCell, ballLocation) {
-		if (ballLocation.x !== currCell.x || ballLocation.y !== currCell.y || ballLocation.z !== currCell.z) {
-			info.nbMvtOutPath += ballMvt.length - iBallMvt;
+Path.prototype.goFrom = function(fromPos, path, ref) {
+	// find the way back
+	var wbPath = [fromPos],
+		cell = fromPos;
 
-			// find the way back
-			// computeDist
-			// computePref
-			// test cube orientation to find the way back
+	if (!fromPos.preferences) {
+		do {
+			console.log('cell', cell);
+			cell = cell.linked.reduce(function(shortest, cell) {
+				if (shortest.fromEnd > cell.fromEnd) {
+					return cell;
+				}
+				return shortest;
+			}, {fromEnd: Infinity});
+			wbPath.push(cell);
+		} while (!path.some(Cube.comparePosition.bind(Cube, cell)));
 
-			console.log('TODO: find rotations mouvement to come back in the path',iPath, currCell, ballLocation, iBallMvt, ballMvt);
-			info.nbDifficultCrossing++;
+		// compute avoid
 
-			iBallMvt = ballMvt.length;
-
-			return false;
+		// computePref
+		var i = wbPath.length - 1;
+		while (i--) {
+			this.computePref(wbPath[i], wbPath[i + 1]);
 		}
-		return true;
 	}
+
+	// test cube orientation to find the way back
+	var mvt = this.cube.getMovement(fromPos, fromPos.preferences, fromPos.from);
+	console.log('mvt for coming back', mvt);
+
+	// check that we are coming back to the right path
 };
 
 Path.prototype.computeDist = function (fromCell, attr) {
@@ -415,7 +445,7 @@ Path.prototype.getPathInfo = function(data) {
 			}
 		}
 
-		this.countMovement(path, info);
+		this.countMovement(path, info, cells);
 	}
 
 	self.postMessage({data: {action: 'getPathInfo', data: info}, token: this.token});
