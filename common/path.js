@@ -146,11 +146,11 @@ Path.prototype.getDirections = function(path) {
 		cell = path[i];
 
 		if (!cell.direction) {
-			if (nCell.from) {
-				cell.direction = nCell.from;
-			} else {
+			// if (nCell.from) {
+			// 	cell.direction = nCell.from;
+			// } else {
 				cell.direction = Cube.getDirection(cell, nCell);
-			}
+			// }
 			cell.avoid = this.avoid(cell, nCell);
 		}
 	}
@@ -198,21 +198,40 @@ Path.prototype.avoid = function(cell, nCell) {
 };
 
 Path.prototype.countMovement = function(path, info, available) {
-	var checkPosition = function(currCell, ballLocation) {
-		if (ballLocation.x !== currCell.x || ballLocation.y !== currCell.y || ballLocation.z !== currCell.z) {
+	var checkPosition = function(currentCell, ballLocation, mvt) {
+		if (!Cube.comparePosition(ballLocation, currentCell)) {
 			info.nbMvtOutPath += ballMvt.length - iBallMvt;
 
-			var rslt = this.goFrom(available.filter(Cube.comparePosition.bind(Cube, ballLocation))[0], path, currCell);
+			// compute  extra-movements
+			var rslt = this.goFrom(ballMvt[ballMvt.length -1], available, path, currentCell, position);
 
-			console.log('TODO: find rotations mouvement to come back in the path',iPath, currCell, ballLocation, iBallMvt, ballMvt);
-			info.nbDifficultCrossing++;
+			info.nbDifficultCrossing += rslt.nbDifficultCrossing;
+			rotations = rotations.concat(rslt.rotations);
+
+			position = rslt.position;
 
 			iBallMvt = ballMvt.length;
+
+			if (rslt.lastPos) {
+				moveBall(rslt.lastPos);
+			}
 
 			return false;
 		}
 		return true;
-	}.bind(this);
+	}.bind(this),
+		// move path up to where the ball is now
+		moveBall = function(nPos) {
+			var i = iPath;
+			if (!Cube.comparePosition(nPos, currCell)) {
+				while (!Cube.comparePosition(nPos, path[i])) {
+					i++;
+				}
+
+				iPath = i;
+				currCell = path[iPath];
+			}
+		};
 
 	var position = {
 			r: false,
@@ -225,70 +244,99 @@ Path.prototype.countMovement = function(path, info, available) {
 		currCell, pref,
 		pos, verif;
 
-	while (iPath < path.length) {
+	while (iPath < path.length - 1) {
 		currCell = path[iPath];
 
+		// the ball has stop at this place
 		if (iBallMvt >= ballMvt.length -1) {
 			if (typeof ballMvt[iBallMvt] !== 'undefined') {
-				checkPosition(currCell, ballMvt[iBallMvt]);
+				checkPosition(currCell, ballMvt[iBallMvt], ballMvt);
 			}
 
-			pref = currCell.preferences;
-			if ( position.r !== pref.r && Math.abs(currCell.direction) !== 1) {
-				position.r = pref.r;
-				rotations.push(pref.r ? 'r' : '-r');
-				verif = this.cube.getMovement(currCell, position, currCell.from);
-				if (verif.length > 1) {
-					console.warn('Movement unexpected Right',iPath, currCell, position, verif);
-				}
-			}
-
-			if ( position.d !== pref.d && Math.abs(currCell.direction) !== 2) {
-				position.d = pref.d;
-				rotations.push(pref.d ? 'd' : '-d');
-				verif = this.cube.getMovement(currCell, position, currCell.from);
-				if (verif.length > 1) {
-					console.warn('Movement unexpected Down',iPath, currCell, position, verif);
-				}
-			}
-
-			if ( position.b !== pref.b && Math.abs(currCell.direction) !== 3) {
-				position.b = pref.b;
-				rotations.push(pref.b ? 'b' : '-b');
-				verif = this.cube.getMovement(currCell, position, currCell.from);
-				if (verif.length > 1) {
-					console.warn('Movement unexpected Bottom',iPath, currCell, position, verif);
-				}
-			}
-
+			// make cube rotations
+			this.logRotations(position, currCell.preferences, rotations, currCell);
+			
+			// get orientation to do the movement
 			pos = Cube.fromDirection(currCell.direction);
+
 			position[pos.key] = pos.value;
 			rotations.push(pos.value ? pos.key: '-' + pos.key);
 
 			ballMvt = this.cube.getMovement(currCell, position, currCell.from);
-			console.log('Debug',iPath,position, ballMvt)
+			// console.log('Debug',iPath,position, ballMvt)
 			iBallMvt = 0;
 		}
 		ballLocation = ballMvt[iBallMvt];
 		
-		checkPosition(currCell, ballLocation);
+		checkPosition(currCell, ballLocation, ballMvt);
 
 		iPath++;
 		iBallMvt++;
 	}
 
 	info.nbMovement = rotations.length;
+	info.chgTop = rotations.filter(function(v) {return v === 'b' || v === '-b';}).length;
 	info.rotations = rotations;
 };
 
-Path.prototype.goFrom = function(fromPos, path, ref) {
+Path.prototype.logRotations = function(position, pref, rotations, currCell) {
+	var verif;
+
+	if ( position.r !== pref.r && Math.abs(currCell.direction) !== 1) {
+		position.r = pref.r;
+		rotations.push(pref.r ? 'r' : '-r');
+		verif = this.cube.getMovement(currCell, position, currCell.from);
+		if (verif.length > 1) {
+			console.warn('Movement unexpected Right', currCell, position, verif);
+		}
+	}
+
+	if ( position.d !== pref.d && Math.abs(currCell.direction) !== 2) {
+		position.d = pref.d;
+		rotations.push(pref.d ? 'd' : '-d');
+		verif = this.cube.getMovement(currCell, position, currCell.from);
+		if (verif.length > 1) {
+			console.warn('Movement unexpected Down', currCell, position, verif);
+		}
+	}
+
+	if ( position.b !== pref.b && Math.abs(currCell.direction) !== 3) {
+		position.b = pref.b;
+		rotations.push(pref.b ? 'b' : '-b');
+		verif = this.cube.getMovement(currCell, position, currCell.from);
+		if (verif.length > 1) {
+			console.warn('Movement unexpected Bottom', currCell, position, verif);
+		}
+	}
+};
+
+/**
+ * Compute movements to find the way back to path
+ */
+Path.prototype.goFrom = function(fromPos, available, path, ref, currPosition, maxIter) {
+	if (typeof maxIter !== 'number') {
+		maxIter = 4;
+	}
+
+	fromPos = available.filter(Cube.comparePosition.bind(Cube, fromPos))[0];
+
 	// find the way back
 	var wbPath = [fromPos],
-		cell = fromPos;
+		cell = fromPos,
+		info = {
+			nbDifficultCrossing: 0,
+			rotations: []
+		},
+		position = {
+			r: currPosition.r,
+			d: currPosition.d,
+			b: currPosition.b
+		},
+		i;
 
-	if (!fromPos.preferences) {
+	if (!fromPos.preferences || typeof fromPos.preferences.r === 'undefined') {
+		// compute path to find the way back
 		do {
-			console.log('cell', cell);
 			cell = cell.linked.reduce(function(shortest, cell) {
 				if (shortest.fromEnd > cell.fromEnd) {
 					return cell;
@@ -298,20 +346,78 @@ Path.prototype.goFrom = function(fromPos, path, ref) {
 			wbPath.push(cell);
 		} while (!path.some(Cube.comparePosition.bind(Cube, cell)));
 
-		// compute avoid
+		this.getDirections(wbPath.reverse());
+		wbPath.reverse();
+		console.log('preferences:', fromPos.preferences);
 
 		// computePref
-		var i = wbPath.length - 1;
-		while (i--) {
-			this.computePref(wbPath[i], wbPath[i + 1]);
-		}
+		// i = wbPath.length - 1;
+		// while (i--) {
+		// 	this.computePref(wbPath[i], wbPath[i + 1]);
+		// }
 	}
+
+	// save rotations needed
+	this.logRotations(position, fromPos.preferences, info.rotations, fromPos);
 
 	// test cube orientation to find the way back
 	var mvt = this.cube.getMovement(fromPos, fromPos.preferences, fromPos.from);
+	var lastPos = mvt[mvt.length - 1];
 	console.log('mvt for coming back', mvt);
+	info.position = fromPos.preferences;
+
+	var iPath = -1;
 
 	// check that we are coming back to the right path
+	path.some(function(cell, i) {
+		if (Cube.comparePosition(lastPos, cell)) {
+			iPath = i;
+			lastPos = cell;
+			return true;
+		}
+		return false;
+	});
+
+	if (iPath !== -1) {
+		console.log('find' + maxIter, lastPos.fromEnd, ref.fromEnd)
+		if (lastPos.fromEnd > ref.fromEnd) {
+			if (maxIter) {
+				info2 = this.goFrom(lastPos, available, path, ref, position, maxIter - 1);
+				if (info2.nbDifficultCrossing) {
+					console.log('path back not found' + maxIter, lastPos, lastPos.preferences, mvt);
+					info = info2;
+				} else {
+					info2.rotations = info.rotations.concat(info2.rotations);
+					info = info2;
+				}
+			} else {
+				console.log('AIE origin ref found earlier', lastPos, ref, mvt);
+				info.nbDifficultCrossing = 1;
+				info.rotations = ['?'];
+			}
+		} else {
+			info.lastPos = lastPos;
+		}
+	} else {
+		if (maxIter) {
+			info2 = this.goFrom(lastPos, available, path, ref, position, maxIter - 1);
+
+			if (info2.nbDifficultCrossing) {
+				console.log('path back not found' + maxIter, lastPos, lastPos.preferences, mvt);
+				info = info2;
+			} else {
+				info2.rotations = info.rotations.concat(info2.rotations);
+				info = info2;
+			}
+		} else {
+			// TODO find why preferences not good
+			console.log('path back not found XXX' + maxIter, lastPos, lastPos.preferences, mvt);
+			info.nbDifficultCrossing = 1;
+			info.rotations = ['?'];
+		}
+	}
+
+	return info;
 };
 
 Path.prototype.computeDist = function (fromCell, attr) {
@@ -359,9 +465,10 @@ Path.prototype.computeDist = function (fromCell, attr) {
 };
 
 Path.prototype.computePref = function(cell, nCell) {
-	var posFrom = Cube.fromDirection(cell.from);
+	var posFrom = Cube.fromDirection(cell.from),
+		pos = Cube.fromDirection(cell.direction);
 
-	if (!cell.preferences) {
+	if (!cell.preferences || typeof cell.preferences.r === 'undefined') {
 		cell.preferences = {
 			r: nCell.preferences.r,
 			d: nCell.preferences.d,
@@ -378,7 +485,9 @@ Path.prototype.computePref = function(cell, nCell) {
 		if (typeof posFrom !== 'undefined') {
 			cell.preferences[posFrom.key] = posFrom.value;
 		}
-		cell.preferences[pos.key] = pos.value;
+		if (typeof pos !== 'undefined') {
+			cell.preferences[pos.key] = pos.value;
+		}
 	}
 };
 
@@ -416,11 +525,11 @@ Path.prototype.getPathInfo = function(data) {
 		/* compute distance from end */
 		this.computeDist(info.finish, 'fromEnd');
 
-		cell = info.finish.parent;
-		while (cell) {
+		cell = info.finish;
+		do {
 			path.push(cell);
 			cell = cell.parent;
-		}
+		} while (cell);
 
 		this.getDirections(path);
 		path = path.reverse();

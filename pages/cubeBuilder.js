@@ -82,14 +82,15 @@ CubeBuilder.prototype.renderInfo = function(info) {
 		nbMovement = info.nbMovement,
 		nbMvtOutPath = info.nbMvtOutPath,
 		nbDifficultCrossing = info.nbDifficultCrossing,
-		difficulty = available * 1 + 
+		difficulty = length * 1 +
+					 (available - length) * 0.9 +
 					 chgDirection * 0.4 +
 					 chgLevel * 0.3 +
-					 chgTop * 1 +
+					 chgTop * 1.2 +
 					 nbMovement * 1 +
 					 nbMvtOutPath * 1 +
 					 nbDifficultCrossing * 2,
-		maxDifficulty = 6*6*7 * 1.1 * 1.3 + 100, //TODO add chgTop, nbMouvement, nbMvOutPath, nbDiff
+		maxDifficulty = 6*6*7 * 1.1 * 1.4 + 100, //TODO add chgTop, nbMouvement, nbMvOutPath, nbDiff
 		lowDifficulty = maxDifficulty / 3,
 		highDifficulty = maxDifficulty * 2 / 3;
 
@@ -101,6 +102,7 @@ CubeBuilder.prototype.renderInfo = function(info) {
 		elChgDirection = document.createElement('section'),
 		elChgLevel = document.createElement('section'),
 		elMovement = document.createElement('section'),
+		elCbReverse = document.createElement('section'),
 		elHardCells = document.createElement('section'),
 		meter, label;
 
@@ -124,6 +126,9 @@ CubeBuilder.prototype.renderInfo = function(info) {
 
 		elMovement.className = 'info';
 		elMovement.textContent = $$('%i cube rotations are needed (at least)', nbMovement);
+
+		elCbReverse.className = 'info';
+		elCbReverse.textContent = $$('%i cube reversed upside down are needed (at least)', chgTop);
 
 		elHardCells.className = 'info';
 		elHardCells.textContent = $$('%i hardcore passage', nbDifficultCrossing);
@@ -155,6 +160,7 @@ CubeBuilder.prototype.renderInfo = function(info) {
 		elChgLevel.className = 'noInfo';
 		elDifficulty.className = 'noInfo';
 		elMovement.className = 'noInfo';
+		elCbReverse.className = 'noInfo';
 		elHardCells.className = 'noInfo';
 	}
 
@@ -168,6 +174,7 @@ CubeBuilder.prototype.renderInfo = function(info) {
 	this.cubeInfo.appendChild(elChgLevel);
 	this.cubeInfo.appendChild(elChgDirection);
 	this.cubeInfo.appendChild(elMovement);
+	this.cubeInfo.appendChild(elCbReverse);
 	this.cubeInfo.appendChild(elHardCells);
 };
 

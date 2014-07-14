@@ -9,8 +9,12 @@ General
 Build Cube
 → Analyze feasiblity of cube during constrution
 	* display information (cube feasability, difficulty)
-		→ calculate number of move
+		→ calculate number of move (→ In progress)
+			→ do something (not log ?) when unexpected movement happens when rotated localy
+			X repeat movement to find way back
+			X move the ball accordingly to the way back
 		→ calculate difficulty
+			→ count rotations bottom/up
 * display small format map (and with reverse side)
 
 Cube Solver
@@ -24,4 +28,6 @@ Skinning
 * cube solver
 
 Bugs
-X when a level is modified, it saves it automatically.
+- Do not found correct rotations  for some passage (Awful)
+	-→----?	  -→-------?
+	   ↓  |		 |   ↓
