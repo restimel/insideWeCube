@@ -13,8 +13,8 @@ Build Cube
 			→ do something (not log ?) when unexpected movement happens when rotated localy
 			X repeat movement to find way back
 			X move the ball accordingly to the way back
-		→ calculate difficulty
-			→ count rotations bottom/up
+		X calculate difficulty
+			X count rotations bottom/up
 * display small format map (and with reverse side)
 
 Cube Solver
@@ -31,3 +31,8 @@ Bugs
 - Do not found correct rotations  for some passage (Awful)
 	-→----?	  -→-------?
 	   ↓  |		 |   ↓
+
+
+Improve Better
+	Build Cube
+		→ key Shortcut (Ctrl+S)
