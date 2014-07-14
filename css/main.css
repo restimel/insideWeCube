@@ -201,3 +201,12 @@ body {
 .analyze-step2 .locate-by-euristic td {
 	border: 1px solid black;
 }
+
+/* Ball locater */
+.BallLocater-result {
+	min-width: 15em;
+}
+
+.BallLocater-result label {
+	display: block;
+}

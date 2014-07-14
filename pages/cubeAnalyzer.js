@@ -1,4 +1,5 @@
 function CubeAnalyzer() {
+	this.ballLocater = new BallLocater();
 	this.reset();
 }
 
@@ -68,6 +69,7 @@ CubeAnalyzer.prototype.renderStep1 = function() {
 
 CubeAnalyzer.prototype.renderStep2 = function() {
 	var container = this.container;
+	this.ballLocater.reset(this.cubeName);
 
 	var step = document.createElement('fieldset'),
 		title = document.createElement('legend');
@@ -100,7 +102,7 @@ CubeAnalyzer.prototype.renderStep2 = function() {
 	label.textContent = $$('If you don\'t know where the ball is, please follow the instructions.');
 	euristicSection.appendChild(label);
 
-	this.renderInstruction(euristicSection);
+	this.ballLocater.render(euristicSection);
 
 	var btnLost = document.createElement('button');
 	btnLost.textContent = $$('I have lost my ball! I don\'t know what happened!');
@@ -109,49 +111,6 @@ CubeAnalyzer.prototype.renderStep2 = function() {
 	step.appendChild(euristicSection);
 
 	container.appendChild(step);
-};
-
-CubeAnalyzer.prototype.renderInstruction = function(container) {
-	var table = document.createElement('table');
-	table.className = 'instructions';
-
-	/* Head */
-	var tHead = document.createElement('thead');
-	var row = document.createElement('tr');
-	var cell = document.createElement('th');
-	cell.textContent = $$('Instructions');
-	row.appendChild(cell);
-
-	cell = document.createElement('th');
-	cell.textContent = $$('Position attended');
-	row.appendChild(cell);
-
-	cell = document.createElement('th');
-	cell.textContent = $$('Results');
-	row.appendChild(cell);
-
-	tHead.appendChild(row);
-	table.appendChild(tHead);
-
-	/* first Cell */
-	var tbody = document.createElement('tbody');
-	row = tbody.insertRow(-1);
-	cell = row.insertCell(-1);
-	cell.innerHTML = [
-		$$('Put your cube with the INSIDE³ face at top. INSIDE³ must face you and is readable.'),
-		$$('Rotate your cube slightly to the left.'),
-		$$('Rotate your cube slightly upward.'),
-	].join('<br>');
-
-	cell = row.insertCell(-1);
-	cell.textContent = $$('POSITION_TOP_UP_RIGHT');
-
-	cell = row.insertCell(-1);
-	cell.textContent = '';
-
-	table.appendChild(tbody);
-
-	container.appendChild(table);
 };
 
 /* Actions */

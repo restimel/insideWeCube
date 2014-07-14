@@ -20,12 +20,20 @@ Build Cube
 Cube Solver
 X Select a cube
 * Add interaction to find place
+	* Render
+		* allow to change cube position at start
+		X Communication between BallLocater and worker to ask questions
+		* Communication between BallLocater and Analyzer to go to step 3
+		* Step3: display result
+	* BallLocater
+		* Reset (ball lost → restart)
 	* (bonus) identify in which cube we are
 * give path to find start (+ end?)
 
 Skinning
 * Helper for direction
 * cube solver
+* pictures: http://game-icons.net/
 
 Bugs
 - Do not found correct rotations  for some passage (Awful)

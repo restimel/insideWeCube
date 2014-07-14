@@ -15,6 +15,8 @@ Path.prototype.router = function(args, token) {
 
 	if (typeof f === 'function') {
 		f.call(this, data);
+	} else {
+		console.warn('Route not found', route);
 	}
 };
 
