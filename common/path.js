@@ -123,6 +123,7 @@ Path.prototype.calculatePath = function() {
 	}.bind(this), 10);
 };
 
+/* could be override to use results elsewhere */
 Path.prototype.result = function(rslt) {
 	self.postMessage({data: {action: 'getPath', data: rslt}, token: this.token});
 };

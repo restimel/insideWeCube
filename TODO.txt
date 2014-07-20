@@ -16,6 +16,7 @@ Build Cube
 		X calculate difficulty
 			X count rotations bottom/up
 * display small format map (and with reverse side)
+→ (nice to have): give small map with different orientation
 
 Cube Solver
 X Select a cube
@@ -23,6 +24,8 @@ X Select a cube
 	* Render
 		* allow to change cube position at start
 		X Communication between BallLocater and worker to ask questions
+		* display instruction at the correct place
+		* send Results
 		* Communication between BallLocater and Analyzer to go to step 3
 		* Step3: display result
 	* BallLocater
