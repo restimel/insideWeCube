@@ -234,14 +234,17 @@ Heuristic.prototype.start = function() {
 	/* analyze which move is the best */
 	this.log.push(this.getInstruction(possible, position, null, 0));
 
+	var node = this.log[0];
+
 	/* send instruction */
 	self.postMessage({data: {action: 'instruction', data: {
-		mvt: this.log[0].mvt,
-		iRow: 0
+		mvt: node.mvt,
+		iRow: 0,
+		position: node.position
 	}}, token: this.token});
 
 	/* prepare next possibilities */
-	this.preparation(this.log[0]);
+	this.preparation(node);
 };
 
 /* Route */

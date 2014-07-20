@@ -56,7 +56,11 @@ BallLocater.prototype.render = function(container) {
 	].join('<br>');
 
 	cell = row.insertCell(-1);
-	cell.textContent = $$('POSITION_TOP_UP_RIGHT');
+	this.displayPosition(cell, {
+		r: 0,
+		d: 1,
+		b: 1
+	});
 
 	cell = row.insertCell(-1);
 	cell.textContent = '';
@@ -78,7 +82,7 @@ BallLocater.prototype.renderInstruction = function(movement, rowPst) {
 	cell.textContent = this.textIntruction(movement);
 
 	cell = row.insertCell(-1);
-	cell.textContent = $$('POSITION_TOP_UP_RIGHT'); //TODO update position
+	this.displayPosition(cell);
 
 	cell = row.insertCell(-1);
 	cell.className = 'BallLocater-result';
@@ -109,6 +113,7 @@ BallLocater.prototype.onMessage = function(data) {
 
 	switch (data.action) {
 		case 'instruction':
+			this.position = args.position;
 			this.renderInstruction(args.mvt, args.iRow + 2);
 			break;
 		case 'impossible':
@@ -123,10 +128,11 @@ BallLocater.prototype.onMessage = function(data) {
 			}
 			break;
 		case 'found':
-			main.message($$('Found!!! %s', '[ x:' + (args.cell.y+1) + ' y:' + (args.cell.x+1) + ' level:' + (args.cell.z+1) +']'), 'success');
+			main.message($$('Found!!! %s. TODO last step', '[ x:' + (args.cell.y+1) + ' y:' + (args.cell.x+1) + ' level:' + (args.cell.z+1) +']'), 'success');
 			console.log('TODO: found', args.cell);
+			break;
 		default:
-			console.log('message unknown', data);
+			console.warn('message unknown', data);
 	}
 };
 
@@ -139,6 +145,18 @@ BallLocater.prototype.answer = function(code, iRow) {
 	}}, this.token);
 };
 
+/* Helper */
+
+BallLocater.prototype.displayPosition = function(elCell, position) {
+	position = position || this.position;
+
+	var str = 'POSITION_';
+	str += position.b ? 'TOP_' : 'BOTTOM_';
+	str += position.d ? 'UP_' : 'DOWN_';
+	str += position.r ? 'LEFT' : 'RIGHT';
+
+	elCell.textContent = str;
+};
 
 /* Text and messages */
 

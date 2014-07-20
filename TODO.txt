@@ -27,7 +27,8 @@ X Select a cube
 		X Communication between BallLocater and worker to ask questions
 		X display instruction at the correct place
 		X send Results
-		* display correct position
+		X display correct position
+			→ display image
 		* Communication between BallLocater and Analyzer to go to step 3
 		* Step3: display result
 		→ Nice to have: an answer 'I am not sure what happens'
