@@ -26,6 +26,17 @@ var store = {
 		return pos;
 	},
 
+	getCube: function(name) {
+		var cube = null;
+		this.cubes.some(function(c) {
+			if (c.name === name) {
+				cube = c;
+				return true;
+			}
+			return false;
+		});
+		return cube;
+	},
 
 	getCubes: function() {
 		var list = this.cubes.map(function(cube) {

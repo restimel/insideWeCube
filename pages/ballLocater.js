@@ -16,7 +16,7 @@ BallLocater.prototype.reset = function(cubeName) {
 
 /* Render */
 BallLocater.prototype.render = function(container) {
-	main.control.action('euristic', {action: 'reset', data: this.cubeName}, this.token);
+	main.control.action('heuristic', {action: 'reset', data: this.cubeName}, this.token);
 
 	if (typeof container === 'undefined') {
 		container = this.container;
@@ -66,10 +66,11 @@ BallLocater.prototype.render = function(container) {
 	container.appendChild(table);
 };
 
-BallLocater.prototype.renderInstruction = function(movement) {
+BallLocater.prototype.renderInstruction = function(movement, rowPst) {
+	console.log('todo: locate correctly the row: ', rowPst);
 	var row = this.tbody.insertRow(-1);
 		cell = row.insertCell(-1),
-		position = row.rowIndex;
+		iRow = row.rowIndex;
 
 	cell.textContent = this.textIntruction(movement);
 
@@ -79,19 +80,19 @@ BallLocater.prototype.renderInstruction = function(movement) {
 	cell = row.insertCell(-1);
 	cell.className = 'BallLocater-result';
 	cell.textContent = $$('What did you observed?');
-	cell.appendChild(this.formMvt(0, position));
-	cell.appendChild(this.formMvt(1, position));
-	cell.appendChild(this.formMvt(2, position));
+	cell.appendChild(this.formMvt(0, iRow));
+	cell.appendChild(this.formMvt(1, iRow));
+	// cell.appendChild(this.formMvt(2, iRow));
 };
 
-BallLocater.prototype.formMvt = function(code, position) {
+BallLocater.prototype.formMvt = function(code, iRow) {
 	var cnt = document.createElement('label'),
 		input = document.createElement('input'),
 		text = document.createElement('span');
 
 	input.type = 'radio';
-	input.name = 'answerLocater';
-	input.onchange = this.answer.bind(this, code, position);
+	input.name = 'answerLocater'+iRow;
+	input.onchange = this.answer.bind(this, code, iRow);
 	cnt.appendChild(input);
 
 	text.textContent = this.textResult(code);
@@ -103,7 +104,7 @@ BallLocater.prototype.formMvt = function(code, position) {
 BallLocater.prototype.onMessage = function(data) {
 	switch (data.action) {
 		case 'instruction':
-			this.renderInstruction(data.data);
+			this.renderInstruction(data.data.mvt, data.data.iRow + 2);
 			break;
 		default:
 			console.log('message unknown', data);
@@ -112,11 +113,10 @@ BallLocater.prototype.onMessage = function(data) {
 
 /* Actions */
 
-BallLocater.prototype.answer = function(code, position) {
-	console.log('code:'+code);
-	main.control.action('euristic', {action: 'answer', data: {
+BallLocater.prototype.answer = function(code, iRow) {
+	main.control.action('heuristic', {action: 'answer', data: {
 		code: code,
-		position: position
+		iRow: iRow - 2
 	}}, this.token);
 };
 
@@ -139,7 +139,7 @@ BallLocater.prototype.textIntruction = function(mvt) {
 BallLocater.prototype.textResult = function(code) {
 	switch (code) {
 		case 0: return $$('The ball has not moved.');
-		case 1: return $$('The ball has moved and stopped.');
+		case 1: return $$('The ball has moved.');
 		case 2: return $$('The ball has moved and falled.');
 		default:
 			return $$('Something should happen but I don\'t know what :(');

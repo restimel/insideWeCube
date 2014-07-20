@@ -3,7 +3,7 @@ importScripts(
 	'../models/level.js',
 	'../models/cube.js',
 	'path.js',
-	'euristic.js',
+	'heuristic.js',
 	'../libs/translate-i18n.js'
 );
 
@@ -77,8 +77,8 @@ self.onmessage = function(e) {
 		case 'path':
 			path.router(args, token);
 			break;
-		case 'euristic':
-			euristic.router(args, token);
+		case 'heuristic':
+			heuristic.router(args, token);
 			break;
 	}
 };
@@ -127,4 +127,4 @@ function preloadCubes(){
 /* init worker */
 preloadCubes();
 path = new Path();
-euristic = new Euristic();
+heuristic = new Heuristic();

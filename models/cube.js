@@ -138,14 +138,14 @@ Cube.prototype.getMovement = function(cellPos, cubePosition, from) {
 			x: x,
 			y: y,
 			z: z + 1
-		}, cubePosition, -3))
+		}, cubePosition, -3));
 	}
 	if (!cubePosition.b && this.get(x, y, z-1).b) {
 		return rslt.concat(this.getMovement({
 			x: x,
 			y: y,
 			z: z - 1
-		}, cubePosition, 3))
+		}, cubePosition, 3));
 	}
 
 	/* X/Y */
@@ -155,14 +155,14 @@ Cube.prototype.getMovement = function(cellPos, cubePosition, from) {
 				x: x,
 				y: y + 1,
 				z: z
-			}, cubePosition, 1))
+			}, cubePosition, 1));
 		}
 		if (!cubePosition.r && this.get(x, y-1, z).r) {
 			return rslt.concat(this.getMovement({
 				x: x,
 				y: y - 1,
 				z: z
-			}, cubePosition, -1))
+			}, cubePosition, -1));
 		}
 
 		if (cubePosition.d && cell.d) {
@@ -170,14 +170,14 @@ Cube.prototype.getMovement = function(cellPos, cubePosition, from) {
 				x: x + 1,
 				y: y,
 				z: z
-			}, cubePosition, -2))
+			}, cubePosition, -2));
 		}
 		if (!cubePosition.d && this.get(x-1, y, z).d) {
 			return rslt.concat(this.getMovement({
 				x: x - 1,
 				y: y,
 				z: z
-			}, cubePosition, 2))
+			}, cubePosition, 2));
 		}
 	} else {
 		if (cubePosition.d && cell.d) {
@@ -185,14 +185,14 @@ Cube.prototype.getMovement = function(cellPos, cubePosition, from) {
 				x: x + 1,
 				y: y,
 				z: z
-			}, cubePosition, -2))
+			}, cubePosition, -2));
 		}
 		if (!cubePosition.d && this.get(x-1, y, z).d) {
 			return rslt.concat(this.getMovement({
 				x: x - 1,
 				y: y,
 				z: z
-			}, cubePosition, 2))
+			}, cubePosition, 2));
 		}
 
 		if (cubePosition.r && cell.r) {
@@ -200,20 +200,46 @@ Cube.prototype.getMovement = function(cellPos, cubePosition, from) {
 				x: x,
 				y: y + 1,
 				z: z
-			}, cubePosition, 1))
+			}, cubePosition, 1));
 		}
 		if (!cubePosition.r && this.get(x, y-1, z).r) {
 			return rslt.concat(this.getMovement({
 				x: x,
 				y: y - 1,
 				z: z
-			}, cubePosition, -1))
+			}, cubePosition, -1));
 		}
 	}
 
 	return rslt;
 };
 
+Cube.prototype.couldMove = function(cellPos, cubePosition) {
+	var x = cellPos.x,
+		y = cellPos.y,
+		z = cellPos.z,
+		cell = this.get(x, y, z);
+
+	if (typeof cell.r === 'undefined') {
+		return false;
+	}
+
+	/* Z */
+	if ( (cubePosition.b && cell.b)
+	  || (!cubePosition.b && this.get(x, y, z-1).b)) {
+		return true;
+	}
+
+	/* X/Y */
+	if(  (cubePosition.r && cell.r)
+	  || (!cubePosition.r && this.get(x, y-1, z).r)
+	  || (cubePosition.d && cell.d)
+	  || (!cubePosition.d && this.get(x-1, y, z).d)) {
+		return true;
+	}
+
+	return false;
+};
 
 /* Static method */
 
