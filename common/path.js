@@ -148,11 +148,7 @@ Path.prototype.getDirections = function(path) {
 		cell = path[i];
 
 		if (!cell.direction) {
-			// if (nCell.from) {
-			// 	cell.direction = nCell.from;
-			// } else {
-				cell.direction = Cube.getDirection(cell, nCell);
-			// }
+			cell.direction = Cube.getDirection(cell, nCell);
 			cell.avoid = this.avoid(cell, nCell);
 		}
 	}
