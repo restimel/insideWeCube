@@ -67,8 +67,11 @@ BallLocater.prototype.render = function(container) {
 };
 
 BallLocater.prototype.renderInstruction = function(movement, rowPst) {
-	console.log('todo: locate correctly the row: ', rowPst);
-	var row = this.tbody.insertRow(-1);
+	while (this.tbody.rows[rowPst - 1]) {
+		this.tbody.deleteRow(rowPst - 1);
+	}
+
+	var row = this.tbody.insertRow(-1),
 		cell = row.insertCell(-1),
 		iRow = row.rowIndex;
 
@@ -102,10 +105,26 @@ BallLocater.prototype.formMvt = function(code, iRow) {
 };
 
 BallLocater.prototype.onMessage = function(data) {
+	var args = data.data;
+
 	switch (data.action) {
 		case 'instruction':
-			this.renderInstruction(data.data.mvt, data.data.iRow + 2);
+			this.renderInstruction(args.mvt, args.iRow + 2);
 			break;
+		case 'impossible':
+			console.log('TODO: Impossible', args.possible.length);
+			if (args.possible.length === 0) {
+				main.message($$('No cell in this cube fit your observation. Are you sure about your answer?'), 'error');
+			} else {
+				main.message($$('Many cells fit your observation. It is not possible to differenciate them :( %s',
+					args.possible.reduce(function(str, cell) {
+						str += '[ x:' + (cell.y+1) + ' y:' + (cell.x+1) + ' level:' + (cell.z+1) +']';
+					}, '')), 'error');
+			}
+			break;
+		case 'found':
+			main.message($$('Found!!! %s', '[ x:' + (args.cell.y+1) + ' y:' + (args.cell.x+1) + ' level:' + (args.cell.z+1) +']'), 'success');
+			console.log('TODO: found', args.cell);
 		default:
 			console.log('message unknown', data);
 	}

@@ -179,38 +179,45 @@ Heuristic.prototype.manageAnswer = function(code, i) {
 
 	log.choice = code;
 
-	var mvt;
+	var node;
 	switch(code) {
-		case 0: mvt = log.noMove; break;
-		case 1: mvt = log.move; break;
+		case 0: node = log.noMove; break;
+		case 1: node = log.move; break;
 		default:
-			mvt = {
+			node = {
 				possible: [],
 				mvt: '?',
 				score: -1
 			};
 	}
 
-	if (mvt.score === 0) {
-		console.log('TODO impossible to find where the ball is. Remaining position:', mvt.possible);
+	if (node.score === 0) {
+		self.postMessage({data: {action: 'impossible', data: {
+			possible: node.possible
+		}}, token: this.token});
 		return;
 	}
 
-	if (mvt.possible.length === 0) {
-		// self.postMessage({data: {action: 'instruction', data: this.instruction.mvt}, token: this.token});
-		console.log('TODO should not be possible....');
-	} else if (mvt.possible.length === 1) {
-		console.log('TODO finish you are in ', mvt.possible[0]);
+	if (node.possible.length === 0) {
+		/* should not be possible.... */
+		self.postMessage({data: {action: 'impossible', data: {
+			possible: []
+		}}, token: this.token});
+	} else if (node.possible.length === 1) {
+		self.postMessage({data: {action: 'found', data: {
+			cell: node.possible[0]
+		}}, token: this.token});
 	} else {
 		self.postMessage({data: {action: 'instruction', data: {
-			mvt: mvt.mvt,
-			iRow: i+1
+			mvt: node.mvt,
+			iRow: i+1,
+			position: node.position
 		}}, token: this.token});
 
 		this.log = this.log.slice(0, i+1);
-		this.log.push(mvt);
+		this.log.push(node);
 
-		this.preparation(mvt);
+		this.preparation(node);
 	}
 };
 

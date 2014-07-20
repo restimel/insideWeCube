@@ -5,6 +5,7 @@ General
 	* Make a tool script to parse sentences
 * Add change language button
 * select which cube to export
+* Message could disappears after an defined amount of time
 
 Build Cube
 → Analyze feasiblity of cube during constrution
@@ -24,8 +25,9 @@ X Select a cube
 	* Render
 		* allow to change cube position at start
 		X Communication between BallLocater and worker to ask questions
-		* display instruction at the correct place
-		* send Results
+		X display instruction at the correct place
+		X send Results
+		* display correct position
 		* Communication between BallLocater and Analyzer to go to step 3
 		* Step3: display result
 		→ Nice to have: an answer 'I am not sure what happens'
@@ -43,7 +45,6 @@ Bugs
 → Do not found correct rotations  for some passage (Awful)
 	-→----?	  -→-------?
 	   ↓  |		 |   ↓
-
 
 Improve Better
 	Build Cube
