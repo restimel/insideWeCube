@@ -174,17 +174,6 @@ Heuristic.prototype.getInstruction = function(possible, pst, parent, max) {
 
 };
 
-Heuristic.prototype.changePosition = function(direction) {
-	switch(direction) {
-		case -1: this.position.r = 0; break;
-		case 1: this.position.r = 1; break;
-		case -2: this.position.d = 1; break;
-		case 2: this.position.d = 0; break;
-		case -3: this.position.b = 1; break;
-		case 3: this.position.b = 0; break;
-	}
-};
-
 Heuristic.prototype.manageAnswer = function(code, i) {
 	var log = this.log[i];
 
