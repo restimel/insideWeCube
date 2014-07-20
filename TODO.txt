@@ -16,7 +16,7 @@ Build Cube
 		X calculate difficulty
 			X count rotations bottom/up
 * display small format map (and with reverse side)
-→ (nice to have): give small map with different orientation
+→ (bonus): give small map with different orientation
 
 Cube Solver
 X Select a cube
@@ -28,9 +28,10 @@ X Select a cube
 		* send Results
 		* Communication between BallLocater and Analyzer to go to step 3
 		* Step3: display result
+		→ Nice to have: an answer 'I am not sure what happens'
 	* BallLocater
 		* Reset (ball lost → restart)
-	* (bonus) identify in which cube we are
+	→ (bonus) identify in which cube we are
 * give path to find start (+ end?)
 
 Skinning
@@ -39,7 +40,7 @@ Skinning
 * pictures: http://game-icons.net/
 
 Bugs
-- Do not found correct rotations  for some passage (Awful)
+→ Do not found correct rotations  for some passage (Awful)
 	-→----?	  -→-------?
 	   ↓  |		 |   ↓
 

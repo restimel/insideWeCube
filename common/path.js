@@ -493,6 +493,12 @@ Path.prototype.computePref = function(cell, nCell) {
 /**
  * called function
  */
+
+Path.prototype.loadCube = function(cubeName) {
+	this.cube = store.getCube(cubeName).clone();
+	this.calculatePath();
+};
+
 Path.prototype.loadLevel = function(args) {
 	var index = args.index,
 		levelName = args.levelName;

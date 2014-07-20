@@ -3,6 +3,8 @@ function Heuristic() {
 
 	this.cube.init();
 	this.possible = [];
+
+	this.path = new Path();
 }
 
 Heuristic.prototype.router = function(args, token) {
@@ -20,20 +22,13 @@ Heuristic.prototype.router = function(args, token) {
 };
 
 Heuristic.prototype.getPossible = function(available, pst) {
-	var x, y , z;
-
 	var possible = [];
 
-	for (z = 0; z < 7; z++) {
-		for (x = 0; x < 6; x++) {
-			for (y = 0; y < 6; y++) {
-				if (!this.cube.couldMove({x: x, y: y, z: z}, pst)) {
-					//TODO do this only on available cell
-					possible.push({x: x, y: y, z: z});
-				}
-			}
+	available.forEach(function(cell){
+		if (!this.cube.couldMove(cell, pst)) {
+			possible.push(cell);
 		}
-	}
+	}, this);
 
 	return possible;
 };
@@ -161,7 +156,7 @@ Heuristic.prototype.getInstruction = function(possible, pst, parent, max) {
 	}
 
 	/* avoid cube rotation is fpossible */
-	n3.score *= 0.95;
+	n3.score *= 0.5;
 
 	/* keep the best one */
 	if (n3.score > n2.score && n3.score > n1.score) {
@@ -219,38 +214,47 @@ Heuristic.prototype.manageAnswer = function(code, i) {
 	}
 };
 
+Heuristic.prototype.start = function() {
+	/* set default position */
+	var position = this.originPosition;
+
+	/* reset log instructions */
+	this.log = [];
+
+	/* get list of probable position */
+	var possible = this.getPossible(this.accessible, position);
+
+	/* analyze which move is the best */
+	this.log.push(this.getInstruction(possible, position, null, 0));
+
+	/* send instruction */
+	self.postMessage({data: {action: 'instruction', data: {
+		mvt: this.log[0].mvt,
+		iRow: 0
+	}}, token: this.token});
+
+	/* prepare next possibilities */
+	this.preparation(this.log[0]);
+};
+
 /* Route */
 
 Heuristic.prototype.reset = function(cubeName) {
 	//load cube with cubeName
 	this.cube = store.getCube(cubeName).clone();
 
-	//set default position
-	var position = {
-		r: 0,
-		d: 1,
-		b: 1
-	};
+	this.path.result = function(rslt) {
+		this.accessible = rslt.accessible;
+		this.originPosition = {
+			r: 0,
+			d: 1,
+			b: 1
+		};
 
-	//reset log instructions
-	this.log = [];
+		this.start();
+	}.bind(this);
 
-	var possible = [];
-
-	//get list of probable position
-	possible = this.getPossible(possible, position);
-
-	//analyze which move is the best
-	this.log.push(this.getInstruction(possible, position, null, 0));
-
-	//send instruction
-	self.postMessage({data: {action: 'instruction', data: {
-		mvt: this.log[0].mvt,
-		iRow: 0
-	}}, token: this.token});
-
-	//prepare next possibilities
-	this.preparation(this.log[0]);
+	this.path.loadCube(cubeName);
 };
 
 Heuristic.prototype.answer = function(rsp) {
