@@ -69,8 +69,6 @@ Heuristic.prototype.computePossible = function(direction, possible, pst, parent)
 		}
 	}.bind(this));
 
-	console.log('computePossible, position:', position, 'direction: '+direction, 'simpleMove', simpleMove.length, 'possible:', possible)
-
 	node = {
 		parent: parent,
 		possible: possible,
@@ -84,28 +82,94 @@ Heuristic.prototype.computePossible = function(direction, possible, pst, parent)
 	return node;
 };
 
-Heuristic.prototype.preparation = function(inst) {
-	if (!inst.noMove.mvt) {
-		inst.noMove = this.getInstruction(inst.noMove.possible, inst.position, inst);
+Heuristic.prototype.preparation = function(node, max) {
+	max = max || 0;
+	if (max > 5) {
+		node.noMove.score = 0;
+		node.move.score = 0;
+		return;
 	}
-	if (!inst.move.mvt) {
-		inst.move = this.getInstruction(inst.move.possible, inst.position, inst);
+
+	if (!node.noMove.mvt) {
+		node.noMove = this.getInstruction(node.noMove.possible, node.position, node, max);
+	}
+	if (!node.move.mvt) {
+		node.move = this.getInstruction(node.move.possible, node.position, node, max);
 	}
 };
 
-Heuristic.prototype.getInstruction = function(possible, pst, parent) {
+Heuristic.prototype.hasSameParent = function(node) {
+	var parent = node.parent;
+
+	while(parent && parent.possible.length === node.possible.length) {
+		if (parent.position.r === node.position.r
+		&&  parent.position.d === node.position.d
+		&&  parent.position.b === node.position.b
+		&&  node.possible.length
+		&&  Cube.comparePosition(parent.possible[0], node.possible[0])) {
+			return true;
+		}
+
+		parent = parent.parent;
+	}
+
+	return false;
+};
+
+Heuristic.prototype.getInstruction = function(possible, pst, parent, max) {
+	if (possible.length === 0) {
+		return {
+			parent: parent,
+			possible: possible,
+			score: 0
+		};
+	} else if (possible.length === 1) {
+		return {
+			parent: parent,
+			possible: possible,
+			score: 100
+		};
+	}
+
 	/* compute next possibilites */
-	var i1 = this.computePossible(pst.r ? -1 : 1, possible, pst, parent),
-		i2 = this.computePossible(pst.d ? 2 : -2, possible, pst, parent),
-		i3 = this.computePossible(pst.b ? 3 : -3, possible, pst, parent);
+	var n1 = this.computePossible(pst.r ? -1 : 1, possible, pst, parent),
+		n2 = this.computePossible(pst.d ? 2 : -2, possible, pst, parent),
+		n3 = this.computePossible(pst.b ? 3 : -3, possible, pst, parent);
+
+	/* iterate if no one are good */
+	if (n1.score === 0 && n2.score === 0 && n3.score === 0) {
+		if (!this.hasSameParent(n1)) {
+			this.preparation(n1, max+1);
+			n1.score = (n1.move.score + n1.noMove.score) / 2;
+		} else {
+			n1.score = -1;
+		}
+
+		if (!this.hasSameParent(n2)) {
+			this.preparation(n2, max+1);
+			n2.score = (n2.move.score + n2.noMove.score) / 2;
+		} else {
+			n2.score = -1;
+		}
+
+		if (!this.hasSameParent(n3)) {
+			this.preparation(n3, max+1);
+			n3.score = (n3.move.score + n3.noMove.score) / 2;
+		} else {
+			n3.score = -1;
+		}
+	}
+
+	/* avoid cube rotation is fpossible */
+	n3.score *= 0.95;
 
 	/* keep the best one */
-	if (i3.score > i2.score && i3.score > i1.score) {
-		return i3;
-	} else if (i2.score > i1.score) {
-		return i2;
+	if (n3.score > n2.score && n3.score > n1.score) {
+		return n3;
+	} else if (n2.score > n1.score) {
+		return n2;
 	} else {
-		return i1;
+		return n1;
 	}
 
 };
@@ -138,9 +202,16 @@ Heuristic.prototype.manageAnswer = function(code, i) {
 		default:
 			mvt = {
 				possible: [],
-				mvt: '?'
+				mvt: '?',
+				score: -1
 			};
 	}
+
+	if (mvt.score === 0) {
+		console.log('TODO impossible to find where the ball is. Remaining position:', mvt.possible);
+		return;
+	}
+
 	if (mvt.possible.length === 0) {
 		// self.postMessage({data: {action: 'instruction', data: this.instruction.mvt}, token: this.token});
 		console.log('TODO should not be possible....');
@@ -181,7 +252,7 @@ Heuristic.prototype.reset = function(cubeName) {
 	possible = this.getPossible(possible, position);
 
 	//analyze which move is the best
-	this.log.push(this.getInstruction(possible, position, null));
+	this.log.push(this.getInstruction(possible, position, null, 0));
 
 	//send instruction
 	self.postMessage({data: {action: 'instruction', data: {
