@@ -8,9 +8,9 @@ General
 * Message could disappears after an defined amount of time
 
 Build Cube
-→ Analyze feasiblity of cube during constrution
-	* display information (cube feasability, difficulty)
-		→ calculate number of move (→ In progress)
+X Analyze feasiblity of cube during constrution
+	X display information (cube feasability, difficulty)
+		X calculate number of move
 			→ do something (not log ?) when unexpected movement happens when rotated localy
 			X repeat movement to find way back
 			X move the ball accordingly to the way back
@@ -20,7 +20,6 @@ Build Cube
 → (bonus): give small map with different orientation
 
 Cube Solver
-X Select a cube
 * Add interaction to find place
 	* Render
 		* allow to change cube position at start
@@ -29,13 +28,18 @@ X Select a cube
 		X send Results
 		X display correct position
 			→ display image
-		* Communication between BallLocater and Analyzer to go to step 3
+		X Communication between BallLocater and Analyzer to go to step 3
 		* Step3: display result
+			* find the movements list
+			* give path to find start
+				→ (+ end?)
+			X display instructions
 		→ Nice to have: an answer 'I am not sure what happens'
 	* BallLocater
 		* Reset (ball lost → restart)
 	→ (bonus) identify in which cube we are
-* give path to find start (+ end?)
+* Add interaction with cube to find place
+	* make a form to give cube position
 
 Skinning
 * Helper for direction
@@ -43,6 +47,7 @@ Skinning
 * pictures: http://game-icons.net/
 
 Bugs
+* Heuristic: Duplicate cells in movement blocks to find only one cell
 → Do not found correct rotations  for some passage (Awful)
 	-→----?	  -→-------?
 	   ↓  |		 |   ↓

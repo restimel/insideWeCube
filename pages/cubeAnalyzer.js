@@ -1,6 +1,8 @@
 function CubeAnalyzer() {
-	this.ballLocater = new BallLocater();
+	this.ballLocater = new BallLocater(this.identifyCell.bind(this));
 	this.reset();
+
+	this.findStart = true;
 }
 
 /* Render */
@@ -107,8 +109,69 @@ CubeAnalyzer.prototype.renderStep2 = function() {
 	var btnLost = document.createElement('button');
 	btnLost.textContent = $$('I have lost my ball! I don\'t know what happened!');
 	btnLost.onclick = this.resetInstructions.bind(this);
+	euristicSection.appendChild(btnLost);
 
 	step.appendChild(euristicSection);
+
+	container.appendChild(step);
+};
+
+CubeAnalyzer.prototype.renderStep3 = function() {
+	var container = this.container;
+
+	var step = document.createElement('fieldset'),
+		title = document.createElement('legend');
+	step.className = 'analyze-step3';
+	title.textContent = $$('Find you way back');
+	step.appendChild(title);
+
+	var label = document.createElement('span');
+	label.className = 'label';
+	label.textContent = $$('Where do you want to go?');
+	step.appendChild(label);
+
+	var cnt = document.createElement('section');
+
+	/* form section */
+	var form = document.createElement('form');
+	form.className = 'ask-cell-end';
+
+	var input = document.createElement('input');
+	input.type = 'radio';
+	input.name = 'ask-cell-end';
+	input.id = 'endCellStart';
+	input.onchange = this.changeEndTarget.bind(this, cnt, input.id);
+	if (this.findStart) {
+		input.checked = true;
+		setTimeout(this.changeEndTarget.bind(this,cnt, input.id), 1);
+	}
+	form.appendChild(input);
+
+	label = document.createElement('label');
+	label.textContent = $$('To the start.');
+	label.forName = 'endCellStart';
+	form.appendChild(label);
+
+	input = document.createElement('input');
+	input.type = 'radio';
+	input.name = 'ask-cell-end';
+	input.id = 'endCellEnd';
+	input.onchange = this.changeEndTarget.bind(this, cnt, input.id);
+	if (!this.findStart) {
+		input.checked = true;
+		setTimeout(this.changeEndTarget.bind(this,cnt, input.id), 1);
+	}
+	form.appendChild(input);
+
+	label = document.createElement('label');
+	label.textContent = $$('To the end.');
+	label.forName = 'endCellStart';
+	form.appendChild(label);
+
+	step.appendChild(form);
+
+	/* movement section */
+	step.appendChild(cnt);
 
 	container.appendChild(step);
 };
@@ -140,6 +203,38 @@ CubeAnalyzer.prototype.changeCube = function(e) {
 	this.step = 2;
 
 	this.render();
+};
+
+CubeAnalyzer.prototype.identifyCell = function(cell, position) {
+	this.ballCell = {
+		x: cell.x,
+		y: cell.y,
+		z: cell.z
+	};
+
+	this.cubePosition = {
+		r: position.r,
+		d: position.d,
+		b: position.b
+	};
+
+	this.step = 3;
+
+	this.renderStep3();
+};
+
+CubeAnalyzer.prototype.changeEndTarget = function(container, id) {
+	var endTarget = id === 'endCellEnd';
+
+	if (endTarget && this.findStart) {
+		if (!confirm($$('Are you sure to be spoiled?\nDon\'t you want to try to solve it by yourself?'))) {
+			document.getElementById('endCellStart').checked = true;
+			endTarget = false;
+		}
+	}
+
+	this.findStart = !endTarget;
+	this.ballLocater.findWay(this.ballCell, container, endTarget, this.cubePosition);
 };
 
 CubeAnalyzer.prototype.resetInstructions = function() {

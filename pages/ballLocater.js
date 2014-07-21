@@ -1,7 +1,9 @@
-function BallLocater() {
+function BallLocater(findCallback) {
 	this.token = main.control.add(this.onMessage.bind(this));
 	this.cubeName = '';
 	this.container = null;
+
+	this.findCallback = findCallback;
 }
 
 BallLocater.prototype.reset = function(cubeName) {
@@ -92,6 +94,40 @@ BallLocater.prototype.renderInstruction = function(movement, rowPst) {
 	// cell.appendChild(this.formMvt(2, iRow));
 };
 
+BallLocater.prototype.renderWayBack = function(path) {
+	var container = this.wayContainer;
+
+	var table = document.createElement('table');
+
+	/* header */
+	var row = table.insertRow(-1),
+		cell = document.createElement('th');
+
+	cell.textContent = $$('Instructions');
+	row.appendChild(cell);
+
+	cell = document.createElement('th');
+	cell.textContent = $$('Position attended');
+	row.appendChild(cell);
+
+	cell = document.createElement('th');
+	cell.textContent = $$('Expected results');
+	row.appendChild(cell);
+
+	path.forEach(function(instruction) {
+		row = table.insertRow(-1);
+		cell = row.insertCell(-1);
+		cell.textContent = this.textIntruction(instruction.mvt);
+
+		cell = row.insertCell(-1);
+		this.displayPosition(cell, instruction.position);
+
+		cell = row.insertCell(-1);
+		cell.textContent = this.textResult(instruction.result);
+	}, this);
+	// cell.appendChild(this.formMvt(2, iRow));
+};
+
 BallLocater.prototype.formMvt = function(code, iRow) {
 	var cnt = document.createElement('label'),
 		input = document.createElement('input'),
@@ -108,6 +144,7 @@ BallLocater.prototype.formMvt = function(code, iRow) {
 	return cnt;
 };
 
+/* Communication */
 BallLocater.prototype.onMessage = function(data) {
 	var args = data.data;
 
@@ -123,13 +160,16 @@ BallLocater.prototype.onMessage = function(data) {
 			} else {
 				main.message($$('Many cells fit your observation. It is not possible to differenciate them :( %s',
 					args.possible.reduce(function(str, cell) {
-						str += '[ x:' + (cell.y+1) + ' y:' + (cell.x+1) + ' level:' + (cell.z+1) +']';
+						return str + '[ x:' + (cell.y+1) + ' y:' + (cell.x+1) + ' level:' + (cell.z+1) +']';
 					}, '')), 'error');
 			}
 			break;
 		case 'found':
-			main.message($$('Found!!! %s. TODO last step', '[ x:' + (args.cell.y+1) + ' y:' + (args.cell.x+1) + ' level:' + (args.cell.z+1) +']'), 'success');
-			console.log('TODO: found', args.cell);
+			main.message($$('The ball location has been found!'), 'success', 2000);
+			this.findCallback(args.cell, args.position);
+			break;
+		case 'wayBack':
+			this.renderWayBack(args.path);
 			break;
 		default:
 			console.warn('message unknown', data);
@@ -137,12 +177,21 @@ BallLocater.prototype.onMessage = function(data) {
 };
 
 /* Actions */
-
 BallLocater.prototype.answer = function(code, iRow) {
 	main.control.action('heuristic', {action: 'answer', data: {
 		code: code,
 		iRow: iRow - 2
 	}}, this.token);
+};
+
+BallLocater.prototype.findWay = function(cell, container, cellEnd, position) {
+	main.control.action('heuristic', {action: 'wayBack', data: {
+		cell: cell,
+		target: cellEnd,
+		position: position
+	}}, this.token);
+
+	this.wayContainer = container;
 };
 
 /* Helper */

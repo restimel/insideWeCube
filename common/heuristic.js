@@ -205,7 +205,8 @@ Heuristic.prototype.manageAnswer = function(code, i) {
 		}}, token: this.token});
 	} else if (node.possible.length === 1) {
 		self.postMessage({data: {action: 'found', data: {
-			cell: node.possible[0]
+			cell: node.possible[0],
+			position: log.position
 		}}, token: this.token});
 	} else {
 		self.postMessage({data: {action: 'instruction', data: {
@@ -272,4 +273,11 @@ Heuristic.prototype.answer = function(rsp) {
 		iRow = rsp.iRow;
 
 	this.manageAnswer(code, iRow);
+};
+
+Heuristic.prototype.wayBack = function(rsp) {
+	var cell = rsp.cell,
+		target = rsp.target ? {x:4, y:4, z:6} : {x:1, y:1, z:0},
+		startPosition = rsp.position;
+	console.log('todo wayBack', cell, target, startPosition);
 };
