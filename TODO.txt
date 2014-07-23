@@ -30,10 +30,12 @@ Cube Solver
 			→ display image
 		X Communication between BallLocater and Analyzer to go to step 3
 		* Step3: display result
-			* find the movements list
-			* give path to find start
-				→ (+ end?)
+			X find the movements list
+			X give path to find start
+				X (+ end?)
 			X display instructions
+				* display position
+				* display movement
 		→ Nice to have: an answer 'I am not sure what happens'
 	* BallLocater
 		* Reset (ball lost → restart)

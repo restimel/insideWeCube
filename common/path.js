@@ -278,6 +278,9 @@ Path.prototype.countMovement = function(path, info, available) {
 	info.rotations = rotations;
 };
 
+/**
+ * Save movements needed to change rotation
+ */
 Path.prototype.logRotations = function(position, pref, rotations, currCell) {
 	var verif;
 
@@ -309,6 +312,22 @@ Path.prototype.logRotations = function(position, pref, rotations, currCell) {
 	}
 };
 
+Path.prototype.buildPath = function(cell, endCells) {
+	var path = [cell];
+
+	do {
+		cell = cell.linked.reduce(function(shortest, cell) {
+			if (shortest.fromEnd > cell.fromEnd) {
+				return cell;
+			}
+			return shortest;
+		}, {fromEnd: Infinity});
+		path.push(cell);
+	} while (!endCells.some(Cube.comparePosition.bind(Cube, cell)));
+
+	return path;
+}
+
 /**
  * Compute movements to find the way back to path
  */
@@ -321,7 +340,7 @@ Path.prototype.goFrom = function(fromPos, available, path, ref, currPosition, ma
 
 	// find the way back
 	var wbPath = [fromPos],
-		cell = fromPos,
+		// cell = fromPos,
 		info = {
 			nbDifficultCrossing: 0,
 			rotations: []
@@ -335,19 +354,20 @@ Path.prototype.goFrom = function(fromPos, available, path, ref, currPosition, ma
 
 	if (!fromPos.preferences || typeof fromPos.preferences.r === 'undefined') {
 		// compute path to find the way back
-		do {
-			cell = cell.linked.reduce(function(shortest, cell) {
-				if (shortest.fromEnd > cell.fromEnd) {
-					return cell;
-				}
-				return shortest;
-			}, {fromEnd: Infinity});
-			wbPath.push(cell);
-		} while (!path.some(Cube.comparePosition.bind(Cube, cell)));
+		wbPath = this.buildPath(fromPos, path);
+		// do {
+		// 	cell = cell.linked.reduce(function(shortest, cell) {
+		// 		if (shortest.fromEnd > cell.fromEnd) {
+		// 			return cell;
+		// 		}
+		// 		return shortest;
+		// 	}, {fromEnd: Infinity});
+		// 	wbPath.push(cell);
+		// } while (!path.some(Cube.comparePosition.bind(Cube, cell)));
 
 		this.getDirections(wbPath.reverse());
 		wbPath.reverse();
-		console.log('preferences:', fromPos.preferences);
+		// console.log('preferences:', fromPos.preferences);
 
 		// computePref
 		// i = wbPath.length - 1;
@@ -362,7 +382,7 @@ Path.prototype.goFrom = function(fromPos, available, path, ref, currPosition, ma
 	// test cube orientation to find the way back
 	var mvt = this.cube.getMovement(fromPos, fromPos.preferences, fromPos.from);
 	var lastPos = mvt[mvt.length - 1];
-	console.log('mvt for coming back', mvt);
+
 	info.position = fromPos.preferences;
 
 	var iPath = -1;
@@ -378,19 +398,18 @@ Path.prototype.goFrom = function(fromPos, available, path, ref, currPosition, ma
 	});
 
 	if (iPath !== -1) {
-		console.log('find' + maxIter, lastPos.fromEnd, ref.fromEnd)
 		if (lastPos.fromEnd > ref.fromEnd) {
 			if (maxIter) {
 				info2 = this.goFrom(lastPos, available, path, ref, position, maxIter - 1);
 				if (info2.nbDifficultCrossing) {
-					console.log('path back not found' + maxIter, lastPos, lastPos.preferences, mvt);
+					/* path back could not be found */;
 					info = info2;
 				} else {
 					info2.rotations = info.rotations.concat(info2.rotations);
 					info = info2;
 				}
 			} else {
-				console.log('AIE origin ref found earlier', lastPos, ref, mvt);
+				/* has moving back to an earlier cell */
 				info.nbDifficultCrossing = 1;
 				info.rotations = ['?'];
 			}
@@ -402,15 +421,13 @@ Path.prototype.goFrom = function(fromPos, available, path, ref, currPosition, ma
 			info2 = this.goFrom(lastPos, available, path, ref, position, maxIter - 1);
 
 			if (info2.nbDifficultCrossing) {
-				console.log('path back not found' + maxIter, lastPos, lastPos.preferences, mvt);
+				/* Path back not found*/
 				info = info2;
 			} else {
 				info2.rotations = info.rotations.concat(info2.rotations);
 				info = info2;
 			}
 		} else {
-			// TODO find why preferences not good
-			console.log('path back not found XXX' + maxIter, lastPos, lastPos.preferences, mvt);
 			info.nbDifficultCrossing = 1;
 			info.rotations = ['?'];
 		}
@@ -565,3 +582,25 @@ Path.prototype.getPathInfo = function(data) {
 	self.postMessage({data: {action: 'getPathInfo', data: info}, token: this.token});
 };
 
+Path.prototype.getPathMvt = function(cell, cellTarget, startPosition, available) {
+	cell = available.filter(Cube.comparePosition.bind(Cube, cell))[0];
+	cellTarget = available.filter(Cube.comparePosition.bind(Cube, cellTarget))[0];
+
+	/* compute path */
+	this.computeDist(cellTarget, 'fromEnd');
+	var path = this.buildPath(cell, [cellTarget]);
+
+	/* compute avoid & pref */
+	this.getDirections(path.reverse());
+	path.reverse();
+
+	/* compute mvt */
+	var info = {
+		nbDifficultCrossing: 0,
+		rotations: []
+	};
+
+	this.countMovement(path, info, available);
+
+	return info.rotations;
+};

@@ -125,7 +125,8 @@ BallLocater.prototype.renderWayBack = function(path) {
 		cell = row.insertCell(-1);
 		cell.textContent = this.textResult(instruction.result);
 	}, this);
-	// cell.appendChild(this.formMvt(2, iRow));
+
+	container.appendChild(table);
 };
 
 BallLocater.prototype.formMvt = function(code, iRow) {

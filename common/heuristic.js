@@ -278,6 +278,18 @@ Heuristic.prototype.answer = function(rsp) {
 Heuristic.prototype.wayBack = function(rsp) {
 	var cell = rsp.cell,
 		target = rsp.target ? {x:4, y:4, z:6} : {x:1, y:1, z:0},
-		startPosition = rsp.position;
-	console.log('todo wayBack', cell, target, startPosition);
+		startPosition = rsp.position,
+		path = this.path.getPathMvt(cell, target, startPosition, this.accessible);
+
+	path = path.map(function(mvt) {
+		return {
+			mvt: mvt,
+			position: {}, //TODO
+			result: 3 // TODO
+		};
+	});
+
+	self.postMessage({data: {action: 'wayBack', data: {
+		path: path
+	}}, token: this.token});
 };
