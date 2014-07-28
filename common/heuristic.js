@@ -37,6 +37,7 @@ Heuristic.prototype.computePossible = function(direction, possible, pst, parent)
 	var noMove = [],
 		simpleMove = [],
 		complexMove = [],
+		allMove = [],
 		mvt = this.computeMvt(direction),
 		position = this.computePosition(pst, mvt),
 		node = {};
@@ -44,11 +45,11 @@ Heuristic.prototype.computePossible = function(direction, possible, pst, parent)
 	possible.forEach(function(p) {
 		var path = this.cube.getMovement(p, position, direction);
 		if (path.length === 1) {
-			noMove.push(p);
+			add(noMove, p);
 		} else {
-			simpleMove.push(path[path.length -1]);
-			//todo analyze complex movement
+			add(simpleMove, path[path.length -1]);
 		}
+		add(allMove, path[path.length -1]);
 	}.bind(this));
 
 	node = {
@@ -57,11 +58,18 @@ Heuristic.prototype.computePossible = function(direction, possible, pst, parent)
 		position: position,
 		noMove: {possible: noMove},
 		move: {possible: simpleMove},
+		allMove: {possible: allMove},
 		score: 100 * Math.min(noMove.length, simpleMove.length) / Math.max(noMove.length, simpleMove.length),
 		mvt: mvt
 	}
 
 	return node;
+
+	function add(arr, val) {
+		if (!arr.some(Cube.comparePosition.bind(null,val))) {
+			arr.push(val);
+		}
+	}
 };
 
 Heuristic.prototype.preparation = function(node, max) {
@@ -77,6 +85,10 @@ Heuristic.prototype.preparation = function(node, max) {
 	}
 	if (!node.move.mvt) {
 		node.move = this.getInstruction(node.move.possible, node.position, node, max);
+	}
+	if (!node.allMove.mvt) {
+		node.allMove = this.getInstruction(node.allMove.possible, node.position, node, max);
+		node.allMove.score++;
 	}
 };
 
@@ -168,6 +180,7 @@ Heuristic.prototype.manageAnswer = function(code, i) {
 
 	var node;
 	switch(code) {
+		case -1: node = log.allMove; break;
 		case 0: node = log.noMove; break;
 		case 1: node = log.move; break;
 		default:
