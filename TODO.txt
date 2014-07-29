@@ -12,10 +12,6 @@ X Analyze feasiblity of cube during constrution
 	X display information (cube feasability, difficulty)
 		X calculate number of move
 			→ do something (not log ?) when unexpected movement happens when rotated localy
-			X repeat movement to find way back
-			X move the ball accordingly to the way back
-		X calculate difficulty
-			X count rotations bottom/up
 * display small format map (and with reverse side)
 → (bonus): give small map with different orientation
 
@@ -23,18 +19,9 @@ Cube Solver
 * Add interaction to find place
 	* Render
 		* allow to change cube position at start
-		X Communication between BallLocater and worker to ask questions
-		X display instruction at the correct place
-		X send Results
 		X display correct position
 			*→ display image
-		X Communication between BallLocater and Analyzer to go to step 3
-		X Step3: display result
-			X find the movements list
-			X give path to find start
-				X (+ end?)
-			X display instructions
-		*→ Nice to have: an answer 'I am not sure what happens'
+		X Nice to have: an answer 'I am not sure what happens'
 	* BallLocater
 		* Reset (ball lost → restart)
 	→ (bonus) identify in which cube we are
@@ -47,7 +34,10 @@ Skinning
 * pictures: http://game-icons.net/
 
 Bugs
-* Heuristic: Duplicate cells in movement blocks to find only one cell
+X Heuristic: Duplicate cells in movement blocks to find only one cell
+* Instructions are wrong to find the way back
+	* wrong movements vs position
+	* wrong place to finish ?
 → Do not found correct rotations  for some passage (Awful)
 	-→----?	  -→-------?
 	   ↓  |		 |   ↓

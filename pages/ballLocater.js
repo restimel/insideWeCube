@@ -23,6 +23,7 @@ BallLocater.prototype.render = function(container) {
 		d: 1,
 		b: 1
 	};
+	this.position = position;
 
 	main.control.action('heuristic', {action: 'reset', data: this.cubeName}, this.token);
 
@@ -74,7 +75,7 @@ BallLocater.prototype.render = function(container) {
 	container.appendChild(table);
 };
 
-BallLocater.prototype.renderInstruction = function(movement, rowPst) {
+BallLocater.prototype.renderInstruction = function(movement, rowPst, position) {
 	while (this.tbody.rows[rowPst - 1]) {
 		this.tbody.deleteRow(rowPst - 1);
 	}
@@ -86,20 +87,22 @@ BallLocater.prototype.renderInstruction = function(movement, rowPst) {
 	cell.textContent = this.textIntruction(movement);
 
 	cell = row.insertCell(-1);
-	this.displayPosition(cell);
+	this.displayPosition(cell, position);
 
 	cell = row.insertCell(-1);
 	cell.className = 'BallLocater-result';
 	cell.textContent = $$('What did you observe?');
 	cell.appendChild(this.formMvt(0, iRow));
 	cell.appendChild(this.formMvt(1, iRow));
-	// cell.appendChild(this.formMvt(2, iRow));
+	cell.appendChild(this.formMvt(-1, iRow));
 
 	row.scrollIntoViewIfNeeded();
 };
 
 BallLocater.prototype.renderWayBack = function(path) {
-	var container = this.wayContainer;
+	var position = this.position,
+		container = this.wayContainer;
+	container.innerHTML = '';
 
 	var table = document.createElement('table');
 
@@ -122,13 +125,15 @@ BallLocater.prototype.renderWayBack = function(path) {
 	path.forEach(function(instruction) {
 		row = table.insertRow(-1);
 		cell = row.insertCell(-1);
-		cell.textContent = this.textIntruction(instruction.mvt, instruction.position);
+		cell.textContent = this.textIntruction(instruction.mvt, position);
 
 		cell = row.insertCell(-1);
 		this.displayPosition(cell, instruction.position);
 
 		cell = row.insertCell(-1);
 		cell.textContent = this.textResult(instruction.result);
+
+		position = instruction.position;
 	}, this);
 
 	container.appendChild(table);
@@ -156,11 +161,10 @@ BallLocater.prototype.onMessage = function(data) {
 
 	switch (data.action) {
 		case 'instruction':
+			this.renderInstruction(args.mvt, args.iRow + 2, args.position);
 			this.position = args.position;
-			this.renderInstruction(args.mvt, args.iRow + 2);
 			break;
 		case 'impossible':
-			console.log('TODO: Impossible', args.possible.length);
 			if (args.possible.length === 0) {
 				main.message($$('No cell in this cube fit your observation. Are you sure about your answer?'), 'error');
 			} else {
@@ -224,7 +228,7 @@ BallLocater.prototype.textIntruction = function(mvt, position) {
 			case '-r': return $$('Rotate your cube slightly to the left.');
 			case 'd': return $$('Rotate your cube slightly backward.');
 			case '-d': return $$('Rotate your cube slightly forward.');
-			case 'b': return $$('Rotate your cube to have the face INSIDE³ at the top.');
+			case 'b': return $$('Rotate your cube to have the face INSIDE³ at the bottom.');
 			case '-b':
 				if (position.d) {
 					return $$('Rotate your cube backward to have the face INSIDE³ at the bottom.');
@@ -255,6 +259,7 @@ BallLocater.prototype.textIntruction = function(mvt, position) {
 
 BallLocater.prototype.textResult = function(code) {
 	switch (code) {
+		case -1: return $$('I am not sure what happen...');
 		case 0: return $$('The ball has not moved.');
 		case 1: return $$('The ball has moved.');
 		case 2: return $$('The ball has moved and fallen.');
