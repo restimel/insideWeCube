@@ -8,9 +8,13 @@
 	background-color: black;
 }
 
+.position-cell {
+   overflow: hidden;
+}
+
 /* le conteneur global est l'endroit adéquat dans lequel définir la notion de perspective pour des transformations 3D. Elle est initialisée avec les styles CSS perspective et perspective-origin.*/
-#conteneur{
-   width: position: relative;
+.conteneur3d{
+   position: relative;
    width: 300px;
    height: 200px;
    margin: 0px auto;
@@ -20,8 +24,12 @@
    -moz-perspective-origin: 50% 50%;
    -o-perspective: 2800px;
    -o-perspective-origin: 50% 50%;
-   background-color: rgba(200,0,200,0.5);
+   
    -webkit-transform: scale(0.3);
+   -moz-transform: scale(0.3);
+   -o-transform: scale(0.3);
+   -ms-transform: scale(0.3);
+   transform: scale(0.3);
 }
 /* définir le positionnement des div pour former le cube : */
 .face{
@@ -41,6 +49,40 @@
 	/*background-color: lightblue;*/
 	box-shadow: 0 0 200px 0 #FFF inset;
 }
+
+.cube-blue .face{
+   background-color: mediumblue;
+}
+
+.cube-red .face{
+   background-color: red;
+}
+
+.cube-green .face{
+   background-color: limegreen;  /*chartreuse;*/
+}
+
+.cube-orange .face{
+   background-color: orange;
+}
+
+.cube-brown .face{
+   background-color: saddlebrown;
+}
+
+.cube-yellow .face{
+   background-color: yellow;
+}
+
+.cube-crystal .face{
+   background-color: transparent;
+}
+
+.cube-black .face{
+   background-color: black;
+   color: darkgrey;
+}
+
 .cote1{
 /*	background-color: silver;*/
 	z-index: 10;
@@ -108,39 +150,61 @@ box-shadow: 0 0 200px 250px #000, 0 0 200px 250px #000 inset;
    -ms-transform-style: preserve-3d;
 }
 
-.position0 .parent {
-	-webkit-transform: rotateZ(21deg) rotateY(30deg) rotateX(30deg);
-	-webkit-transform: rotateZ(15deg) rotateY(15deg) rotateX(30deg);
-	-webkit-transform: rotateZ(15deg) rotateY(30deg) rotateX(30deg) translateX(-100px) translateY(-100px);
-	-webkit-transform: rotateZ(36deg) rotateY(55deg) rotateX(45deg) translateX(270px) translateY(-210px);
+.position_TOP_UP_LEFT .parent {
+   -webkit-transform: rotateZ(36deg) rotateY(55deg) rotateX(45deg) translateX(270px) translateY(-210px);
+   -moz-transform: rotateZ(36deg) rotateY(55deg) rotateX(45deg) translateX(270px) translateY(-210px);
+   -o-transform: rotateZ(36deg) rotateY(55deg) rotateX(45deg) translateX(270px) translateY(-210px);
+   -ms-transform: rotateZ(36deg) rotateY(55deg) rotateX(45deg) translateX(270px) translateY(-210px);
+   transform: rotateZ(36deg) rotateY(55deg) rotateX(45deg) translateX(270px) translateY(-210px);
 } /* good bas droite back*/
-.position1 .parent {
-	-webkit-transform: rotateZ(15deg) rotateY(15deg) rotateX(-15deg);
-	-webkit-transform: rotateZ(15deg) rotateY(-15deg) rotateX(-30deg);
-	-webkit-transform: rotateZ(25deg) rotateY(44deg) rotateX(-57deg) translateX(100px) translateY(110px);
+.position_TOP_DOWN_LEFT .parent {
+   -webkit-transform: rotateZ(25deg) rotateY(44deg) rotateX(-57deg) translateX(100px) translateY(110px);
+   -moz-transform: rotateZ(25deg) rotateY(44deg) rotateX(-57deg) translateX(100px) translateY(110px);
+   -o-transform: rotateZ(25deg) rotateY(44deg) rotateX(-57deg) translateX(100px) translateY(110px);
+   -ms-transform: rotateZ(25deg) rotateY(44deg) rotateX(-57deg) translateX(100px) translateY(110px);
+	transform: rotateZ(25deg) rotateY(44deg) rotateX(-57deg) translateX(100px) translateY(110px);
 } /* bas droite face */
-.position2 .parent {
-	-webkit-transform: rotateZ(-30deg) rotateY(30deg) rotateX(-30deg);
-	-webkit-transform: rotateZ(-30deg) rotateY(20deg) rotateX(-35deg);
-	-webkit-transform: rotateZ(-15deg) rotateY(15deg) rotateX(-30deg);
-	-webkit-transform: rotateZ(-15deg) rotateY(-25deg) rotateX(-65deg) translateX(-100px) translateY(150px);
+.position_TOP_UP_RIGHT .parent {
+   -webkit-transform: rotateZ(-15deg) rotateY(-25deg) rotateX(-65deg) translateX(-100px) translateY(150px);
+   -moz-transform: rotateZ(-15deg) rotateY(-25deg) rotateX(-65deg) translateX(-100px) translateY(150px);
+   -o-transform: rotateZ(-15deg) rotateY(-25deg) rotateX(-65deg) translateX(-100px) translateY(150px);
+   -ms-transform: rotateZ(-15deg) rotateY(-25deg) rotateX(-65deg) translateX(-100px) translateY(150px);
+	transform: rotateZ(-15deg) rotateY(-25deg) rotateX(-65deg) translateX(-100px) translateY(150px);
 } /* good bas gauche face*/
-.position3 .parent {
-	-webkit-transform: rotateZ(-30deg) rotateY(-30deg) rotateX(30deg);
-	-webkit-transform: rotateZ(-15deg) rotateY(-15deg) rotateX(30deg);
-	-webkit-transform: rotateZ(-17deg) rotateY(-34deg) rotateX(35deg) translateX(-140px) translateY(-190px);
+.position_TOP_DOWN_RIGHT .parent {
+   -webkit-transform: rotateZ(-17deg) rotateY(-34deg) rotateX(35deg) translateX(-140px) translateY(-190px);
+   -moz-transform: rotateZ(-17deg) rotateY(-34deg) rotateX(35deg) translateX(-140px) translateY(-190px);
+   -o-transform: rotateZ(-17deg) rotateY(-34deg) rotateX(35deg) translateX(-140px) translateY(-190px);
+   -ms-transform: rotateZ(-17deg) rotateY(-34deg) rotateX(35deg) translateX(-140px) translateY(-190px);
+	transform: rotateZ(-17deg) rotateY(-34deg) rotateX(35deg) translateX(-140px) translateY(-190px);
 } /* good bas gauche back */
-.position4 .parent {
-	-webkit-transform: rotateZ(32deg) rotateY(53deg) rotateX(218deg) translateX(-190px) translateY(-10px) translateZ(60px);
+.position_BOTTOM_UP_LEFT .parent {
+   -webkit-transform: rotateZ(32deg) rotateY(53deg) rotateX(218deg) translateX(-190px) translateY(-10px) translateZ(60px);
+   -moz-transform: rotateZ(32deg) rotateY(53deg) rotateX(218deg) translateX(-190px) translateY(-10px) translateZ(60px);
+   -o-transform: rotateZ(32deg) rotateY(53deg) rotateX(218deg) translateX(-190px) translateY(-10px) translateZ(60px);
+   -ms-transform: rotateZ(32deg) rotateY(53deg) rotateX(218deg) translateX(-190px) translateY(-10px) translateZ(60px);
+	transform: rotateZ(32deg) rotateY(53deg) rotateX(218deg) translateX(-190px) translateY(-10px) translateZ(60px);
 } /* good top droite face*/
-.position5 .parent {
-	-webkit-transform: rotateZ(15deg) rotateY(-15deg) rotateX(150deg) translateX(-140px) translateY(-190px);
+.position_BOTTOM_DOWN_LEFT .parent {
+   -webkit-transform: rotateZ(15deg) rotateY(-15deg) rotateX(150deg) translateX(-140px) translateY(-190px);
+   -moz-transform: rotateZ(15deg) rotateY(-15deg) rotateX(150deg) translateX(-140px) translateY(-190px);
+   -o-transform: rotateZ(15deg) rotateY(-15deg) rotateX(150deg) translateX(-140px) translateY(-190px);
+   -ms-transform: rotateZ(15deg) rotateY(-15deg) rotateX(150deg) translateX(-140px) translateY(-190px);
+	transform: rotateZ(15deg) rotateY(-15deg) rotateX(150deg) translateX(-140px) translateY(-190px);
 } /* top droite back */
-.position6 .parent {
-	-webkit-transform: rotateZ(-30deg) rotateY(17deg) rotateX(141deg) translateX(-60px) translateY(280px);
+.position_BOTTOM_DOWN_RIGHT .parent {
+   -webkit-transform: rotateZ(-30deg) rotateY(17deg) rotateX(141deg) translateX(-60px) translateY(280px);
+   -moz-transform: rotateZ(-30deg) rotateY(17deg) rotateX(141deg) translateX(-60px) translateY(280px);
+   -o-transform: rotateZ(-30deg) rotateY(17deg) rotateX(141deg) translateX(-60px) translateY(280px);
+   -ms-transform: rotateZ(-30deg) rotateY(17deg) rotateX(141deg) translateX(-60px) translateY(280px);
+	transform: rotateZ(-30deg) rotateY(17deg) rotateX(141deg) translateX(-60px) translateY(280px);
 } /* good top gauche back*/
-.position7 .parent {
-	-webkit-transform: rotateZ(-15deg) rotateY(-15deg) rotateX(210deg) translateX(-140px) translateY(-190px);
+.position_BOTTOM_UP_RIGHT .parent {
+   -webkit-transform: rotateZ(-15deg) rotateY(-15deg) rotateX(210deg) translateX(-140px) translateY(-190px);
+   -moz-transform: rotateZ(-15deg) rotateY(-15deg) rotateX(210deg) translateX(-140px) translateY(-190px);
+   -o-transform: rotateZ(-15deg) rotateY(-15deg) rotateX(210deg) translateX(-140px) translateY(-190px);
+   -ms-transform: rotateZ(-15deg) rotateY(-15deg) rotateX(210deg) translateX(-140px) translateY(-190px);
+	transform: rotateZ(-15deg) rotateY(-15deg) rotateX(210deg) translateX(-140px) translateY(-190px);
 } /* good →top gauche face */
 
 /* on déclare pour l'élément <div> parent l'animation qui sera appliquée : */

@@ -2,9 +2,11 @@ function Cube3D() {
 
 }
 
-Cube3D.prototype.render = function(container) {
+Cube3D.render = function(container, position, color) {
+	color = color || 'blue';
+
 	var cube3d = document.createElement('div');
-	cube3d.id = 'conteneur';
+	cube3d.className = 'conteneur3d cube-'+color;
 
 	var parent = document.createElement('div');
 	parent.className = 'parent';
@@ -56,5 +58,29 @@ Cube3D.prototype.render = function(container) {
 	shadow.className = 'cube-shadow';
 	cube3d.appendChild(shadow);
 
+	Cube3D.position(cube3d, position);
 	container.appendChild(cube3d);
+
+	container.className += ' position-cell';
+};
+
+Cube3D.getColor = function() {
+	return [
+		{code: 'black', name:$$('black')},
+		{code: 'blue', name:$$('blue')},
+		{code: 'brown', name:$$('brown')},
+		{code: 'crystal', name:$$('crystal')},
+		{code: 'green', name:$$('green')},
+		{code: 'orange', name:$$('orange')},
+		{code: 'red', name:$$('red')}
+	].sort(function(a, b) {return a.name > b.name;});
+}
+
+Cube3D.position = function(elCell, position) {
+	var str = 'position_';
+	str += position.b ? 'TOP_' : 'BOTTOM_';
+	str += position.d ? 'UP_' : 'DOWN_';
+	str += position.r ? 'LEFT' : 'RIGHT';
+
+	elCell.className += ' ' + str;
 };

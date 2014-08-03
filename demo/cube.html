@@ -1,6 +1,6 @@
 <div id="conteneur">
    <div class="parent">
-      <div class="face cote6"></div><!--back-->
+      <div class="face cote6">Cote6</div><!--back-->
       <div class="face cote5 light-face">
       	Inside<sup>3</sup>
       	<div class="ball-hole"></div>
@@ -9,8 +9,8 @@
       <div class="face cote4">InsideZeCube.com
       	<div class="ball-hole"></div>
       </div>
-      <div class="face cote3"></div> <!--gauche-->
-      <div class="face cote2 light-face"></div><!--droite-->
+      <div class="face cote3">Cote3</div> <!--gauche-->
+      <div class="face cote2 light-face">Cote2</div><!--droite-->
       <div class="face cote1 light-face">Start</div><!--front-->
    </div>
    <div class="cube-shadow"></div>
@@ -20,7 +20,19 @@
    <div style="z-index:1000;width:30px;height:30px;border-radius:1000px;border:10px solid purple;position:absolute;top:180px;left:-80px;"></div>
    <div style="z-index:1000;width:30px;height:30px;border-radius:1000px;border:10px solid white;position:absolute;top:255;left:65px;"></div>
 </div>
+
+<div class="test"></div>
+<div class="test2"></div>
 <style>
+.test2, .test{
+   width: 100px;
+   height: 100px;
+   border: 1px solid black;
+   position: absolute;
+   bottom: 50px;
+   right: 50px;
+}
+
 .ball-hole {
 	position: absolute;
 	width: 250px;
@@ -42,8 +54,8 @@
    -moz-perspective-origin: 50% 50%;
    -o-perspective: 2800px;
    -o-perspective-origin: 50% 50%;
-   background-color: rgba(200,0,200,0.5);
-   -webkit-transform: scale(0.3);
+   /*background-color: rgba(200,0,200,0.5);*/
+   -webkit-transform: scale(0.4);
 }
 /* définir le positionnement des div pour former le cube : */
 .face{
@@ -54,7 +66,7 @@
 	text-align: center;
 	font-size: 80px;
 	font-size: 40px;
-	opacity: 1;
+	opacity: 0.5;
 	border: solid 4px black;
 	background-color: mediumblue;
 	box-shadow: 0 0 150px 0 rgba(0,0,0,0.5) inset;
@@ -62,17 +74,20 @@
 .light-face {
 	/*background-color: lightblue;*/
 	box-shadow: 0 0 200px 0 #FFF inset;
+   opacity: 0.5;
 }
 .cote1{
 /*	background-color: silver;*/
 	z-index: 10;
+   opacity: 0;
 }
 .cote2{
-   -webkit-transform: translateZ(-150px) translateX(150px) rotateY(90deg);
+   -webkit-transform: translateX(150px) rotateY(90deg);
    -moz-transform: translateZ(-150px) translateX(150px) rotateY(90deg);
    -o-transform: translateZ(-150px) translateX(150px) rotateY(90deg);
    -ms-transform: translateZ(-150px) translateX(150px) rotateY(90deg);
    transform: translateZ(-150px) translateX(150px) rotateY(90deg);
+   z-index: 10;
 }
 .cote3{
    -webkit-transform: translateZ(-150px) translateX(-150px) rotateY(-90deg);

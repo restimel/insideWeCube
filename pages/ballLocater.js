@@ -65,7 +65,7 @@ BallLocater.prototype.render = function(container) {
 	].join('<br>');
 
 	cell = row.insertCell(-1);
-	this.displayPosition(cell, position);
+	Cube3D.render(cell, position);
 
 	cell = row.insertCell(-1);
 	cell.textContent = '';
@@ -87,7 +87,7 @@ BallLocater.prototype.renderInstruction = function(movement, rowPst, position) {
 	cell.textContent = this.textIntruction(movement);
 
 	cell = row.insertCell(-1);
-	this.displayPosition(cell, position);
+	Cube3D.render(cell, position);
 
 	cell = row.insertCell(-1);
 	cell.className = 'BallLocater-result';
@@ -128,7 +128,7 @@ BallLocater.prototype.renderWayBack = function(path) {
 		cell.textContent = this.textIntruction(instruction.mvt, position);
 
 		cell = row.insertCell(-1);
-		this.displayPosition(cell, instruction.position);
+		Cube3D.render(cell, instruction.position);
 
 		cell = row.insertCell(-1);
 		cell.textContent = this.textResult(instruction.result);
@@ -206,16 +206,16 @@ BallLocater.prototype.findWay = function(cell, container, cellEnd, position) {
 
 /* Helper */
 
-BallLocater.prototype.displayPosition = function(elCell, position) {
-	position = position || this.position;
+// BallLocater.prototype.displayPosition = function(elCell, position) {
+// 	position = position || this.position;
 
-	var str = 'POSITION_';
-	str += position.b ? 'TOP_' : 'BOTTOM_';
-	str += position.d ? 'UP_' : 'DOWN_';
-	str += position.r ? 'LEFT' : 'RIGHT';
+// 	var str = 'POSITION_';
+// 	str += position.b ? 'TOP_' : 'BOTTOM_';
+// 	str += position.d ? 'UP_' : 'DOWN_';
+// 	str += position.r ? 'LEFT' : 'RIGHT';
 
-	elCell.textContent = str;
-};
+// 	elCell.textContent = str;
+// };
 
 /* Text and messages */
 
@@ -259,7 +259,7 @@ BallLocater.prototype.textIntruction = function(mvt, position) {
 
 BallLocater.prototype.textResult = function(code) {
 	switch (code) {
-		case -1: return $$('I am not sure what happen...');
+		case -1: return $$('I am not sure what happened...');
 		case 0: return $$('The ball has not moved.');
 		case 1: return $$('The ball has moved.');
 		case 2: return $$('The ball has moved and fallen.');
