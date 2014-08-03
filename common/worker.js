@@ -4,7 +4,7 @@ importScripts(
 	'../models/cube.js',
 	'path.js',
 	'heuristic.js',
-	'../libs/translate-i18n.js'
+	'../libs/i18n/translate-i18n.js'
 );
 
 if (typeof console === 'undefined') {

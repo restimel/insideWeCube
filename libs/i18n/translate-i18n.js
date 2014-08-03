@@ -151,7 +151,7 @@ var $$ = (function() {
 			}
 		};
 		
-		xhr.open("GET", "../libs/translations.json", true, user, password);
+		xhr.open("GET", "/libs/i18n/translations.json", true, user, password);
 		xhr.send();
 	}
 
