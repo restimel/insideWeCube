@@ -13,35 +13,64 @@ function main(argv) {
   		'\nOption\n' +
   		'--help: (or -h) give commands');
   } else {
-  	console.log('DBG, start');
   	var path = argv[2],
   		filter = argv[3];
 
   	eventEmitter.on('analyzed', function(){
-  		console.log('analyzer analyzed %s %d', typeof analyzer.i18n, analyzer.i18n.length);
   		var list = analyzer.i18n;
 
-  		/* TODO merge strings into json object */
-
-  		/* debug */
-  		list.forEach(function(str) {console.log('→ %s', str);})
+  		readTranslatedFile(list);
+  		console.log('%d strings must be translated', list.length);
   	});
-  	console.log('FileAnalyzer out');
   	var analyzer = new FileAnalyzer(path, filter);
   }
 }
 
-function readTranslatedFile() {
-	fs.readFile('./translations.json', 'utf8', function (err, data) {
-	  if (err) {
-	    console.log('Error: ' + err);
-	    return;
-	  }
+function readTranslatedFile(codes) {
+	var translationFile = __dirname + '/translations.json';
 
-	  data = JSON.parse(data);
+	fs.readFile(translationFile, 'utf8', function (err, data) {
+		var count = 0,
+			languages = ['en', 'fr'];
 
-	 /* TODO load json object and merge strings */
-	  console.dir(data);
+		if (err) {
+			console.error('Error: could not open the file %s. %s', translationFile, err);
+			return;
+		}
+
+		data = JSON.parse(data);
+
+		codes.forEach(function(code) {
+			var tag = data[code];
+			if (!tag) {
+				tag = {};
+				count++;
+			}
+
+			languages.forEach(function(lang) {
+				if (!tag[lang]) {
+					tag[lang] = '';
+				}
+			});
+			data[code] = tag;
+		});
+
+		console.log('%d new entries', count);
+		var stream = JSON.stringify(data, null, '\t');
+
+		/* write */
+		setTimeout(writeFile, 5, translationFile, stream);
+
+	});
+}
+
+function writeFile(file, stream) {
+	fs.writeFile(file, stream, function (err) {
+		if (err) {
+			console.error('Error: could not write the file %s. %s', file, err);
+		} else {
+			console.log('Parsing done. %s has been updated.', file);
+		}
 	});
 }
 
@@ -52,7 +81,7 @@ function FileAnalyzer(path, filter) {
 	this.convertFilter(filter || '');
 	path = (path || '').replace(/\/$/,'') || '.';
 
-	console.log('FileAnalyzer %s', path);
+	console.log('- parse file: %s', path);
 	this.readDirectory(path);
 }
 

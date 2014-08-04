@@ -111,7 +111,7 @@ CubeBuilder.prototype.renderInfo = function(info) {
 
 	if (info.finish) {
 		finish.className = 'finish-yes';
-		finish.textContent = $$('Cube could be solved.');
+		finish.textContent = $$('Cube can be solved.');
 
 		pathLength.className = 'info';
 		pathLength.textContent = $$('%i cells must be crossed (%2%%).', length, 100 * length/available);

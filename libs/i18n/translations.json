@@ -30,5 +30,301 @@
 	"import": {
 		"en": "import",
 		"fr": "importer"
+	},
+	"save level": {
+		"en": "save level",
+		"fr": "Sauver le niveau"
+	},
+	"S": {
+		"en": "S",
+		"fr": "D"
+	},
+	"Start": {
+		"en": "Start",
+		"fr": "Début"
+	},
+	"F": {
+		"en": "F",
+		"fr": "F"
+	},
+	"Finish": {
+		"en": "Finish",
+		"fr": "Fin"
+	},
+	"Level %s is not found.": {
+		"en": "Level %s is not found.",
+		"fr": "Le niveau %s n'a pas été trouvé"
+	},
+	"An INSIDE³ solver: ": {
+		"en": "An INSIDE³ solver: ",
+		"fr": "Un résolveur d'INSIDE³"
+	},
+	"Author: %s": {
+		"en": "Author: %s",
+		"fr": "Auteur: %s"
+	},
+	"Version: %s": {
+		"en": "Version: %s",
+		"fr": "Version: %s"
+	},
+	"Date: %s": {
+		"en": "Date: %s",
+		"fr": "Date: %s"
+	},
+	"Restart analyze": {
+		"en": "Restart analyze",
+		"fr": "Redémarrer l'analyse"
+	},
+	"Select your cube": {
+		"en": "Select your cube",
+		"fr": "Choisissez votre cube"
+	},
+	"Select the cube where you are lost.": {
+		"en": "Select the cube where you are lost.",
+		"fr": "Sélectionner le cube où vous êtes perdu."
+	},
+	"Locate the ball": {
+		"en": "Locate the ball",
+		"fr": "Trouvons la bille"
+	},
+	"We will try to identify where the ball is.": {
+		"en": "We will try to identify where the ball is.",
+		"fr": "Nous allons essayer de trouver où se trouve la bille."
+	},
+	"If you know where the ball is, please click on the corresponding cell.": {
+		"en": "If you know where the ball is, please click on the corresponding cell.",
+		"fr": "Si vous savez où se trouve la bille, cliquez sur la case correpondante."
+	},
+	"If you don't know where the ball is, please follow the instructions.": {
+		"en": "If you don't know where the ball is, please follow the instructions.",
+		"fr": "Si vous ne savez pas où se trouvve la bille, suivez les instructions."
+	},
+	"I have lost my ball! I don't know what happened!": {
+		"en": "I have lost my ball! I don't know what happened!",
+		"fr": "J'ai perdu ma bille! Je ne sais pas ce qu'il s'est passé!"
+	},
+	"Find your way back": {
+		"en": "Find your way back",
+		"fr": "Retrouvons le chemin du retour"
+	},
+	"Where do you want to go?": {
+		"en": "Where do you want to go?",
+		"fr": "Où voulez-vous allez?"
+	},
+	"To the start.": {
+		"en": "To the start.",
+		"fr": "Vers le départ."
+	},
+	"To the end.": {
+		"en": "To the end.",
+		"fr": "Vers l'arrivée."
+	},
+	"Are you sure to be spoiled?\nDon't you want to try to solve it by yourself?": {
+		"en": "Are you sure to be spoiled?\nDon't you want to try to solve it by yourself?",
+		"fr": "Êtes-vous sûr d'être aidé?\nNe voulez-vous pas essayer par vous-même?"
+	},
+	"Reset cube": {
+		"en": "Reset cube",
+		"fr": "Recommencer"
+	},
+	"Cube can be solved.": {
+		"en": "Cube can be solved.",
+		"fr": "Le cube peut être résolu."
+	},
+	"%i cells must be crossed (%2%%).": {
+		"en": "%i cells must be crossed (%2%%).",
+		"fr": "%i cases doivent être traversées (%2%%)."
+	},
+	"%i dead-ends (%2%%)": {
+		"en": "%i dead-ends (%2%%)",
+		"fr": "%i impasses (%2%%)"
+	},
+	"%i turns inside levels (%2%%)": {
+		"en": "%i turns inside levels (%2%%)",
+		"fr": "%i virages à l'intérieur des niveaux (%2%%)"
+	},
+	"%i movements through levels (%2%%)": {
+		"en": "%i movements through levels (%2%%)",
+		"fr": "%i déplacements à travers les niveaux (%2%%)"
+	},
+	"%i cube rotations are needed (at least)": {
+		"en": "%i cube rotations are needed (at least)",
+		"fr": "%i rotations de cube sont nécessaire (au moins)"
+	},
+	"%i cube reversed upside down are needed (at least)": {
+		"en": "%i cube reversed upside down are needed (at least)",
+		"fr": "%i renversement de cube sont nécessaire (au moins)"
+	},
+	"%i hardcore passage": {
+		"en": "%i hardcore passage",
+		"fr": "%i passages difficile"
+	},
+	"Cube difficulty: ": {
+		"en": "Cube difficulty: ",
+		"fr": "Difficulté du cube: "
+	},
+	"Cube is not solvable.": {
+		"en": "Cube is not solvable.",
+		"fr": "Le cube n'est pas résolvable."
+	},
+	"%i dead-ends": {
+		"en": "%i dead-ends",
+		"fr": "%i impasses"
+	},
+	"%i cells are accessible (%2%%).": {
+		"en": "%i cells are accessible (%2%%).",
+		"fr": "%i cases sont accessible (%2%%)."
+	},
+	"Please enter a name for the cube.": {
+		"en": "Please enter a name for the cube.",
+		"fr": "Veuillez entrer un nom pourle cube."
+	},
+	"cube \"%s\" saved.": {
+		"en": "cube \"%s\" saved.",
+		"fr": "cube \"%s\" enregistré."
+	},
+	"Instructions": {
+		"en": "Instructions",
+		"fr": "Instructions"
+	},
+	"Position attended": {
+		"en": "Position attended",
+		"fr": "Position attendue"
+	},
+	"Results": {
+		"en": "Results",
+		"fr": "Résultats"
+	},
+	"Put your cube with the INSIDE³ face at top. INSIDE³ must face you and is readable.": {
+		"en": "Put your cube with the INSIDE³ face at top. INSIDE³ must face you and is readable.",
+		"fr": "Placez le cube avec la face INSIDE³ au-dessus. INSIDE³ doit vous faire face et être lisible."
+	},
+	"What did you observe?": {
+		"en": "What did you observe?",
+		"fr": "Qu'avez-vous remarqué?"
+	},
+	"Expected results": {
+		"en": "Expected results",
+		"fr": "Résultats attendus"
+	},
+	"No cell in this cube fit your observation. Are you sure about your answer?": {
+		"en": "No cell in this cube fit your observation. Are you sure about your answer?",
+		"fr": "Aucune case de ce cube ne correspond à vos observations. Êtes-vous sûr de vos réponses?"
+	},
+	"Many cells fit your observation. It is not possible to differenciate them :( %s": {
+		"en": "Many cells fit your observation. It is not possible to differenciate them :( %s",
+		"fr": "Plusieurs cases correspondent à vos observations. Il n'est pas possible de les différencier :( %s"
+	},
+	"The ball location has been found!": {
+		"en": "The ball location has been found!",
+		"fr": "La bille a été repérée!"
+	},
+	"Rotate your cube slightly to the right.": {
+		"en": "Rotate your cube slightly to the right.",
+		"fr": "Pencher le cube à droite."
+	},
+	"Rotate your cube slightly to the left.": {
+		"en": "Rotate your cube slightly to the left.",
+		"fr": "Pencher le cube à gauche."
+	},
+	"Rotate your cube slightly backward.": {
+		"en": "Rotate your cube slightly backward.",
+		"fr": "Pencher le cube vers vous."
+	},
+	"Rotate your cube slightly forward.": {
+		"en": "Rotate your cube slightly forward.",
+		"fr": "Pencher le cube vers l'avant."
+	},
+	"Rotate your cube to have the face INSIDE³ at the bottom.": {
+		"en": "Rotate your cube to have the INSIDE³ face at the bottom.",
+		"fr": "Retourner le cube pour avoir la face INSIDE³ en bas."
+	},
+	"Rotate your cube backward to have the face INSIDE³ at the bottom.": {
+		"en": "Rotate your cube backward to have the INSIDE³ face at the bottom.",
+		"fr": "Retourner le cube en l'amenant vers vous pour avoir la face INSIDE³ en bas."
+	},
+	"Rotate your cube forward to have the face INSIDE³ at the bottom.": {
+		"en": "Rotate your cube forward to have the INSIDE³ face at the bottom.",
+		"fr": "Retourner le cube par l'avant pour avoir la face INSIDE³ en bas."
+	},
+	"I am sorry, I can't help you here :(": {
+		"en": "I am sorry, I can't help you here :(",
+		"fr": "Désolé, je ne peux pas vous aider là :("
+	},
+	"Rotate your cube forward to have the face INSIDE³ at the top.": {
+		"en": "Rotate your cube forward to have the INSIDE³ face at the top.",
+		"fr": "Retourner le cube par l'avant pour avoir la face INSIDE³ en haut."
+	},
+	"Rotate your cube backward to have the face INSIDE³ at the top.": {
+		"en": "Rotate your cube backward to have the INSIDE³ face at the top.",
+		"fr": "Retourner le cube vers vous pour avoir la face INSIDE³ en haut."
+	},
+	"Rotate your cube to have the face INSIDE³ at the top.": {
+		"en": "Rotate your cube to have the face INSIDE³ at the top.",
+		"fr": "Retourner le cube pour avoir la face INSIDE³ en haut."
+	},
+	"I am not sure what happened...": {
+		"en": "I am not sure what happened...",
+		"fr": "Je ne suis pas sûr de ce qu'il s'est passé..."
+	},
+	"The ball has not moved.": {
+		"en": "The ball has not moved.",
+		"fr": "La bille n'a pas bougé."
+	},
+	"The ball has moved.": {
+		"en": "The ball has moved.",
+		"fr": "La bille a bougé."
+	},
+	"The ball has moved and fallen.": {
+		"en": "The ball has moved and fallen.",
+		"fr": "La bille a bougé et est tombée."
+	},
+	"Something should happen but I don't know what :(": {
+		"en": "Something should happen but I don't know what :(",
+		"fr": "Quelque chose doit se passer mais je ne sais pas quoi :("
+	},
+	"import cubes": {
+		"en": "import cubes",
+		"fr": "Importer des cubes"
+	},
+	"export cubes": {
+		"en": "export cubes",
+		"fr": "exporter les cubes"
+	},
+	"%d cubes loaded": {
+		"en": "%d cubes loaded",
+		"fr": "%d cubes chargés"
+	},
+	"black": {
+		"en": "black",
+		"fr": "noir"
+	},
+	"blue": {
+		"en": "blue",
+		"fr": "bleu"
+	},
+	"brown": {
+		"en": "brown",
+		"fr": "marron"
+	},
+	"crystal": {
+		"en": "crystal",
+		"fr": "cristal"
+	},
+	"green": {
+		"en": "green",
+		"fr": "vert"
+	},
+	"orange": {
+		"en": "orange",
+		"fr": "orange"
+	},
+	"red": {
+		"en": "red",
+		"fr": "rouge"
+	},
+	"Your data are not a valid import.\nIt is not possible to load any cube from it.": {
+		"en": "Your data are not a valid import.\nIt is not possible to load any cube from it.",
+		"fr": "Vos données ne sont pas valides.\nIl n'est pas possible de charger des cubes."
 	}
 }

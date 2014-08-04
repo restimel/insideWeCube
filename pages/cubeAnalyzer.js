@@ -122,7 +122,7 @@ CubeAnalyzer.prototype.renderStep3 = function() {
 	var step = document.createElement('fieldset'),
 		title = document.createElement('legend');
 	step.className = 'analyze-step3';
-	title.textContent = $$('Find you way back');
+	title.textContent = $$('Find your way back');
 	step.appendChild(title);
 
 	var label = document.createElement('span');
