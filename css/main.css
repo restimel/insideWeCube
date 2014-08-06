@@ -210,3 +210,16 @@ body {
 .BallLocater-result label {
 	display: block;
 }
+
+/* Languages */
+.set-languages {
+	position: absolute;
+	top: 1em;
+	right: 1em;
+
+	cursor: pointer;
+}
+
+.set-languages .item:hover {
+	background-color: #CC0;
+}

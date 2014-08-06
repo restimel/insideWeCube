@@ -112,8 +112,16 @@ var $$ = (function() {
 		if (l === -1) {
 			console.warn('language unknown', lg);
 		} else {
-			lng = l;
+			lng = languages[l];
 		}
+	};
+
+	matching.getLng = function() {
+		return languages;
+	};
+
+	matching.getCurrentLng = function() {
+		return lng;
 	};
 	
 	function pad(nb, digit) {

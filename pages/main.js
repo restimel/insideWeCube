@@ -1,6 +1,7 @@
 function main(container){
 	main.control = new Control();
 	main.router = new Router();
+	main.language = new Languages(main.refresh);
 
 	main.container = container;
 
@@ -58,6 +59,12 @@ main.createBody = function(container) {
 	container.appendChild(contents);
 
 	main.router.setContainer(contents);
+
+	main.language.render(container);
+};
+
+main.refresh = function() {
+	console.log('TODO re render all parts');
 };
 
 main.removeClass = function (className, element) {
