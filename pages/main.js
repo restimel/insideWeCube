@@ -64,7 +64,8 @@ main.createBody = function(container) {
 };
 
 main.refresh = function() {
-	console.log('TODO re render all parts');
+	main.container.innerHTML = '';
+	main.createBody(main.container);
 };
 
 main.removeClass = function (className, element) {
