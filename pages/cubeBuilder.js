@@ -82,15 +82,15 @@ CubeBuilder.prototype.renderInfo = function(info) {
 		nbMovement = info.nbMovement,
 		nbMvtOutPath = info.nbMvtOutPath,
 		nbDifficultCrossing = info.nbDifficultCrossing,
-		difficulty = length * 1 +
-					 (available - length) * 0.9 +
-					 chgDirection * 0.4 +
-					 chgLevel * 0.3 +
-					 chgTop * 1.2 +
-					 nbMovement * 1 +
-					 nbMvtOutPath * 1 +
-					 nbDifficultCrossing * 2,
-		maxDifficulty = 6*6*7 * 1.1 * 1.4 + 100, //TODO add chgTop, nbMouvement, nbMvOutPath, nbDiff
+		difficulty = length * 1.1 / 24 + // 11
+					 (available - length) * 1.5 / 24 + // 15
+					 //chgDirection * 0.3 + // 0
+					 chgLevel * 1.5 / 7 + // ~15 (current max ~7)
+					 chgTop * 1.8 + // ~35 (current max 17)
+					 nbMovement / 20 + // ~5 (current max ~3.5)
+					 nbMvtOutPath / 10 +
+					 nbDifficultCrossing * 3, // ~20 (current max 21)
+		maxDifficulty = 90,
 		lowDifficulty = maxDifficulty / 3,
 		highDifficulty = maxDifficulty * 2 / 3;
 
