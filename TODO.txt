@@ -1,17 +1,12 @@
 
 General
 * main page
-* translate words
-	* Make a tool script to parse sentences
-* Add change language button
+~ translate words
+	~ Make a tool script to parse sentences
 * select which cube to export
 * Message could disappears after an defined amount of time
 
 Build Cube
-X Analyze feasiblity of cube during constrution
-	X display information (cube feasability, difficulty)
-		X calculate number of move
-			→ do something (not log ?) when unexpected movement happens when rotated localy
 * display small format map (and with reverse side)
 → (bonus): give small map with different orientation
 
@@ -19,9 +14,6 @@ Cube Solver
 * Add interaction to find place
 	* Render
 		* allow to change cube position at start
-		X display correct position
-			*→ display image
-		X Nice to have: an answer 'I am not sure what happens'
 	* BallLocater
 		* Reset (ball lost → restart)
 	→ (bonus) identify in which cube we are
@@ -29,12 +21,10 @@ Cube Solver
 	* make a form to give cube position
 
 Skinning
-* Helper for direction
-* cube solver
-* pictures: http://game-icons.net/
+*rename Title section (Lost?, Manage cube)
 
-Bugs
-X Heuristic: Duplicate cells in movement blocks to find only one cell
+
+/!\ Bugs
 * Instructions are wrong to find the way back
 	* wrong movements vs position
 	* wrong place to finish ?
@@ -42,6 +32,16 @@ X Heuristic: Duplicate cells in movement blocks to find only one cell
 	-→----?	  -→-------?
 	   ↓  |		 |   ↓
 
+	Build Cube
+→ do something (not log ?) when unexpected movement happens when rotated localy
+
+	Cube solver
+→ rotate correctly position image
+
+
 Improve Better
 	Build Cube
 		→ key Shortcut (Ctrl+S)
+
+	Analyze Cube
+		→ give better help on impossible help (direct movement or position)
