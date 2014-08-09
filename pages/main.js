@@ -66,6 +66,7 @@ main.createBody = function(container) {
 main.refresh = function() {
 	main.container.innerHTML = '';
 	main.createBody(main.container);
+	main.router.navigation(main.router.lastRoute);
 };
 
 main.removeClass = function (className, element) {

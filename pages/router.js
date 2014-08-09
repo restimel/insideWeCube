@@ -4,6 +4,7 @@ function Router(contentContainer) {
 		importExport = new exportImport(),
 		cubeAnalyzer = new CubeAnalyzer(),
 		about = new About();
+
 	this.routes = [
 		{
 			name: 'Build cube',
@@ -26,6 +27,8 @@ function Router(contentContainer) {
 			object: about
 		}
 	];
+
+	this.lastRoute = null;
 
 	if (typeof contentContainer === 'object') {
 		this.setContainer(contentContainer);
@@ -64,6 +67,8 @@ Router.prototype.navigation = function(route, evt) {
 		console.error('route not found', route);
 		return false;
 	}
+
+	this.lastRoute = route;
 
 	main.message.clear();
 

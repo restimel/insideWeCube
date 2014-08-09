@@ -66,8 +66,9 @@ Languages.prototype.renderOpen = function() {
 };
 
 Languages.prototype.changeLng = function(lng) {
-	$$.changeLng(lng);
+	if ($$.getCurrentLng() !== lng) {
+		$$.changeLng(lng);
+		this.callBack();
+	}
 	this.close();
-
-	this.callBack();
 };

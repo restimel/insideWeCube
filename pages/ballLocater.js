@@ -96,7 +96,11 @@ BallLocater.prototype.renderInstruction = function(movement, rowPst, position) {
 	cell.appendChild(this.formMvt(1, iRow));
 	cell.appendChild(this.formMvt(-1, iRow));
 
-	row.scrollIntoViewIfNeeded();
+	if (row.scrollIntoViewIfNeeded) {
+		row.scrollIntoViewIfNeeded(true);
+	} else {
+		row.scrollIntoView();
+	}
 };
 
 BallLocater.prototype.renderWayBack = function(path) {
@@ -120,7 +124,11 @@ BallLocater.prototype.renderWayBack = function(path) {
 	cell = document.createElement('th');
 	cell.textContent = $$('Expected results');
 	row.appendChild(cell);
-	row.scrollIntoViewIfNeeded();
+	if (row.scrollIntoViewIfNeeded) {
+		row.scrollIntoViewIfNeeded(true);
+	} else {
+		row.scrollIntoView();
+	}
 
 	path.forEach(function(instruction) {
 		row = table.insertRow(-1);

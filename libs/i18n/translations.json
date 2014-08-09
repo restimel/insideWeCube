@@ -97,7 +97,7 @@
 	},
 	"If you don't know where the ball is, please follow the instructions.": {
 		"en": "If you don't know where the ball is, please follow the instructions.",
-		"fr": "Si vous ne savez pas où se trouvve la bille, suivez les instructions."
+		"fr": "Si vous ne savez pas où se trouve la bille, suivez les instructions."
 	},
 	"I have lost my ball! I don't know what happened!": {
 		"en": "I have lost my ball! I don't know what happened!",
@@ -109,7 +109,7 @@
 	},
 	"Where do you want to go?": {
 		"en": "Where do you want to go?",
-		"fr": "Où voulez-vous allez?"
+		"fr": "Où voulez-vous aller ?"
 	},
 	"To the start.": {
 		"en": "To the start.",
@@ -149,15 +149,15 @@
 	},
 	"%i cube rotations are needed (at least)": {
 		"en": "%i cube rotations are needed (at least)",
-		"fr": "%i rotations de cube sont nécessaire (au moins)"
+		"fr": "%i rotations de cube sont nécessaires (au moins)"
 	},
 	"%i cube reversed upside down are needed (at least)": {
 		"en": "%i cube reversed upside down are needed (at least)",
-		"fr": "%i renversement de cube sont nécessaire (au moins)"
+		"fr": "%i renversements de cube sont nécessaires (au moins)"
 	},
 	"%i hardcore passage": {
 		"en": "%i hardcore passage",
-		"fr": "%i passages difficile"
+		"fr": "%i passages difficiles"
 	},
 	"Cube difficulty: ": {
 		"en": "Cube difficulty: ",
@@ -165,7 +165,7 @@
 	},
 	"Cube is not solvable.": {
 		"en": "Cube is not solvable.",
-		"fr": "Le cube n'est pas résolvable."
+		"fr": "Le cube ne peut être résolu."
 	},
 	"%i dead-ends": {
 		"en": "%i dead-ends",
@@ -173,7 +173,7 @@
 	},
 	"%i cells are accessible (%2%%).": {
 		"en": "%i cells are accessible (%2%%).",
-		"fr": "%i cases sont accessible (%2%%)."
+		"fr": "%i cases sont accessibles (%2%%)."
 	},
 	"Please enter a name for the cube.": {
 		"en": "Please enter a name for the cube.",
@@ -197,7 +197,7 @@
 	},
 	"Put your cube with the INSIDE³ face at top. INSIDE³ must face you and is readable.": {
 		"en": "Put your cube with the INSIDE³ face at top. INSIDE³ must face you and is readable.",
-		"fr": "Placez le cube avec la face INSIDE³ au-dessus. INSIDE³ doit vous faire face et être lisible."
+		"fr": "Placer le cube avec la face INSIDE³ au-dessus. INSIDE³ doit vous faire face et être lisible."
 	},
 	"What did you observe?": {
 		"en": "What did you observe?",
