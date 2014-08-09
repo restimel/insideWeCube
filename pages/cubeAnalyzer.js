@@ -93,6 +93,8 @@ CubeAnalyzer.prototype.renderStep2 = function() {
 	label.textContent = $$('If you know where the ball is, please click on the corresponding cell.');
 	cubeSection.appendChild(label);
 
+	this.ballLocater.renderCube(cubeSection);
+
 	step.appendChild(cubeSection);
 
 	/* Euristic section */

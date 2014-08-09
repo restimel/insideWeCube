@@ -1,5 +1,6 @@
 
 V1.0
+	* write documentation (Readme.md)
 	* main page
 	~ translate words
 		~ Make a tool script to parse sentences
@@ -45,6 +46,7 @@ V1.1
 	Build Cube
 		* key Shortcut (Ctrl+S)
 		→ give small map with different orientation
+		* change Cube color
 
 	Analyze Cube
 		→ give better help on impossible help (direct movement or position)

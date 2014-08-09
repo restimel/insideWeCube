@@ -241,6 +241,50 @@ Cube.prototype.couldMove = function(cellPos, cubePosition) {
 	return false;
 };
 
+Cube.prototype.renderMap = function(orientation, available) {
+	var cube = [],
+		x, y, z,
+		level, row, cell,
+		cl, clName;
+
+	for(z = 0; z < 7; z++) {
+		level = ['<table'];
+		level.push(' class="mini-map color-' + this.color+'">');
+
+		for(x = 0; x < 6; x++) {
+			row = ['<tr>'];
+
+			for(y = 0; y < 6; y++) {
+				clName = [''];
+				cell = '<td';
+
+				if (true) {
+					cl = this.get(x, y, z);
+					if (cl.b) {
+						clName.push('hole');
+					}
+					if (!cl.d) {
+						clName.push('wall-down');
+					}
+					if (!cl.r) {
+						clName.push('wall-right');
+					}
+					cell += ' id="map-'+x+'-'+y+'-'+z+'"';
+				}
+				cell += ' class="' + clName.join(' ') + '"';
+				cell += '></td>';
+				row.push(cell);
+			}
+			row.push('</tr>');
+			level.push(row.join(''));
+		}
+		level.push('</table>');
+		cube.push(level.join(''));
+	}
+
+	return cube;
+}
+
 /* Static method */
 
 /*

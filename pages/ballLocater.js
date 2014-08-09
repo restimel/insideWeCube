@@ -75,6 +75,19 @@ BallLocater.prototype.render = function(container) {
 	container.appendChild(table);
 };
 
+BallLocater.prototype.renderCube = function(container) {
+	this.cubeSelectorContainer = document.createElement('section');
+	container.appendChild(this.cubeSelectorContainer);
+
+	// TODO add listener
+
+	main.control.action('heuristic', {action: 'renderCube', data: this.cubeName}, this.token);
+};
+
+BallLocater.prototype.renderCubeSelector = function(cubeHtml) {
+	this.cubeSelectorContainer.innerHTML = cubeHtml.join('<br>');
+};
+
 BallLocater.prototype.renderInstruction = function(movement, rowPst, position) {
 	while (this.tbody.rows[rowPst - 1]) {
 		this.tbody.deleteRow(rowPst - 1);
@@ -188,6 +201,9 @@ BallLocater.prototype.onMessage = function(data) {
 			break;
 		case 'wayBack':
 			this.renderWayBack(args.path);
+			break;
+		case 'renderCube':
+			this.renderCubeSelector(args.cube);
 			break;
 		default:
 			console.warn('message unknown', data);

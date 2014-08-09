@@ -180,6 +180,28 @@ body {
 	color: rgb(190, 25, 25);
 }
 
+/* Mini map */
+.mini-map {
+	border-collapse: collapse;
+	border: 2px solid black;
+	background-color: mediumblue;
+}
+.mini-map td{
+	width: 10px;
+	height: 10px;
+	border-bottom: 2px solid transparent;
+	border-right: 2px solid transparent;
+}
+.mini-map .hole {
+	background-color: darkblue;
+}
+.mini-map .wall-down {
+	border-bottom: 2px solid black;
+}
+.mini-map .wall-right {
+	border-right: 2px solid black;
+}
+
 /* Analyzer */
 .analyze-step2>.label {
 	width: 100%;

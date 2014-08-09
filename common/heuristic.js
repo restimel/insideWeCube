@@ -275,6 +275,26 @@ Heuristic.prototype.answer = function(rsp) {
 	this.manageAnswer(code, iRow);
 };
 
+Heuristic.prototype.renderCube = function(cubeName, orientation, count) {
+	count = count || 0;
+
+	if (count > 3) {
+		console.error('cube name doesn\'t match (%s → %s)', cubeName, this.cube.name);
+		return;
+	}
+
+	if (this.cube.name !== cubeName) {
+		console.log('nom incorrect %s → %s', cubeName, orientation, this.cube.name);
+		setTimeout(this.renderCube.bind(this, cubeName, orientation, count+1), 30);
+		return;
+	}
+
+	self.postMessage({data: {action: 'renderCube', data: {
+		cube: this.cube.renderMap(orientation, this.accessible),
+		orientation: orientation
+	}}, token: this.token});
+};
+
 Heuristic.prototype.wayBack = function(rsp) {
 	var cell = rsp.cell,
 		target = rsp.target ? {x:4, y:4, z:6} : {x:1, y:1, z:0},
