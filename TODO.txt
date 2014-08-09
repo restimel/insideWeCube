@@ -1,47 +1,51 @@
 
-General
-* main page
-~ translate words
-	~ Make a tool script to parse sentences
-* select which cube to export
-* Message could disappears after an defined amount of time
+V1.0
+	* main page
+	~ translate words
+		~ Make a tool script to parse sentences
 
-Build Cube
-* display small format map (and with reverse side)
-→ (bonus): give small map with different orientation
+	Build Cube
+	* display small format map (and with reverse side)
+	→ reset button (to remove or to implement)
 
-Cube Solver
-* Add interaction to find place
-	* Render
-		* allow to change cube position at start
-	* BallLocater
-		* Reset (ball lost → restart)
-	→ (bonus) identify in which cube we are
-* Add interaction with cube to find place
-	* make a form to give cube position
+	Cube Solver
+	* Add interaction to find place
+		* Render
+			* allow to change cube position at start
+		* BallLocater
+			* Reset (ball lost → restart)
 
-Skinning
-*rename Title section (Lost?, Manage cube)
+	* Add interaction with cube to find place
+		* make a form to give cube position
+
+	Skinning
+	*rename Title section (Lost?, Manage cube)
 
 
 /!\ Bugs
-* Instructions are wrong to find the way back
-	* wrong movements vs position
-	* wrong place to finish ?
-→ Do not found correct rotations  for some passage (Awful)
-	-→----?	  -→-------?
-	   ↓  |		 |   ↓
+	* Instructions are wrong to find the way back
+		* wrong movements vs position
+		* wrong place to finish ?
+	→ Do not found correct rotations  for some passage (Awful)
+		-→----?	  -→-------?
+		   ↓  |		 |   ↓
+
+		Build Cube
+	→ do something (not log ?) when unexpected movement happens when rotated localy
+
+		Cube solver
+	→ rotate correctly position image
+
+
+V1.1
+	General
+		* Message could disappears after an defined amount of time
+		* select which cube to export
 
 	Build Cube
-→ do something (not log ?) when unexpected movement happens when rotated localy
-
-	Cube solver
-→ rotate correctly position image
-
-
-Improve Better
-	Build Cube
-		→ key Shortcut (Ctrl+S)
+		* key Shortcut (Ctrl+S)
+		→ give small map with different orientation
 
 	Analyze Cube
 		→ give better help on impossible help (direct movement or position)
+		→ (bonus) identify in which cube we are if no positions match
