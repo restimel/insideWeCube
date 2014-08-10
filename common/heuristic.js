@@ -275,8 +275,10 @@ Heuristic.prototype.answer = function(rsp) {
 	this.manageAnswer(code, iRow);
 };
 
-Heuristic.prototype.renderCube = function(cubeName, orientation, count) {
+Heuristic.prototype.renderCube = function(rsp, count) {
 	count = count || 0;
+	var cubeName = rsp.cubeName,
+		orientation = rsp.orientation;
 
 	if (count > 3) {
 		console.error('cube name doesn\'t match (%s → %s)', cubeName, this.cube.name);
@@ -285,7 +287,7 @@ Heuristic.prototype.renderCube = function(cubeName, orientation, count) {
 
 	if (this.cube.name !== cubeName) {
 		console.log('nom incorrect %s → %s', cubeName, orientation, this.cube.name);
-		setTimeout(this.renderCube.bind(this, cubeName, orientation, count+1), 30);
+		setTimeout(this.renderCube.bind(this, rsp, count+1), 30);
 		return;
 	}
 

@@ -36,6 +36,7 @@ V1.0
 
 		Cube solver
 	→ rotate correctly position image
+	→ change cube does not display the correct map
 
 
 V1.1

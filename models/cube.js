@@ -245,7 +245,66 @@ Cube.prototype.renderMap = function(orientation, available) {
 	var cube = [],
 		x, y, z,
 		level, row, cell,
-		cl, clName;
+		cl, clName,
+		computeClass = {
+			'top': function(x, y, z) {
+				var cl;
+
+				if (isAvailable(x, y, z)) {
+					cl = this.get(x, y, z);
+					if (cl.b) {
+						clName.push('hole');
+					}
+					if (cl.d) {
+						clName.push('passage-down');
+					}
+					if (cl.r) {
+						clName.push('passage-right');
+					}
+					if (this.get(x-1, y, z).d) {
+						clName.push('passage-up');
+					}
+					if (this.get(x, y-1, z).r) {
+						clName.push('passage-left');
+					}
+					cell += ' id="map-'+x+'-'+y+'-'+z+'"';
+				} else {
+					clName.push('unavailable');
+				}
+			},
+			'bottom': function(x, y, z) {
+				var cl;
+				z = 6 - z;
+				x = 5 - x;
+
+				if (isAvailable(x, y, z)) {
+					cl = this.get(x, y, z);
+					if (this.get(x, y, z - 1).b) {
+						clName.push('hole');
+					}
+					if (cl.d) {
+						clName.push('passage-up');
+					}
+					if (cl.r) {
+						clName.push('passage-right');
+					}
+					if (this.get(x-1, y, z).d) {
+						clName.push('passage-down');
+					}
+					if (this.get(x, y-1, z).r) {
+						clName.push('passage-left');
+					}
+					cell += ' id="map-'+x+'-'+y+'-'+z+'"';
+				} else {
+					clName.push('unavailable');
+				}
+			}
+		}[orientation];
+
+	if (typeof computeClass !== 'function') {
+		return [];
+	}
+	computeClass = computeClass.bind(this);
 
 	for(z = 0; z < 7; z++) {
 		level = ['<table'];
@@ -258,19 +317,7 @@ Cube.prototype.renderMap = function(orientation, available) {
 				clName = [''];
 				cell = '<td';
 
-				if (true) {
-					cl = this.get(x, y, z);
-					if (cl.b) {
-						clName.push('hole');
-					}
-					if (!cl.d) {
-						clName.push('wall-down');
-					}
-					if (!cl.r) {
-						clName.push('wall-right');
-					}
-					cell += ' id="map-'+x+'-'+y+'-'+z+'"';
-				}
+				computeClass(x, y, z);
 				cell += ' class="' + clName.join(' ') + '"';
 				cell += '></td>';
 				row.push(cell);
@@ -283,6 +330,12 @@ Cube.prototype.renderMap = function(orientation, available) {
 	}
 
 	return cube;
+
+	function isAvailable(x, y, z) {
+		return available.some(function(cell) {
+			return cell.x === x && cell.y === y && cell.z === z;
+		});
+	}
 }
 
 /* Static method */

@@ -81,7 +81,10 @@ BallLocater.prototype.renderCube = function(container) {
 
 	// TODO add listener
 
-	main.control.action('heuristic', {action: 'renderCube', data: this.cubeName}, this.token);
+	main.control.action('heuristic', {action: 'renderCube', data: {
+		cubeName: this.cubeName,
+		orientation: 'bottom'
+	}}, this.token);
 };
 
 BallLocater.prototype.renderCubeSelector = function(cubeHtml) {

@@ -189,17 +189,25 @@ body {
 .mini-map td{
 	width: 10px;
 	height: 10px;
-	border-bottom: 2px solid transparent;
-	border-right: 2px solid transparent;
+	border: 2px solid darkblue;
 }
-.mini-map .hole {
+.mini-map .unavailable {
 	background-color: darkblue;
 }
-.mini-map .wall-down {
-	border-bottom: 2px solid black;
+.mini-map .hole {
+	box-shadow: inset 0 0 3px 2px mediumblue, inset 0 0 0 10px darkblue;
 }
-.mini-map .wall-right {
-	border-right: 2px solid black;
+.mini-map .passage-down {
+	border-bottom: 2px solid transparent;
+}
+.mini-map .passage-right {
+	border-right: 2px solid transparent;
+}
+.mini-map .passage-up {
+	border-top: 2px solid transparent;
+}
+.mini-map .passage-left {
+	border-left: 2px solid transparent;
 }
 
 /* Analyzer */
