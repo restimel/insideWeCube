@@ -76,19 +76,43 @@ BallLocater.prototype.render = function(container) {
 };
 
 BallLocater.prototype.renderCube = function(container) {
+	this.mapOrientation = this.mapOrientation || 'top';
+
+	var that = this,
+		label = document.createElement('label'),
+		select = document.createElement('select');
+
+	label.textContent = $$('Map orientation');
+	select.onchange = function() {
+		that.getCubeMap(this.value);
+	};
+
+	[{id:'top', text:$$('INSIDE³ face at top')},
+	 {id:'bottom', text:$$('INSIDE³ face at bottom')}
+	].forEach(function(item) {
+		var option = document.createElement('option');
+		option.value = item.id;
+		option.textContent = item.text;
+		if (item.id === this.mapOrientation) {
+			option.selected = true;
+		}
+		select.add(option);
+	}, this);
+	label.appendChild(select);
+	container.appendChild(label);
+
 	this.cubeSelectorContainer = document.createElement('section');
 	container.appendChild(this.cubeSelectorContainer);
 
 	// TODO add listener
 
-	main.control.action('heuristic', {action: 'renderCube', data: {
-		cubeName: this.cubeName,
-		orientation: 'bottom'
-	}}, this.token);
+	this.getCubeMap();
 };
 
 BallLocater.prototype.renderCubeSelector = function(cubeHtml) {
-	this.cubeSelectorContainer.innerHTML = cubeHtml.join('<br>');
+	this.cubeSelectorContainer.innerHTML = cubeHtml.map(function(html, i) {
+		return '<figure><caption>'+$$('Level %d', i+1)+'</caption>'+html+'</figure>';
+	}).join('');
 };
 
 BallLocater.prototype.renderInstruction = function(movement, rowPst, position) {
@@ -177,6 +201,15 @@ BallLocater.prototype.formMvt = function(code, iRow) {
 	cnt.appendChild(text);
 
 	return cnt;
+};
+
+BallLocater.prototype.getCubeMap = function(mapOrientation) {
+	this.mapOrientation = mapOrientation || this.mapOrientation || 'top';
+
+	main.control.action('heuristic', {action: 'renderCube', data: {
+		cubeName: this.cubeName,
+		orientation: this.mapOrientation
+	}}, this.token);
 };
 
 /* Communication */
