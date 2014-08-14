@@ -11,7 +11,7 @@ About.prototype.render = function(container) {
 		title = document.createElement('h2'),
 		link = document.createElement('a'),
 		subTitle = document.createElement('span'),
-		summary = document.createElement('summary');
+		summary;
 
 	title.textContent = 'Inside We Cube';
 	header.appendChild(title);
@@ -37,6 +37,7 @@ About.prototype.render = function(container) {
 	container.appendChild(faq);
 
 	/* Program */
+	summary = document.createElement('summary');
 	summary.textContent = $$('About the program');
 	program.appendChild(summary);
 
