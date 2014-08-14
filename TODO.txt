@@ -17,10 +17,10 @@ V1.0
 			* Reset (ball lost → restart)
 
 	* Add interaction with cube to find place
-		* make a form to give cube position
+		X make a form to give cube position
 
 	Skinning
-	*rename Title section (Lost?, Manage cube)
+	X rename Title section (Lost?, Manage cube)
 
 
 /!\ Bugs

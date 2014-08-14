@@ -7,12 +7,12 @@ function Router(contentContainer) {
 
 	this.routes = [
 		{
-			name: 'Build cube',
+			name: 'Cube manager',
 			route: 'builder',
 			object: cube
 		},
 		{
-			name: 'Analyze cube',
+			name: 'Lost in cube?',
 			route: 'analyzer',
 			object: cubeAnalyzer
 		},

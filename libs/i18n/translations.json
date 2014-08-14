@@ -3,13 +3,13 @@
 		"en": "Cube name",
 		"fr": "Nom du cube"
 	},
-	"Build cube": {
-		"en": "Build levels",
-		"fr": "Construire son cube"
+	"Cube manager": {
+		"en": "Cube manager",
+		"fr": "Gérer son cube"
 	},
-	"Analyze cube": {
-		"en": "Analyze Cube",
-		"fr": "Analyser son cube"
+	"Lost in cube?": {
+		"en": "Lost in cube?",
+		"fr": "Perdu dans son cube?"
 	},
 	"Import/Export": {
 		"en": "Import/Export",
