@@ -40,5 +40,5 @@ All bugs reported are welcome. Do it with the github interface.
 Any contribution is greatly appreciated. Fork the github project, do your change and propose your contribution.
 
 
-:-------------------------:
+## Thanks
 Thanks for using InsideWeCube
