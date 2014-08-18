@@ -12,7 +12,9 @@ The application can be embeded in any HTML5 web page.
 ## How to install
 
 Clone all sources from github
+```
 	$ git clone https://github.com/restimel/insideWeCube.git
+```
 
 index.html in the root folder is the entry point.
 Folders common, models, and pages contain the script files.
@@ -23,7 +25,9 @@ All other folders are not mandatory to run InsideWeCube.
 
 If you run it locally you need to create a local web server in order to run web-worker correctly.
 To help, you can run the following comand (node should be already installed on your computer):
+```
 	$ node utils/web-server.js
+```
 
 A local webserver will run at background from your folder. Port 8000 is used by this webserver.
 Then you can access the application with url: http://localhost:8000/index.html
