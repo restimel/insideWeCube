@@ -1,6 +1,6 @@
 
 V1.0
-	* write documentation (Readme.md)
+	~ write documentation (Readme.md)
 	* main page
 	~ translate words
 		~ Make a tool script to parse sentences
@@ -28,9 +28,6 @@ V1.0
 	* Instructions are wrong to find the way back
 		* wrong movements vs position
 		* wrong place to finish ?
-	→ Do not found correct rotations  for some passage (Awful)
-		-→----?	  -→-------?
-		   ↓  |		 |   ↓
 
 		Build Cube
 	→ do something (not log ?) when unexpected movement happens when rotated localy
@@ -54,3 +51,8 @@ V1.1
 		* give position of possible cells
 		→ give better help on impossible help (direct movement or position)
 		→ (bonus) identify in which cube we are if no positions match
+
+	Bugs
+			→ Do not found correct rotations  for some passage (Awful)
+				-→----?	  -→-------?
+				   ↓  |		 |   ↓
