@@ -170,6 +170,7 @@ BallLocater.prototype.renderWayBack = function(path) {
 		row.scrollIntoView();
 	}
 
+	/* instructions */
 	path.forEach(function(instruction) {
 		row = table.insertRow(-1);
 		cell = row.insertCell(-1);
@@ -295,6 +296,10 @@ BallLocater.prototype.selectCell = function(event) {
 
 BallLocater.prototype.textIntruction = function(mvt, position) {
 	position = position || this.position;
+
+	if (mvt === '') {
+		return $$('starting position is %s', position);
+	}
 
 	if (position.b) {
 		switch (mvt) {

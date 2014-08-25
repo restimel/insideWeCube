@@ -300,10 +300,11 @@ Heuristic.prototype.wayBack = function(rsp) {
 	var cell = rsp.cell,
 		target = rsp.target ? {x:4, y:4, z:6} : {x:1, y:1, z:0},
 		startPosition = rsp.position,
-		path = this.path.getPathMvt(cell, target, startPosition, this.accessible),
+		path = this.path.getPathMvt(cell, target, startPosition, this.accessible, true),
 		position = startPosition,
 		rsltMvt = [cell];
 
+	/* give information about movement (if ball has move...) */
 	path = path.map(function(mvt) {
 		position = this.computePosition(position, mvt);
 		rsltMvt = this.cube.getMovement(rsltMvt[rsltMvt.length -1], position, -1);
@@ -317,6 +318,12 @@ Heuristic.prototype.wayBack = function(rsp) {
 			result: result
 		};
 	}, this);
+
+	path.unshift({
+		mvt: '',
+		position: startPosition,
+		result: 0
+	});
 
 	self.postMessage({data: {action: 'wayBack', data: {
 		path: path

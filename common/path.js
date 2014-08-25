@@ -582,13 +582,19 @@ Path.prototype.getPathInfo = function(data) {
 	self.postMessage({data: {action: 'getPathInfo', data: info}, token: this.token});
 };
 
-Path.prototype.getPathMvt = function(cell, cellTarget, startPosition, available) {
+Path.prototype.getPathMvt = function(cell, cellTarget, startPosition, available, resetDirection) {
 	cell = available.filter(Cube.comparePosition.bind(Cube, cell))[0];
 	cellTarget = available.filter(Cube.comparePosition.bind(Cube, cellTarget))[0];
 
 	/* compute path */
 	this.computeDist(cellTarget, 'fromEnd');
 	var path = this.buildPath(cell, [cellTarget]);
+
+	if (resetDirection) {
+		path.forEach(function(cell) {
+			delete cell.direction;
+		})
+	}
 
 	/* compute avoid & pref */
 	this.getDirections(path.reverse());
