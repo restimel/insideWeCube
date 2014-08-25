@@ -174,7 +174,7 @@ BallLocater.prototype.renderWayBack = function(path) {
 	path.forEach(function(instruction) {
 		row = table.insertRow(-1);
 		cell = row.insertCell(-1);
-		cell.textContent = this.textIntruction(instruction.mvt, position);
+		cell.innerHTML = this.textIntruction(instruction.mvt, position);
 
 		cell = row.insertCell(-1);
 		Cube3D.render(cell, instruction.position);
@@ -281,24 +281,17 @@ BallLocater.prototype.selectCell = function(event) {
 
 /* Helper */
 
-// BallLocater.prototype.displayPosition = function(elCell, position) {
-// 	position = position || this.position;
-
-// 	var str = 'POSITION_';
-// 	str += position.b ? 'TOP_' : 'BOTTOM_';
-// 	str += position.d ? 'UP_' : 'DOWN_';
-// 	str += position.r ? 'LEFT' : 'RIGHT';
-
-// 	elCell.textContent = str;
-// };
-
 /* Text and messages */
 
 BallLocater.prototype.textIntruction = function(mvt, position) {
 	position = position || this.position;
 
 	if (mvt === '') {
-		return $$('starting position is %s', position);
+		var str = [];
+		str.push(position.b ? $$('the face INSIDE³ is at top') : $$('the face INSIDE³ is at bottom'));
+		str.push(position.d === position.b ? $$('your cube is slightly rotated backward') : $$('your cube is slightly rotated forward'));
+		str.push(position.r ?  $$('your cube is slightly rotated to the right') : $$('your cube is slightly rotated to the left'));
+		return str.join('<br>');
 	}
 
 	if (position.b) {
