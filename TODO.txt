@@ -27,7 +27,7 @@ V1.0
 /!\ Bugs
 	* Instructions are wrong to find the way back
 			X display position at start
-			* change starting position according to ball location
+			X change starting position according to ball location
 		* wrong movements vs position
 		* wrong place to finish ?
 

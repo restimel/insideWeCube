@@ -30,6 +30,9 @@ Cube.prototype.get = function (x, y, z) {
 	return this.levels[z].get(x, y);
 };
 
+/**
+ * Get list of all neighbour cells accessible from specified cell
+ */
 Cube.prototype.getNeighbours = function (x, y, z) {
 	var directions = [],
 		cell = this.get(x, y, z);
@@ -113,14 +116,14 @@ Cube.prototype.parse = function(json) {
 	json.levels.forEach(function(l, i) {this.addLevel(i, new Level(l));}, this);
 };
 
-/*
-get the ball movement when the cube is in a particular position
-
-From:
- 1 → / -1 ←
- 2 ↑ / -2 ↓
- 3 ↥ / -3 ↧
-*/
+/**
+ * get the ball movement when the cube is in a particular position
+ * 
+ * From:
+ *  1 → / -1 ←
+ *  2 ↑ / -2 ↓
+ *  3 ↥ / -3 ↧
+ */
 Cube.prototype.getMovement = function(cellPos, cubePosition, from) {
 	var x = cellPos.x,
 		y = cellPos.y,

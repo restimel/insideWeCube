@@ -299,11 +299,12 @@ Heuristic.prototype.renderCube = function(rsp, count) {
 Heuristic.prototype.wayBack = function(rsp) {
 	var cell = rsp.cell,
 		target = rsp.target ? {x:4, y:4, z:6} : {x:1, y:1, z:0},
-		startPosition = rsp.position,
+		startPosition = this.computeBestPosition(cell, rsp.position),
 		path = this.path.getPathMvt(cell, target, startPosition, this.accessible, true),
 		position = startPosition,
 		rsltMvt = [cell];
 
+console.log('path to way back', path);
 	/* give information about movement (if ball has move...) */
 	path = path.map(function(mvt) {
 		position = this.computePosition(position, mvt);
@@ -331,23 +332,27 @@ Heuristic.prototype.wayBack = function(rsp) {
 };
 
 /* Helper */
-Heuristic.prototype.computePosition = function(pst, mvt) {
-	var position = {
-		r: pst.r,
-		d: pst.d,
-		b: pst.b
+
+/**
+ * Compute the new position when a movement occurs
+ */
+Heuristic.prototype.computePosition = function(position, mvt) {
+	var pst = {
+		r: position.r,
+		d: position.d,
+		b: position.b
 	};
 
 	switch (mvt) {
-		case '-r': position.r = 0; break;
-		case 'r': position.r = 1; break;
-		case '-d': position.d = 0; break;
-		case 'd': position.d = 1; break;
-		case '-b': position.b = 0; break;
-		case 'b': position.b = 1; break;
+		case '-r': pst.r = 0; break;
+		case 'r': pst.r = 1; break;
+		case '-d': pst.d = 0; break;
+		case 'd': pst.d = 1; break;
+		case '-b': pst.b = 0; break;
+		case 'b': pst.b = 1; break;
 	}
 
-	return position;
+	return pst;
 };
 
 Heuristic.prototype.computeMvt = function(direction) {
@@ -358,4 +363,50 @@ Heuristic.prototype.computeMvt = function(direction) {
 	} else {
 		return (code.value ? '' : '-') + code.key;
 	}
+};
+
+/**
+ * Compute the best position for the given cell, where the ball shouldn't move at start
+ */
+Heuristic.prototype.computeBestPosition = function(cell, position) {
+	var pst = position,
+		dCell;
+
+	if (this.cube.couldMove(cell, pst)) {
+		dCell = this.cube.get(cell.x, cell.y, cell.z);
+
+		if (pst.r && dCell.r) {
+			pst = this.computePosition(pst, '-r');
+		}
+		if (!pst.r && this.cube.get(cell.x, cell.y - 1, cell.z).r) {
+			pst = this.computePosition(pst, 'r');
+		}
+
+		if (pst.d && dCell.d) {
+			pst = this.computePosition(pst, '-d');
+		}
+		if (!pst.d && this.cube.get(cell.x - 1, cell.y, cell.z).d) {
+			pst = this.computePosition(pst, 'd');
+		}
+
+		if (pst.b && dCell.b) {
+			pst = this.computePosition(pst, '-b');
+		}
+		if (!pst.b && this.cube.get(cell.x, cell.y, cell.z - 1).b) {
+			pst = this.computePosition(pst, 'b');
+		}
+
+		/* we should be in a room */
+		if (this.cube.couldMove(cell, pst)) {
+			dCell = this.cube.getMovement(cell, position, 0);
+			dCell = dCell[dCell.length - 1];
+			cell.x = dCell.x;
+			cell.y = dCell.y;
+			cell.z = dCell.z;
+
+			pst = position;
+		}
+	}
+
+	return pst;
 };
