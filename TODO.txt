@@ -30,6 +30,8 @@ V1.0
 			X change starting position according to ball location
 		* wrong movements vs position
 		* wrong place to finish ?
+		* when startPosition is chosen it does a wrong movement to come back to start
+		* preferences out of path are wrong
 
 		Build Cube
 	→ do something (not log ?) when unexpected movement happens when rotated localy

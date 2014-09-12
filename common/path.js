@@ -163,9 +163,7 @@ Path.prototype.avoid = function(cell, nCell) {
 	var directions = this.cube.getNeighbours(cell.x, cell.y, cell.z).map(function(c) {
 			return c.from;
 		}),
-		mvt = [cell.direction, -cell.direction, cell.from, -cell.from],
-		pos = Cube.fromDirection(cell.direction),
-		posFrom = Cube.fromDirection(cell.from);
+		mvt = [cell.direction, -cell.direction, cell.from, -cell.from];
 
 	cell.avoid = directions.concat(nCell.avoid)
 		.reduce(function(list, dir) {
@@ -177,26 +175,10 @@ Path.prototype.avoid = function(cell, nCell) {
 		}, []);
 
 	/* estimate preference */
-	cell.preferences = {
-		r: nCell.preferences.r,
-		d: nCell.preferences.d,
-		b: nCell.preferences.b
-	};
-
-	cell.avoid.forEach(function(dir) {
-		var p = Cube.fromDirection(dir);
-		if (p) {
-			cell.preferences[p.key] = !p.value;
-		}
-	});
-
-	if (typeof posFrom !== 'undefined') {
-		cell.preferences[posFrom.key] = posFrom.value;
-	}
-	cell.preferences[pos.key] = pos.value;
+	this.computePref(cell, nCell);
 };
 
-Path.prototype.countMovement = function(path, info, available) {
+Path.prototype.countMovement = function(path, info, available, pst) {
 	var checkPosition = function(currentCell, ballLocation, mvt) {
 		if (!Cube.comparePosition(ballLocation, currentCell)) {
 			info.nbMvtOutPath += ballMvt.length - iBallMvt;
@@ -232,7 +214,7 @@ Path.prototype.countMovement = function(path, info, available) {
 			}
 		};
 
-	var position = {
+	var position = pst || {
 			r: false,
 			d: true,
 			b: true
@@ -284,7 +266,7 @@ Path.prototype.countMovement = function(path, info, available) {
 Path.prototype.logRotations = function(position, pref, rotations, currCell) {
 	var verif;
 
-	if ( position.r !== pref.r && Math.abs(currCell.direction) !== 1) {
+	if ( typeof pref.r !== 'undefined' && position.r != pref.r && Math.abs(currCell.direction) !== 1) {
 		position.r = pref.r;
 		rotations.push(pref.r ? 'r' : '-r');
 		verif = this.cube.getMovement(currCell, position, currCell.from);
@@ -293,7 +275,7 @@ Path.prototype.logRotations = function(position, pref, rotations, currCell) {
 		}
 	}
 
-	if ( position.d !== pref.d && Math.abs(currCell.direction) !== 2) {
+	if ( typeof pref.d !== 'undefined' && position.d != pref.d && Math.abs(currCell.direction) !== 2) {
 		position.d = pref.d;
 		rotations.push(pref.d ? 'd' : '-d');
 		verif = this.cube.getMovement(currCell, position, currCell.from);
@@ -302,7 +284,7 @@ Path.prototype.logRotations = function(position, pref, rotations, currCell) {
 		}
 	}
 
-	if ( position.b !== pref.b && Math.abs(currCell.direction) !== 3) {
+	if ( typeof pref.b !== 'undefined' && position.b != pref.b && Math.abs(currCell.direction) !== 3) {
 		position.b = pref.b;
 		rotations.push(pref.b ? 'b' : '-b');
 		verif = this.cube.getMovement(currCell, position, currCell.from);
@@ -606,7 +588,7 @@ Path.prototype.getPathMvt = function(cell, cellTarget, startPosition, available,
 		rotations: []
 	};
 
-	this.countMovement(path, info, available);
+	this.countMovement(path, info, available, startPosition);
 
 	return info.rotations;
 };
