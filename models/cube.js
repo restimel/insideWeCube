@@ -371,7 +371,7 @@ Cube.getDirectionFromMvt = function(mvt) {
 		'-b': 3,
 		'?': 0
 	}
-	return rslt[direction];
+	return rslt[mvt];
 };
 
 Cube.comparePosition = function(c1, c2) {

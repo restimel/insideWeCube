@@ -29,20 +29,16 @@ Path.prototype.calculatePath = function() {
 			return;
 		}
 
+		this.setTarget({x: 4, y: 4, z: 6});
+
 		var p = [],
-			w = [{
-				x: 1,
-				y: 1,
-				z: 0,
-				dst: 0,
-				parent: null,
-				linked: []
-			}],
+			w = [],
 			info = {
 				finish: false,
 				length: 1,
 				deadEnd: -1
 			},
+			that = this,
 			searchCell = function(cell) {
 				var i, li = p.length;
 				
@@ -73,6 +69,7 @@ Path.prototype.calculatePath = function() {
 				ocell.linked = [];
 
 				nextCells.forEach(function(cell){
+					cell = that.createCell(cell);
 					cell.dst = dst;
 
 					var f = searchCell(cell);
@@ -116,7 +113,17 @@ Path.prototype.calculatePath = function() {
 
 					addCell(cell);
 				}
-			};
+			},
+			firstCell = this.createCell({
+				x: 1,
+				y: 1,
+				z: 0,
+				parent: null,
+				linked: []
+			});
+
+		firstCell.dst = 0;
+		w.push(firstCell);
 		createPath();
 
 		this.result({accessible: p, info: info});
@@ -230,7 +237,7 @@ Path.prototype.countMovement = function(path, info, available, pst) {
 
 		// the ball has stop at this place
 		if (iBallMvt >= ballMvt.length -1) {
-			if (typeof ballMvt[iBallMvt] !== 'undefined') {
+			if (typeof ballMvt[iBallMvt] !== 'undefined') { //when last position of ballMvt
 				checkPosition(currCell, ballMvt[iBallMvt], ballMvt);
 			}
 
@@ -244,7 +251,6 @@ Path.prototype.countMovement = function(path, info, available, pst) {
 			rotations.push(pos.value ? pos.key: '-' + pos.key);
 
 			ballMvt = this.cube.getMovement(currCell, position, currCell.from);
-			// console.log('Debug',iPath,position, ballMvt)
 			iBallMvt = 0;
 		}
 		ballLocation = ballMvt[iBallMvt];
@@ -299,11 +305,11 @@ Path.prototype.buildPath = function(cell, endCells) {
 
 	do {
 		cell = cell.linked.reduce(function(shortest, cell) {
-			if (shortest.fromEnd > cell.fromEnd) {
+			if (shortest.dstFromTarget > cell.dstFromTarget) {
 				return cell;
 			}
 			return shortest;
-		}, {fromEnd: Infinity});
+		}, {dstFromTarget: Infinity});
 		path.push(cell);
 	} while (!endCells.some(Cube.comparePosition.bind(Cube, cell)));
 
@@ -337,25 +343,9 @@ Path.prototype.goFrom = function(fromPos, available, path, ref, currPosition, ma
 	if (!fromPos.preferences || typeof fromPos.preferences.r === 'undefined') {
 		// compute path to find the way back
 		wbPath = this.buildPath(fromPos, path);
-		// do {
-		// 	cell = cell.linked.reduce(function(shortest, cell) {
-		// 		if (shortest.fromEnd > cell.fromEnd) {
-		// 			return cell;
-		// 		}
-		// 		return shortest;
-		// 	}, {fromEnd: Infinity});
-		// 	wbPath.push(cell);
-		// } while (!path.some(Cube.comparePosition.bind(Cube, cell)));
 
 		this.getDirections(wbPath.reverse());
 		wbPath.reverse();
-		// console.log('preferences:', fromPos.preferences);
-
-		// computePref
-		// i = wbPath.length - 1;
-		// while (i--) {
-		// 	this.computePref(wbPath[i], wbPath[i + 1]);
-		// }
 	}
 
 	// save rotations needed
@@ -364,8 +354,10 @@ Path.prototype.goFrom = function(fromPos, available, path, ref, currPosition, ma
 	// test cube orientation to find the way back
 	var mvt = this.cube.getMovement(fromPos, fromPos.preferences, fromPos.from);
 	var lastPos = mvt[mvt.length - 1];
+	var rot = Cube.fromDirection(fromPos.direction);
 
 	info.position = fromPos.preferences;
+	info.rotations.push(rot.value ? rot.key : '-' + rot.key);
 
 	var iPath = -1;
 
@@ -380,7 +372,7 @@ Path.prototype.goFrom = function(fromPos, available, path, ref, currPosition, ma
 	});
 
 	if (iPath !== -1) {
-		if (lastPos.fromEnd > ref.fromEnd) {
+		if (lastPos.dstFromTarget > ref.dstFromTarget) {
 			if (maxIter) {
 				info2 = this.goFrom(lastPos, available, path, ref, position, maxIter - 1);
 				if (info2.nbDifficultCrossing) {
@@ -424,7 +416,7 @@ Path.prototype.computeDist = function (fromCell, attr) {
 		cell, pos, dist,
 		hasBeenWatch = function(c) {
 			return done.some(Cube.comparePosition.bind(Cube, c)) || remain.some(Cube.comparePosition.bind(Cube, c));
-		}
+		},
 		findClosest = function() {
 			var dst = Infinity,
 				pos = -1,
@@ -489,8 +481,117 @@ Path.prototype.computePref = function(cell, nCell) {
 	}
 };
 
+Path.prototype.getPathMvt = function(cell, cellTarget, startPosition, available, resetDirection) {
+	cell = available.filter(Cube.comparePosition.bind(Cube, cell))[0];
+	cellTarget = available.filter(Cube.comparePosition.bind(Cube, cellTarget))[0];
+
+	this.setTarget(cellTarget);
+
+	/* compute path */
+	this.computeDist(cellTarget, 'dstFromTarget');
+	var path = this.buildPath(cell, [cellTarget]);
+
+/* still needed? */
+	// if (resetDirection) {
+	// 	path.forEach(function(cell) {
+	// 		delete cell.direction;
+	// 	});
+	// }
+/* still needed ??? */
+
+	/* compute avoid & pref */
+	this.getDirections(path.reverse());
+	path.reverse();
+
+	/* compute mvt */
+	var info = {
+		nbDifficultCrossing: 0,
+		rotations: []
+	};
+
+	this.countMovement(path, info, available, startPosition);
+
+	return info.rotations;
+};
+
+Path.prototype.setTarget = function(target) {
+	this.TargetCell = target;
+	this.target = '_' + target.x + '_' + target.y + '_' + target.z;
+}
+
 /**
- * called function
+ * Add information and method to cells
+ */
+Path.prototype.createCell = function(cell) {
+	cell.info = {};
+
+	var compute = false,
+		getInfo = function(search) {
+		var path;
+
+		if (typeof cell.info[this.target] === 'undefined') {
+			cell.info[this.target] = {};
+
+			if (search) {
+				compute = true;
+				this.computeDist(this.targetCell, 'dstFromTarget');
+				this.getDirections(path);
+				compute = false;
+			}
+		}
+
+		return cell.info[this.target];
+	}.bind(this);
+
+	Object.defineProperty(cell, 'direction', {
+		get: function() {
+			return getInfo(true).direction;
+		},
+		set: function(val) {
+			getInfo().direction = val;
+		}
+	});
+
+	Object.defineProperty(cell, 'preferences', {
+		get: function() {
+			return getInfo(true).preferences;
+		},
+		set: function(val) {
+			getInfo().preferences = val;
+		}
+	});
+
+	Object.defineProperty(cell, 'avoid', {
+		get: function() {
+			return getInfo(true).avoid;
+		},
+		set: function(val) {
+			getInfo().avoid = val;
+		}
+	});
+
+	Object.defineProperty(cell, 'dstFromTarget', {
+		get: function() {
+			var dstFromTarget = getInfo(true).dstFromTarget;
+
+			if (typeof dstFromTarget === 'undefined' && !compute) {
+				compute = true;
+				this.computeDist(this.targetCell, 'dstFromTarget');
+				compute = false;
+			}
+
+			return getInfo(true).dstFromTarget;
+		},
+		set: function(val) {
+			getInfo().dstFromTarget = val;
+		}
+	});
+
+	return cell;
+};
+
+/**
+ * called functions (for routing)
  */
 
 Path.prototype.loadCube = function(cubeName) {
@@ -526,8 +627,10 @@ Path.prototype.getPathInfo = function(data) {
 
 	info.available = cells.length;
 	if (info.finish) {
+		this.setTarget(info.finish);
+
 		/* compute distance from end */
-		this.computeDist(info.finish, 'fromEnd');
+		this.computeDist(info.finish, 'dstFromTarget');
 
 		cell = info.finish;
 		do {
@@ -562,33 +665,4 @@ Path.prototype.getPathInfo = function(data) {
 	}
 
 	self.postMessage({data: {action: 'getPathInfo', data: info}, token: this.token});
-};
-
-Path.prototype.getPathMvt = function(cell, cellTarget, startPosition, available, resetDirection) {
-	cell = available.filter(Cube.comparePosition.bind(Cube, cell))[0];
-	cellTarget = available.filter(Cube.comparePosition.bind(Cube, cellTarget))[0];
-
-	/* compute path */
-	this.computeDist(cellTarget, 'fromEnd');
-	var path = this.buildPath(cell, [cellTarget]);
-
-	if (resetDirection) {
-		path.forEach(function(cell) {
-			delete cell.direction;
-		})
-	}
-
-	/* compute avoid & pref */
-	this.getDirections(path.reverse());
-	path.reverse();
-
-	/* compute mvt */
-	var info = {
-		nbDifficultCrossing: 0,
-		rotations: []
-	};
-
-	this.countMovement(path, info, available, startPosition);
-
-	return info.rotations;
 };
