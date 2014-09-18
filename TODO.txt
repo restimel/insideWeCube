@@ -28,7 +28,7 @@ V1.0
 	* Instructions are wrong to find the way back
 			X display position at start
 			X change starting position according to ball location
-		* wrong movements instruction vs position
+		X wrong movements instruction vs position
 		* wrong place to finish ?
 		* when startPosition is chosen it does a wrong movement to come back to start
 		X preferences out of path are wrong

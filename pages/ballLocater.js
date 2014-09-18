@@ -144,7 +144,7 @@ BallLocater.prototype.renderInstruction = function(movement, rowPst, position) {
 };
 
 BallLocater.prototype.renderWayBack = function(path) {
-	var position = this.position,
+	var position,
 		container = this.wayContainer;
 	container.innerHTML = '';
 
@@ -174,7 +174,7 @@ BallLocater.prototype.renderWayBack = function(path) {
 	path.forEach(function(instruction) {
 		row = table.insertRow(-1);
 		cell = row.insertCell(-1);
-		cell.innerHTML = this.textIntruction(instruction.mvt, position);
+		cell.innerHTML = this.textIntruction(instruction.mvt, position || instruction.position);
 
 		cell = row.insertCell(-1);
 		Cube3D.render(cell, instruction.position);

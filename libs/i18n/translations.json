@@ -237,7 +237,7 @@
 	},
 	"Rotate your cube to have the face INSIDE³ at the bottom.": {
 		"en": "Rotate your cube to have the INSIDE³ face at the bottom.",
-		"fr": "Retourner le cube pour avoir la face INSIDE³ en bas."
+		"fr": "Tourner le cube pour avoir la face INSIDE³ en bas."
 	},
 	"Rotate your cube backward to have the face INSIDE³ at the bottom.": {
 		"en": "Rotate your cube backward to have the INSIDE³ face at the bottom.",
@@ -261,7 +261,31 @@
 	},
 	"Rotate your cube to have the face INSIDE³ at the top.": {
 		"en": "Rotate your cube to have the face INSIDE³ at the top.",
-		"fr": "Retourner le cube pour avoir la face INSIDE³ en haut."
+		"fr": "Tourner le cube pour avoir la face INSIDE³ en haut."
+	},
+	"the face INSIDE³ is at top": {
+		"en": "the face INSIDE³ is at top",
+		"fr": "la face INSIDE³ est en haut."
+	},
+	"the face INSIDE³ is at bottom": {
+		"en": "the face INSIDE³ is at bottom",
+		"fr": "la face INSIDE³ est en bas."
+	},
+	"your cube is slightly rotated backward": {
+		"en": "your cube is slightly rotated backward",
+		"fr": "le cube est penché vers vous"
+	},
+	"your cube is slightly rotated forward": {
+		"en": "your cube is slightly rotated forward",
+		"fr": "le cube est penché vers l'avant"
+	},
+	"your cube is slightly rotated to the right": {
+		"en": "your cube is slightly rotated to the right",
+		"fr": "le cube est penché vers la droite"
+	},
+	"your cube is slightly rotated to the left": {
+		"en": "your cube is slightly rotated to the left",
+		"fr": "le cube est penché vers la gauche"
 	},
 	"I am not sure what happened...": {
 		"en": "I am not sure what happened...",

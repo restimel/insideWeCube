@@ -484,6 +484,11 @@ Path.prototype.computePref = function(cell, nCell) {
 Path.prototype.getPathMvt = function(cell, cellTarget, startPosition, available, resetDirection) {
 	cell = available.filter(Cube.comparePosition.bind(Cube, cell))[0];
 	cellTarget = available.filter(Cube.comparePosition.bind(Cube, cellTarget))[0];
+	startPosition = {
+		b: startPosition.b,
+		d: startPosition.d,
+		r: startPosition.r
+	};
 
 	this.setTarget(cellTarget);
 

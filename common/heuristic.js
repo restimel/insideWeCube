@@ -304,11 +304,11 @@ Heuristic.prototype.wayBack = function(rsp) {
 		position = startPosition,
 		rsltMvt = [cell];
 
-console.log('path to way back', path);
 	/* give information about movement (if ball has move...) */
 	path = path.map(function(mvt) {
 		position = this.computePosition(position, mvt);
 		rsltMvt = this.cube.getMovement(rsltMvt[rsltMvt.length -1], position, -1);
+
 		var result = rsltMvt.length === 1 ? 0 : 1;
 		if (mvt === '?') {
 			result = -1;
