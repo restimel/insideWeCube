@@ -64,8 +64,10 @@ Router.prototype.navigation = function(route, evt) {
 		});
 
 	if (!s) {
-		console.error('route not found', route);
-		return false;
+		r = {
+			route: 'start',
+			object: startPage
+		};
 	}
 
 	this.lastRoute = route;
@@ -77,5 +79,7 @@ Router.prototype.navigation = function(route, evt) {
 		r.object.render(this.content);
 	}
 	main.removeClass('active', this.container);
-	evt.target.classList.add('active');
+	if (typeof evt !== 'undefined') {
+		evt.target.classList.add('active');
+	}
 };

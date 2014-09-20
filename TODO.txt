@@ -1,7 +1,7 @@
 
 V1.0
 	~ write documentation (Readme.md)
-	* main page
+	X main page
 	~ translate words
 		~ Make a tool script to parse sentences
 		X use default language

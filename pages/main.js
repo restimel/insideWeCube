@@ -7,6 +7,7 @@ function main(container){
 
 	main.createBody(container);
 	main.control.action('changeLng', $$.getCurrentLng());
+	main.refresh();
 }
 
 main.message = (function() {

@@ -300,3 +300,10 @@ body {
 	font-style: italic;
 	color: darkgrey();
 }
+
+/* Start page */
+img.start-main {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
