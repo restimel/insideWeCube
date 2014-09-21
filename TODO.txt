@@ -2,43 +2,36 @@
 V1.0
 	~ write documentation (Readme.md)
 	X main page
-	~ translate words
+	* message: option stack/timeout
+	* translate words
 		~ Make a tool script to parse sentences
-		X use default language
 
 	Build Cube
-	* display small format map (and with reverse side)
-	→ reset button (to remove or to implement)
+		* reset button (to remove or to implement)
 
 	Cube Solver
-	* Add interaction to find place
-		* Render
-			* allow to change cube position at start
-		* BallLocater
-			* Reset (ball lost → restart)
-
-	X Add interaction with cube to find place
-		X make a form to give cube position
+		* Add interaction to find place
+			* Render
+				* allow to change cube position at start
+			* BallLocater
+				* Reset (ball lost → restart)
 
 	Skinning
-	X rename Title section (Lost?, Manage cube)
+		X rename Title section (Lost?, Manage cube)
 
 
 /!\ Bugs
-	* Instructions are wrong to find the way back
-			X display position at start
-			X change starting position according to ball location
-		X wrong movements instruction vs position
-		* wrong place to finish ?
-		* when startPosition is chosen it does a wrong movement to come back to start
-		X preferences out of path are wrong
+	General
+		* Menu translation are not good at start
 
-		Build Cube
-	→ do something (not log ?) when unexpected movement happens when rotated localy
+	Build Cube
+		→ do something (not log ?) when unexpected movement happens when rotated localy
 
-		Cube solver
-	X rotate correctly position image
-	→ change cube does not display the correct map
+	Cube solver
+		* change cube does not display the correct map
+		* Instructions are wrong to find the way back
+			* wrong place to finish ?
+			* when startPosition is chosen it does a wrong movement to come back to start
 
 
 V1.1
@@ -48,7 +41,8 @@ V1.1
 
 	Build Cube
 		* key Shortcut (Ctrl+S)
-		→ give small map with different orientation
+		* display small format map (and with reverse side)
+			→ give small map with different orientation (other than top/bottom)
 		* change Cube color
 
 	Analyze Cube
