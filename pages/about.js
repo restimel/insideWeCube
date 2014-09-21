@@ -100,16 +100,44 @@ About.prototype.render = function(container) {
 About.prototype.renderFAQ = function(container) {
 	var faq = [
 		{
+			q: $$('The application doesn\'t seems to work.'),
+			a: $$('Try with another browser or a newer version of your browser.<br>This application is written with HTML5 API only modern browser can run correctly this application. Some features could not work correctly depending on your browser version.<br>It doesn\'t work at all on Internet Explorer 9 and prior versions.')
+		},
+		{
+			q: $$('How could I build new maze from cube I have?'),
+			a: $$('Go to "Cube Manager" and build your cube with level you own. On the right you\'ll see if your cube is solvable and the difficulty of your construction.<br>If you have levels that are not in the database you could build and save them (don\'t forget to also save your creation in "Import/Export" menu in order to re-use cubes/levels you built)')
+		},
+		{
+			q: $$('How could I reset my real cube without opening it?'),
+			a: $$('Go to "Lost in cube?" and follow the instructions. The first instructions will help to know where your ball is in the cube. Then instructions are given to bring back the ball to the start (or the end, but it is better if you solve it by your own, isn\'t it?).')
+		},
+		{
+			q: $$('How to sent a cube map to a friend?'),
+			a: $$('Go to "Import/Export" and copy the code in "export cubes" area. Paste this code in a text file if you want to save it on your computer. You can also sent this code to a friend. He will be able to import it on his computer with this application.')
+		},
+		{
+			q: $$('How to read a cube sent by a friend?'),
+			a: $$('Go to "Import/Export" and paste the code he sent you in the "import cubes" area. Then click on "Import" button. If the code is valid you are able to select these cubes/levels in "Cube manager" or "Lost in cube?" menus.')
+		},
+		{
 			q: $$('Sometime the helper could not help me and give no clear instructions.'),
 			a: $$('This happen when a complex movement must be done (like a diagonal movement). Current algorithm could not resolve such movement. I am very sorry you have to find the correct movement on your own :(<br>This could happen in difficult cubes (Awful, Vicious and Mortal)')
 		},
 		{
 			q: $$('Why maps of Mortal cubes are not available?'),
-			a: $$('The goal of Mortal cube is to discover the maps on your own. If you take maps from someone else, you should better buy a Vicious or an Awful cube.')
+			a: $$('The goal of Mortal cube is to discover the map levels on your own. If you take maps from someone else, you should better buy a Vicious or an Awful cube ;p')
 		},
 		{
 			q: $$('I really want maps of Mortal cube!'),
 			a: $$('Try to find someone who know maps of your cube and import them with the import/export tool.')
+		},
+		{
+			q: $$('Why it looks so awful?'),
+			a: $$('I am not a designer. If you can improve the application design, I will be glad to accept your work.')
+		},
+		{
+			q: $$('Why is it called "Inside We cube"?'),
+			a: $$('<ol><li>I had to find a name ;)</li><li>When you type "InsideZeCube" with a wrong AZERTY↔QWERTY keyboard configuration you get "InsideWeCube".</li><li>Because INSIDE this application WE solve CUBE.</li></ol>')
 		}
 	];
 

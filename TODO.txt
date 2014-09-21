@@ -5,9 +5,9 @@ V1.0
 	* message: option stack/timeout
 	* translate words
 		~ Make a tool script to parse sentences
-	* FAQ:
-		* add explanation about how to use app
-		* why browser compatibility
+	X FAQ:
+		X add explanation about how to use app
+		X why browser compatibility
 
 	Build Cube
 		X reset button (to remove or to implement)
@@ -17,6 +17,8 @@ V1.0
 			* Render
 				* allow to change cube position at start
 					X Display dialog to select new position
+						* Bug: does not change cube preview position
+						* Bug: Skinning on Opera (which do not support at all Dialog)
 					* change Text position in instructions
 					* change cube position in Heuristic
 			X BallLocater

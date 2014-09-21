@@ -6,14 +6,14 @@ startPage.render = function(container) {
 		explanation = document.createElement('p'),
 		img = document.createElement('img');
 
-	header.textContent = 'InsideWeCube';
+	header.textContent = 'Inside We Cube';
 	container.appendChild(header);
 
 	explanation.textContent = $$('You have lost your ball inside the cube? You want to build new maze from your cubes?');
 	container.appendChild(explanation);
 
 	explanation = document.createElement('p');
-	explanation.textContent = $$('InsideWeCube will help you!');
+	explanation.textContent = $$('"Inside We Cube" will help you!');
 	container.appendChild(explanation);
 
 	img.className = 'start-main';
