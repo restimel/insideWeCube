@@ -84,17 +84,149 @@ Cube3D.render = function(container, position, cube) {
 	container.className += ' position-cell';
 };
 
+Cube3D.askPosition = function(container, callBack, currentPosition, cube) {
+	var dialogBox = document.createElement('dialog'),
+		header = document.createElement('header'),
+		body = document.createElement('section'),
+		footer = document.createElement('footer'),
+		btnOk = document.createElement('button'),
+		btnCancel = document.createElement('button'),
+		form = document.createElement('form'),
+		preview = document.createElement('aside'),
+		titleTop = document.createElement('span'),
+		titleRotation = document.createElement('span'),
+		position = {
+			r: currentPosition.r,
+			d: currentPosition.d,
+			b: currentPosition.b
+		};
+
+
+	var renderPosition = function() {
+		preview.innerHTML = '';
+		preview.className = 'preview-cube-position';
+		this.render(preview, position, cube);
+	}.bind(this);
+
+	/* header */
+	header.textContent = $$('Set your cube current position');
+
+	/* footer */
+	btnOk.textContent = $$('Ok');
+	btnOk.onclick = applyChange;
+	footer.appendChild(btnOk);
+
+	btnCancel.textContent = $$('Cancel');
+	btnCancel.onclick = close;
+	footer.appendChild(btnCancel);
+
+	/* body */
+	body.className = 'body-cube-position';
+
+	form.className = 'form-cube-position';
+	form.onsubmit = function(event) {
+		applyChange();
+		event.preventdDefault();
+		return false;
+	};
+	titleTop.textContent = $$('INSIDE³ face is');
+	titleTop.className = 'title-cube-position';
+	form.appendChild(titleTop);
+
+	buildRadio('b', $$('at TOP'), $$('at BOTTOM'));
+
+	titleRotation.textContent = $$('Your cube is slightly rotated');
+	titleRotation.className = 'title-cube-position';
+	form.appendChild(titleRotation);
+
+	buildRadio('r', $$('to the RIGHT'), $$('to the LEFT'));
+	buildRadio('d', $$('BACKWARD'), $$('FORWARD'));
+
+	body.appendChild(form);
+
+	renderPosition();
+	body.appendChild(preview);
+
+	/* dialog box */
+	prepareDialog();
+
+	dialogBox.appendChild(header);
+	dialogBox.appendChild(body);
+	dialogBox.appendChild(footer);
+
+	container.appendChild(dialogBox);
+	dialogBox.showModal();
+
+	function applyChange() {
+		callBack(position);
+		close();
+	}
+
+	function close() {
+		container.removeChild(dialogBox);
+	}
+
+	function buildRadio(positionComponent, textTrue, textFalse) {
+		var component = document.createElement('div'),
+			label = document.createElement('label'),
+			input = document.createElement('input');
+
+		component.className = 'form-radio-component';
+
+		input.type = 'radio';
+		input.name = 'radio-position-' + positionComponent;
+		input.checked = position[positionComponent];
+		input.change = changeValue.bind(this, positionComponent, true);
+		label.appendChild(input);
+		label.appendChild(document.createTextNode(textTrue));
+		component.appendChild(label);
+
+		label = document.createElement('label');
+		input = document.createElement('input');
+		input.type = 'radio';
+		input.name = 'radio-position-' + positionComponent;
+		input.checked = !position[positionComponent];
+		input.change = changeValue.bind(this, positionComponent, false);
+		label.appendChild(input);
+		label.appendChild(document.createTextNode(textFalse));
+		component.appendChild(label);
+
+		form.appendChild(component);
+	}
+
+	function changeValue(positionComponent, value) {
+		position[positionComponent] = value;
+		renderPosition();
+	}
+
+	function prepareDialog() {
+		if (typeof dialogBox.showModal !== 'function') {
+			/* Shim of HTML5 dialog */
+			dialogBox.className = 'dialog-cube-position fake-dialog';
+
+			dialogBox.showModal = function() {
+				this.open = true;
+			};
+			dialogBox.close = close;
+			dialogBox.open = false;
+		} else {
+			dialogBox.className = 'dialog-cube-position';
+			dialogBox.addEventListener('close', close, false);
+		}
+	}
+};
+
 Cube3D.getColor = function() {
 	return [
-		{code: 'black', name:$$('black')},
-		{code: 'blue', name:$$('blue')},
-		{code: 'brown', name:$$('brown')},
-		{code: 'crystal', name:$$('crystal')},
-		{code: 'green', name:$$('green')},
-		{code: 'orange', name:$$('orange')},
-		{code: 'red', name:$$('red')}
+		{code: 'black', name: $$('black')},
+		{code: 'blue', name: $$('blue')},
+		{code: 'brown', name: $$('brown')},
+		{code: 'crystal', name: $$('crystal')},
+		{code: 'green', name: $$('green')},
+		{code: 'orange', name: $$('orange')},
+		{code: 'red', name: $$('red')}
 	].sort(function(a, b) {return a.name > b.name;});
-}
+};
 
 Cube3D.position = function(elCell, position) {
 	var str = 'position_';

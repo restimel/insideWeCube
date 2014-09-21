@@ -256,6 +256,51 @@ body {
 	display: block;
 }
 
+/* Dialog */
+dialog.dialog-cube-position {
+	width: 50%;
+	min-width: 29.5em;
+}
+
+dialog.dialog-cube-position > header {
+	font-size: x-large;
+	text-align: center;
+	background-color: gray;
+}
+
+dialog.dialog-cube-position > footer > * {
+	float: right;
+	margin-right: 2em;
+}
+
+dialog.dialog-cube-position > .body-cube-position {
+	display: block;
+	position: relative;
+	width: 100%;
+	min-height: 10em;
+}
+
+.form-cube-position {
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 200px;
+	overflow: auto;
+}
+
+.form-cube-position > .title-cube-position {
+	display: block;
+	margin-top: 1em;
+}
+
+.preview-cube-position {
+	display: block;
+	position: absolute;
+	width: 200px;
+	right: 0;
+	overflow: hidden;
+}
+
 /* Languages */
 .set-languages {
 	position: absolute;

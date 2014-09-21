@@ -5,6 +5,9 @@ V1.0
 	* message: option stack/timeout
 	* translate words
 		~ Make a tool script to parse sentences
+	* FAQ:
+		* add explanation about how to use app
+		* why browser compatibility
 
 	Build Cube
 		X reset button (to remove or to implement)
@@ -13,6 +16,9 @@ V1.0
 		* Add interaction to find place
 			* Render
 				* allow to change cube position at start
+					X Display dialog to select new position
+					* change Text position in instructions
+					* change cube position in Heuristic
 			X BallLocater
 				X Reset (ball lost → restart)
 
@@ -32,12 +38,17 @@ V1.0
 		* Instructions are wrong to find the way back
 			* wrong place to finish ?
 			* when startPosition is chosen it does a wrong movement to come back to start
+		* display 'Map orientation' must be on a new line
 
 
 V1.1
 	General
 		* Message could disappears after an defined amount of time
 		* select which cube to export
+		* warning message when browser is not compatible
+		* Save Language in localStorage
+		* save Cubes built in localStorage
+			* allow to remove cube from localStorage
 
 	Build Cube
 		* key Shortcut (Ctrl+S)

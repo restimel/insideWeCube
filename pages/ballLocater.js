@@ -16,9 +16,15 @@ BallLocater.prototype.reset = function(cubeName) {
 	}
 };
 
+BallLocater.prototype.getCube = function() {
+	return {
+		name: this.cubeName
+	};
+};
+
 /* Render */
-BallLocater.prototype.render = function(container) {
-	var position = {
+BallLocater.prototype.render = function(container, position) {
+	position = position || {
 		r: 0,
 		d: 1,
 		b: 1
@@ -65,10 +71,18 @@ BallLocater.prototype.render = function(container) {
 	].join('<br>');
 
 	cell = row.insertCell(-1);
-	Cube3D.render(cell, position, {name: this.cubeName});
+	Cube3D.render(cell, position, this.getCube());
 
 	cell = row.insertCell(-1);
-	cell.textContent = '';
+	var changePosition = document.createElement('button');
+	changePosition.textContent = $$('This is not my current position!');
+	changePosition.onclick = function() {
+		Cube3D.askPosition(container, function(position) {
+			container.innerHTML = '';
+			this.render(container, position);
+		}.bind(this), position, this.getCube());
+	}.bind(this);
+	cell.appendChild(changePosition);
 
 	table.appendChild(tbody);
 
@@ -127,7 +141,7 @@ BallLocater.prototype.renderInstruction = function(movement, rowPst, position) {
 	cell.textContent = this.textIntruction(movement);
 
 	cell = row.insertCell(-1);
-	Cube3D.render(cell, position, {name: this.cubeName});
+	Cube3D.render(cell, position, this.getCube());
 
 	cell = row.insertCell(-1);
 	cell.className = 'BallLocater-result';
