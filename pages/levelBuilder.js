@@ -36,11 +36,6 @@ LevelConstructor.prototype.render = function(container) {
 	});
 	container.appendChild(select);
 
-	// btn = document.createElement('button');
-	// btn.textContent = $$('save level');
-	// btn.onclick = this.save.bind(this);
-	// container.appendChild(btn);
-
 	this.renderLevel(container);
 };
 

@@ -7,7 +7,7 @@ V1.0
 		~ Make a tool script to parse sentences
 
 	Build Cube
-		* reset button (to remove or to implement)
+		X reset button (to remove or to implement)
 
 	Cube Solver
 		* Add interaction to find place

@@ -15,6 +15,7 @@ CubeBuilder.prototype.init = function() {
 
 CubeBuilder.prototype.render = function(container) {
 	this.container = container;
+	this.container.innerHTML = '';
 
 	var cubeBuilder = document.createElement('section');
 	cubeBuilder.className = 'cube-builder-section';
@@ -179,7 +180,9 @@ CubeBuilder.prototype.renderInfo = function(info) {
 };
 
 CubeBuilder.prototype.reset = function() {
+	this.cubePath.reset();
 	this.init();
+	this.render(this.container);
 };
 
 CubeBuilder.prototype.changeName = function(e) {

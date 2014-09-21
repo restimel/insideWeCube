@@ -19,6 +19,14 @@ CubePath.prototype.loadLevel = function(index, levelName) {
 	main.control.action('path', data, this.token);
 };
 
+CubePath.prototype.reset = function(index, levelName) {
+	var data = {
+		action: 'reset'
+	};
+
+	main.control.action('path', data, this.token);
+};
+
 CubePath.prototype.setCell = function(x, y, z, type, value) {
 	var data = {
 		action: 'setCell',

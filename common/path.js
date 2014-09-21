@@ -612,6 +612,11 @@ Path.prototype.loadLevel = function(args) {
 	this.calculatePath();
 };
 
+Path.prototype.reset = function(args) {
+	this.cube = new Cube();
+	this.cube.init();
+};
+
 Path.prototype.setCell = function(args) {
 	var x = args.x,
 		y = args.y,
