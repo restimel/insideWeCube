@@ -253,6 +253,7 @@ Heuristic.prototype.start = function() {
 Heuristic.prototype.reset = function(cubeName) {
 	//load cube with cubeName
 	this.cube = store.getCube(cubeName).clone();
+	this.accessible = null;
 
 	this.path.result = function(rslt) {
 		this.accessible = rslt.accessible;
@@ -286,6 +287,7 @@ Heuristic.prototype.renderCube = function(rsp, count) {
 	}
 
 	if (this.cube.name !== cubeName || !(this.accessible instanceof Array)) {
+		/* cube not ready */
 		setTimeout(this.renderCube.bind(this, rsp, count+1), 40);
 		return;
 	}

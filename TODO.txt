@@ -13,8 +13,8 @@ V1.0
 		* Add interaction to find place
 			* Render
 				* allow to change cube position at start
-			* BallLocater
-				* Reset (ball lost → restart)
+			X BallLocater
+				X Reset (ball lost → restart)
 
 	Skinning
 		X rename Title section (Lost?, Manage cube)
@@ -28,7 +28,7 @@ V1.0
 		→ do something (not log ?) when unexpected movement happens when rotated localy
 
 	Cube solver
-		* change cube does not display the correct map
+		X change cube does not display the correct map
 		* Instructions are wrong to find the way back
 			* wrong place to finish ?
 			* when startPosition is chosen it does a wrong movement to come back to start
@@ -47,7 +47,7 @@ V1.1
 
 	Analyze Cube
 		* give position of possible cells
-		→ give better help on impossible help (direct movement or position)
+		→ give better help on impossible help (direct movement or position (display a 4th column with level position))
 		→ (bonus) identify in which cube we are if no positions match
 
 	Bugs

@@ -1,6 +1,6 @@
 function CubeAnalyzer() {
 	this.ballLocater = new BallLocater(this.identifyCell.bind(this));
-	this.reset();
+	this.reset(false);
 
 	this.findStart = true;
 }
@@ -20,7 +20,7 @@ CubeAnalyzer.prototype.render = function(container) {
 
 	var resetBtn = document.createElement('button');
 	resetBtn.textContent = $$('Restart analyze');
-	resetBtn.onclick = this.reset.bind(this);
+	resetBtn.onclick = this.reset.bind(this, true);
 	tools.appendChild(resetBtn);
 
 	container.appendChild(tools);
@@ -180,10 +180,15 @@ CubeAnalyzer.prototype.renderStep3 = function() {
 
 /* Actions */
 
-CubeAnalyzer.prototype.reset = function() {
+CubeAnalyzer.prototype.reset = function(render) {
 	this.step = 1;
 
 	this.cubeName = '';
+
+	if (render) {
+		main.message.clear();
+		this.render();
+	}
 };
 
 CubeAnalyzer.prototype.changeCube = function(e) {
@@ -196,8 +201,7 @@ CubeAnalyzer.prototype.changeCube = function(e) {
 	}
 
 	if (name === '') {
-		this.reset();
-		this.render();
+		this.reset(true);
 		return;
 	}
 
@@ -240,5 +244,6 @@ CubeAnalyzer.prototype.changeEndTarget = function(container, id) {
 };
 
 CubeAnalyzer.prototype.resetInstructions = function() {
-	console.log('todo reset analyzer');
+	main.message.clear();
+	this.renderStep2();
 };
