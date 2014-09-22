@@ -250,14 +250,17 @@ Heuristic.prototype.start = function() {
 
 /* Route */
 
-Heuristic.prototype.reset = function(cubeName) {
+Heuristic.prototype.reset = function(args) {
+	var cubeName = args.cubeName,
+		position = args.position;
+
 	//load cube with cubeName
 	this.cube = store.getCube(cubeName).clone();
 	this.accessible = null;
 
 	this.path.result = function(rslt) {
 		this.accessible = rslt.accessible;
-		this.originPosition = {
+		this.originPosition = position || {
 			r: 0,
 			d: 1,
 			b: 1

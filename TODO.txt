@@ -13,16 +13,17 @@ V1.0
 		X reset button (to remove or to implement)
 
 	Cube Solver
-		* Add interaction to find place
-			* Render
-				* allow to change cube position at start
+		X Add interaction to find place
+			X Render
+				X allow to change cube position at start
 					X Display dialog to select new position
 						X Bug: does not change cube preview position
 						X Bug: Skinning on Opera (which do not support at all Dialog)
-					* change Text position in instructions
-					* change cube position in Heuristic
+					X change Text position in instructions
+					X change cube position in Heuristic
 			X BallLocater
 				X Reset (ball lost → restart)
+		* When reset the instructions keep previous position
 
 	Skinning
 		X rename Title section (Lost?, Manage cube)
@@ -37,6 +38,8 @@ V1.0
 
 	Cube solver
 		X change cube does not display the correct map
+		* When changing position the button to reset disapears
+		* When reset position it adds a new section instead of override it
 		* Instructions are wrong to find the way back
 			* wrong place to finish ?
 			* when startPosition is chosen it does a wrong movement to come back to start

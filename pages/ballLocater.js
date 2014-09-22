@@ -31,7 +31,10 @@ BallLocater.prototype.render = function(container, position) {
 	};
 	this.position = position;
 
-	main.control.action('heuristic', {action: 'reset', data: this.cubeName}, this.token);
+	main.control.action('heuristic', {action: 'reset', data: {
+		cubeName: this.cubeName,
+		position: this.position
+	}}, this.token);
 
 	if (typeof container === 'undefined') {
 		container = this.container;
@@ -64,11 +67,7 @@ BallLocater.prototype.render = function(container, position) {
 	this.tbody = tbody;
 	row = tbody.insertRow(-1);
 	cell = row.insertCell(-1);
-	cell.innerHTML = [
-		$$('Put your cube with the INSIDE³ face at top. INSIDE³ must face you and is readable.'),
-		this.textIntruction('-r', position),
-		this.textIntruction('d', position)
-	].join('<br>');
+	cell.innerHTML = this.textIntruction('', position);
 
 	cell = row.insertCell(-1);
 	Cube3D.render(cell, position, this.getCube());
