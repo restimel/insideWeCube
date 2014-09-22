@@ -120,6 +120,10 @@ About.prototype.renderFAQ = function(container) {
 			a: $$('Go to "Import/Export" and paste the code he sent you in the "import cubes" area. Then click on "Import" button. If the code is valid you are able to select these cubes/levels in "Cube manager" or "Lost in cube?" menus.')
 		},
 		{
+			q: $$('What is the INSIDE³ face?'),
+			a: $$('An insideZeCube cube has 2 noticeable faces.<ul><li>The "INSIDE³" face where you also see the name of the cube. This is the top face where the ball was when you have bought the cube.</li><li>The "InsideZeCube.com" face is where the cube can be open (when feasible). This is where the ball must be visible to finish the cube.</li></ul>In order to follow instructions, you should always keep one of these to face at top with the title readable.')
+		},
+		{
 			q: $$('Sometime the helper could not help me and give no clear instructions.'),
 			a: $$('This happen when a complex movement must be done (like a diagonal movement). Current algorithm could not resolve such movement. I am very sorry you have to find the correct movement on your own :(<br>This could happen in difficult cubes (Awful, Vicious and Mortal)')
 		},
@@ -157,4 +161,4 @@ About.prototype.renderFAQ = function(container) {
 		section.className = 'faq-item';
 		container.appendChild(section);
 	});
-}
+};
