@@ -5,6 +5,7 @@ dialog.fake-dialog {
    margin-right: auto;
    top: 20%;
    max-height: 78%;
+   background-color: #FFF;
 
    box-shadow: 1em 1em 0.5em #000;
 }

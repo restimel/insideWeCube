@@ -101,6 +101,14 @@ Cube3D.askPosition = function(container, callBack, currentPosition, cube) {
 			b: currentPosition.b
 		};
 
+	Object.defineProperty(position, 'l', {
+		get: function() {
+			return !this.r;
+		},
+		set: function(val) {
+			this.r = !val;
+		}
+	});
 
 	var renderPosition = function() {
 		preview.innerHTML = '';
@@ -139,7 +147,7 @@ Cube3D.askPosition = function(container, callBack, currentPosition, cube) {
 	titleRotation.className = 'title-cube-position';
 	form.appendChild(titleRotation);
 
-	buildRadio('r', $$('to the RIGHT'), $$('to the LEFT'));
+	buildRadio('l', $$('to the LEFT'), $$('to the RIGHT'));
 	buildRadio('d', $$('BACKWARD'), $$('FORWARD'));
 
 	body.appendChild(form);
@@ -154,7 +162,7 @@ Cube3D.askPosition = function(container, callBack, currentPosition, cube) {
 	dialogBox.appendChild(body);
 	dialogBox.appendChild(footer);
 
-	container.appendChild(dialogBox);
+	document.body.appendChild(dialogBox);
 	dialogBox.showModal();
 
 	function applyChange() {
@@ -163,7 +171,7 @@ Cube3D.askPosition = function(container, callBack, currentPosition, cube) {
 	}
 
 	function close() {
-		container.removeChild(dialogBox);
+		document.body.removeChild(dialogBox);
 	}
 
 	function buildRadio(positionComponent, textTrue, textFalse) {
@@ -176,7 +184,7 @@ Cube3D.askPosition = function(container, callBack, currentPosition, cube) {
 		input.type = 'radio';
 		input.name = 'radio-position-' + positionComponent;
 		input.checked = position[positionComponent];
-		input.change = changeValue.bind(this, positionComponent, true);
+		input.onchange = changeValue.bind(this, positionComponent, true);
 		label.appendChild(input);
 		label.appendChild(document.createTextNode(textTrue));
 		component.appendChild(label);
@@ -186,7 +194,7 @@ Cube3D.askPosition = function(container, callBack, currentPosition, cube) {
 		input.type = 'radio';
 		input.name = 'radio-position-' + positionComponent;
 		input.checked = !position[positionComponent];
-		input.change = changeValue.bind(this, positionComponent, false);
+		input.onchange = changeValue.bind(this, positionComponent, false);
 		label.appendChild(input);
 		label.appendChild(document.createTextNode(textFalse));
 		component.appendChild(label);

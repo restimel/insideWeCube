@@ -17,8 +17,8 @@ V1.0
 			* Render
 				* allow to change cube position at start
 					X Display dialog to select new position
-						* Bug: does not change cube preview position
-						* Bug: Skinning on Opera (which do not support at all Dialog)
+						X Bug: does not change cube preview position
+						X Bug: Skinning on Opera (which do not support at all Dialog)
 					* change Text position in instructions
 					* change cube position in Heuristic
 			X BallLocater
