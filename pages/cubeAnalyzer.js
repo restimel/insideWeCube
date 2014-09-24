@@ -88,7 +88,7 @@ CubeAnalyzer.prototype.renderStep2 = function() {
 	var cubeSection = document.createElement('section');
 	cubeSection.className = 'locate-by-cube';
 
-	label = document.createElement('span');
+	label = document.createElement('div');
 	label.className = 'label';
 	label.textContent = $$('If you know where the ball is, please click on the corresponding cell.');
 	cubeSection.appendChild(label);
@@ -106,12 +106,9 @@ CubeAnalyzer.prototype.renderStep2 = function() {
 	label.textContent = $$('If you don\'t know where the ball is, please follow the instructions.');
 	euristicSection.appendChild(label);
 
-	this.ballLocater.render(euristicSection);
-
-	var btnLost = document.createElement('button');
-	btnLost.textContent = $$('I have lost my ball! I don\'t know what happened!');
-	btnLost.onclick = this.resetInstructions.bind(this);
-	euristicSection.appendChild(btnLost);
+	var ballLocaterContainer = document.createElement('div');
+	this.ballLocater.render(ballLocaterContainer);
+	euristicSection.appendChild(ballLocaterContainer);
 
 	step.appendChild(euristicSection);
 
@@ -241,9 +238,4 @@ CubeAnalyzer.prototype.changeEndTarget = function(container, id) {
 
 	this.findStart = !endTarget;
 	this.ballLocater.findWay(this.ballCell, container, endTarget, this.cubePosition);
-};
-
-CubeAnalyzer.prototype.resetInstructions = function() {
-	main.message.clear();
-	this.renderStep2();
 };

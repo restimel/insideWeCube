@@ -23,7 +23,7 @@ V1.0
 					X change cube position in Heuristic
 			X BallLocater
 				X Reset (ball lost → restart)
-		* When reset the instructions keep previous position
+		X When reset the instructions keep previous position
 
 	Skinning
 		X rename Title section (Lost?, Manage cube)
@@ -38,12 +38,12 @@ V1.0
 
 	Cube solver
 		X change cube does not display the correct map
-		* When changing position the button to reset disapears
-		* When reset position it adds a new section instead of override it
+		X When changing position the button to reset disapears
+		X When reset position it adds a new section instead of override it
 		* Instructions are wrong to find the way back
 			* wrong place to finish ?
 			* when startPosition is chosen it does a wrong movement to come back to start
-		* display 'Map orientation' must be on a new line
+		X display 'Map orientation' must be on a new line
 
 
 V1.1

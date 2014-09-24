@@ -16,6 +16,12 @@ BallLocater.prototype.reset = function(cubeName) {
 	}
 };
 
+BallLocater.prototype.resetInstructions = function() {
+	main.message.clear();
+	this.container.innerHTML = '';
+	this.render(this.container, this.position);
+};
+
 BallLocater.prototype.getCube = function() {
 	return {
 		name: this.cubeName
@@ -86,6 +92,11 @@ BallLocater.prototype.render = function(container, position) {
 	table.appendChild(tbody);
 
 	container.appendChild(table);
+
+	var btnLost = document.createElement('button');
+	btnLost.textContent = $$('I have lost my ball! I don\'t know what happened!');
+	btnLost.onclick = this.resetInstructions.bind(this);
+	container.appendChild(btnLost);
 };
 
 BallLocater.prototype.renderCube = function(container) {
@@ -95,7 +106,7 @@ BallLocater.prototype.renderCube = function(container) {
 		label = document.createElement('label'),
 		select = document.createElement('select');
 
-	label.textContent = $$('Map orientation');
+	label.textContent = $$('Map orientation: ');
 	select.onchange = function() {
 		that.getCubeMap(this.value);
 	};
