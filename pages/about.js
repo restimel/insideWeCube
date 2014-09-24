@@ -52,7 +52,7 @@ About.prototype.render = function(container) {
 	}
 
 	var version = document.createElement('div');
-	version.textContent = $$('Version: %s', '0.8');
+	version.textContent = $$('Version: %s', main.version);
 	program.appendChild(version);
 
 	var date = document.createElement('div');

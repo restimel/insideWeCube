@@ -3,52 +3,31 @@ V1.0
 	~ write documentation (Readme.md)
 	X main page
 	* message: option stack/timeout
+		* Message could disappears after an defined amount of time
+		* Message should be categorize to clear all messages of a category
+
 	* translate words
 		~ Make a tool script to parse sentences
-	X FAQ:
-		X add explanation about how to use app
-		X why browser compatibility
-
-	Build Cube
-		X reset button (to remove or to implement)
 
 	Cube Solver
-		X Add interaction to find place
-			X Render
-				X allow to change cube position at start
-					X Display dialog to select new position
-						X Bug: does not change cube preview position
-						X Bug: Skinning on Opera (which do not support at all Dialog)
-					X change Text position in instructions
-					X change cube position in Heuristic
-			X BallLocater
-				X Reset (ball lost → restart)
-		X When reset the instructions keep previous position
-
-	Skinning
-		X rename Title section (Lost?, Manage cube)
+		* Add information that it is finished
+			+ Rotate the cube to see the result
+		+ Mark Start and Finish in miniMap
 
 
 /!\ Bugs
 	General
 		* Menu translation are not good at start
 
-	Build Cube
-		→ do something (not log ?) when unexpected movement happens when rotated localy
-
 	Cube solver
-		X change cube does not display the correct map
-		X When changing position the button to reset disapears
-		X When reset position it adds a new section instead of override it
-		* Instructions are wrong to find the way back
+		* Instructions are wrong to find the way back (??? To check)
 			* wrong place to finish ?
 			* when startPosition is chosen it does a wrong movement to come back to start
-		X display 'Map orientation' must be on a new line
-
+		* Skinning of the instructions to the way back
+			* auto-focus
 
 V1.1
 	General
-		* Message could disappears after an defined amount of time
 		* select which cube to export
 		* warning message when browser is not compatible
 		* Save Language in localStorage
@@ -58,15 +37,16 @@ V1.1
 	Build Cube
 		* key Shortcut (Ctrl+S)
 		* display small format map (and with reverse side)
-			→ give small map with different orientation (other than top/bottom)
+			+ give small map with different orientation (other than top/bottom)
 		* change Cube color
+		+ do something (not log ?) when unexpected movement happens when rotated localy
 
 	Analyze Cube
 		* give position of possible cells
-		→ give better help on impossible help (direct movement or position (display a 4th column with level position))
-		→ (bonus) identify in which cube we are if no positions match
+		+ give better help on impossible help (direct movement or position (display a 4th column with level position))
+		+ (bonus) identify in which cube we are if no positions match
 
 	Bugs
-			→ Do not found correct rotations  for some passage (Awful)
-				-→----?	  -→-------?
-				   ↓  |		 |   ↓
+		* Do not found correct rotations  for some passage (Awful)
+				-→------?  -→-------?
+				   ↓  |	      |   ↓
