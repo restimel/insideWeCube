@@ -10,8 +10,8 @@ V1.0
 		~ Make a tool script to parse sentences
 
 	Cube Solver
-		* Add information that it is finished
-			+ Rotate the cube to see the result
+		X Add information that it is finished
+			X Rotate the cube to see the result
 		+ Mark Start and Finish in miniMap
 
 

@@ -304,6 +304,7 @@ Heuristic.prototype.renderCube = function(rsp, count) {
 Heuristic.prototype.wayBack = function(rsp) {
 	var cell = rsp.cell,
 		target = rsp.target ? {x:4, y:4, z:6} : {x:1, y:1, z:0},
+		lastTopPosition = !rsp.target,
 		startPosition = this.computeBestPosition(cell, rsp.position),
 		path = this.path.getPathMvt(cell, target, startPosition, this.accessible, true),
 		position = startPosition,
@@ -330,6 +331,17 @@ Heuristic.prototype.wayBack = function(rsp) {
 		position: startPosition,
 		result: 0
 	});
+
+	if (position.b == lastTopPosition) {
+		path[path.length - 1].result += 100;
+	} else {
+		position.b = lastTopPosition;
+		path.push({
+			mvt: lastTopPosition ? '-b' : 'b',
+			position: position,
+			result: 100
+		});
+	}
 
 	self.postMessage({data: {action: 'wayBack', data: {
 		path: path

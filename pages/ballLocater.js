@@ -204,7 +204,7 @@ BallLocater.prototype.renderWayBack = function(path) {
 		Cube3D.render(cell, instruction.position);
 
 		cell = row.insertCell(-1);
-		cell.textContent = this.textResult(instruction.result);
+		cell.innerHTML = this.textResult(instruction.result);
 
 		position = instruction.position;
 	}, this);
@@ -360,6 +360,10 @@ BallLocater.prototype.textResult = function(code) {
 		case 1: return $$('The ball has moved.');
 		case 2: return $$('The ball has moved and fallen.');
 		default:
+			if (code > 90) {
+				return [this.textResult(code - 100), $$('The ball is now visible!')].join('<br>');
+			}
+
 			return $$('Something should happen but I don\'t know what :(');
 	}
 };
