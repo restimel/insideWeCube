@@ -1,6 +1,7 @@
-var $$ = (function() {
+(function() {
 	var languages = ['en', 'fr'];
 	var translation = {};
+	var readyCallback = [];
 
 	var lng = self.navigator.language;
 	if ((lng || '').indexOf('-') !== -1) {
@@ -123,12 +124,27 @@ var $$ = (function() {
 		}
 	};
 
+	/**
+	 * return list of available languages
+	 */
 	matching.getLng = function() {
 		return languages;
 	};
 
+	/**
+	 * return the current language
+	 */
 	matching.getCurrentLng = function() {
 		return lng;
+	};
+
+	matching.onready = function(f) {
+		if (typeof f === 'function') {
+			readyCallback.push(f);
+			return true;
+		} else {
+			return false;
+		}
 	};
 	
 	function pad(nb, digit) {
@@ -163,6 +179,10 @@ var $$ = (function() {
 				} catch(e) {
 					console.error('translation not loaded', e);
 				}
+
+				readyCallback.forEach(function(f) {
+					f(lng);
+				});
 			}
 		};
 		
@@ -172,5 +192,5 @@ var $$ = (function() {
 
 	loadTranslation();
 
-	return  matching;
+	self.$$ = matching;
 })();
