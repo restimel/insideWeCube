@@ -350,5 +350,225 @@
 	"Your data are not a valid import.\nIt is not possible to load any cube from it.": {
 		"en": "Your data are not a valid import.\nIt is not possible to load any cube from it.",
 		"fr": "Vos données ne sont pas valides.\nIl n'est pas possible de charger des cubes."
+	},
+	"Your data are not a valid import.\\nIt is not possible to load any cube from it.": {
+		"en": "Your data are not a valid import.\\nIt is not possible to load any cube from it.",
+		"fr": "Ces données ne peuvent pas être importées.\\nIl n'a pas été possible de charger des cubes."
+	},
+	"FAQ": {
+		"en": "FAQ",
+		"fr": "FAQ"
+	},
+	"About the program": {
+		"en": "About the program",
+		"fr": "À propos du programme"
+	},
+	"Contributors: %s": {
+		"en": "Contributors: %s",
+		"fr": "Contributeurs: %s"
+	},
+	"Contribution: Sources are available on %s.": {
+		"en": "Contribution: Sources are available on %s.",
+		"fr": "Contribution: Les sources sont disponibles sur %s."
+	},
+	"Credits": {
+		"en": "Credits",
+		"fr": "Crédits"
+	},
+	"The game: ": {
+		"en": "The game: ",
+		"fr": "Le jeu: "
+	},
+	"Languages icons: ": {
+		"en": "Languages icons: ",
+		"fr": "Les icônes de langues: "
+	},
+	"The application doesn\\'t seems to work.": {
+		"en": "The application doesn\\'t seems to work.",
+		"fr": "L'application ne semble pas marché."
+	},
+	"Try with another browser or a newer version of your browser.<br>This application is written with HTML5 API only modern browser can run correctly this application. Some features could not work correctly depending on your browser version.<br>It doesn\\'t work at all on Internet Explorer 9 and prior versions.": {
+		"en": "Try with another browser or a newer version of your browser.<br>This application is written with HTML5 API, only modern browser can run correctly this application. Some features could not work correctly depending on your browser version.<br>It doesn\\'t work at all on Internet Explorer 9 and prior versions.",
+		"fr": "Essayez avec un autre navigateur ou une version plus récente de votre navigateur.<br>Cette application utilise l'API HTML5 et seuls les navigateurs moderne peuvent faire fonctionner ce programme. Quelques fonctionnalités peuvent ne pas marcher pleinement selon la version de votre navigateur.<br>L'application ne fonctionne pas avec Internet Explorer 9 (et ses précédentes versions)."
+	},
+	"How could I build new maze from cube I have?": {
+		"en": "How could I build new maze from cube I have?",
+		"fr": "Comment construire de nouveaux puzzle à partir de mes cubes?"
+	},
+	"Go to \"Cube Manager\" and build your cube with level you own. On the right you\\'ll see if your cube is solvable and the difficulty of your construction.<br>If you have levels that are not in the database you could build and save them (don\\'t forget to also save your creation in \"Import/Export\" menu in order to re-use cubes/levels you built)": {
+		"en": "Go to \"Cube Manager\" and build your cube with level you own. On the right you\\'ll see if your cube is solvable and the difficulty of your construction.<br>If you have levels that are not in the database you could build and save them (don\\'t forget to also save your creation in \"Import/Export\" menu in order to re-use cubes/levels you built).",
+		"fr": "Allez dans \"Gérer son cube\" et construisez votre cube avec les niveaux que vous possédez. À droite, vous pouvez vérifier que votre puzzle est réalisable et voir son niveau de difficulté.<br>If vous possédez des niveux qui ne sont pas dans la base, vous pouvez les créer et les sauvegarder (n'oubliez pas de les sauver aussi dans le menu \"Import/Export\" pour pouvoir les réutiliser plus tard)."
+	},
+	"How could I reset my real cube without opening it?": {
+		"en": "How could I restart my real cube without opening it?",
+		"fr": "Comment puis-je recommencer mon vrai cube sans l'ouvrir?"
+	},
+	"Go to \"Lost in cube?\" and follow the instructions. The first instructions will help to know where your ball is in the cube. Then instructions are given to bring back the ball to the start (or the end, but it is better if you solve it by your own, isn\\'t it?).": {
+		"en": "Go to \"Lost in cube?\" and follow the instructions. The first instructions will help to know where your ball is in the cube. Then instructions are given to bring back the ball to the start (or the end, but it is better if you solve it by your own, isn\\'t it?).",
+		"fr": "Allez dans \"Perdu dans son cube?\" et suivez les instructions. La première série d'instructions vous aidera à retrouver la bille. Puis la seconde vous aidera à ramener la bille au départ (ou à l'arrivée, mais c'est mieux de le résoudre sois-même, n'est-ce pas?)."
+	},
+	"How to sent a cube map to a friend?": {
+		"en": "",
+		"fr": ""
+	},
+	"Go to \"Import/Export\" and copy the code in \"export cubes\" area. Paste this code in a text file if you want to save it on your computer. You can also sent this code to a friend. He will be able to import it on his computer with this application.": {
+		"en": "",
+		"fr": ""
+	},
+	"How to read a cube sent by a friend?": {
+		"en": "",
+		"fr": ""
+	},
+	"Go to \"Import/Export\" and paste the code he sent you in the \"import cubes\" area. Then click on \"Import\" button. If the code is valid you are able to select these cubes/levels in \"Cube manager\" or \"Lost in cube?\" menus.": {
+		"en": "",
+		"fr": ""
+	},
+	"What is the INSIDE³ face?": {
+		"en": "What is the INSIDE³ face?",
+		"fr": "Quelle est la face INSIDE³ ?"
+	},
+	"An insideZeCube cube has 2 noticeable faces.<ul><li>The \"INSIDE³\" face where you also see the name of the cube. This is the top face where the ball was when you have bought the cube.</li><li>The \"InsideZeCube.com\" face is where the cube can be open (when feasible). This is where the ball must be visible to finish the cube.</li></ul>In order to follow instructions, you should always keep one of these to face at top with the title readable.": {
+		"en": "An insideZeCube cube has 2 noticeable faces.<ul><li>The \"INSIDE³\" face where you also see the name of the cube. This is the top face where the ball was when you have bought the cube.</li><li>The \"InsideZeCube.com\" face is where the cube can be open (when feasible). This is where the ball must be visible to finish the cube.</li></ul>In order to follow instructions, you should always keep one of these to face at top with the title readable.",
+		"fr": "Un cube insideZeCube a 2 faces identifiable.<ul><li>La face \"INSIDE³\" où vous pouvez aussi remarquer le nom du cube. C'est la face supérieure où se trouvait la bille lorsque vous l'avez acheté.</li><li>La face \"InsideZeCube.com\" est celle où le cube peut s'ouvrir (quand il le permet). C'est là où la bille sera visible quand le cube est terminé.</li></ul>Pour suivre les instructions, vous devez toujours avoir l'une de ses deux face en haut avec le titre lisible."
+	},
+	"Sometime the helper could not help me and give no clear instructions.": {
+		"en": "",
+		"fr": ""
+	},
+	"This happen when a complex movement must be done (like a diagonal movement). Current algorithm could not resolve such movement. I am very sorry you have to find the correct movement on your own :(<br>This could happen in difficult cubes (Awful, Vicious and Mortal)": {
+		"en": "",
+		"fr": ""
+	},
+	"Why maps of Mortal cubes are not available?": {
+		"en": "Why maps of Mortal cubes are not available?",
+		"fr": "Pourquoi les cartes des cubes Mortal ne sont pas disponibles?"
+	},
+	"The goal of Mortal cube is to discover the map levels on your own. If you take maps from someone else, you should better buy a Vicious or an Awful cube ;p": {
+		"en": "The goal of Mortal cube is to discover the map levels on your own. If you take maps from someone else, you should better buy a Vicious or an Awful cube ;p",
+		"fr": "Le but des cubes Mortal est de découvrir les niveaux par vous-même. Si vous les récupérer autrement, autant acheter un cube Vicous ou Awful ;p"
+	},
+	"I really want maps of Mortal cube!": {
+		"en": "I really want maps of Mortal cube!",
+		"fr": "Je désire vraiment les cartes du Mortal!"
+	},
+	"Try to find someone who know maps of your cube and import them with the import/export tool.": {
+		"en": "Try to find someone who know maps of your cube and import them with the import/export tool.",
+		"fr": "Trouvez quelqu'un qui les connait et importez les avec l'outil d'import/export"
+	},
+	"Why it looks so awful?": {
+		"en": "",
+		"fr": ""
+	},
+	"I am not a designer. If you can improve the application design, I will be glad to accept your work.": {
+		"en": "",
+		"fr": ""
+	},
+	"Why is it called \"Inside We cube\"?": {
+		"en": "",
+		"fr": ""
+	},
+	"<ol><li>I had to find a name ;)</li><li>When you type \"InsideZeCube\" with a wrong AZERTY↔QWERTY keyboard configuration you get \"InsideWeCube\".</li><li>Because INSIDE this application WE solve CUBE.</li></ol>": {
+		"en": "",
+		"fr": ""
+	},
+	"This is not my current position!": {
+		"en": "This is not my current position!",
+		"fr": "Ce n'est pas ma position actuelle!"
+	},
+	"I have lost my ball! I don\\'t know what happened!": {
+		"en": "I have lost my ball! I don\\'t know what happened!",
+		"fr": "J'ai perdu ma bille! Je ne sais plus ce qu'il s'est passé!"
+	},
+	"Map orientation: ": {
+		"en": "Map orientation: ",
+		"fr": "Orientation de la carte: "
+	},
+	"INSIDE³ face at top": {
+		"en": "INSIDE³ face at top",
+		"fr": "la face INSIDE³ en haut"
+	},
+	"INSIDE³ face at bottom": {
+		"en": "INSIDE³ face at bottom",
+		"fr": "la face INSIDE³ en bas"
+	},
+	"Level %d": {
+		"en": "Level %d",
+		"fr": "Niveau %d"
+	},
+	"I am sorry, I can\\'t help you here :(": {
+		"en": "I am sorry, I can\\'t help you here :(",
+		"fr": "Désolé, je ne peux pas vous aider cette fois-ci :("
+	},
+	"The ball is now visible!": {
+		"en": "The ball is now visible!",
+		"fr": "La bille est maintenant visible!"
+	},
+	"Something should happen but I don\\'t know what :(": {
+		"en": "",
+		"fr": ""
+	},
+	"If you don\\'t know where the ball is, please follow the instructions.": {
+		"en": "",
+		"fr": ""
+	},
+	"Are you sure to be spoiled?\\nDon\\'t you want to try to solve it by yourself?": {
+		"en": "",
+		"fr": ""
+	},
+	"You have lost your ball inside the cube? You want to build new maze from your cubes?": {
+		"en": "",
+		"fr": ""
+	},
+	"\"Inside We Cube\" will help you!": {
+		"en": "",
+		"fr": ""
+	},
+	"Keep your calm stay zen!": {
+		"en": "",
+		"fr": ""
+	},
+	"Set your cube current position": {
+		"en": "",
+		"fr": ""
+	},
+	"Ok": {
+		"en": "Ok",
+		"fr": "Ok"
+	},
+	"Cancel": {
+		"en": "Cancel",
+		"fr": "Annulé"
+	},
+	"INSIDE³ face is": {
+		"en": "INSIDE³ face is",
+		"fr": "La face INSIDE³ est"
+	},
+	"at TOP": {
+		"en": "at TOP",
+		"fr": "en HAUT"
+	},
+	"at BOTTOM": {
+		"en": "at BOTTOM",
+		"fr": "en BAS"
+	},
+	"Your cube is slightly rotated": {
+		"en": "Your cube is slightly rotated",
+		"fr": "Le cube est légérement penché"
+	},
+	"to the LEFT": {
+		"en": "to the LEFT",
+		"fr": "vers la GAUCHE"
+	},
+	"to the RIGHT": {
+		"en": "to the RIGHT",
+		"fr": "vers la DROITE"
+	},
+	"BACKWARD": {
+		"en": "BACKWARD",
+		"fr": "vers VOUS"
+	},
+	"FORWARD": {
+		"en": "FORWARD",
+		"fr": "vers l'AVANT"
 	}
 }
