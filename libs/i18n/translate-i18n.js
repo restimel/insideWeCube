@@ -28,11 +28,11 @@
 
 			w = wo[lng];
 
-			if (typeof w === 'undefined') {
+			if (typeof w === 'undefined' || !w) {
 				console.warn('Translation in "' + lng + '" is missing',  key);
 				w = wo['en'];
 
-				if (typeof w === 'undefined') {
+				if (typeof w === 'undefined' || !w) {
 					w = key;
 				}
 			}
