@@ -257,7 +257,7 @@ BallLocater.prototype.onMessage = function(data) {
 			}
 			break;
 		case 'found':
-			main.message($$('The ball location has been found!'), 'success', 2000);
+			main.message($$('The ball location has been found!'), 'success', {timeout: 2000});
 			this.findCallback(args.cell, args.position);
 			break;
 		case 'wayBack':

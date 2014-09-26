@@ -2,9 +2,8 @@
 V1.0
 	~ write documentation (Readme.md)
 	X main page
-	* message: option stack/timeout
-		* Message could disappears after an defined amount of time
-		* Message should be categorize to clear all messages of a category
+	X message: option stack/timeout
+		X Message could disappears after an defined amount of time
 
 	* translate words
 		~ Make a tool script to parse sentences

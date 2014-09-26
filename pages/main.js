@@ -13,12 +13,16 @@ function main(container){
 main.version = '0.9';
 
 main.message = (function() {
-	var container = document.createDocumentFragment();
+	var container = document.createDocumentFragment(),
+		list = [];
 
-	function f(msg, type, keep) {
-		if (!keep) {
+	function f(msg, type, option) {
+		option = option || {};
+
+		if (!option.keep) {
 			f.clear();
 		}
+
 		if (!type) {
 			type = 'info';
 		}
@@ -26,17 +30,32 @@ main.message = (function() {
 		var elem = document.createElement('section');
 		elem.textContent = msg;
 		elem.className = type;
-		elem.onclick = f.close;
+		elem.onclick = f.eclose;
 
 		container.appendChild(elem);
+
+		list.push(elem);
+
+		if (typeof option.timeout === 'number') {
+			setTimeout(function() {
+				f.close(elem);
+			}, option.timeout);
+		}
 	}
 
 	f.clear = function() {
 		container.innerHTML = '';
+		list = [];
 	};
 
-	f.close = function(event) {
-		container.removeChild(event.currentTarget);
+	f.close = function(elem) {
+		container.removeChild(elem);
+		var i = list.indexOf(elem);
+		list.splice(i, 1);
+	};
+
+	f.eclose = function(event) {
+		f.close(event.currentTarget);
 	};
 
 	f.builder = function(cnt) {
