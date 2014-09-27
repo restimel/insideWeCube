@@ -24,6 +24,8 @@ V1.0
 			* when startPosition is chosen it does a wrong movement to come back to start
 		* Skinning of the instructions to the way back
 			* auto-focus
+	Skinning
+		X cube 3D: title is not updated and overflow
 
 V1.1
 	General
@@ -39,6 +41,8 @@ V1.1
 			+ give small map with different orientation (other than top/bottom)
 		* change Cube color
 		+ do something (not log ?) when unexpected movement happens when rotated localy
+		* filter on cube
+		* switch level
 
 	Analyze Cube
 		* give position of possible cells

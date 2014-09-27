@@ -64,21 +64,22 @@ dialog.fake-dialog {
    font-size: 25px;
    font-family: monospace;
    font-variant: small-caps;
+   letter-spacing: 0.2em;
 }
 .cube-title-site {
    display: inline-block;
    width: 140px;
-   font-size: 20px;
+   font-size: 17px;
    font-family: monospace;
    font-variant: small-caps;
 }
 .cube-name {
    display: block;
-   width: 60px;
-   font-size: 18px;
+   font-size: 17px;
+   font-weight: bold;
    position: absolute;
-   bottom: 22px;
-   right: 22px;
+   bottom: 1em;
+   right: 1em;
 }
 .cube-face-bottom {
    border: solid 2px black;
@@ -90,30 +91,37 @@ dialog.fake-dialog {
 
 .cube-blue .face{
    background-color: mediumblue;
+   color: #00F;
 }
 
 .cube-red .face{
    background-color: red;
+   color: #E00;
 }
 
 .cube-green .face{
-   background-color: limegreen;  /*chartreuse;*/
+   background-color: limegreen;
+   color: #0B0;
 }
 
 .cube-orange .face{
    background-color: orange;
+   color: #D80;
 }
 
 .cube-brown .face{
    background-color: saddlebrown;
+   color: #952;
 }
 
 .cube-yellow .face{
    background-color: yellow;
+   color: #CD0;
 }
 
 .cube-crystal .face{
    background-color: transparent;
+   color: #FFF;
 }
 
 .cube-black .face{

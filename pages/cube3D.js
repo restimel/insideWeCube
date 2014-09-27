@@ -28,7 +28,7 @@ Cube3D.render = function(container, position, cube) {
 	face.appendChild(hole);
 	text = document.createElement('span');
 	text.className = 'cube-name';
-	text.textContent = 'Awesome0';
+	text.textContent = name;
 	face.appendChild(text);
 	parent.appendChild(face);
 
