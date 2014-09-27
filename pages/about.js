@@ -97,7 +97,7 @@ About.prototype.render = function(container) {
 	container.appendChild(credit);
 
 	function createGithubLink(user) {
-		return '<a href="https://github.com/'+encodeURIcomponent(user)+'" target="_blank">'+user+'</a>';
+		return '<a href="https://github.com/' + encodeURIComponent(user) + '" target="_blank">'+user+'</a>';
 	}
 };
 
