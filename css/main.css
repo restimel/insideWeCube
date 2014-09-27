@@ -190,6 +190,7 @@ body {
 	width: 10px;
 	height: 10px;
 	border: 2px solid darkblue;
+	font-size: 9px;
 }
 .mini-map td:not(.unavailable){
 	cursor: pointer;

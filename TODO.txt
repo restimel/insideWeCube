@@ -11,7 +11,7 @@ V1.0
 	Cube Solver
 		X Add information that it is finished
 			X Rotate the cube to see the result
-		+ Mark Start and Finish in miniMap
+		X Mark Start and Finish in miniMap
 
 
 /!\ Bugs

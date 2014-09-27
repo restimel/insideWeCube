@@ -137,6 +137,18 @@ BallLocater.prototype.renderCubeSelector = function(cubeHtml) {
 	this.cubeSelectorContainer.innerHTML = cubeHtml.map(function(html, i) {
 		return '<figure><caption>'+$$('Level %d', i+1)+'</caption>'+html+'</figure>';
 	}).join('');
+
+	var elem = document.getElementById('map-1-1-0');
+	if (elem) {
+		elem.textContent = $$('S');
+		elem.title = $$('Start');
+	}
+
+	elem = document.getElementById('map-4-4-6');
+	if (elem) {
+		elem.textContent = $$('F');
+		elem.title = $$('Finish');
+	}
 };
 
 BallLocater.prototype.renderInstruction = function(movement, rowPst, position) {
