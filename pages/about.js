@@ -1,7 +1,7 @@
 function About() {}
 
 About.prototype.render = function(container) {
-	var contributors = []; /* add your name or nickname here if you have contributes to this application */
+	var contributors = []; /* add your Github name here if you have contributes to this application */
 
 	var program = document.createElement('details'),
 		credit = document.createElement('details'),
@@ -42,12 +42,12 @@ About.prototype.render = function(container) {
 	program.appendChild(summary);
 
 	var author = document.createElement('div');
-	author.textContent = $$('Author: %s', 'Restimel');
+	author.innerHTML = $$('Author: %s', createGithubLink('Restimel'));
 	program.appendChild(author);
 
 	if (contributors.length) {
 		var elContributors = document.createElement('div');
-		elContributors.textContent = $$('Contributors: %s', contributors.join(', '));
+		elContributors.innerHTML = $$('Contributors: %s', contributors.map(createGithubLink).join(', '));
 		program.appendChild(elContributors);
 	}
 
@@ -95,6 +95,10 @@ About.prototype.render = function(container) {
 
 	credit.className = 'about-section';
 	container.appendChild(credit);
+
+	function createGithubLink(user) {
+		return '<a href="https://github.com/'+encodeURIcomponent(user)+'" target="_blank">'+user+'</a>';
+	}
 };
 
 About.prototype.renderFAQ = function(container) {
