@@ -408,12 +408,12 @@
 		"fr": "Allez dans \"Perdu dans son cube?\" et suivez les instructions. La première série d'instructions vous aidera à retrouver la bille. Puis la seconde vous aidera à ramener la bille au départ (ou à l'arrivée, mais c'est mieux de le résoudre sois-même, n'est-ce pas?)."
 	},
 	"How to sent a cube map to a friend?": {
-		"en": "",
-		"fr": ""
+		"en": "How to sent a cube map to a friend?",
+		"fr": "Comment partager la carte d'un cube avec un ami?"
 	},
 	"Go to \"Import/Export\" and copy the code in \"export cubes\" area. Paste this code in a text file if you want to save it on your computer. You can also sent this code to a friend. He will be able to import it on his computer with this application.": {
-		"en": "",
-		"fr": ""
+		"en": "Go to \"Import/Export\" and copy the code in \"export cubes\" area. Paste this code in a text file if you want to save it on your computer. You can also sent this code to a friend. He will be able to import it on his computer with this application.",
+		"fr": "Allez dans \"Import/Export\" et copiez le code situé dans la zone \"exporter les cubes\". Collez ce code dans un fichier texte pour le sauvegarder. Ou vous pouvez envoyer ce code à vos amis qui pourront charger vos cubes avec cette application."
 	},
 	"How to read a cube sent by a friend?": {
 		"en": "",
@@ -504,32 +504,32 @@
 		"fr": "La bille est maintenant visible!"
 	},
 	"Something should happen but I don\\'t know what :(": {
-		"en": "",
-		"fr": ""
+		"en": "Something should happen but I don\\'t know what :(",
+		"fr": "Quelque chose doit se passer mais je ne sais ce que c'est :("
 	},
 	"If you don\\'t know where the ball is, please follow the instructions.": {
-		"en": "",
-		"fr": ""
+		"en": "If you don\\'t know where the ball is, please follow the instructions.",
+		"fr": "Si vous ne savez pas où se trouve la bille, suivez ces instructions."
 	},
 	"Are you sure to be spoiled?\\nDon\\'t you want to try to solve it by yourself?": {
 		"en": "",
 		"fr": ""
 	},
 	"You have lost your ball inside the cube? You want to build new maze from your cubes?": {
-		"en": "",
-		"fr": ""
+		"en": "You have lost your ball inside the cube? You want to build new maze from your cubes?",
+		"fr": "Vous avez perdu votre bille à l'intérieur du cube? Vous désirez construire de noux puzzle à partir de vos cubes?"
 	},
 	"\"Inside We Cube\" will help you!": {
-		"en": "",
-		"fr": ""
+		"en": "\"Inside We Cube\" will help you!",
+		"fr": "\"Inside We Cube\" va vous aider!"
 	},
 	"Keep your calm stay zen!": {
-		"en": "",
-		"fr": ""
+		"en": "Keep your calm stay zen!",
+		"fr": "Gardez votre calme, restez zen!"
 	},
 	"Set your cube current position": {
-		"en": "",
-		"fr": ""
+		"en": "Set your cube current position",
+		"fr": "Définissez la position actuelle du cube"
 	},
 	"Ok": {
 		"en": "Ok",
