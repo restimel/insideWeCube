@@ -2,6 +2,7 @@
 	var languages = ['en', 'fr'];
 	var translation = {};
 	var readyCallback = [];
+	var path = './';
 
 	var lng = self.navigator.language;
 	if ((lng || '').indexOf('-') !== -1) {
@@ -146,6 +147,16 @@
 			return false;
 		}
 	};
+
+	/**
+	 * Set Configuration
+	 *  - path {String} path of the application
+	 */
+	matching.configuration = function(option) {
+		if (typeof option.path === 'string') {
+			path = option.path;
+		}
+	}
 	
 	function pad(nb, digit) {
 		var i = parseInt(nb, 10).toString(),
@@ -184,7 +195,7 @@
 			}
 		};
 		
-		xhr.open("GET", "/libs/i18n/translations.json", true, user, password);
+		xhr.open('GET', path + 'libs/i18n/translations.json', true, user, password);
 		xhr.send();
 
 		var timer = setTimeout(loaded, 2000, false);
@@ -196,6 +207,10 @@
 				f(lng, value);
 			});
 		}
+	}
+
+	if (typeof self.$$configuration === 'object') {
+		matching.configuration(self.$$configuration);
 	}
 
 	loadTranslation();

@@ -1,3 +1,14 @@
+
+(function(){
+	var path = location.pathname.split('/'),
+		i = path.indexOf('common');
+
+	path = path.slice(0, i);
+	path = '/' + path.join('/');
+
+	self.$$configuration = {path: path};
+})();
+
 importScripts(
 	'../models/store.js',
 	'../models/level.js',
