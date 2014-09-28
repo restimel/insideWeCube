@@ -141,7 +141,7 @@ Cube3D.askPosition = function(container, callBack, currentPosition, cube) {
 	titleTop.className = 'title-cube-position';
 	form.appendChild(titleTop);
 
-	buildRadio('b', $$('at TOP'), $$('at BOTTOM'));
+	buildRadio('b', $$('at the TOP'), $$('at the BOTTOM'));
 
 	titleRotation.textContent = $$('Your cube is slightly rotated');
 	titleRotation.className = 'title-cube-position';

@@ -19,7 +19,7 @@ CubeAnalyzer.prototype.render = function(container) {
 	var tools = document.createElement('section');
 
 	var resetBtn = document.createElement('button');
-	resetBtn.textContent = $$('Restart analyze');
+	resetBtn.textContent = $$('Restart analysis');
 	resetBtn.onclick = this.reset.bind(this, true);
 	tools.appendChild(resetBtn);
 
@@ -47,7 +47,7 @@ CubeAnalyzer.prototype.renderStep1 = function() {
 
 	var label = document.createElement('span');
 	label.className = 'label';
-	label.textContent = $$('Select the cube where you are lost.');
+	label.textContent = $$('Select the cube where you are lost: ');
 	step.appendChild(label);
 
 	var select = document.createElement('select');
@@ -230,7 +230,7 @@ CubeAnalyzer.prototype.changeEndTarget = function(container, id) {
 	var endTarget = id === 'endCellEnd';
 
 	if (endTarget && this.findStart) {
-		if (!confirm($$('Are you sure to be spoiled?\nDon\'t you want to try to solve it by yourself?'))) {
+		if (!confirm($$('Are you sure you want to be spoiled?\nDon\'t you want to try to solve it by yourself?'))) {
 			document.getElementById('endCellStart').checked = true;
 			endTarget = false;
 		}

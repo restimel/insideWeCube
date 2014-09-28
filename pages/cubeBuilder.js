@@ -129,10 +129,10 @@ CubeBuilder.prototype.renderInfo = function(info) {
 		elMovement.textContent = $$('%i cube rotations are needed (at least)', nbMovement);
 
 		elCbReverse.className = 'info';
-		elCbReverse.textContent = $$('%i cube reversed upside down are needed (at least)', chgTop);
+		elCbReverse.textContent = $$('%i upside-down cube flips are needed (at least)', chgTop);
 
 		elHardCells.className = 'info';
-		elHardCells.textContent = $$('%i hardcore passage', nbDifficultCrossing);
+		elHardCells.textContent = $$('%i hardcore passages', nbDifficultCrossing);
 
 		elDifficulty.className = 'info';
 		label = document.createElement('label');

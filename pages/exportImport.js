@@ -10,13 +10,13 @@ exportImport.prototype.render = function(container) {
 
 	box.className = 'field-import-export';
 
-	legend.textContent = $$('import cubes');
+	legend.textContent = $$('Import cubes');
 	fieldset.appendChild(legend);
 
 	textarea.id = 'importData';
 	fieldset.appendChild(textarea);
 
-	button.textContent = $$('import');
+	button.textContent = $$('Import');
 	button.onclick = this.import.bind(this);
 	fieldset.appendChild(button);
 
@@ -32,7 +32,7 @@ exportImport.prototype.render = function(container) {
 
 	box.className = 'field-import-export';
 
-	legend.textContent = $$('export cubes');
+	legend.textContent = $$('Export cubes');
 	fieldset.appendChild(legend);
 
 	textarea.id = 'exportData';

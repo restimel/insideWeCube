@@ -9,7 +9,7 @@ startPage.render = function(container) {
 	header.textContent = 'Inside We Cube';
 	container.appendChild(header);
 
-	explanation.textContent = $$('You have lost your ball inside the cube? You want to build new maze from your cubes?');
+	explanation.textContent = $$('How to find your ball lost inside the cube? How to build new mazes from your cubes?');
 	container.appendChild(explanation);
 
 	explanation = document.createElement('p');

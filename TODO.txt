@@ -5,8 +5,9 @@ V1.0
 	X message: option stack/timeout
 		X Message could disappears after an defined amount of time
 
-	* translate words
-		~ Make a tool script to parse sentences
+	* Licence: MIT or CC BY 4.0? (update readme/FAQ accordingly)
+	X translate words
+		X Fix typo and grammar mistake
 
 	Cube Solver
 		X Add information that it is finished

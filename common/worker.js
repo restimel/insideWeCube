@@ -100,7 +100,7 @@ function saveCubes(data) {
 	try {
 		obj = JSON.parse(data);
 	} catch (e) {
-		return $$('Your data are not a valid import.\nIt is not possible to load any cube from it.');
+		return $$('Your data is not a valid import.\nIt is not possible to load any cube from it.');
 	}
 
 	if (obj instanceof Array) {

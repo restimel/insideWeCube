@@ -9,7 +9,7 @@
 	},
 	"Lost in cube?": {
 		"en": "Lost in cube?",
-		"fr": "Perdu dans son cube?"
+		"fr": "Perdu dans son cube ?"
 	},
 	"Import/Export": {
 		"en": "Import/Export",
@@ -27,12 +27,12 @@
 		"en": "Save cube",
 		"fr": "Enregistrer le cube"
 	},
-	"import": {
-		"en": "import",
-		"fr": "importer"
+	"Import": {
+		"en": "Import",
+		"fr": "Importer"
 	},
 	"save level": {
-		"en": "save level",
+		"en": "Save level",
 		"fr": "Sauver le niveau"
 	},
 	"S": {
@@ -57,31 +57,31 @@
 	},
 	"An INSIDE³ solver: ": {
 		"en": "An INSIDE³ solver: ",
-		"fr": "Un résolveur d'INSIDE³: "
+		"fr": "Un résolveur d'INSIDE³ : "
 	},
 	"Author: %s": {
 		"en": "Author: %s",
-		"fr": "Auteur: %s"
+		"fr": "Auteur : %s"
 	},
 	"Version: %s": {
 		"en": "Version: %s",
-		"fr": "Version: %s"
+		"fr": "Version : %s"
 	},
 	"Date: %s": {
 		"en": "Date: %s",
-		"fr": "Date: %s"
+		"fr": "Date : %s"
 	},
-	"Restart analyze": {
-		"en": "Restart analyze",
+	"Restart analysis": {
+		"en": "Restart analysis",
 		"fr": "Redémarrer l'analyse"
 	},
 	"Select your cube": {
 		"en": "Select your cube",
 		"fr": "Choisissez votre cube"
 	},
-	"Select the cube where you are lost.": {
-		"en": "Select the cube where you are lost.",
-		"fr": "Sélectionner le cube où vous êtes perdu."
+	"Select the cube where you are lost: ": {
+		"en": "Select the cube where you are lost: ",
+		"fr": "Sélectionner le cube où vous êtes perdu : "
 	},
 	"Locate the ball": {
 		"en": "Locate the ball",
@@ -101,7 +101,7 @@
 	},
 	"I have lost my ball! I don't know what happened!": {
 		"en": "I have lost my ball! I don't know what happened!",
-		"fr": "J'ai perdu ma bille! Je ne sais pas ce qu'il s'est passé!"
+		"fr": "J'ai perdu ma bille! Je ne sais pas ce qu'il s'est passé !"
 	},
 	"Find your way back": {
 		"en": "Find your way back",
@@ -121,7 +121,7 @@
 	},
 	"Are you sure to be spoiled?\nDon't you want to try to solve it by yourself?": {
 		"en": "Are you sure to be spoiled?\nDon't you want to try to solve it by yourself?",
-		"fr": "Êtes-vous sûr d'être aidé?\nNe voulez-vous pas essayer par vous-même?"
+		"fr": "Êtes-vous sûr d'être aidé ?\nNe voulez-vous pas essayer par vous-même ?"
 	},
 	"Reset cube": {
 		"en": "Reset cube",
@@ -151,17 +151,17 @@
 		"en": "%i cube rotations are needed (at least)",
 		"fr": "%i rotations de cube sont nécessaires (au moins)"
 	},
-	"%i cube reversed upside down are needed (at least)": {
-		"en": "%i cube reversed upside down are needed (at least)",
+	"%i upside-down cube flips are needed (at least)": {
+		"en": "%i upside-down cube flips are needed (at least)",
 		"fr": "%i renversements de cube sont nécessaires (au moins)"
 	},
-	"%i hardcore passage": {
-		"en": "%i hardcore passage",
+	"%i hardcore passages": {
+		"en": "%i hardcore passages",
 		"fr": "%i passages difficiles"
 	},
 	"Cube difficulty: ": {
 		"en": "Cube difficulty: ",
-		"fr": "Difficulté du cube: "
+		"fr": "Difficulté du cube : "
 	},
 	"Cube is not solvable.": {
 		"en": "Cube is not solvable.",
@@ -187,29 +187,29 @@
 		"en": "Instructions",
 		"fr": "Instructions"
 	},
-	"Position attended": {
-		"en": "Position attended",
+	"Expected position": {
+		"en": "Expected position",
 		"fr": "Position attendue"
 	},
 	"Results": {
 		"en": "Results",
 		"fr": "Résultats"
 	},
-	"Put your cube with the INSIDE³ face at top. INSIDE³ must face you and is readable.": {
-		"en": "Put your cube with the INSIDE³ face at top. INSIDE³ must face you and is readable.",
+	"Put your cube with the INSIDE³ face at the top. INSIDE³ must face you and is readable.": {
+		"en": "Put your cube with the INSIDE³ face at the top. INSIDE³ must face you and is readable.",
 		"fr": "Placer le cube avec la face INSIDE³ au-dessus. INSIDE³ doit vous faire face et être lisible."
 	},
 	"What did you observe?": {
 		"en": "What did you observe?",
-		"fr": "Qu'avez-vous remarqué?"
+		"fr": "Qu'avez-vous remarqué ?"
 	},
 	"Expected results": {
 		"en": "Expected results",
 		"fr": "Résultats attendus"
 	},
-	"No cell in this cube fit your observation. Are you sure about your answer?": {
-		"en": "No cell in this cube fit your observation. Are you sure about your answer?",
-		"fr": "Aucune case de ce cube ne correspond à vos observations. Êtes-vous sûr de vos réponses?"
+	"No cell in this cube fits your observation. Are you sure of your answer?": {
+		"en": "No cell in this cube fits your observation. Are you sure of your answer?",
+		"fr": "Aucune case de ce cube ne correspond à vos observations. Êtes-vous sûr de vos réponses ?"
 	},
 	"Many cells fit your observation. It is not possible to differenciate them :( %s": {
 		"en": "Many cells fit your observation. It is not possible to differenciate them :( %s",
@@ -217,7 +217,7 @@
 	},
 	"The ball location has been found!": {
 		"en": "The ball location has been found!",
-		"fr": "La bille a été repérée!"
+		"fr": "La bille a été repérée !"
 	},
 	"Rotate your cube slightly to the right.": {
 		"en": "Rotate your cube slightly to the right.",
@@ -263,29 +263,29 @@
 		"en": "Rotate your cube to have the face INSIDE³ at the top.",
 		"fr": "Tourner le cube pour avoir la face INSIDE³ en haut."
 	},
-	"the face INSIDE³ is at top": {
-		"en": "the face INSIDE³ is at top",
-		"fr": "la face INSIDE³ est en haut."
+	"The face INSIDE³ is at the top.": {
+		"en": "The face INSIDE³ is at the top.",
+		"fr": "La face INSIDE³ est en haut."
 	},
-	"the face INSIDE³ is at bottom": {
-		"en": "the face INSIDE³ is at bottom",
-		"fr": "la face INSIDE³ est en bas."
+	"The face INSIDE³ is at the bottom.": {
+		"en": "The face INSIDE³ is at the bottom.",
+		"fr": "La face INSIDE³ est en bas."
 	},
-	"your cube is slightly rotated backward": {
-		"en": "your cube is slightly rotated backward",
-		"fr": "le cube est penché vers vous"
+	"Your cube is slightly rotated backward.": {
+		"en": "Your cube is slightly rotated backward.",
+		"fr": "Le cube est penché vers vous."
 	},
-	"your cube is slightly rotated forward": {
-		"en": "your cube is slightly rotated forward",
-		"fr": "le cube est penché vers l'avant"
+	"Your cube is slightly rotated forward.": {
+		"en": "Your cube is slightly rotated forward.",
+		"fr": "Le cube est penché vers l'avant."
 	},
-	"your cube is slightly rotated to the right": {
-		"en": "your cube is slightly rotated to the right",
-		"fr": "le cube est penché vers la droite"
+	"Your cube is slightly rotated to the right.": {
+		"en": "Your cube is slightly rotated to the right.",
+		"fr": "Le cube est penché vers la droite."
 	},
-	"your cube is slightly rotated to the left": {
-		"en": "your cube is slightly rotated to the left",
-		"fr": "le cube est penché vers la gauche"
+	"Your cube is slightly rotated to the left.": {
+		"en": "Your cube is slightly rotated to the left.",
+		"fr": "Le cube est penché vers la gauche."
 	},
 	"I am not sure what happened...": {
 		"en": "I am not sure what happened...",
@@ -307,13 +307,13 @@
 		"en": "Something should happen but I don't know what :(",
 		"fr": "Quelque chose doit se passer mais je ne sais pas quoi :("
 	},
-	"import cubes": {
-		"en": "import cubes",
+	"Import cubes": {
+		"en": "Import cubes",
 		"fr": "Importer des cubes"
 	},
-	"export cubes": {
-		"en": "export cubes",
-		"fr": "exporter les cubes"
+	"Export cubes": {
+		"en": "Export cubes",
+		"fr": "Exporter les cubes"
 	},
 	"%d cubes loaded": {
 		"en": "%d cubes loaded",
@@ -347,13 +347,13 @@
 		"en": "red",
 		"fr": "rouge"
 	},
-	"Your data are not a valid import.\nIt is not possible to load any cube from it.": {
-		"en": "Your data are not a valid import.\nIt is not possible to load any cube from it.",
+	"Your data is not a valid import.\nIt is not possible to load any cube from it.": {
+		"en": "Your data is not a valid import.\nIt is not possible to load any cube from it.",
 		"fr": "Vos données ne sont pas valides.\nIl n'est pas possible de charger des cubes."
 	},
-	"Your data are not a valid import.\\nIt is not possible to load any cube from it.": {
-		"en": "Your data are not a valid import.\\nIt is not possible to load any cube from it.",
-		"fr": "Ces données ne peuvent pas être importées.\\nIl n'a pas été possible de charger des cubes."
+	"Your data are not a valid import.\nIt is not possible to load any cube from it.": {
+		"en": "Your data are not a valid import.\nIt is not possible to load any cube from it.",
+		"fr": "Ces données ne peuvent pas être importées.\nIl n'a pas été possible de charger des cubes."
 	},
 	"FAQ": {
 		"en": "FAQ",
@@ -365,11 +365,11 @@
 	},
 	"Contributors: %s": {
 		"en": "Contributors: %s",
-		"fr": "Contributeurs: %s"
+		"fr": "Contributeurs : %s"
 	},
 	"Contribution: Sources are available on %s.": {
 		"en": "Contribution: Sources are available on %s.",
-		"fr": "Contribution: Les sources sont disponibles sur %s."
+		"fr": "Contribution : Les sources sont disponibles sur %s."
 	},
 	"Credits": {
 		"en": "Credits",
@@ -377,155 +377,155 @@
 	},
 	"The game: ": {
 		"en": "The game: ",
-		"fr": "Le jeu: "
+		"fr": "Le jeu : "
 	},
 	"Languages icons: ": {
 		"en": "Languages icons: ",
-		"fr": "Les icônes de langues: "
+		"fr": "Les icônes de langues : "
 	},
-	"The application doesn\\'t seems to work.": {
-		"en": "The application doesn\\'t seems to work.",
-		"fr": "L'application ne semble pas marché."
+	"The application doesn't seem to work.": {
+		"en": "The application doesn't seem to work.",
+		"fr": "L'application ne semble pas marcher."
 	},
-	"Try with another browser or a newer version of your browser.<br>This application is written with HTML5 API only modern browser can run correctly this application. Some features could not work correctly depending on your browser version.<br>It doesn\\'t work at all on Internet Explorer 9 and prior versions.": {
-		"en": "Try with another browser or a newer version of your browser.<br>This application is written with HTML5 API, only modern browser can run correctly this application. Some features could not work correctly depending on your browser version.<br>It doesn\\'t work at all on Internet Explorer 9 and prior versions.",
-		"fr": "Essayez avec un autre navigateur ou une version plus récente de votre navigateur.<br>Cette application utilise l'API HTML5 et seuls les navigateurs moderne peuvent faire fonctionner ce programme. Quelques fonctionnalités peuvent ne pas marcher pleinement selon la version de votre navigateur.<br>L'application ne fonctionne pas avec Internet Explorer 9 (et ses précédentes versions)."
+	"Try with another browser or a newer version of your browser.<br>This application is written with HTML5 API, only modern browsers can run correctly this application. Some features may not work correctly depending on your browser version.<br>It doesn't work at all on Internet Explorer 9 and prior versions.": {
+		"en": "Try with another browser or a newer version of your browser.<br>This application is written with HTML5 API, only modern browsers can run correctly this application. Some features may not work correctly depending on your browser version.<br>It doesn't work at all on Internet Explorer 9 and prior versions.",
+		"fr": "Essayez avec un autre navigateur ou une version plus récente de votre navigateur.<br>Cette application utilise l'API HTML5 et seuls les navigateurs modernes peuvent faire fonctionner ce programme. Quelques fonctionnalités peuvent ne pas marcher pleinement selon la version de votre navigateur.<br>L'application ne fonctionne pas avec Internet Explorer 9 (et ses précédentes versions)."
 	},
-	"How could I build new maze from cube I have?": {
-		"en": "How could I build new maze from cube I have?",
-		"fr": "Comment construire de nouveaux puzzle à partir de mes cubes?"
+	"How can I build a new maze from cubes I have?": {
+		"en": "How can I build a new maze from cubes I have?",
+		"fr": "Comment construire de nouveaux puzzles à partir de mes cubes ?"
 	},
-	"Go to \"Cube Manager\" and build your cube with level you own. On the right you\\'ll see if your cube is solvable and the difficulty of your construction.<br>If you have levels that are not in the database you could build and save them (don\\'t forget to also save your creation in \"Import/Export\" menu in order to re-use cubes/levels you built)": {
-		"en": "Go to \"Cube Manager\" and build your cube with level you own. On the right you\\'ll see if your cube is solvable and the difficulty of your construction.<br>If you have levels that are not in the database you could build and save them (don\\'t forget to also save your creation in \"Import/Export\" menu in order to re-use cubes/levels you built).",
-		"fr": "Allez dans \"Gérer son cube\" et construisez votre cube avec les niveaux que vous possédez. À droite, vous pouvez vérifier que votre puzzle est réalisable et voir son niveau de difficulté.<br>If vous possédez des niveux qui ne sont pas dans la base, vous pouvez les créer et les sauvegarder (n'oubliez pas de les sauver aussi dans le menu \"Import/Export\" pour pouvoir les réutiliser plus tard)."
+	"Go to \"Cube Manager\" and build your cube with your own levels. On the right you'll see if your cube is solvable and the difficulty of your construction.<br>If you have levels that are not in the database, you can build and save them (don't forget to also save your creation in \"Import/Export\" menu in order to re-use cubes/levels you built)": {
+		"en": "Go to \"Cube Manager\" and build your cube with your own levels. On the right you'll see if your cube is solvable and the difficulty of your construction.<br>If you have levels that are not in the database, you can build and save them (don't forget to also save your creation in \"Import/Export\" menu in order to re-use cubes/levels you built).",
+		"fr": "Allez dans \"Gérer son cube\" et construisez votre cube avec les niveaux que vous possédez. À droite, vous pouvez vérifier que votre puzzle est réalisable et voir son niveau de difficulté.<br>Si vous possédez des niveaux qui ne sont pas dans la base, vous pouvez les créer et les sauvegarder (n'oubliez pas de les sauver aussi dans le menu \"Import/Export\" pour pouvoir les réutiliser plus tard)."
 	},
-	"How could I reset my real cube without opening it?": {
-		"en": "How could I restart my real cube without opening it?",
-		"fr": "Comment puis-je recommencer mon vrai cube sans l'ouvrir?"
+	"How can I reset my real cube without opening it?": {
+		"en": "How can I restart my real cube without opening it?",
+		"fr": "Comment puis-je recommencer mon vrai cube sans l'ouvrir ?"
 	},
-	"Go to \"Lost in cube?\" and follow the instructions. The first instructions will help to know where your ball is in the cube. Then instructions are given to bring back the ball to the start (or the end, but it is better if you solve it by your own, isn\\'t it?).": {
-		"en": "Go to \"Lost in cube?\" and follow the instructions. The first instructions will help to know where your ball is in the cube. Then instructions are given to bring back the ball to the start (or the end, but it is better if you solve it by your own, isn\\'t it?).",
-		"fr": "Allez dans \"Perdu dans son cube?\" et suivez les instructions. La première série d'instructions vous aidera à retrouver la bille. Puis la seconde vous aidera à ramener la bille au départ (ou à l'arrivée, mais c'est mieux de le résoudre sois-même, n'est-ce pas?)."
+	"Go to \"Lost in cube?\" and follow the instructions. The first instructions will help to know where your ball is in the cube. Then instructions are given to bring back the ball to the start (or the end, but it is better if you solve it by your own, isn't it?).": {
+		"en": "Go to \"Lost in cube?\" and follow the instructions. The first instructions will help to know where your ball is in the cube. Then instructions are given to bring back the ball to the start (or the end, but it is better if you solve it by your own, isn't it?).",
+		"fr": "Allez dans \"Perdu dans son cube ?\" et suivez les instructions. La première série d'instructions vous aidera à retrouver la bille. Puis la seconde vous aidera à ramener la bille au départ (ou à l'arrivée, mais c'est mieux de le résoudre soi-même, n'est-ce pas ?)."
 	},
-	"How to sent a cube map to a friend?": {
-		"en": "How to sent a cube map to a friend?",
-		"fr": "Comment partager la carte d'un cube avec un ami?"
+	"How to send a cube map to a friend?": {
+		"en": "How to send a cube map to a friend?",
+		"fr": "Comment partager la carte d'un cube avec un ami ?"
 	},
-	"Go to \"Import/Export\" and copy the code in \"export cubes\" area. Paste this code in a text file if you want to save it on your computer. You can also sent this code to a friend. He will be able to import it on his computer with this application.": {
-		"en": "Go to \"Import/Export\" and copy the code in \"export cubes\" area. Paste this code in a text file if you want to save it on your computer. You can also sent this code to a friend. He will be able to import it on his computer with this application.",
-		"fr": "Allez dans \"Import/Export\" et copiez le code situé dans la zone \"exporter les cubes\". Collez ce code dans un fichier texte pour le sauvegarder. Ou vous pouvez envoyer ce code à vos amis qui pourront charger vos cubes avec cette application."
+	"Go to \"Import/Export\" and copy the code in \"export cubes\" area. Paste this code in a text file if you want to save it on your computer. You can also send this code to a friend. He will be able to import it on his computer with this application.": {
+		"en": "Go to \"Import/Export\" and copy the code in \"Export cubes\" area. Paste this code in a text file if you want to save it on your computer. You can also send this code to a friend. He will be able to import it on his computer with this application.",
+		"fr": "Allez dans \"Import/Export\" et copiez le code situé dans la zone \"Exporter les cubes\". Collez ce code dans un fichier texte pour le sauvegarder. Ou vous pouvez envoyer ce code à vos amis qui pourront charger vos cubes avec cette application."
 	},
 	"How to read a cube sent by a friend?": {
-		"en": "",
-		"fr": ""
+		"en": "How to read a cube sent by a friend?",
+		"fr": "Comment voir le cube envoyé par un ami ?"
 	},
 	"Go to \"Import/Export\" and paste the code he sent you in the \"import cubes\" area. Then click on \"Import\" button. If the code is valid you are able to select these cubes/levels in \"Cube manager\" or \"Lost in cube?\" menus.": {
-		"en": "",
-		"fr": ""
+		"en": "Go to \"Import/Export\" and paste the code he sent you in the \"Import cubes\" area. Then click on \"Import\" button. If the code is valid you are able to select these cubes/levels in \"Cube manager\" or \"Lost in cube?\" menus.",
+		"fr": "Allez dans \"Import/Export\" et collez le code qui vous a été envoyé dans la section \"Importer des cubes\". Puis cliquez sur \"Importer\". Si le code est valide, vous trouverez ces niveaux/cubes dans les menus \"Gérer son cube\" et \"Perdu dans son cube ?\" "
 	},
 	"What is the INSIDE³ face?": {
 		"en": "What is the INSIDE³ face?",
 		"fr": "Quelle est la face INSIDE³ ?"
 	},
-	"An insideZeCube cube has 2 noticeable faces.<ul><li>The \"INSIDE³\" face where you also see the name of the cube. This is the top face where the ball was when you have bought the cube.</li><li>The \"InsideZeCube.com\" face is where the cube can be open (when feasible). This is where the ball must be visible to finish the cube.</li></ul>In order to follow instructions, you should always keep one of these to face at top with the title readable.": {
-		"en": "An insideZeCube cube has 2 noticeable faces.<ul><li>The \"INSIDE³\" face where you also see the name of the cube. This is the top face where the ball was when you have bought the cube.</li><li>The \"InsideZeCube.com\" face is where the cube can be open (when feasible). This is where the ball must be visible to finish the cube.</li></ul>In order to follow instructions, you should always keep one of these to face at top with the title readable.",
-		"fr": "Un cube insideZeCube a 2 faces identifiable.<ul><li>La face \"INSIDE³\" où vous pouvez aussi remarquer le nom du cube. C'est la face supérieure où se trouvait la bille lorsque vous l'avez acheté.</li><li>La face \"InsideZeCube.com\" est celle où le cube peut s'ouvrir (quand il le permet). C'est là où la bille sera visible quand le cube est terminé.</li></ul>Pour suivre les instructions, vous devez toujours avoir l'une de ses deux face en haut avec le titre lisible."
+	"An insideZeCube cube has 2 noticeable faces.<ul><li>The \"INSIDE³\" face where you also see the name of the cube. This is the top face where the ball was when you have bought the cube.</li><li>The \"InsideZeCube.com\" face is where the cube can be open (when feasible). This is where the ball must be visible to finish the cube.</li></ul>In order to follow instructions, you should always keep one of these two faces at the top with the title readable.": {
+		"en": "An insideZeCube cube has 2 noticeable faces.<ul><li>The \"INSIDE³\" face where you also see the name of the cube. This is the top face where the ball was when you have bought the cube.</li><li>The \"InsideZeCube.com\" face is where the cube can be open (when feasible). This is where the ball must be visible to finish the cube.</li></ul>In order to follow instructions, you should always keep one of these two faces at the top with the title readable.",
+		"fr": "Un cube insideZeCube a 2 faces identifiables.<ul><li>La face \"INSIDE³\" où vous pouvez aussi remarquer le nom du cube. C'est la face supérieure où se trouvait la bille lorsque vous l'avez acheté.</li><li>La face \"InsideZeCube.com\" est celle où le cube peut s'ouvrir (quand il le permet). C'est là où la bille sera visible quand le cube est terminé.</li></ul>Pour suivre les instructions, vous devez toujours avoir l'une de ces deux faces en haut avec le titre lisible."
 	},
-	"Sometime the helper could not help me and give no clear instructions.": {
-		"en": "",
-		"fr": ""
+	"Sometimes the helper can not help me and gives no clear instructions.": {
+		"en": "Sometimes the helper can not help me and gives no clear instructions.",
+		"fr": "Parfois les instructions ne peuvent pas m'aider ou ne sont pas claires."
 	},
-	"This happen when a complex movement must be done (like a diagonal movement). Current algorithm could not resolve such movement. I am very sorry you have to find the correct movement on your own :(<br>This could happen in difficult cubes (Awful, Vicious and Mortal)": {
-		"en": "",
-		"fr": ""
+	"This happen when a complex movement must be done (like a diagonal movement). Current algorithm can not resolve such movement. I am very sorry, you have to find the correct movement on your own :(<br>This may happen in difficult cubes (Awful, Vicious and Mortal)": {
+		"en": "This happen when a complex movement must be done (like a diagonal movement). Current algorithm can not resolve such movement. I am very sorry, you have to find the correct movement on your own :(<br>This may happen in difficult cubes (Awful, Vicious and Mortal)",
+		"fr": "Cela arrive lorsqu'un mouvement compliqué doit être effectué (comme un mouvement en diagonale). L'algorithme actuel ne sait pas résoudre ce genre de mouvement. Je suis désolé, mais vous devrez trouver le bon mouvement seul :(<br>Cela peut apparaître dans les cubes difficiles (Awful, Vicious et Mortal)"
 	},
-	"Why maps of Mortal cubes are not available?": {
-		"en": "Why maps of Mortal cubes are not available?",
-		"fr": "Pourquoi les cartes des cubes Mortal ne sont pas disponibles?"
+	"Why are maps of Mortal cubes not available?": {
+		"en": "Why are maps of Mortal cubes not available?",
+		"fr": "Pourquoi les cartes des cubes Mortal ne sont pas disponibles ?"
 	},
 	"The goal of Mortal cube is to discover the map levels on your own. If you take maps from someone else, you should better buy a Vicious or an Awful cube ;p": {
 		"en": "The goal of Mortal cube is to discover the map levels on your own. If you take maps from someone else, you should better buy a Vicious or an Awful cube ;p",
-		"fr": "Le but des cubes Mortal est de découvrir les niveaux par vous-même. Si vous les récupérer autrement, autant acheter un cube Vicous ou Awful ;p"
+		"fr": "Le but des cubes Mortal est de découvrir les niveaux par vous-même. Si vous les récupérez autrement, autant acheter un cube Vicious ou Awful ;p"
 	},
 	"I really want maps of Mortal cube!": {
 		"en": "I really want maps of Mortal cube!",
-		"fr": "Je désire vraiment les cartes du Mortal!"
+		"fr": "Je désire vraiment les cartes du Mortal !"
 	},
 	"Try to find someone who know maps of your cube and import them with the import/export tool.": {
 		"en": "Try to find someone who know maps of your cube and import them with the import/export tool.",
-		"fr": "Trouvez quelqu'un qui les connait et importez les avec l'outil d'import/export"
+		"fr": "Trouvez quelqu'un qui les connaît et importez-les avec l'outil d'import/export."
 	},
-	"Why it looks so awful?": {
-		"en": "",
-		"fr": ""
+	"Why does it look so awful?": {
+		"en": "Why does it look so awful?",
+		"fr": "Pourquoi est-ce aussi moche ?"
 	},
 	"I am not a designer. If you can improve the application design, I will be glad to accept your work.": {
-		"en": "",
-		"fr": ""
+		"en": "I am not a designer. If you can improve the application design, I will be glad to accept your work.",
+		"fr": "Je ne suis pas designer. Si vous pouvez améliorer le design de l'application, je serais très heureux d'accepter votre travail."
 	},
 	"Why is it called \"Inside We cube\"?": {
-		"en": "",
-		"fr": ""
+		"en": "Why is it called \"Inside We cube\"?",
+		"fr": "Pourquoi est-ce que ça s'appelle \"Inside We Cube\" ?"
 	},
-	"<ol><li>I had to find a name ;)</li><li>When you type \"InsideZeCube\" with a wrong AZERTY↔QWERTY keyboard configuration you get \"InsideWeCube\".</li><li>Because INSIDE this application WE solve CUBE.</li></ol>": {
-		"en": "",
-		"fr": ""
+	"<ol><li>I had to find a name ;)</li><li>When you type \"InsideZeCube\" with a wrong AZERTY↔QWERTY keyboard configuration you get \"InsideWeCube\".</li><li>Because INSIDE this application WE solve CUBEs.</li></ol>": {
+		"en": "<ol><li>I had to find a name ;)</li><li>When you type \"InsideZeCube\" with a wrong AZERTY↔QWERTY keyboard configuration you get \"InsideWeCube\".</li><li>Because INSIDE this application WE solve CUBEs.</li></ol>",
+		"fr": "<ol><li>Je devais bien trouver un nom ;)</li><li>Quand vous tapez \"InsideZeCube\" avec une mauvaise configuration clavier AZERTY↔QWERTY vous obtenez \"InsideWeCube\".</li><li>Parce que dans (INSIDE) cette application nous (WE) résolvons les CUBEs.</li></ol>"
 	},
 	"This is not my current position!": {
 		"en": "This is not my current position!",
-		"fr": "Ce n'est pas ma position actuelle!"
+		"fr": "Ce n'est pas ma position actuelle !"
 	},
-	"I have lost my ball! I don\\'t know what happened!": {
-		"en": "I have lost my ball! I don\\'t know what happened!",
-		"fr": "J'ai perdu ma bille! Je ne sais plus ce qu'il s'est passé!"
+	"I have lost my ball! I don't know what happened!": {
+		"en": "I have lost my ball! I don't know what happened!",
+		"fr": "J'ai perdu ma bille! Je ne sais plus ce qu'il s'est passé !"
 	},
 	"Map orientation: ": {
 		"en": "Map orientation: ",
-		"fr": "Orientation de la carte: "
+		"fr": "Orientation de la carte : "
 	},
-	"INSIDE³ face at top": {
-		"en": "INSIDE³ face at top",
+	"INSIDE³ face at the top": {
+		"en": "INSIDE³ face at the top",
 		"fr": "la face INSIDE³ en haut"
 	},
-	"INSIDE³ face at bottom": {
-		"en": "INSIDE³ face at bottom",
+	"INSIDE³ face at the bottom": {
+		"en": "INSIDE³ face at the bottom",
 		"fr": "la face INSIDE³ en bas"
 	},
 	"Level %d": {
 		"en": "Level %d",
 		"fr": "Niveau %d"
 	},
-	"I am sorry, I can\\'t help you here :(": {
-		"en": "I am sorry, I can\\'t help you here :(",
+	"I am sorry, I can't help you here :(": {
+		"en": "I am sorry, I can't help you here :(",
 		"fr": "Désolé, je ne peux pas vous aider cette fois-ci :("
 	},
 	"The ball is now visible!": {
 		"en": "The ball is now visible!",
-		"fr": "La bille est maintenant visible!"
+		"fr": "La bille est maintenant visible !"
 	},
-	"Something should happen but I don\\'t know what :(": {
-		"en": "Something should happen but I don\\'t know what :(",
+	"Something should happen but I don't know what :(": {
+		"en": "Something should happen but I don't know what :(",
 		"fr": "Quelque chose doit se passer mais je ne sais ce que c'est :("
 	},
-	"If you don\\'t know where the ball is, please follow the instructions.": {
-		"en": "If you don\\'t know where the ball is, please follow the instructions.",
+	"If you don't know where the ball is, please follow the instructions.": {
+		"en": "If you don't know where the ball is, please follow the instructions.",
 		"fr": "Si vous ne savez pas où se trouve la bille, suivez ces instructions."
 	},
-	"Are you sure to be spoiled?\\nDon\\'t you want to try to solve it by yourself?": {
-		"en": "",
-		"fr": ""
+	"Are you sure you want to be spoiled?\nDon't you want to try to solve it by yourself?": {
+		"en": "Are you sure you want to be spoiled?\nDon't you want to try to solve it by yourself?",
+		"fr": "Êtes-vous sûr de vouloir voir la solution ?\nNe désirez-vous pas essayer de le résoudre vous-même ?"
 	},
-	"You have lost your ball inside the cube? You want to build new maze from your cubes?": {
-		"en": "You have lost your ball inside the cube? You want to build new maze from your cubes?",
-		"fr": "Vous avez perdu votre bille à l'intérieur du cube? Vous désirez construire de noux puzzle à partir de vos cubes?"
+	"How to find your ball lost inside the cube? How to build new mazes from your cubes?": {
+		"en": "How to find your ball lost inside the cube? How to build new mazes from your cubes?",
+		"fr": "Vous avez perdu votre bille à l'intérieur du cube ? Vous désirez construire de nouveaux puzzles à partir de vos cubes ?"
 	},
 	"\"Inside We Cube\" will help you!": {
 		"en": "\"Inside We Cube\" will help you!",
-		"fr": "\"Inside We Cube\" va vous aider!"
+		"fr": "\"Inside We Cube\" va vous aider !"
 	},
 	"Keep your calm stay zen!": {
 		"en": "Keep your calm stay zen!",
-		"fr": "Gardez votre calme, restez zen!"
+		"fr": "Gardez votre calme, restez zen !"
 	},
 	"Set your cube current position": {
 		"en": "Set your cube current position",
@@ -537,18 +537,18 @@
 	},
 	"Cancel": {
 		"en": "Cancel",
-		"fr": "Annulé"
+		"fr": "Annuler"
 	},
 	"INSIDE³ face is": {
 		"en": "INSIDE³ face is",
 		"fr": "La face INSIDE³ est"
 	},
-	"at TOP": {
-		"en": "at TOP",
+	"at the TOP": {
+		"en": "at the TOP",
 		"fr": "en HAUT"
 	},
-	"at BOTTOM": {
-		"en": "at BOTTOM",
+	"at the BOTTOM": {
+		"en": "at the BOTTOM",
 		"fr": "en BAS"
 	},
 	"Your cube is slightly rotated": {
@@ -570,5 +570,9 @@
 	"FORWARD": {
 		"en": "FORWARD",
 		"fr": "vers l'AVANT"
+	},
+	"License: (%s) you are free to use, share and modify it if you keep credits to authors and contributors.": {
+		"en": "License: (%s) you are free to use, share and modify it if you keep credits to authors and contributors.",
+		"fr": "Licence: (%s) vous êtes libre de l'utiliser, de le partager et de le modifier si vous continuez à l'attribuer aux auteurs et contributeurs."
 	}
 }

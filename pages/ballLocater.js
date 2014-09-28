@@ -58,7 +58,7 @@ BallLocater.prototype.render = function(container, position) {
 	row.appendChild(cell);
 
 	cell = document.createElement('th');
-	cell.textContent = $$('Position attended');
+	cell.textContent = $$('Expected position');
 	row.appendChild(cell);
 
 	cell = document.createElement('th');
@@ -111,8 +111,8 @@ BallLocater.prototype.renderCube = function(container) {
 		that.getCubeMap(this.value);
 	};
 
-	[{id:'top', text:$$('INSIDE³ face at top')},
-	 {id:'bottom', text:$$('INSIDE³ face at bottom')}
+	[{id:'top', text:$$('INSIDE³ face at the top')},
+	 {id:'bottom', text:$$('INSIDE³ face at the bottom')}
 	].forEach(function(item) {
 		var option = document.createElement('option');
 		option.value = item.id;
@@ -194,7 +194,7 @@ BallLocater.prototype.renderWayBack = function(path) {
 	row.appendChild(cell);
 
 	cell = document.createElement('th');
-	cell.textContent = $$('Position attended');
+	cell.textContent = $$('Expected position');
 	row.appendChild(cell);
 
 	cell = document.createElement('th');
@@ -260,7 +260,7 @@ BallLocater.prototype.onMessage = function(data) {
 			break;
 		case 'impossible':
 			if (args.possible.length === 0) {
-				main.message($$('No cell in this cube fit your observation. Are you sure about your answer?'), 'error');
+				main.message($$('No cell in this cube fits your observation. Are you sure of your answer?'), 'error');
 			} else {
 				main.message($$('Many cells fit your observation. It is not possible to differenciate them :( %s',
 					args.possible.reduce(function(str, cell) {
@@ -324,9 +324,9 @@ BallLocater.prototype.textIntruction = function(mvt, position) {
 
 	if (mvt === '') {
 		var str = [];
-		str.push(position.b ? $$('the face INSIDE³ is at top') : $$('the face INSIDE³ is at bottom'));
-		str.push(position.d === position.b ? $$('your cube is slightly rotated backward') : $$('your cube is slightly rotated forward'));
-		str.push(position.r ?  $$('your cube is slightly rotated to the right') : $$('your cube is slightly rotated to the left'));
+		str.push(position.b ? $$('The face INSIDE³ is at the top.') : $$('The face INSIDE³ is at the bottom.'));
+		str.push(position.d === position.b ? $$('Your cube is slightly rotated backward.') : $$('Your cube is slightly rotated forward.'));
+		str.push(position.r ?  $$('Your cube is slightly rotated to the right.') : $$('Your cube is slightly rotated to the left.'));
 		return str.join('<br>');
 	}
 
