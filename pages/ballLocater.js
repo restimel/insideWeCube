@@ -213,7 +213,7 @@ BallLocater.prototype.renderWayBack = function(path) {
 		cell.innerHTML = this.textIntruction(instruction.mvt, position || instruction.position);
 
 		cell = row.insertCell(-1);
-		Cube3D.render(cell, instruction.position);
+		Cube3D.render(cell, instruction.position, this.getCube());
 
 		cell = row.insertCell(-1);
 		cell.innerHTML = this.textResult(instruction.result);
