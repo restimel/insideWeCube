@@ -1,59 +1,35 @@
 
-V1.0
-	~ write documentation (Readme.md)
-	X main page
-	X message: option stack/timeout
-		X Message could disappears after an defined amount of time
-
-	X Licence: MIT or CC BY 4.0? (update readme/FAQ accordingly)
-	X translate words
-		X Fix typo and grammar mistake
-
-	Cube Solver
-		X Add information that it is finished
-			X Rotate the cube to see the result
-		X Mark Start and Finish in miniMap
-
-
-/!\ Bugs
-	General
-		X Menu translation are not good at start
-
-	Cube solver
-		* Instructions are wrong to find the way back (??? To check)
-			? wrong place to finish ? (not reproduced)
-			X when startPosition is chosen it does a wrong movement to come back to start
-		* Skinning of the instructions to the way back
-			* auto-focus
-		X refresh on cancel append new result
-		X local page sometimes does not start
-
-	Skinning
-		X cube 3D: title is not updated and overflow
-
 V1.1
 	General
-		* select which cube to export
-		* warning message when browser is not compatible
 		* Save Language in localStorage
 		* save Cubes built in localStorage
 			* allow to remove cube from localStorage
+		* warning message when browser is not compatible
+		* select which cube to export
 
 	Build Cube
-		* key Shortcut (Ctrl+S)
-		* display small format map (and with reverse side)
-			+ give small map with different orientation (other than top/bottom)
 		* change Cube color
-		+ do something (not log ?) when unexpected movement happens when rotated localy
+		* key Shortcut (Ctrl+S)
 		* filter on cube
 		* switch level
+		* display small format map (and with reverse side)
+			+ give small map with different orientation (other than top/bottom)
+		+ do something (not log ?) when unexpected movement happens when rotated localy
 
 	Analyze Cube
+		* give better help on impossible help (direct movement or position (display a 4th column with level position))
 		* give position of possible cells
-		+ give better help on impossible help (direct movement or position (display a 4th column with level position))
 		+ (bonus) identify in which cube we are if no positions match
 
-	Bugs
+	Cube3D
+		* fallback rendering for Browser which doesn't support RotateX
+
+ /!\ Bugs
+		Paths
 		* Do not found correct rotations  for some passage (Awful)
 				-→------?  -→-------?
 				   ↓  |	      |   ↓
+
+		Analyze Cube
+		* Skinning of the instructions to the way back
+			* auto-focus
