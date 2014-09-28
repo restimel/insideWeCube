@@ -26,7 +26,7 @@ V1.0
 		* Skinning of the instructions to the way back
 			* auto-focus
 		* refresh on cancel append new result
-		* local page sometimes does not start
+		X local page sometimes does not start
 
 	Skinning
 		X cube 3D: title is not updated and overflow

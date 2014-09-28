@@ -180,14 +180,22 @@
 					console.error('translation not loaded', e);
 				}
 
-				readyCallback.forEach(function(f) {
-					f(lng);
-				});
+				loaded(true)
 			}
 		};
 		
 		xhr.open("GET", "/libs/i18n/translations.json", true, user, password);
 		xhr.send();
+
+		var timer = setTimeout(loaded, 2000, false);
+
+		function loaded(value) {
+			clearTimeout(timer);
+
+			readyCallback.forEach(function(f) {
+				f(lng, value);
+			});
+		}
 	}
 
 	loadTranslation();
