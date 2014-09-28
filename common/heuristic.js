@@ -306,9 +306,15 @@ Heuristic.prototype.wayBack = function(rsp) {
 		target = rsp.target ? {x:4, y:4, z:6} : {x:1, y:1, z:0},
 		lastTopPosition = !rsp.target,
 		startPosition = this.computeBestPosition(cell, rsp.position),
-		path = this.path.getPathMvt(cell, target, startPosition, this.accessible, true),
 		position = startPosition,
-		rsltMvt = [cell];
+		rsltMvt = [cell],
+		path;
+
+	if (Cube.comparePosition(target, cell)) {
+		path = [];
+	} else {
+		path = this.path.getPathMvt(cell, target, startPosition, this.accessible, true);
+	}
 
 	/* give information about movement (if ball has move...) */
 	path = path.map(function(mvt) {
