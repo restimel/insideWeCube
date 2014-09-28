@@ -25,7 +25,7 @@ V1.0
 			* when startPosition is chosen it does a wrong movement to come back to start
 		* Skinning of the instructions to the way back
 			* auto-focus
-		* refresh on cancel append new result
+		X refresh on cancel append new result
 		X local page sometimes does not start
 
 	Skinning

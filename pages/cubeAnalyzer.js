@@ -118,6 +118,12 @@ CubeAnalyzer.prototype.renderStep2 = function() {
 CubeAnalyzer.prototype.renderStep3 = function() {
 	var container = this.container;
 
+	var previousElem = document.querySelector('.analyze-step3');
+	if (previousElem) {
+		container.removeChild(previousElem);
+		previousElem = null;
+	}
+
 	var step = document.createElement('fieldset'),
 		title = document.createElement('legend');
 	step.className = 'analyze-step3';
