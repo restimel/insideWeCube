@@ -21,7 +21,7 @@ V1.0
 
 	Cube solver
 		* Instructions are wrong to find the way back (??? To check)
-			* wrong place to finish ?
+			? wrong place to finish ? (not reproduced)
 			* when startPosition is chosen it does a wrong movement to come back to start
 		* Skinning of the instructions to the way back
 			* auto-focus

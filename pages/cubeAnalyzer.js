@@ -154,7 +154,7 @@ CubeAnalyzer.prototype.renderStep3 = function() {
 
 	label = document.createElement('label');
 	label.textContent = $$('To the start.');
-	label.forName = 'endCellStart';
+	label.htmlFor = 'endCellStart';
 	form.appendChild(label);
 
 	input = document.createElement('input');
@@ -170,7 +170,7 @@ CubeAnalyzer.prototype.renderStep3 = function() {
 
 	label = document.createElement('label');
 	label.textContent = $$('To the end.');
-	label.forName = 'endCellStart';
+	label.htmlFor = 'endCellEnd';
 	form.appendChild(label);
 
 	step.appendChild(form);

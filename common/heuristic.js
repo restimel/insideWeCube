@@ -335,7 +335,11 @@ Heuristic.prototype.wayBack = function(rsp) {
 	if (position.b == lastTopPosition) {
 		path[path.length - 1].result += 100;
 	} else {
-		position.b = lastTopPosition;
+		position = {
+			r: position.r,
+			d: position.d,
+			b: lastTopPosition
+		};
 		path.push({
 			mvt: lastTopPosition ? '-b' : 'b',
 			position: position,
