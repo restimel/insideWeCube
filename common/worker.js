@@ -94,6 +94,15 @@ self.onmessage = function(e) {
 		case 'changeLng':
 			$$.changeLng(args);
 			break;
+		case 'getCubeInfo':
+			self.postMessage({
+				data: {
+					action: 'cubeInfo',
+					info: getCubeInfo(args.name)
+				},
+				token: token
+			});
+			break;
 	}
 };
 
@@ -121,6 +130,14 @@ function saveCubes(data) {
 		saveCube(obj);
 		return 1;
 	}
+}
+
+function getCubeInfo(name) {
+	var cube = store.getCube(name);
+	return {
+		name: cube.name,
+		color: cube.color
+	};
 }
 
 function preloadCubes(){

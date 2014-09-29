@@ -8,15 +8,14 @@ function BallLocater(findCallback, resetCallBack) {
 }
 
 BallLocater.prototype.reset = function(cubeName) {
-	if (typeof cubeName === 'string') {
-		this.cubeName = cubeName;
-	}
-
 	if (typeof this.resetCallBack === 'function') {
 		this.resetCallBack();
 	}
 
-	if (this.container) {
+	if (typeof cubeName === 'string' && cubeName !== this.cubeName) {
+		this.cubeName = cubeName;
+		main.control.action('getCubeInfo', {name: cubeName}, this.token);
+	} else if (this.container) {
 		this.render();
 	}
 };
@@ -29,7 +28,8 @@ BallLocater.prototype.resetInstructions = function() {
 
 BallLocater.prototype.getCube = function() {
 	return {
-		name: this.cubeName
+		name: this.cubeName,
+		color: this.cubeColor
 	};
 };
 
@@ -52,6 +52,7 @@ BallLocater.prototype.render = function(container, position) {
 	} else {
 		this.container = container;
 	}
+	container.innerHTML = '';
 
 	var table = document.createElement('table');
 	table.className = 'instructions';
@@ -282,6 +283,12 @@ BallLocater.prototype.onMessage = function(data) {
 			break;
 		case 'renderCube':
 			this.renderCubeSelector(args.cube);
+			break;
+		case 'cubeInfo':
+			this.cubeColor = data.info.color;
+			if (this.container) {
+				this.render();
+			}
 			break;
 		default:
 			console.warn('message unknown', data);

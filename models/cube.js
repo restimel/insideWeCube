@@ -103,6 +103,7 @@ Cube.prototype.getNeighbours = function (x, y, z) {
 Cube.prototype.toJSON = function() {
 	return {
 		name: this.name,
+		color: this.color,
 		levels: this.levels.map(function(l) {return l.toJSON();})
 	};
 };
@@ -112,6 +113,10 @@ Cube.prototype.parse = function(json) {
 		json = JSON.parse(json);
 	}
 	this.name = json.name;
+	if (json.color) {
+		this.color = json.color;
+	}
+
 	this.levels = [];
 	json.levels.forEach(function(l, i) {this.addLevel(i, new Level(l));}, this);
 };
