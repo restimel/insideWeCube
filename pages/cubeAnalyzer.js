@@ -1,5 +1,5 @@
 function CubeAnalyzer() {
-	this.ballLocater = new BallLocater(this.identifyCell.bind(this));
+	this.ballLocater = new BallLocater(this.identifyCell.bind(this), this.resetStep3.bind(this));
 	this.reset(false);
 
 	this.findStart = true;
@@ -191,6 +191,13 @@ CubeAnalyzer.prototype.reset = function(render) {
 	if (render) {
 		main.message.clear();
 		this.render();
+	}
+};
+
+CubeAnalyzer.prototype.resetStep3 = function() {
+	var previousElem = document.querySelector('.analyze-step3');
+	if (previousElem) {
+		this.container.removeChild(previousElem);
 	}
 };
 

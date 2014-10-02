@@ -1,14 +1,19 @@
-function BallLocater(findCallback) {
+function BallLocater(findCallback, resetCallBack) {
 	this.token = main.control.add(this.onMessage.bind(this));
 	this.cubeName = '';
 	this.container = null;
 
 	this.findCallback = findCallback;
+	this.resetCallBack = resetCallBack;
 }
 
 BallLocater.prototype.reset = function(cubeName) {
 	if (typeof cubeName === 'string') {
 		this.cubeName = cubeName;
+	}
+
+	if (typeof this.resetCallBack === 'function') {
+		this.resetCallBack();
 	}
 
 	if (this.container) {
