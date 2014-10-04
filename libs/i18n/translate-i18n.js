@@ -3,6 +3,7 @@
 	var translation = {};
 	var readyCallback = [];
 	var path = './';
+	var isReady = false;
 
 	var lng = self.navigator.language;
 	if ((lng || '').indexOf('-') !== -1) {
@@ -142,6 +143,9 @@
 	matching.onready = function(f) {
 		if (typeof f === 'function') {
 			readyCallback.push(f);
+			if (isReady) {
+				f(lng, true);
+			}
 			return true;
 		} else {
 			return false;
@@ -191,7 +195,8 @@
 					console.error('translation not loaded', e);
 				}
 
-				loaded(true)
+				loaded(true);
+				isReady = true;
 			}
 		};
 		
