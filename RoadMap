@@ -8,7 +8,7 @@ V1.1
 		* select which cube to export
 
 	Build Cube
-		* change Cube color
+		✓ change Cube color
 		* key Shortcut (Ctrl+S)
 		* filter on cube
 		* switch level
@@ -17,10 +17,10 @@ V1.1
 		+ do something (not log ?) when unexpected movement happens when rotated localy
 
 	Analyze Cube
-		* give better help on impossible help (direct movement or position (display a 4th column with level position))
-		* give position of possible cells in mini-map
 		* give sign instruction (in position)
 			* give sumary of instructions
+		* give better help on impossible help (direct movement or position (display a 4th column with level position))
+		* give position of possible cells in mini-map
 		+ (bonus) identify in which cube we are if no positions match
 
 	Cube3D

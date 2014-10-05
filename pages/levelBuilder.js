@@ -1,7 +1,8 @@
-function LevelConstructor(index, cubePath) {
+function LevelConstructor(index, cubePath, cubeColor) {
 	this.reset();
 	this.index = index;
 	this.cubePath = cubePath;
+	this.color = cubeColor;
 }
 
 LevelConstructor.prototype.render = function(container) {
@@ -50,7 +51,7 @@ LevelConstructor.prototype.renderLevel = function(container) {
 	bord = document.createElement('td');
 	bord.className = 'cell-wall';
 
-	table.className = 'constructor-table';
+	table.className = 'constructor-table color-' + this.color;
 
 	row1  = document.createElement('tr');
 	row1.appendChild(bord.cloneNode());
@@ -127,7 +128,17 @@ LevelConstructor.prototype.reset = function() {
 
 LevelConstructor.prototype.changeName = function(e) {
 	this.level.name = e.currentTarget.value;
-}
+};
+
+LevelConstructor.prototype.changeColor = function(color) {
+	var elems = document.querySelectorAll('.color-' + this.color);
+
+	Array.prototype.forEach.call(elems, function(elem) {
+		elem.classList.remove('color-' + this.color);
+		elem.classList.add('color-' + color);
+	}, this);
+	this.color = color;
+};
 
 LevelConstructor.prototype.changeLevel = function(e) {
 	var lvl;

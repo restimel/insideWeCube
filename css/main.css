@@ -151,19 +151,16 @@ body {
 	cursor: pointer;
 }
 
-.cell-main-fill, .cell-wallR-hole, .cell-wallD-hole, .cell-none {
-	background-color: rgb(50, 150, 200);
-}
-.cell-main-hole {
-	background-color: rgb(20, 70, 90);
-	box-shadow: inset 0px 0px 10px 2px rgb(50, 150, 200);
+.cell-main-hole:before {
+	content: '⬤';
+	color: rgba(0, 0, 0, 0.6);
 }
 .cell-wall, .cell-wallR-fill, .cell-wallD-fill {
 	background-color: rgb(0, 0, 0);	
 }
 
 .accessible-path {
-	box-shadow: inset 0px 0px 23px 0px rgb(40, 180, 220);
+	background-color: rgba(255, 255, 255, 0.25);
 }
 
 .info, .finish-yes, .finish-no {
@@ -222,7 +219,7 @@ body {
 	border-color: transparent;
 }
 .mini-map .hole:before {
-	content: '◉';
+	content: '⬤';
 }
 .mini-map .passage-down {
 	border-bottom: none;

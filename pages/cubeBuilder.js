@@ -7,10 +7,12 @@ function CubeBuilder(cubePath) {
 CubeBuilder.prototype.init = function() {
 	var cubePath = this.cubePath;
 
-	this.levels = [1, 2, 3, 4, 5, 6, 7].map(function(_, i) {
-		return new LevelConstructor(i, cubePath);
-	});
 	this.name = '';
+	this.color = 'blue';
+
+	this.levels = [1, 2, 3, 4, 5, 6, 7].map(function(_, i) {
+		return new LevelConstructor(i, cubePath, this.color);
+	}, this);
 };
 
 CubeBuilder.prototype.render = function(container) {
@@ -37,6 +39,24 @@ CubeBuilder.prototype.render = function(container) {
 	this.elemName = inputName;
 
 	var select = document.createElement('select');
+	var item = document.createElement('option');
+	item.disabled = true;
+	item.selected = true;
+	item.textContent = $$('Cube color');
+	select.appendChild(item);
+	select.onchange = this.changeColor.bind(this);
+	Cube3D.getColor().forEach(function(color) {
+		var option = document.createElement('option');
+
+		option.value = color.code;
+		option.textContent = color.name;
+		if (this.color === color.code) {
+			option.selected = true;
+		}
+		select.appendChild(option);
+	}, this);
+	cubeProperty.appendChild(select);
+	this.elemColor = select;
 
 	header.appendChild(cubeProperty);
 
@@ -218,6 +238,24 @@ CubeBuilder.prototype.reset = function() {
 	this.render(this.container);
 };
 
+CubeBuilder.prototype.changeColor = function(e) {
+	var color;
+
+	if (typeof e === 'string') {
+		color = e;
+		this.elemColor.value = color;
+	} else {
+		color = e.target.value;
+	}
+
+	if (this.color != color && typeof color === 'string') {
+		this.color = color;
+		this.levels.forEach(function(lvl) {
+			lvl.changeColor(color);
+		});
+	}
+};
+
 CubeBuilder.prototype.changeName = function(e) {
 	if (typeof e === 'string') {
 		this.name = e;
@@ -245,6 +283,10 @@ CubeBuilder.prototype.changeCube = function(e) {
 	this.levels.forEach(function(lvl, i) {
 		lvl.changeLevel(name + '-' + (i + 1));
 	});
+
+	main.control.action('getCubeInfo', {name: name}, function(data) {
+		this.changeColor(data.info.color);
+	}.bind(this))
 };
 
 CubeBuilder.prototype.save = function() {
@@ -264,6 +306,7 @@ CubeBuilder.prototype.save = function() {
 CubeBuilder.prototype.toJSON = function() {
 	return {
 		name: this.name,
+		color: this.color,
 		levels: this.levels.map(function(l) {return l.toJSON();})
 	};
 };
