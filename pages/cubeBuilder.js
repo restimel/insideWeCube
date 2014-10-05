@@ -17,29 +17,43 @@ CubeBuilder.prototype.render = function(container) {
 	this.container = container;
 	this.container.innerHTML = '';
 
-	var cubeBuilder = document.createElement('section');
-	cubeBuilder.className = 'cube-builder-section';
+	/* Section Header */
+	var header = document.createElement('header');
+	header.className = 'cube-header-section';
 
-	var btn = document.createElement('button');
-	btn.textContent = $$('Reset cube');
-	btn.onclick = this.reset.bind(this);
-	cubeBuilder.appendChild(btn);
+	/* Cube Properties */
+	var cubeProperty = document.createElement('fieldset');
+	cubeProperty.className = 'cube-header-field';
+
+	var legend = document.createElement('legend');
+	legend.textContent = $$('Cube properties');
+	cubeProperty.appendChild(legend);
 
 	var inputName = document.createElement('input');
 	inputName.placeholder = $$('Cube name');
 	inputName.value = this.name || '';
 	inputName.onchange = this.changeName.bind(this);
-	cubeBuilder.appendChild(inputName);
+	cubeProperty.appendChild(inputName);
 	this.elemName = inputName;
 
-	btn = document.createElement('button');
-	btn.textContent = $$('Save cube');
-	btn.onclick = this.save.bind(this);
-	cubeBuilder.appendChild(btn);
-
 	var select = document.createElement('select');
+
+	header.appendChild(cubeProperty);
+
+	/* Tools */
+	var tools = document.createElement('fieldset');
+	tools.className = 'cube-header-field';
+	legend = document.createElement('legend');
+	legend.textContent = $$('Tools');
+	tools.appendChild(legend);
+
+	select = document.createElement('select');
 	select.onchange = this.changeCube.bind(this);
-	select.appendChild(document.createElement('option'));
+	item = document.createElement('option');
+	item.disabled = true;
+	item.selected = true;
+	item.textContent = $$('Load a cube');
+	select.appendChild(item);
 	main.control.action('getCubes', null, function(data) {
 		data.forEach(function(name) {
 			var option = document.createElement('option');
@@ -48,10 +62,29 @@ CubeBuilder.prototype.render = function(container) {
 			select.appendChild(option);
 		});
 	});
-	cubeBuilder.appendChild(select);
+	tools.appendChild(select);
+
+	var btn = document.createElement('button');
+	btn.textContent = $$('Reset cube');
+	btn.onclick = this.reset.bind(this);
+	tools.appendChild(btn);
+
+	btn = document.createElement('button');
+	btn.textContent = $$('Save cube');
+	btn.onclick = this.save.bind(this);
+	tools.appendChild(btn);
+
+	header.appendChild(tools);
+
+	container.appendChild(header);
+
+	/* Section Level builder */
+	var cubeBuilder = document.createElement('section');
+	cubeBuilder.className = 'cube-builder-section';
 
 	container.appendChild(cubeBuilder);
 
+	/* Section Info */
 	var info = document.createElement('section');
 	info.className = 'cube-info-section';
 	container.appendChild(info);

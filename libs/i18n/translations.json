@@ -595,6 +595,18 @@
 		"en": "The rear side",
 		"fr": "La face de derrière"
 	},
+	"Cube properties": {
+		"en": "Cube properties",
+		"fr": "Propriétées du cube"
+	},
+	"Tools": {
+		"en": "Tools",
+		"fr": "Outils"
+	},
+	"Load a cube": {
+		"en": "Load a cube",
+		"fr": "Charger un cube"
+	},
 	"License: (%s) you are free to use, share and modify it if you keep credits to authors and contributors.": {
 		"en": "License: (%s) you are free to use, share and modify it if you keep credits to authors and contributors.",
 		"fr": "Licence: (%s) vous êtes libre de l'utiliser, de le partager et de le modifier si vous continuez à l'attribuer aux auteurs et contributeurs."

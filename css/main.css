@@ -97,6 +97,12 @@ body {
 
 /* Cube Builder */
 
+.cube-header-section {
+	width: 99%;
+	padding: 0.5em;
+	float: right;
+}
+
 .cube-builder-section, .cube-info-section {
 	width: 50%;
 	margin-left: 0;
@@ -104,6 +110,11 @@ body {
 	float: left;
 	height: 100%;
 	overflow: auto;
+}
+
+.cube-header-field {
+	float: left;
+	padding: 1em;
 }
 
 .level-editor {
