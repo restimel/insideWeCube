@@ -18,7 +18,7 @@ V1.1
 
 	Analyze Cube
 		✓ give sign instruction (in position)
-			* give sumary of instructions
+			✓ give sumary of instructions
 		* give better help on impossible help (direct movement or position (display a 4th column with level position))
 		* give position of possible cells in mini-map
 		+ (bonus) identify in which cube we are if no positions match

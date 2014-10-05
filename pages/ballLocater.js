@@ -191,8 +191,20 @@ BallLocater.prototype.renderInstruction = function(movement, rowPst, position) {
 
 BallLocater.prototype.renderWayBack = function(path) {
 	var position,
-		container = this.wayContainer;
+		container = this.wayContainer,
+		summary = [];
+
 	container.innerHTML = '';
+
+	var sumDetails = document.createElement('details'),
+		sumTitle = document.createElement('summary'),
+		instrSummary = document.createElement('p');
+
+	sumDetails.className = 'instructions-summary';
+	sumDetails.appendChild(sumTitle);
+	sumDetails.appendChild(instrSummary);
+
+	container.appendChild(sumDetails);
 
 	var table = document.createElement('table');
 
@@ -219,13 +231,18 @@ BallLocater.prototype.renderWayBack = function(path) {
 	/* instructions */
 	path.forEach(function(instruction, i) {
 		var sign = document.createElement('div'),
-			span = document.createElement('span');
+			span = document.createElement('span'),
+			symbol;
+
 		row = table.insertRow(-1);
 		cell = row.insertCell(-1);
 
 		if (i) {
+			symbol = this.summaryMvt(instruction.mvt, position || instruction.position);
+			summary.push(symbol);
+
 			sign.className = 'mvt-summary';
-			sign.textContent = this.summaryMvt(instruction.mvt, position || instruction.position);
+			sign.textContent = symbol;
 			cell.appendChild(sign);
 		}
 
@@ -242,6 +259,9 @@ BallLocater.prototype.renderWayBack = function(path) {
 	}, this);
 
 	container.appendChild(table);
+
+	sumTitle.textContent = $$('Instructions summary (%d)', summary.length);
+	instrSummary.innerHTML = summary.join('&emsp;');
 };
 
 BallLocater.prototype.formMvt = function(code, iRow) {

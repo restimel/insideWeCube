@@ -611,6 +611,10 @@
 		"en": "Cube color",
 		"fr": "Couleur du cube"
 	},
+	"Instructions summary (%d)": {
+		"en": "Instructions summary (%d)",
+		"fr": "Résumé des instructions (%d)"
+	},
 	"License: (%s) you are free to use, share and modify it if you keep credits to authors and contributors.": {
 		"en": "License: (%s) you are free to use, share and modify it if you keep credits to authors and contributors.",
 		"fr": "Licence: (%s) vous êtes libre de l'utiliser, de le partager et de le modifier si vous continuez à l'attribuer aux auteurs et contributeurs."
