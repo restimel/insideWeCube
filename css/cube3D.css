@@ -12,8 +12,8 @@ dialog.fake-dialog {
 
 .ball-hole {
 	position: absolute;
-	width: 124px;
-	left: 13px;
+	width: 115px;
+	left: 15px;
 	top: 35px;
 	height: 15px;
    border-radius: 50px;
@@ -65,13 +65,16 @@ dialog.fake-dialog {
    font-family: monospace;
    font-variant: small-caps;
    letter-spacing: 0.2em;
+   color: rgba(0, 0, 0, 0.4);
 }
 .cube-title-site {
    display: inline-block;
-   width: 140px;
-   font-size: 17px;
+   width: 134px;
+   font-size: 15.5px;
    font-family: monospace;
    font-variant: small-caps;
+   color: rgba(255, 255, 255, 0.5);
+   font-weight: bold;
 }
 .cube-name {
    display: block;
@@ -80,53 +83,46 @@ dialog.fake-dialog {
    position: absolute;
    bottom: 1em;
    right: 1em;
+   color: rgba(0, 0, 0, 0.4);
 }
 .cube-face-bottom {
-   border: solid 2px black;
-   margin: 3px;
-   width: 140px;
-   height: 140px;
+   border: solid 3px black;
+   margin: 5px;
+   width: 134px;
+   height: 134px;
 }
 
 
-.cube-blue .face{
-   background-color: mediumblue;
-   color: #00F;
+.cube-blue .face, .color-blue{
+   background-color: #3060E0;
 }
 
-.cube-red .face{
+.cube-red .face, .color-red{
    background-color: red;
-   color: #E00;
 }
 
-.cube-green .face{
+.cube-green .face, .color-green{
    background-color: limegreen;
-   color: #0B0;
 }
 
-.cube-orange .face{
-   background-color: orange;
-   color: #D80;
+.cube-orange .face, .color-orange{
+   background-color: #FF8D1E;
 }
 
-.cube-brown .face{
+.cube-brown .face, .color-brown{
    background-color: saddlebrown;
-   color: #952;
 }
 
-.cube-yellow .face{
+.cube-yellow .face, .color-yellow{
    background-color: yellow;
-   color: #CD0;
 }
 
-.cube-crystal .face{
+.cube-crystal .face, .color-crystal{
    background-color: transparent;
-   color: #FFF;
 }
 
-.cube-black .face{
-   background-color: black;
-   color: darkgrey;
+.cube-black .face, .color-black{
+   background-color: #222623;
 }
 
 .cote1{

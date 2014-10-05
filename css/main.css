@@ -182,42 +182,52 @@ body {
 
 /* Mini map */
 .mini-map {
-	border-collapse: collapse;
-	border: 2px solid black;
-	background-color: mediumblue;
+	border-collapse: separate;
+	border-spacing: 0px;
+
+	border: 1px solid black;
+
+	color: rgba(0,0,0,0.6);
+	font-weight: bold;
+	text-align: center;
 }
 .mini-map td{
 	width: 10px;
 	height: 10px;
-	border: 2px solid darkblue;
-	font-size: 9px;
+	border: 1px solid rgba(0, 0, 0, 0.6);
+	font-size: 8.5px;
+	padding: 2px;
 }
 .mini-map td:not(.unavailable){
 	cursor: pointer;
 }
 .mini-map td:not(.unavailable):hover{
-	box-shadow: inset 0 0 2px 0 mediumblue, inset 0 0 3px 2px yellow;
+	background-color: rgba(255, 255, 255, 0.5);
 }
 .mini-map .unavailable {
-	background-color: darkblue;
+	background-color: rgba(0, 0, 0, 0.6);
 }
-.mini-map .hole {
-	box-shadow: inset 0 0 3px 2px mediumblue, inset 0 0 0 10px darkblue;
+.mini-map td.unavailable {
+	border-color: transparent;
 }
-.mini-map td.hole:hover {
-	box-shadow: inset 0 0 2px 0 mediumblue, inset 0 0 3px 2px yellow, inset 0 0 0 10px darkblue;
+.mini-map .hole:before {
+	content: '◉';
 }
 .mini-map .passage-down {
-	border-bottom: 2px solid transparent;
+	border-bottom: none;
+	padding-bottom: 3px;
 }
 .mini-map .passage-right {
-	border-right: 2px solid transparent;
+	border-right: none;
+	padding-right: 3px;
 }
 .mini-map .passage-up {
-	border-top: 2px solid transparent;
+	border-top: none;
+	padding-top: 3px;
 }
 .mini-map .passage-left {
-	border-left: 2px solid transparent;
+	border-left: none;
+	padding-left: 3px;
 }
 
 /* Analyzer */
