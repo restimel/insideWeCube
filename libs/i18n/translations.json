@@ -571,6 +571,30 @@
 		"en": "FORWARD",
 		"fr": "vers l'AVANT"
 	},
+	"The INSIDE³ side": {
+		"en": "The INSIDE³ side",
+		"fr": "La face INSIDE³"
+	},
+	"The InsideZeCube.com side": {
+		"en": "The InsideZeCube.com side",
+		"fr": "La face InsideZeCube.com"
+	},
+	"The left side": {
+		"en": "The left side",
+		"fr": "La face de gauche"
+	},
+	"The right side": {
+		"en": "The right side",
+		"fr": "La face de droite"
+	},
+	"The front side": {
+		"en": "The front side",
+		"fr": "La face de devant"
+	},
+	"The rear side": {
+		"en": "The rear side",
+		"fr": "La face de derrière"
+	},
 	"License: (%s) you are free to use, share and modify it if you keep credits to authors and contributors.": {
 		"en": "License: (%s) you are free to use, share and modify it if you keep credits to authors and contributors.",
 		"fr": "Licence: (%s) vous êtes libre de l'utiliser, de le partager et de le modifier si vous continuez à l'attribuer aux auteurs et contributeurs."

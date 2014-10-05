@@ -15,10 +15,12 @@ Cube3D.render = function(container, position, cube) {
 
 	var face = document.createElement('div'); /* back */
 	face.className = 'face cote6';
+	face.title = $$('The rear side');
 	parent.appendChild(face);
 
 	face = document.createElement('div'); /* top */
 	face.className = 'face cote5 light-face';
+	face.title = $$('The INSIDE³ side');
 	var text = document.createElement('span');
 	text.className = 'cube-title';
 	text.textContent = 'INSIDE³';
@@ -34,6 +36,7 @@ Cube3D.render = function(container, position, cube) {
 
 	face = document.createElement('div'); /* bottom */
 	face.className = 'face cote4';
+	face.title = $$('The InsideZeCube.com side');
 	var cnt = document.createElement('div');
 	cnt.className = 'cube-face-bottom';
 	text = document.createElement('span');
@@ -48,14 +51,17 @@ Cube3D.render = function(container, position, cube) {
 
 	face = document.createElement('div'); /* left */
 	face.className = 'face cote3';
+	face.title = $$('The left side');
 	parent.appendChild(face);
 
 	face = document.createElement('div'); /* right */
 	face.className = 'face cote2';
+	face.title = $$('The right side');
 	parent.appendChild(face);
 
 	face = document.createElement('div'); /* front */
 	face.className = 'face cote1';
+	face.title = $$('The front side');
 	parent.appendChild(face);
 	cube3d.appendChild(parent);
 
