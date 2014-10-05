@@ -195,10 +195,6 @@
 		"en": "Results",
 		"fr": "Résultats"
 	},
-	"Put your cube with the INSIDE³ face at the top. INSIDE³ must face you and is readable.": {
-		"en": "Put your cube with the INSIDE³ face at the top. INSIDE³ must face you and is readable.",
-		"fr": "Placer le cube avec la face INSIDE³ au-dessus. INSIDE³ doit vous faire face et être lisible."
-	},
 	"What did you observe?": {
 		"en": "What did you observe?",
 		"fr": "Qu'avez-vous remarqué ?"
@@ -235,40 +231,40 @@
 		"en": "Rotate your cube slightly forward.",
 		"fr": "Pencher le cube vers l'avant."
 	},
-	"Rotate your cube to have the face INSIDE³ at the bottom.": {
-		"en": "Rotate your cube to have the INSIDE³ face at the bottom.",
+	"Rotate your cube to have the INSIDE³ side at the bottom.": {
+		"en": "Rotate your cube to have the INSIDE³ side at the bottom.",
 		"fr": "Tourner le cube pour avoir la face INSIDE³ en bas."
 	},
-	"Rotate your cube backward to have the face INSIDE³ at the bottom.": {
-		"en": "Rotate your cube backward to have the INSIDE³ face at the bottom.",
+	"Rotate your cube backward to have the INSIDE³ side at the bottom.": {
+		"en": "Rotate your cube backward to have the INSIDE³ side at the bottom.",
 		"fr": "Retourner le cube en l'amenant vers vous pour avoir la face INSIDE³ en bas."
 	},
-	"Rotate your cube forward to have the face INSIDE³ at the bottom.": {
-		"en": "Rotate your cube forward to have the INSIDE³ face at the bottom.",
+	"Rotate your cube forward to have the INSIDE³ side at the bottom.": {
+		"en": "Rotate your cube forward to have the INSIDE³ side at the bottom.",
 		"fr": "Retourner le cube par l'avant pour avoir la face INSIDE³ en bas."
 	},
 	"I am sorry, I can't help you here :(": {
 		"en": "I am sorry, I can't help you here :(",
 		"fr": "Désolé, je ne peux pas vous aider là :("
 	},
-	"Rotate your cube forward to have the face INSIDE³ at the top.": {
-		"en": "Rotate your cube forward to have the INSIDE³ face at the top.",
+	"Rotate your cube forward to have the INSIDE³ side at the top.": {
+		"en": "Rotate your cube forward to have the INSIDE³ side at the top.",
 		"fr": "Retourner le cube par l'avant pour avoir la face INSIDE³ en haut."
 	},
-	"Rotate your cube backward to have the face INSIDE³ at the top.": {
-		"en": "Rotate your cube backward to have the INSIDE³ face at the top.",
+	"Rotate your cube backward to have the INSIDE³ side at the top.": {
+		"en": "Rotate your cube backward to have the INSIDE³ side at the top.",
 		"fr": "Retourner le cube vers vous pour avoir la face INSIDE³ en haut."
 	},
-	"Rotate your cube to have the face INSIDE³ at the top.": {
-		"en": "Rotate your cube to have the face INSIDE³ at the top.",
+	"Rotate your cube to have the INSIDE³ side at the top.": {
+		"en": "Rotate your cube to have the INSIDE³ side at the top.",
 		"fr": "Tourner le cube pour avoir la face INSIDE³ en haut."
 	},
-	"The face INSIDE³ is at the top.": {
-		"en": "The face INSIDE³ is at the top.",
+	"The INSIDE³ side is at the top.": {
+		"en": "The INSIDE³ side is at the top.",
 		"fr": "La face INSIDE³ est en haut."
 	},
-	"The face INSIDE³ is at the bottom.": {
-		"en": "The face INSIDE³ is at the bottom.",
+	"The INSIDE³ side is at the bottom.": {
+		"en": "The INSIDE³ side is at the bottom.",
 		"fr": "La face INSIDE³ est en bas."
 	},
 	"Your cube is slightly rotated backward.": {
@@ -286,6 +282,10 @@
 	"Your cube is slightly rotated to the left.": {
 		"en": "Your cube is slightly rotated to the left.",
 		"fr": "Le cube est penché vers la gauche."
+	},
+	"The text is readable.": {
+		"en": "The text is readable.",
+		"fr": "Le texte est lisible."
 	},
 	"I am not sure what happened...": {
 		"en": "I am not sure what happened...",
@@ -423,12 +423,12 @@
 		"en": "Go to \"Import/Export\" and paste the code he sent you in the \"Import cubes\" area. Then click on \"Import\" button. If the code is valid you are able to select these cubes/levels in \"Cube manager\" or \"Lost in cube?\" menus.",
 		"fr": "Allez dans \"Import/Export\" et collez le code qui vous a été envoyé dans la section \"Importer des cubes\". Puis cliquez sur \"Importer\". Si le code est valide, vous trouverez ces niveaux/cubes dans les menus \"Gérer son cube\" et \"Perdu dans son cube ?\" "
 	},
-	"What is the INSIDE³ face?": {
-		"en": "What is the INSIDE³ face?",
+	"What is the INSIDE³ side?": {
+		"en": "What is the INSIDE³ side?",
 		"fr": "Quelle est la face INSIDE³ ?"
 	},
-	"An insideZeCube cube has 2 noticeable faces.<ul><li>The \"INSIDE³\" face where you also see the name of the cube. This is the top face where the ball was when you have bought the cube.</li><li>The \"InsideZeCube.com\" face is where the cube can be open (when feasible). This is where the ball must be visible to finish the cube.</li></ul>In order to follow instructions, you should always keep one of these two faces at the top with the title readable.": {
-		"en": "An insideZeCube cube has 2 noticeable faces.<ul><li>The \"INSIDE³\" face where you also see the name of the cube. This is the top face where the ball was when you have bought the cube.</li><li>The \"InsideZeCube.com\" face is where the cube can be open (when feasible). This is where the ball must be visible to finish the cube.</li></ul>In order to follow instructions, you should always keep one of these two faces at the top with the title readable.",
+	"An insideZeCube cube has 2 noticeable sides.<ul><li>The \"INSIDE³\" side where you also see the name of the cube. This is the top side where the ball was when you have bought the cube.</li><li>The \"InsideZeCube.com\" side is where the cube can be open (when feasible). This is where the ball must be visible to finish the cube.</li></ul>In order to follow instructions, you should always keep one of these two sides at the top with the title readable.": {
+		"en": "An insideZeCube cube has 2 noticeable sides.<ul><li>The \"INSIDE³\" side where you also see the name of the cube. This is the top side where the ball was when you have bought the cube.</li><li>The \"InsideZeCube.com\" side is where the cube can be open (when feasible). This is where the ball must be visible to finish the cube.</li></ul>In order to follow instructions, you should always keep one of these two sides at the top with the title readable.",
 		"fr": "Un cube insideZeCube a 2 faces identifiables.<ul><li>La face \"INSIDE³\" où vous pouvez aussi remarquer le nom du cube. C'est la face supérieure où se trouvait la bille lorsque vous l'avez acheté.</li><li>La face \"InsideZeCube.com\" est celle où le cube peut s'ouvrir (quand il le permet). C'est là où la bille sera visible quand le cube est terminé.</li></ul>Pour suivre les instructions, vous devez toujours avoir l'une de ces deux faces en haut avec le titre lisible."
 	},
 	"Sometimes the helper can not help me and gives no clear instructions.": {
@@ -483,13 +483,13 @@
 		"en": "Map orientation: ",
 		"fr": "Orientation de la carte : "
 	},
-	"INSIDE³ face at the top": {
-		"en": "INSIDE³ face at the top",
-		"fr": "la face INSIDE³ en haut"
+	"INSIDE³ side is at the top": {
+		"en": "INSIDE³ side is at the top",
+		"fr": "la face INSIDE³ est en haut"
 	},
-	"INSIDE³ face at the bottom": {
-		"en": "INSIDE³ face at the bottom",
-		"fr": "la face INSIDE³ en bas"
+	"INSIDE³ side is at the bottom": {
+		"en": "INSIDE³ side is at the bottom",
+		"fr": "la face INSIDE³ est en bas"
 	},
 	"Level %d": {
 		"en": "Level %d",
@@ -539,8 +539,8 @@
 		"en": "Cancel",
 		"fr": "Annuler"
 	},
-	"INSIDE³ face is": {
-		"en": "INSIDE³ face is",
+	"INSIDE³ side is": {
+		"en": "INSIDE³ side is",
 		"fr": "La face INSIDE³ est"
 	},
 	"at the TOP": {

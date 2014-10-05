@@ -117,8 +117,8 @@ BallLocater.prototype.renderCube = function(container) {
 		that.getCubeMap(this.value);
 	};
 
-	[{id:'top', text:$$('INSIDE³ face at the top')},
-	 {id:'bottom', text:$$('INSIDE³ face at the bottom')}
+	[{id:'top', text:$$('INSIDE³ side is at the top')},
+	 {id:'bottom', text:$$('INSIDE³ side is at the bottom')}
 	].forEach(function(item) {
 		var option = document.createElement('option');
 		option.value = item.id;
@@ -336,7 +336,8 @@ BallLocater.prototype.textIntruction = function(mvt, position) {
 
 	if (mvt === '') {
 		var str = [];
-		str.push(position.b ? $$('The face INSIDE³ is at the top.') : $$('The face INSIDE³ is at the bottom.'));
+		str.push(position.b ? $$('The INSIDE³ side is at the top.') : $$('The INSIDE³ side is at the bottom.'));
+		str.push($$('The text is readable.'));
 		str.push(position.d === position.b ? $$('Your cube is slightly rotated backward.') : $$('Your cube is slightly rotated forward.'));
 		str.push(position.r ?  $$('Your cube is slightly rotated to the right.') : $$('Your cube is slightly rotated to the left.'));
 		return str.join('<br>');
@@ -348,12 +349,12 @@ BallLocater.prototype.textIntruction = function(mvt, position) {
 			case '-r': return $$('Rotate your cube slightly to the left.');
 			case 'd': return $$('Rotate your cube slightly backward.');
 			case '-d': return $$('Rotate your cube slightly forward.');
-			case 'b': return $$('Rotate your cube to have the face INSIDE³ at the bottom.');
+			case 'b': return $$('Rotate your cube to have the INSIDE³ side at the bottom.');
 			case '-b':
 				if (position.d) {
-					return $$('Rotate your cube backward to have the face INSIDE³ at the bottom.');
+					return $$('Rotate your cube backward to have the INSIDE³ side at the bottom.');
 				} else {
-					return $$('Rotate your cube forward to have the face INSIDE³ at the bottom.');
+					return $$('Rotate your cube forward to have the INSIDE³ side at the bottom.');
 				}
 			default:
 				return $$('I am sorry, I can\'t help you here :(');
@@ -366,11 +367,11 @@ BallLocater.prototype.textIntruction = function(mvt, position) {
 			case '-d': return $$('Rotate your cube slightly backward.');
 			case 'b':
 				if (position.d) {
-					return $$('Rotate your cube forward to have the face INSIDE³ at the top.');
+					return $$('Rotate your cube forward to have the INSIDE³ side at the top.');
 				} else {
-					return $$('Rotate your cube backward to have the face INSIDE³ at the top.');
+					return $$('Rotate your cube backward to have the INSIDE³ side at the top.');
 				}
-			case '-b': return $$('Rotate your cube to have the face INSIDE³ at the top.');
+			case '-b': return $$('Rotate your cube to have the INSIDE³ side at the top.');
 			default:
 				return $$('I am sorry, I can\'t help you here :(');
 		}

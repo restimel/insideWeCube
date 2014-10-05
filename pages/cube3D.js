@@ -143,7 +143,7 @@ Cube3D.askPosition = function(container, callBack, currentPosition, cube) {
 		event.preventdDefault();
 		return false;
 	};
-	titleTop.textContent = $$('INSIDE³ face is');
+	titleTop.textContent = $$('INSIDE³ side is');
 	titleTop.className = 'title-cube-position';
 	form.appendChild(titleTop);
 

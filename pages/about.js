@@ -124,8 +124,8 @@ About.prototype.renderFAQ = function(container) {
 			a: $$('Go to "Import/Export" and paste the code he sent you in the "import cubes" area. Then click on "Import" button. If the code is valid you are able to select these cubes/levels in "Cube manager" or "Lost in cube?" menus.')
 		},
 		{
-			q: $$('What is the INSIDE³ face?'),
-			a: $$('An insideZeCube cube has 2 noticeable faces.<ul><li>The "INSIDE³" face where you also see the name of the cube. This is the top face where the ball was when you have bought the cube.</li><li>The "InsideZeCube.com" face is where the cube can be open (when feasible). This is where the ball must be visible to finish the cube.</li></ul>In order to follow instructions, you should always keep one of these two faces at the top with the title readable.')
+			q: $$('What is the INSIDE³ side?'),
+			a: $$('An insideZeCube cube has 2 noticeable sides.<ul><li>The "INSIDE³" side where you also see the name of the cube. This is the top side where the ball was when you have bought the cube.</li><li>The "InsideZeCube.com" side is where the cube can be open (when feasible). This is where the ball must be visible to finish the cube.</li></ul>In order to follow instructions, you should always keep one of these two sides at the top with the title readable.')
 		},
 		{
 			q: $$('Sometimes the helper can not help me and gives no clear instructions.'),

@@ -18,7 +18,9 @@ V1.1
 
 	Analyze Cube
 		* give better help on impossible help (direct movement or position (display a 4th column with level position))
-		* give position of possible cells
+		* give position of possible cells in mini-map
+		* give sign instruction (in position)
+			* give sumary of instructions
 		+ (bonus) identify in which cube we are if no positions match
 
 	Cube3D
