@@ -1,4 +1,5 @@
 v1.0 → v1.1
-new features
+New features
 	* Color cubes: cube can be saved with a color. It is then displayed with this color.
 	* Improve the cube orientation: Each side has a title
+	* Arrows helps to read instructions faster

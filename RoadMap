@@ -17,7 +17,7 @@ V1.1
 		+ do something (not log ?) when unexpected movement happens when rotated localy
 
 	Analyze Cube
-		* give sign instruction (in position)
+		✓ give sign instruction (in position)
 			* give sumary of instructions
 		* give better help on impossible help (direct movement or position (display a 4th column with level position))
 		* give position of possible cells in mini-map
@@ -27,6 +27,9 @@ V1.1
 		* fallback rendering for Browser which doesn't support RotateX
 
  /!\ Bugs
+ 		Build Cube
+ 		* The analysis is not re-run when cube is already loaded
+
 		Paths
 		* Do not found correct rotations  for some passage (Awful)
 				-→------?  -→-------?

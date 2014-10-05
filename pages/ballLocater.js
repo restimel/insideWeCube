@@ -164,9 +164,13 @@ BallLocater.prototype.renderInstruction = function(movement, rowPst, position) {
 
 	var row = this.tbody.insertRow(-1),
 		cell = row.insertCell(-1),
+		sign = document.createElement('div'),
 		iRow = row.rowIndex;
 
-	cell.textContent = this.textIntruction(movement);
+	sign.className = 'mvt-summary';
+	sign.textContent = this.summaryMvt(movement);
+	cell.appendChild(sign);
+	cell.appendChild(document.createTextNode(this.textIntruction(movement)));
 
 	cell = row.insertCell(-1);
 	Cube3D.render(cell, position, this.getCube());
@@ -213,10 +217,20 @@ BallLocater.prototype.renderWayBack = function(path) {
 	}
 
 	/* instructions */
-	path.forEach(function(instruction) {
+	path.forEach(function(instruction, i) {
+		var sign = document.createElement('div'),
+			span = document.createElement('span');
 		row = table.insertRow(-1);
 		cell = row.insertCell(-1);
-		cell.innerHTML = this.textIntruction(instruction.mvt, position || instruction.position);
+
+		if (i) {
+			sign.className = 'mvt-summary';
+			sign.textContent = this.summaryMvt(instruction.mvt, position || instruction.position);
+			cell.appendChild(sign);
+		}
+
+		span.innerHTML = this.textIntruction(instruction.mvt, position || instruction.position);
+		cell.appendChild(span);
 
 		cell = row.insertCell(-1);
 		Cube3D.render(cell, instruction.position, this.getCube());
@@ -374,6 +388,44 @@ BallLocater.prototype.textIntruction = function(mvt, position) {
 			case '-b': return $$('Rotate your cube to have the INSIDE³ side at the top.');
 			default:
 				return $$('I am sorry, I can\'t help you here :(');
+		}
+	}
+};
+
+BallLocater.prototype.summaryMvt = function(mvt, position) {
+	position = position || this.position;
+
+	if (position.b) {
+		switch (mvt) {
+			case 'r': return '⇒';
+			case '-r': return '⇐';
+			case 'd': return '⇓';
+			case '-d': return '⇑';
+			case 'b': return '↺';
+			case '-b':
+				if (position.d) {
+					return '⇓↺';
+				} else {
+					return '⇑↻';
+				}
+			default:
+				return '?';
+		}
+	}else {
+		switch (mvt) {
+			case 'r': return '⇒';
+			case '-r': return '⇐';
+			case 'd': return '⇑';
+			case '-d': return '⇓';
+			case 'b':
+				if (position.d) {
+					return '⇑↻';
+				} else {
+					return '⇓↺';
+				}
+			case '-b': return '↻';
+			default:
+				return '?';
 		}
 	}
 };

@@ -275,6 +275,17 @@ body {
 	display: block;
 }
 
+.mvt-summary {
+	display: block;
+	float: right;
+	font-size: 20px;
+	width: 1.8em;
+	height: 1.5em;
+	text-align: center;
+	box-shadow: -4px 4px 4px black;
+	margin-left: 8px;
+}
+
 /* Dialog */
 dialog.dialog-cube-position {
 	width: 50%;
