@@ -294,6 +294,10 @@ summary {
 	margin-top: 1em;
 	margin-bottom: 1em;
 	box-shadow: 0 6px 6px black;
+	display: block;
+}
+.instructions-summary summary {
+	padding-left: 0.5em;
 }
 .instructions-summary p {
 	padding-left: 1em;
