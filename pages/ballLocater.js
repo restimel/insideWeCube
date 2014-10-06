@@ -222,11 +222,13 @@ BallLocater.prototype.renderWayBack = function(path) {
 	cell = document.createElement('th');
 	cell.textContent = $$('Expected results');
 	row.appendChild(cell);
-	if (row.scrollIntoViewIfNeeded) {
-		row.scrollIntoViewIfNeeded(true);
-	} else {
-		row.scrollIntoView();
-	}
+	setTimeout(function(row) {
+		if (row.scrollIntoViewIfNeeded) {
+			row.scrollIntoViewIfNeeded(true);
+		} else {
+			row.scrollIntoView();
+		}
+	}, 10, row);
 
 	/* instructions */
 	path.forEach(function(instruction, i) {
