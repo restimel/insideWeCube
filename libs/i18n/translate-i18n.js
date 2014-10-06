@@ -6,6 +6,11 @@
 	var isReady = false;
 
 	var lng = self.navigator.language;
+
+	if (typeof self.localStorage !== 'undefined') {
+		lng = self.localStorage.getItem('language') || lng;
+	}
+
 	if ((lng || '').indexOf('-') !== -1) {
 		lng = lng.split('-')[0];
 	}
@@ -123,6 +128,10 @@
 			console.warn('language unknown', lg);
 		} else {
 			lng = languages[l];
+
+			if (typeof self.localStorage !== 'undefined') {
+				self.localStorage.setItem('language', lng);
+			}
 		}
 	};
 

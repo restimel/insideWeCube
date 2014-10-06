@@ -1,7 +1,7 @@
 
 V1.1
 	General
-		* Save Language in localStorage
+		✓ Save Language in localStorage
 		* save Cubes built in localStorage
 			* allow to remove cube from localStorage
 		* warning message when browser is not compatible
