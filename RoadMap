@@ -28,7 +28,7 @@ V1.1
 
  /!\ Bugs
  		Build Cube
- 		* The analysis is not re-run when cube is already loaded
+		✓ The analysis is not re-run when cube is already loaded
 
 		Paths
 		* Do not found correct rotations  for some passage (Awful)

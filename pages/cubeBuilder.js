@@ -113,6 +113,7 @@ CubeBuilder.prototype.render = function(container) {
 	this.cubeInfo = info;
 
 	this.levels.forEach(this.renderLevel, this);
+	this.cubePath.computePath();
 };
 
 CubeBuilder.prototype.renderLevel = function(level, i) {

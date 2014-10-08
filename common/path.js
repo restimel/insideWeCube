@@ -617,6 +617,15 @@ Path.prototype.reset = function(args) {
 	this.cube.init();
 };
 
+/**
+ * Change a cell wall states and run the path processing.
+ * @param args {Object}
+ *		- x {Number} x coordinates of the cell
+ *		- y {Number} y coordinates of the cell
+ *		- z {Number} z coordinates of the cell
+ *		- type {'r'|'d'|'b'} the wall to update
+ *		- z {Boolean} if we could go through the wall (truthy) or not (falsy)
+ */
 Path.prototype.setCell = function(args) {
 	var x = args.x,
 		y = args.y,
@@ -625,6 +634,13 @@ Path.prototype.setCell = function(args) {
 		value = args.value;
 
 	this.cube.get(x, y, z)[type] = value;
+	this.calculatePath();
+};
+
+/**
+ * (re)run the path calculation without any changes
+ */
+Path.prototype.computePath = function() {
 	this.calculatePath();
 };
 

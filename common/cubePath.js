@@ -42,6 +42,10 @@ CubePath.prototype.setCell = function(x, y, z, type, value) {
 	main.control.action('path', data, this.token);
 };
 
+CubePath.prototype.computePath = function() {
+	main.control.action('path', {action: 'computePath'}, this.token);
+};
+
 CubePath.prototype.onMessage = function(data) {
 	if (typeof this[data.action] === 'function') {
 		this[data.action](data.data);
