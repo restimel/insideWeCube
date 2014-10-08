@@ -327,8 +327,7 @@ Path.prototype.goFrom = function(fromPos, available, path, ref, currPosition, ma
 	fromPos = available.filter(Cube.comparePosition.bind(Cube, fromPos))[0];
 
 	// find the way back
-	var wbPath = [fromPos],
-		// cell = fromPos,
+	var wbPath,
 		info = {
 			nbDifficultCrossing: 0,
 			rotations: []

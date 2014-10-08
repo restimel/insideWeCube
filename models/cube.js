@@ -157,7 +157,7 @@ Cube.prototype.getMovement = function(cellPos, cubePosition, from) {
 	}
 
 	/* X/Y */
-	if ([2, -2].indexOf(from) !== 1){
+	if ([1, -1].indexOf(from) !== 1){
 		if (cubePosition.r && cell.r) {
 			return rslt.concat(this.getMovement({
 				x: x,
