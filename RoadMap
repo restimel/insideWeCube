@@ -31,9 +31,10 @@ V1.1
 		✓ The analysis is not re-run when cube is already loaded
 
 		Paths
-		? Do not found correct rotations  for some passage (Awful)
+		✓ Do not found correct rotations  for some passage (Awful)
 				-→------?  -→-------?
 				   ↓  |	      |   ↓
+		* There are still issues if ball reach another valid path
 
 		Analyze Cube
 		* Skinning of the instructions to the way back

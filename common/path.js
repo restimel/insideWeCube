@@ -321,12 +321,12 @@ Path.prototype.buildPath = function(cell, endCells) {
  */
 Path.prototype.goFrom = function(fromPos, available, path, ref, currPosition, maxIter) {
 	if (typeof maxIter !== 'number') {
-		maxIter = 4;
+		maxIter = 10;
 	}
 
 	fromPos = available.filter(Cube.comparePosition.bind(Cube, fromPos))[0];
 
-	// find the way back
+	/* find the way back */
 	var wbPath,
 		info = {
 			nbDifficultCrossing: 0,
@@ -340,17 +340,17 @@ Path.prototype.goFrom = function(fromPos, available, path, ref, currPosition, ma
 		i;
 
 	if (!fromPos.preferences || typeof fromPos.preferences.r === 'undefined') {
-		// compute path to find the way back
+		/* compute path to find the way back */
 		wbPath = this.buildPath(fromPos, path);
 
 		this.getDirections(wbPath.reverse());
 		wbPath.reverse();
 	}
 
-	// save rotations needed
+	/* save rotations needed */
 	this.logRotations(position, fromPos.preferences, info.rotations, fromPos);
 
-	// test cube orientation to find the way back
+	/* test cube orientation to find the way back */
 	var mvt = this.cube.getMovement(fromPos, fromPos.preferences, fromPos.from);
 	var lastPos = mvt[mvt.length - 1];
 	var rot = Cube.fromDirection(fromPos.direction);
@@ -360,7 +360,7 @@ Path.prototype.goFrom = function(fromPos, available, path, ref, currPosition, ma
 
 	var iPath = -1;
 
-	// check that we are coming back to the right path
+	/* check that we are coming back to the right path */
 	path.some(function(cell, i) {
 		if (Cube.comparePosition(lastPos, cell)) {
 			iPath = i;
@@ -371,6 +371,7 @@ Path.prototype.goFrom = function(fromPos, available, path, ref, currPosition, ma
 	});
 
 	if (iPath !== -1) {
+		/* the ball is came back to the path */
 		if (lastPos.dstFromTarget > ref.dstFromTarget) {
 			if (maxIter) {
 				info2 = this.goFrom(lastPos, available, path, ref, position, maxIter - 1);
@@ -387,9 +388,12 @@ Path.prototype.goFrom = function(fromPos, available, path, ref, currPosition, ma
 				info.rotations = ['?'];
 			}
 		} else {
+			/* has found the exit */
 			info.lastPos = lastPos;
 		}
+
 	} else {
+		/* we still haven't refound the path */
 		if (maxIter) {
 			info2 = this.goFrom(lastPos, available, path, ref, position, maxIter - 1);
 
