@@ -1,5 +1,5 @@
 function Control(){
-	this.worker = new Worker('common/worker.js');
+	this.worker = new Worker('worker/worker.js');
 
 	this.worker.onmessage = this.onmessage.bind(this);
 	this.token = 0;

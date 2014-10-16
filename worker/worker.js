@@ -1,7 +1,7 @@
 
 (function(){
 	var path = location.pathname.split('/'),
-		i = path.indexOf('common');
+		i = path.indexOf('worker');
 
 	path = path.slice(0, i);
 	path = '/' + path.join('/');
@@ -151,7 +151,7 @@ function preloadCubes(){
 		}
 	};
 	
-	xhr.open("GET", "cubes.json", true, user, password);
+	xhr.open("GET", "../common/cubes.json", true, user, password);
 	xhr.send();
 }
 
