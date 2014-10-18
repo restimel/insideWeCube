@@ -10,7 +10,7 @@ function main(container){
 	main.refresh();
 }
 
-main.version = '1.0';
+main.version = '1.0.5';
 
 main.message = (function() {
 	var container = document.createDocumentFragment(),
