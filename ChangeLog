@@ -4,6 +4,7 @@ New features
 	* Improve the cube orientation: Each side has a title.
 	* Arrows helps to read instructions faster. An instructions summary has been added.
 	* Compatibility check at start.
+	* Improve the compression of cube codes to export/import (the 1.0 code is still supported)
 
 Bugs fixed
 	* Auto-focus on the instructions section

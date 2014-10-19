@@ -29,18 +29,39 @@ Level.prototype.toggle = function (x, y, property, value) {
 };
 
 Level.prototype.toJSON = function() {
-	return {
-		name: this.name || '',
-		cells: JSON.parse(JSON.stringify(this.cells).replace(/:false,/g, ':0,').replace(/:true,/g, ':1,'))
-	};
+	var obj = {};
+
+	if (this.name) {
+		obj.name = this.name;
+	}
+
+	obj.cells = JSON.parse(JSON.stringify(this.cells)
+		.replace(/"[^"]+":(0|false|""),?/g, '')
+		.replace(/:true/g, ':1')
+		.replace(/,}/g, '}'));
+
+	return obj;
 };
 
 Level.prototype.parse = function(json) {
 	if (typeof json === 'string') {
 		json = JSON.parse(json);
 	}
-	this.name = json.name;
+	this.name = json.name || '';
 	this.cells = json.cells;
+
+	this.normalizeCells();
+};
+
+Level.prototype.normalizeCells = function() {
+	this.cells.forEach(function(row) {
+		row.forEach(function(cell) {
+			cell.r = cell.r || 0;
+			cell.d = cell.d || 0;
+			cell.b = cell.b || 0;
+			cell.s = cell.s || 0;
+		});
+	});
 };
 
 function initRow() {
