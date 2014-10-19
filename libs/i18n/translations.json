@@ -615,6 +615,18 @@
 		"en": "Instructions summary (%d)",
 		"fr": "Résumé des instructions (%d)"
 	},
+	"Save of the chosen language for next connection": {
+		"en": "Save of the chosen language for next connection",
+		"fr": "Enregistrement de la langue choisie pour la prochaine connexion"
+	},
+	"Your browser is not compatible. main feature will not work!": {
+		"en": "Your browser is not compatible. main feature will not work!",
+		"fr": "Votre navigateur n'est pas compatible. Des fonctionnalités importantes ne marcherons pas !"
+	},
+	"Some features will not work correctly with your browser:": {
+		"en": "Some features will not work correctly with your browser:",
+		"fr": "Quelques fonctionnalités ne marcherons pas correctement avec votre navigateur :"
+	},
 	"License: (%s) you are free to use, share and modify it if you keep credits to authors and contributors.": {
 		"en": "License: (%s) you are free to use, share and modify it if you keep credits to authors and contributors.",
 		"fr": "Licence: (%s) vous êtes libre de l'utiliser, de le partager et de le modifier si vous continuez à l'attribuer aux auteurs et contributeurs."

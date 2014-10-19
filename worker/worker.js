@@ -9,15 +9,6 @@
 	self.$$configuration = {path: path};
 })();
 
-importScripts(
-	'../models/store.js',
-	'../models/level.js',
-	'../models/cube.js',
-	'path.js',
-	'heuristic.js',
-	'../libs/i18n/translate-i18n.js'
-);
-
 if (typeof console === 'undefined') {
 	console = {};
 	console.log = console.warn = console.error = function(){
@@ -59,6 +50,15 @@ if (typeof console === 'undefined') {
 		}
 	};
 }
+
+importScripts(
+	'../models/store.js',
+	'../models/level.js',
+	'../models/cube.js',
+	'path.js',
+	'heuristic.js',
+	'../libs/i18n/translate-i18n.js'
+);
 
 self.onmessage = function(e) {
 	var data = e.data,

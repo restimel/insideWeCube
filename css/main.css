@@ -50,6 +50,10 @@ summary {
 	box-shadow:	-4px 0px 6px 0px #59d86c;
 }
 
+.message .warning {
+	box-shadow:	-4px 0px 6px 0px #e9d86c;
+}
+
 .message .error {
 	box-shadow:	-4px 0px 6px 0px #f68484;
 }

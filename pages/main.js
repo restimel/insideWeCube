@@ -8,6 +8,29 @@ function main(container){
 	main.createBody(container);
 	main.control.action('changeLng', $$.getCurrentLng());
 	main.refresh();
+
+	if (self.compatibility.errors.length) {
+		main.message(
+			$$('Your browser is not compatible. main feature will not work!'),
+			'error',
+			{
+				keep: true
+			}
+		);
+	}
+
+	if (self.compatibility.warnings.length) {
+		main.message(
+			$$('Some features will not work correctly with your browser:') +
+			 '<ul>'+self.compatibility.features.map(function(t) {return '<li>'+$$(t)+'</li>';})+'</ul>',
+			'warning',
+			{
+				keep: true,
+				timeout: 10000,
+				html: true
+			}
+		);
+	}
 }
 
 main.version = '1.0.5';
@@ -28,7 +51,11 @@ main.message = (function() {
 		}
 
 		var elem = document.createElement('section');
-		elem.textContent = msg;
+		if (option.html) {
+			elem.innerHTML = msg;
+		} else {
+			elem.textContent = msg;
+		}
 		elem.className = type;
 		elem.onclick = f.eclose;
 

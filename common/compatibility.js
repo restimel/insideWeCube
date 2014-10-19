@@ -1,33 +1,43 @@
 
 (function() {
 	var errors = [],
-		warnings = [];
+		warnings = [],
+		features = [];
 
 	if (typeof Worker === 'undefined') {
-		errors.push('Worker are not supported by your browser.');
+		errors.push('Worker');
 	}
 
 	if (typeof localStorage === 'undefined') {
-		warnings.push('localStorage are not supported by your browser.');
+		warnings.push('localStorage');
+		features.push('Save of the chosen language for next connection'); // $$('Save of the chosen language for next connection')
 	}
 
 	if (typeof Array.prototype.forEach !== 'function') {
-		errors.push('forEach is not usable on Array with your browser.');
+		errors.push('[].forEach');
 	}
 
 	if (typeof document.head.classList !== 'object') {
-		errors.push('classList is not supported by your browser.');	
+		errors.push('classList');
 	}
 
 	if (typeof document.head.querySelectorAll !== 'function') {
-		errors.push('querySelectorAll is not supported by your browser.');	
+		errors.push('querySelectorAll');
 	}
 
+	/* Manage issues */
+
 	if (errors.length) {
-		alert('Your browser is not compatible with insideWeCube :(\nUse a newer version or change to a more powerful browser.\n\nKnown issue:\n\t'+errors.join('\n\t'))
+		alert('Your browser is not compatible with insideWeCube :(\nUse a newer version or change to a more powerful browser.\n\nKnown issue:\n\t'+errors.join('\n\t'));
 	}
 
 	if (warnings.length) {
 		console.warn('Some features may not work with your browser.\n\t' + warnings.join('\n\t'));
 	}
+
+	self.compatibility = {
+		errors: errors,
+		warnings: warnings,
+		features: features
+	};
 })();
