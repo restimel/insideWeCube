@@ -38,23 +38,32 @@ var store = {
 		return cube;
 	},
 
-	getCubes: function() {
-		var list = this.cubes.map(function(cube) {
-			return cube.name
+	getCubes: function(allCubes) {
+		var list = [];
+
+		this.cubes.forEach(function(cube) {
+			if (allCubes) {
+				list.push([cube.name, cube.visible]);
+			} else if (cube.visible) {
+				list.push(cube.name);
+			}
 		});
+
 		return list.sort();
 	},
 
 	getLevels: function() {
 		var list = [];
 		this.cubes.forEach(function(cube) {
-			cube.levels.forEach(function(level, i) {
-				if (level.name && list.indexOf(level.name === -1)) {
-					list.push(level.name);
-				} else {
-					list.push(cube.name + '-' + (i+1));
-				}
-			});
+			if (cube.visible) {
+				cube.levels.forEach(function(level, i) {
+					if (level.name && list.indexOf(level.name === -1)) {
+						list.push(level.name);
+					} else {
+						list.push(cube.name + '-' + (i+1));
+					}
+				});
+			}
 		});
 		return list.sort();
 	},
@@ -72,5 +81,13 @@ var store = {
 			});
 		});
 		return lvl;
+	},
+
+	setVisible: function(name, visible) {
+		var cube = this.getCube(name);
+
+		if (cube) {
+			cube.visible = visible;
+		}
 	}
 };

@@ -77,13 +77,16 @@ self.onmessage = function(e) {
 			self.postMessage({data: JSON.stringify(store.cubes), token: token});
 			break;
 		case 'getCubes':
-			self.postMessage({data: store.getCubes(), token: token});
+			self.postMessage({data: store.getCubes(args), token: token});
 			break;
 		case 'getLevels':
 			self.postMessage({data: store.getLevels(), token: token});
 			break;
 		case 'getLevel':
 			self.postMessage({data: store.getLevel(args), token: token});
+			break;
+		case 'setVisible':
+			store.setVisible(args.cubeName, args.visibile);
 			break;
 		case 'path':
 			path.router(args, token);

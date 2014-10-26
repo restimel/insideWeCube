@@ -1,6 +1,7 @@
 function Cube (name) {
 	this.name = name;
 	this.levels = [];
+	this.visible = true;
 }
 
 Cube.prototype.init = function() {

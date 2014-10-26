@@ -45,7 +45,7 @@ cubeFilter.prototype.render = function(container) {
 
 	function applyChange() {
 		this.state.forEach(function(s) {
-			main.control.action('setVisible', {name: s[0], visible: s[1]});
+			main.control.action('setVisible', {cubeName: s[0], visible: s[1]});
 		});
 
 		that.callBack(this.state);
