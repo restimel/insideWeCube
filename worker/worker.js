@@ -74,7 +74,9 @@ self.onmessage = function(e) {
 			self.postMessage({data: saveCubes(args), token: token});
 			break;
 		case 'exportCubes':
-			self.postMessage({data: JSON.stringify(store.cubes), token: token});
+			self.postMessage({data: JSON.stringify(store.cubes.filter(function(cube) {
+				return cube.visible;
+			})), token: token});
 			break;
 		case 'getCubes':
 			self.postMessage({data: store.getCubes(args), token: token});
@@ -86,7 +88,7 @@ self.onmessage = function(e) {
 			self.postMessage({data: store.getLevel(args), token: token});
 			break;
 		case 'setVisible':
-			store.setVisible(args.cubeName, args.visibile);
+			store.setVisible(args.cubeName, args.visible);
 			break;
 		case 'path':
 			path.router(args, token);

@@ -52,10 +52,10 @@ Router.prototype.renderMenu = function(container) {
 	this.routes.forEach(createElement.bind(this));
 	this.subRoutes.forEach(createElement.bind(this));
 
-	function createElement (kind, route) {
+	function createElement (route) {
 		var el = document.createElement('div');
-		el.textContent = $$(route.name);
 		el.className = 'route-menu-item ' + route.route;
+		el.textContent = $$(route.name);
 		el.onclick = this.navigation.bind(this, route.route);
 
 		container.appendChild(el);
@@ -73,10 +73,24 @@ Router.prototype.navigation = function(route, evt) {
 		});
 
 	if (!s) {
-		r = {
-			route: 'start',
-			object: startPage
-		};
+		s = this.subRoutes.some(function(ro) {
+			if (ro.route === route) {
+				r = ro;
+				return true;
+			}
+			return false;
+		});
+		if (!s) {
+			r = {
+				route: 'start',
+				object: startPage
+			};
+		} else {
+			main.message.clear();
+
+			r.object.render();
+			return true;
+		}
 	}
 
 	this.lastRoute = route;

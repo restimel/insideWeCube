@@ -1,11 +1,9 @@
-function cubeFilter(fcallback) {
+function CubeFilter(fcallback) {
 	this.callBack = fcallback;
 	this.state = [];
 }
 
-cubeFilter.prototype.render = function(container) {
-	var that = this;
-	
+CubeFilter.prototype.render = function(container) {
 	main.control.action('getCubes', true, this.loadCube.bind(this));
 
 	var dialogBox = document.createElement('dialog'),
@@ -20,7 +18,7 @@ cubeFilter.prototype.render = function(container) {
 
 	/* footer */
 	btnOk.textContent = $$('Ok');
-	btnOk.onclick = applyChange;
+	btnOk.onclick = applyChange.bind(this);
 	footer.appendChild(btnOk);
 
 	btnCancel.textContent = $$('Cancel');
@@ -48,7 +46,9 @@ cubeFilter.prototype.render = function(container) {
 			main.control.action('setVisible', {cubeName: s[0], visible: s[1]});
 		});
 
-		that.callBack(this.state);
+		if (typeof this.callBack === 'function') {
+			this.callBack(this.state);
+		}
 		close();
 	}
 
@@ -73,7 +73,7 @@ cubeFilter.prototype.render = function(container) {
 	}
 };
 
-cubeFilter.prototype.loadCube = function(list) {
+CubeFilter.prototype.loadCube = function(list) {
 	var changeState = this.changeState.bind(this);
 	this.cubeSelector.innerHTML = '';
 
@@ -91,10 +91,10 @@ cubeFilter.prototype.loadCube = function(list) {
 		input.id = id;
 		input.checked = !!visible;
 		input.onchange = function () {
-			changeState(cubeName, this.value);
+			changeState(cubeName, this.checked);
 		};
 
-		label.forHTML = id;
+		label.htmlFor = id;
 		label.textContent = cubeName;
 
 		container.appendChild(input);
@@ -104,7 +104,7 @@ cubeFilter.prototype.loadCube = function(list) {
 	}, this);
 };
 
-cubeFilter.prototype.changeState = function(cubeName, visible) {
+CubeFilter.prototype.changeState = function(cubeName, visible) {
 	if (!this.state.some(function(s) {
 		if (s[0] === cubeName) {
 			s[1] = visible;
