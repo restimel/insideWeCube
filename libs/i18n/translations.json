@@ -19,6 +19,10 @@
 		"en": "?",
 		"fr": "?"
 	},
+	"Filter cubes": {
+		"en": "Filter cubes",
+		"fr": "Filtrer les cubes"
+	},
 	"level identifier": {
 		"en": "level identifier",
 		"fr": "identification du niveau"

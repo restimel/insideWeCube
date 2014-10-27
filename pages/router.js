@@ -3,7 +3,9 @@ function Router(contentContainer) {
 	var cube = new CubeBuilder(new CubePath()),
 		importExport = new exportImport(),
 		cubeAnalyzer = new CubeAnalyzer(),
-		about = new About();
+		about = new About(),
+
+		cubeFilter = new CubeFilter();
 
 	this.routes = [
 		{
@@ -28,6 +30,12 @@ function Router(contentContainer) {
 		}
 	];
 
+	this.subRoutes = [{
+		name: 'Filter cubes',
+		route: 'cubeFilter',
+		object: cubeFilter
+	}];
+
 	this.lastRoute = null;
 
 	if (typeof contentContainer === 'object') {
@@ -42,11 +50,12 @@ Router.prototype.setContainer = function (contentContainer) {
 Router.prototype.renderMenu = function(container) {
 	this.container = container;
 	this.routes.forEach(createElement.bind(this));
+	this.subRoutes.forEach(createElement.bind(this));
 
-	function createElement (route) {
+	function createElement (kind, route) {
 		var el = document.createElement('div');
-		el.className = 'route-menu-item ' + route.route;
 		el.textContent = $$(route.name);
+		el.className = 'route-menu-item ' + route.route;
 		el.onclick = this.navigation.bind(this, route.route);
 
 		container.appendChild(el);
