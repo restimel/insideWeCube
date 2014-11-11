@@ -206,13 +206,15 @@ Heuristic.prototype.manageAnswer = function(code, i) {
 	} else if (node.possible.length === 1) {
 		self.postMessage({data: {action: 'found', data: {
 			cell: node.possible[0],
-			position: log.position
+			position: log.position,
+			possible: node.possible
 		}}, token: this.token});
 	} else {
 		self.postMessage({data: {action: 'instruction', data: {
 			mvt: node.mvt,
 			iRow: i+1,
-			position: node.position
+			position: node.position,
+			possible: node.possible
 		}}, token: this.token});
 
 		this.log = this.log.slice(0, i+1);
@@ -241,7 +243,8 @@ Heuristic.prototype.start = function() {
 	self.postMessage({data: {action: 'instruction', data: {
 		mvt: node.mvt,
 		iRow: 0,
-		position: node.position
+		position: node.position,
+		possible: node.possible
 	}}, token: this.token});
 
 	/* prepare next possibilities */
@@ -355,6 +358,21 @@ Heuristic.prototype.wayBack = function(rsp) {
 
 	self.postMessage({data: {action: 'wayBack', data: {
 		path: path
+	}}, token: this.token});
+};
+
+/**
+ * Compute the best position for the given cell, where the ball shouldn't move at start
+ */
+Heuristic.prototype.getPossibleCells = function(rsp) {
+	var node = this.log[rsp.iRow];
+
+	if (!node) {
+		node = this.log[this.log.length - 1];
+	}
+
+	self.postMessage({data: {action: 'possibleCells', data: {
+		possible: node.possible
 	}}, token: this.token});
 };
 

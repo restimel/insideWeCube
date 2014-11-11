@@ -3,6 +3,12 @@ function BallLocater(findCallback, resetCallBack) {
 	this.cubeName = '';
 	this.container = null;
 
+	if (typeof self.localStorage !== 'undefined') {
+		this.isPossibleDisplayed = self.localStorage.getItem('hidePossible') !== 'true';
+	} else {
+		this.isPossibleDisplayed = true;
+	}
+
 	this.findCallback = findCallback;
 	this.resetCallBack = resetCallBack;
 }
@@ -96,13 +102,23 @@ BallLocater.prototype.render = function(container, position) {
 	cell.appendChild(changePosition);
 
 	table.appendChild(tbody);
-
 	container.appendChild(table);
 
 	var btnLost = document.createElement('button');
 	btnLost.textContent = $$('I have lost my ball! I don\'t know what happened!');
 	btnLost.onclick = this.resetInstructions.bind(this);
 	container.appendChild(btnLost);
+
+	var label = document.createElement('label'),
+		input = document.createElement('input');
+
+	label.textContent = $$('Watch possible ball locations');
+	label.className = 'configuration';
+	input.type = 'checkbox';
+	input.checked = this.isPossibleDisplayed;
+	input.onchange = this.onChangePossibleDisplay.bind(this);
+	label.appendChild(input);
+	container.appendChild(label);
 };
 
 BallLocater.prototype.renderCube = function(container) {
@@ -155,6 +171,8 @@ BallLocater.prototype.renderCubeSelector = function(cubeHtml) {
 		elem.textContent = $$('F');
 		elem.title = $$('Finish');
 	}
+
+	this.displayPossible();
 };
 
 BallLocater.prototype.renderInstruction = function(movement, rowPst, position) {
@@ -182,11 +200,14 @@ BallLocater.prototype.renderInstruction = function(movement, rowPst, position) {
 	cell.appendChild(this.formMvt(1, iRow));
 	cell.appendChild(this.formMvt(-1, iRow));
 
+	row.onclick = this.displayPossible.bind(this);
+
 	if (row.scrollIntoViewIfNeeded) {
 		row.scrollIntoViewIfNeeded(true);
 	} else {
 		row.scrollIntoView();
 	}
+
 };
 
 BallLocater.prototype.renderWayBack = function(path) {
@@ -266,6 +287,43 @@ BallLocater.prototype.renderWayBack = function(path) {
 	instrSummary.innerHTML = summary.join('&emsp;');
 };
 
+/* show which cells are possible */
+BallLocater.prototype.renderPossible = function(possible) {
+	main.removeClass('possible-location');
+	if (this.isPossibleDisplayed && possible instanceof Array) {
+		possible.forEach(function(coordinate) {
+			var id = 'map-' + [coordinate.x, coordinate.y, coordinate.z].join('-');
+				cell = document.getElementById(id);
+
+			if (cell) {
+				cell.classList.add('possible-location');
+			}
+		});
+	}
+};
+
+/* Ask to display possible cells */
+BallLocater.prototype.displayPossible = function(row) {
+	if (this.isPossibleDisplayed) {
+		if (typeof row === 'object') {
+			if (['INPUT', 'LABEL'].indexOf(row.target.tagName) !== -1) {
+				return;
+			}
+			row = row.currentTarget.rowIndex - 2;
+		}
+
+		if (typeof row !== 'number') {
+			row = -1;
+		}
+
+		main.control.action('heuristic', {action: 'getPossibleCells', data: {
+			iRow: row
+		}}, this.token);
+	} else {
+		main.removeClass('possible-location');
+	}
+};
+
 BallLocater.prototype.formMvt = function(code, iRow) {
 	var cnt = document.createElement('label'),
 		input = document.createElement('input'),
@@ -291,6 +349,17 @@ BallLocater.prototype.getCubeMap = function(mapOrientation) {
 	}}, this.token);
 };
 
+BallLocater.prototype.onChangePossibleDisplay = function(evt) {
+	var input = evt.target;
+
+	this.isPossibleDisplayed = !!input.checked;
+	if (typeof self.localStorage !== 'undefined') {
+		self.localStorage.setItem('hidePossible', !this.isPossibleDisplayed);
+	}
+
+	this.displayPossible();
+};
+
 /* Communication */
 BallLocater.prototype.onMessage = function(data) {
 	var args = data.data;
@@ -299,6 +368,7 @@ BallLocater.prototype.onMessage = function(data) {
 		case 'instruction':
 			this.renderInstruction(args.mvt, args.iRow + 2, args.position);
 			this.position = args.position;
+			this.renderPossible(args.possible);
 			break;
 		case 'impossible':
 			if (args.possible.length === 0) {
@@ -308,10 +378,12 @@ BallLocater.prototype.onMessage = function(data) {
 					args.possible.reduce(function(str, cell) {
 						return str + '[ x:' + (cell.y+1) + ' y:' + (cell.x+1) + ' level:' + (cell.z+1) +']';
 					}, '')), 'error');
+				this.renderPossible(args.possible);
 			}
 			break;
 		case 'found':
 			main.message($$('The ball location has been found!'), 'success', {timeout: 2000});
+			this.renderPossible(args.possible);
 			this.findCallback(args.cell, args.position);
 			break;
 		case 'wayBack':
@@ -325,6 +397,9 @@ BallLocater.prototype.onMessage = function(data) {
 			if (this.container) {
 				this.render();
 			}
+			break;
+		case 'possibleCells':
+			this.renderPossible(args.possible);
 			break;
 		default:
 			console.warn('message unknown', data);

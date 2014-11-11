@@ -615,6 +615,10 @@
 		"en": "Cube color",
 		"fr": "Couleur du cube"
 	},
+	"Watch possible ball locations": {
+		"en": "Watch possible ball locations",
+		"fr": "Voir les positions possible de la bille"
+	},
 	"Instructions summary (%d)": {
 		"en": "Instructions summary (%d)",
 		"fr": "Résumé des instructions (%d)"

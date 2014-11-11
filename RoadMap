@@ -20,7 +20,7 @@ V1.1
 		✓ give sign instruction (in position)
 			✓ give sumary of instructions
 		* give better help on impossible help (direct movement or position (display a 4th column with level position))
-		* give position of possible cells in mini-map
+		✓ give position of possible cells in mini-map
 		+ (bonus) identify in which cube we are if no positions match
 
 	Cube3D
@@ -39,3 +39,7 @@ V1.1
 		Analyze Cube
 		* Skinning of the instructions to the way back
 			✓ auto-focus
+
+		General
+		* use a custom font to avoid issue with missing characters
+		* Prepare cubes with not normal size

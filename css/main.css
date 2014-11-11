@@ -258,6 +258,13 @@ summary {
 	padding-left: 3px;
 }
 
+.mini-map .possible-location {
+	background-color: rgba(255, 255, 255, 0.3);
+}
+.mini-map .possible-location:before {
+	content: '◎';
+}
+
 /* Analyzer */
 .analyze-step2>.label {
 	width: 100%;
@@ -270,6 +277,8 @@ summary {
 	margin: 0;
 	width: 50%;
 	float: left;
+	overflow-y: auto;
+	max-height: 500px;
 }
 
 .analyze-step2 .locate-by-euristic table {
@@ -284,6 +293,14 @@ summary {
 .analyze-step2 figure {
 	display: inline-block;
 	margin: 1em;
+}
+
+.analyze-step2 .configuration {
+	display: inline-block;
+	background-color: #FFA;
+	padding: 0.5em;
+	margin: 0.5em;
+	border-radius: 2em;
 }
 
 /* Ball locater */

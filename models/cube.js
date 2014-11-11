@@ -250,7 +250,8 @@ Cube.prototype.couldMove = function(cellPos, cubePosition) {
 	return false;
 };
 
-Cube.prototype.renderMap = function(orientation, available) {
+Cube.prototype.renderMap = function(orientation, available, uid) {
+	uid = uid || '';
 	var cube = [],
 		x, y, z,
 		level, row, cell,
@@ -276,7 +277,7 @@ Cube.prototype.renderMap = function(orientation, available) {
 					if (this.get(x, y-1, z).r) {
 						clName.push('passage-left');
 					}
-					cell += ' id="map-'+x+'-'+y+'-'+z+'"';
+					cell += ' id="map'+uid+'-'+x+'-'+y+'-'+z+'"';
 				} else {
 					clName.push('unavailable');
 				}
@@ -303,7 +304,7 @@ Cube.prototype.renderMap = function(orientation, available) {
 					if (this.get(x, y-1, z).r) {
 						clName.push('passage-left');
 					}
-					cell += ' id="map-'+x+'-'+y+'-'+z+'"';
+					cell += ' id="map'+uid+'-'+x+'-'+y+'-'+z+'"';
 				} else {
 					clName.push('unavailable');
 				}
