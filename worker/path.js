@@ -193,7 +193,12 @@ Path.prototype.countMovement = function(path, info, available, pst) {
 			// compute  extra-movements
 			var rslt = this.goFrom(ballMvt[ballMvt.length -1], available, path, currentCell, position);
 
-			info.nbDifficultCrossing += rslt.nbDifficultCrossing;
+			if (rslt.nbDifficultCrossing) {
+				info.nbDifficultCrossing += rslt.nbDifficultCrossing;
+
+				// rslt.rotations[0] = '?-' + [currentCell.x, currentCell.y, currentCell.z].join('-');
+			}
+
 			rotations = rotations.concat(rslt.rotations);
 
 			position = rslt.position;

@@ -290,7 +290,8 @@ summary {
 	border: 1px solid black;
 }
 
-.analyze-step2 figure {
+.analyze-step2 figure,
+.analyze-step3 figure {
 	display: inline-block;
 	margin: 1em;
 }

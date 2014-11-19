@@ -207,6 +207,10 @@
 		"en": "Expected results",
 		"fr": "Résultats attendus"
 	},
+	"Ball movement": {
+		"en": "Ball movement",
+		"fr": "Déplacement de la bille"
+	},
 	"No cell in this cube fits your observation. Are you sure of your answer?": {
 		"en": "No cell in this cube fits your observation. Are you sure of your answer?",
 		"fr": "Aucune case de ce cube ne correspond à vos observations. Êtes-vous sûr de vos réponses ?"

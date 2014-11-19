@@ -156,9 +156,10 @@ BallLocater.prototype.renderCube = function(container) {
 };
 
 BallLocater.prototype.renderCubeSelector = function(cubeHtml) {
-	this.cubeSelectorContainer.innerHTML = cubeHtml.map(function(html, i) {
+	this.cubeHtml = cubeHtml.map(function(html, i) {
 		return '<figure><caption>'+$$('Level %d', i+1)+'</caption>'+html+'</figure>';
-	}).join('');
+	});
+	this.cubeSelectorContainer.innerHTML = this.cubeHtml.join('');
 
 	var elem = document.getElementById('map-1-1-0');
 	if (elem) {
@@ -211,6 +212,8 @@ BallLocater.prototype.renderInstruction = function(movement, rowPst, position) {
 };
 
 BallLocater.prototype.renderWayBack = function(path) {
+	this.detailsMvt = true;
+
 	var position,
 		container = this.wayContainer,
 		summary = [];
@@ -243,6 +246,13 @@ BallLocater.prototype.renderWayBack = function(path) {
 	cell = document.createElement('th');
 	cell.textContent = $$('Expected results');
 	row.appendChild(cell);
+
+	if (this.detailsMvt) {
+		cell = document.createElement('th');
+		cell.textContent = $$('Ball movement');
+		row.appendChild(cell);
+	}
+
 	setTimeout(function(row) {
 		if (row.scrollIntoViewIfNeeded) {
 			row.scrollIntoViewIfNeeded(true);
@@ -278,6 +288,12 @@ BallLocater.prototype.renderWayBack = function(path) {
 		cell = row.insertCell(-1);
 		cell.innerHTML = this.textResult(instruction.result);
 
+		if (this.detailsMvt) {
+			cell = row.insertCell(-1);
+			cell.classname = 'mini-map ball-mvt';
+			cell.innerHTML = this.renderDetailedMap(instruction, i);
+		}
+
 		position = instruction.position;
 	}, this);
 
@@ -286,6 +302,40 @@ BallLocater.prototype.renderWayBack = function(path) {
 	sumTitle.textContent = $$('Instructions summary (%d)', summary.length);
 	instrSummary.innerHTML = summary.join('&emsp;');
 };
+
+/* Render mini-map of where the ball have moved */
+BallLocater.prototype.renderDetailedMap = function(instruction, i) {
+	var bMvt = instruction.bMvt,
+		fig = [],
+		z, tZ;
+
+	if (!bMvt || !bMvt.length) {
+		return '';
+	}
+
+	z = bMvt[0].z;
+	tZ = bMvt[bMvt.length - 1].z;
+
+	fig.push(this.cubeHtml[z]);
+
+	while(z !== tZ) {
+		z+= z > tZ ? -1 : 1;
+		fig.push(this.cubeHtml[z]);
+	}
+
+	setTimeout(function() {
+		bMvt.forEach(function(cell) {
+			var id = 'detail' + [i,cell.x, cell.y, cell.z].join('-'),
+				cell = document.getElementById(id);
+
+				if (cell) {
+					cell.classList.add('possible-location');
+				}
+		});
+	}, 10);
+
+	return fig.join('').replace(/id="map/g, 'id="detail'+i);
+}
 
 /* show which cells are possible */
 BallLocater.prototype.renderPossible = function(possible) {

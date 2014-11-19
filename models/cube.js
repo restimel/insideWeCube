@@ -378,6 +378,7 @@ Cube.getDirectionFromMvt = function(mvt) {
 		'-b': 3,
 		'?': 0
 	}
+	mvt = mvt.replace(/^(-?[?a-z]).*$/, '$1');
 	return rslt[mvt];
 };
 

@@ -321,24 +321,37 @@ Heuristic.prototype.wayBack = function(rsp) {
 
 	/* give information about movement (if ball has move...) */
 	path = path.map(function(mvt) {
+		var tmp;
+
 		position = this.computePosition(position, mvt);
 		rsltMvt = this.cube.getMovement(rsltMvt[rsltMvt.length -1], position, -1);
 
 		var result = rsltMvt.length === 1 ? 0 : 1;
-		if (mvt === '?') {
+		if (mvt.indexOf('?') !== -1) {
 			result = -1;
+			tmp = mvt.split('-');
+			if (tmp.length>1) {
+				rsltMvt.push({
+					x: tmp[1],
+					y: tmp[2],
+					z: tmp[3]
+				});
+				mvt = '?';
+			}
 		}
 		return {
 			mvt: mvt,
 			position: position,
-			result: result
+			result: result,
+			bMvt: rsltMvt
 		};
 	}, this);
 
 	path.unshift({
 		mvt: '',
 		position: startPosition,
-		result: 0
+		result: 0,
+		bMvt: []
 	});
 
 	if (position.b == lastTopPosition) {
@@ -352,7 +365,8 @@ Heuristic.prototype.wayBack = function(rsp) {
 		path.push({
 			mvt: lastTopPosition ? '-b' : 'b',
 			position: position,
-			result: 100
+			result: 100,
+			bMvt: []
 		});
 	}
 
