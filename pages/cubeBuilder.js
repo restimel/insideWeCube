@@ -112,6 +112,15 @@ CubeBuilder.prototype.render = function(container) {
 	this.cubeContainer = cubeBuilder;
 	this.cubeInfo = info;
 
+	/* Section Minimap */
+	var minimap = document.createElement('section');
+	minimap.className = 'cube-minimap-section minimap';
+	minimap.onclick = function() {main.message('TODO pop-up with separate maps', 'info')};
+	container.appendChild(minimap);
+
+	this.cubeMinimap = minimap;
+
+	/* render Levels */
 	this.levels.forEach(this.renderLevel, this);
 	this.cubePath.computePath();
 };
@@ -231,6 +240,10 @@ CubeBuilder.prototype.renderInfo = function(info) {
 	this.cubeInfo.appendChild(elMovement);
 	this.cubeInfo.appendChild(elCbReverse);
 	this.cubeInfo.appendChild(elHardCells);
+};
+
+CubeBuilder.prototype.renderMiniMap = function(mapElements) {
+	this.cubeMinimap.innerHTML = mapElements.join(' ');
 };
 
 CubeBuilder.prototype.reset = function() {

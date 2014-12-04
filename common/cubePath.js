@@ -57,6 +57,7 @@ CubePath.prototype.onMessage = function(data) {
 CubePath.prototype.getPath = function(data) {
 	var cells = data.accessible;
 
+	main.control.action('path', {action: 'getCubeMap', data: {orientation: 'top', accessible: cells}}, this.token);
 	main.control.action('path', {action: 'getPathInfo', data: data}, this.token);
 
 	main.removeClass('accessible-path');
@@ -67,4 +68,8 @@ CubePath.prototype.getPath = function(data) {
 
 CubePath.prototype.getPathInfo = function(info) {
 	this.cubeBuilder.renderInfo(info);
+};
+
+CubePath.prototype.getCubeMap = function(mapElements) {
+	this.cubeBuilder.renderMiniMap(mapElements);
 };

@@ -652,6 +652,19 @@ Path.prototype.computePath = function() {
 	this.calculatePath();
 };
 
+/**
+ * Return the map of the current cube
+ */
+Path.prototype.getCubeMap = function(data) {
+	var orientation = data.orientation || 'top',
+		accessiblePath = data.accessible || [];
+
+	self.postMessage({data: {
+		action: 'getCubeMap',
+		data: this.cube.renderMap(orientation, accessiblePath)
+	}, token: this.token});
+};
+
 Path.prototype.getPathInfo = function(data) {
 	var cells = data.accessible,
 		last = cells[cells.length - 1],

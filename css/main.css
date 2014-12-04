@@ -132,6 +132,21 @@ summary {
 	overflow: auto;
 }
 
+.cube-minimap-section {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+
+	padding: 1em;
+
+	box-shadow: 0 0 20px 5px;
+	cursor: pointer;
+}
+
+.cube-minimap-section .mini-map{
+	display: inline-block;
+}
+
 .cube-header-field {
 	float: left;
 	padding: 1em;
