@@ -25,6 +25,10 @@
 		errors.push('querySelectorAll');
 	}
 
+	if (typeof Function.prototype.bind !== 'function') {
+		errors.push('bind on function');
+	}
+
 	/* Manage issues */
 
 	if (errors.length) {
