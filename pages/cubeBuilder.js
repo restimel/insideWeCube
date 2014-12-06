@@ -116,9 +116,18 @@ CubeBuilder.prototype.render = function(container) {
 	var minimapSection = document.createElement('section');
 	minimapSection.className = 'cube-minimap-section';
 
-	minimapSection.appendChild(Helper.selectCubeOrientation(
+	var minimapTool = document.createElement('div');
+	minimapTool.className = 'tool';
+
+	minimapTool.appendChild(Helper.selectCubeOrientation(
 		this.cubePath.changeMapOrientation.bind(this.cubePath), this.cubePath.mapOrientation));
 
+	btn = document.createElement('button');
+	btn.textContent = $$('Map preview');
+	btn.onclick = this.renderMapStandalone.bind(this);
+	minimapTool.appendChild(btn);
+
+	minimapSection.appendChild(minimapTool);
 
 	var minimapContainer = document.createElement('div');
 	minimapContainer.onclick = this.renderMapStandalone.bind(this);
@@ -254,7 +263,20 @@ CubeBuilder.prototype.renderMiniMap = function(mapElements) {
 };
 
 CubeBuilder.prototype.renderMapStandalone = function() {
-	main.message('TODO pop-up with separate maps', 'info');
+	var preview = window.open(null,"map_preview");
+	preview.document.write('<!DOCTYPE html><html><head><meta charset="utf-8"></head></body></html>')
+	preview.document.head.innerHTML = '<meta charset="utf-8"><title>' + $$('Map preview: %s', this.name) + '</title>';
+	preview.document.body.innerHTML = '<link rel="stylesheet" type="text/css" href="'+ Helper.mainPath + '/' + Helper.cssPath +'">' +
+									  '<h1>' + this.name + '</h1><section id="maps-preview"></section>';
+
+	this.cubePath.getMaps(function(maps) {
+		var html = maps.map(function(mapObject) {
+			return '<h2>' + mapObject.orientation + '</h2><figure>'+mapObject.html.join(' ')+'</figure>';
+		});
+
+		preview.document.getElementById('maps-preview').innerHTML = html.join('<br>');
+		preview.document.close();
+	});
 };
 
 CubeBuilder.prototype.reset = function() {

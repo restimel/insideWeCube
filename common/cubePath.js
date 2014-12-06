@@ -63,6 +63,14 @@ CubePath.prototype.changeMapOrientation = function(cubeOrientation) {
 	}}, this.token);
 };
 
+CubePath.prototype.getMaps = function(callback) {
+	main.control.action('path', {action: 'getCubeMaps', data: {
+		accessible: this.accessible
+	}}, function(args) {
+		callback(args.data);
+	});
+};
+
 CubePath.prototype.getPath = function(data) {
 	var cells = data.accessible;
 	this.accessible = cells;

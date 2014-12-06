@@ -615,6 +615,14 @@
 		"en": "Load a cube",
 		"fr": "Charger un cube"
 	},
+	"Map preview": {
+		"en": "Map preview",
+		"fr": "Affichage des plans"
+	},
+	"Map preview: %s": {
+		"en": "Map preview: %s",
+		"fr": "Plans du cube : %s"
+	},
 	"Cube color": {
 		"en": "Cube color",
 		"fr": "Couleur du cube"

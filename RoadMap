@@ -13,7 +13,7 @@ V1.1
 		✓ filter on cube
 		* switch level
 		✓ display small format map (and with reverse side)
-			→ pop-up
+			✓ pop-up
 			→ change map color ?
 			✓ change orientation
 			→ show/hide mini-map

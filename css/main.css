@@ -142,9 +142,21 @@ summary {
 	box-shadow: 0 0 20px 5px;
 }
 
-.cube-minimap-section .mini-map{
+.cube-minimap-section .tool label {
+	display: inline-block;
+}
+
+.cube-minimap-section .mini-map {
 	display: inline-block;
 	cursor: pointer;
+}
+
+#maps-preview .mini-map {
+	display: inline-block;
+}
+
+#maps-preview * {
+	cursor: initial;
 }
 
 .cube-header-field {

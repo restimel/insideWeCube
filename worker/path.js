@@ -665,6 +665,29 @@ Path.prototype.getCubeMap = function(data) {
 	}, token: this.token});
 };
 
+/**
+ * Return the map of the current cube
+ */
+Path.prototype.getCubeMaps = function(data) {
+	var accessiblePath = data.accessible || [],
+		data = [];
+
+	data.push({
+		orientation: $$('The INSIDE³ side'),
+		html: this.cube.renderMap('top', accessiblePath)
+	});
+
+	data.push({
+		orientation: $$('The InsideZeCube.com side'),
+		html: this.cube.renderMap('bottom', accessiblePath)
+	});
+
+	self.postMessage({data: {
+		action: 'getCubeMaps',
+		data: data
+	}, token: this.token});
+};
+
 Path.prototype.getPathInfo = function(data) {
 	var cells = data.accessible,
 		last = cells[cells.length - 1],
