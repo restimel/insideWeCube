@@ -1,6 +1,7 @@
 function CubePath() {
 	this.cubeBuilder = null;
 	this.token = main.control.add(this.onMessage.bind(this));
+	this.mapOrientation = 'top';
 }
 
 CubePath.prototype.setBuilder = function(builder) {
@@ -54,10 +55,19 @@ CubePath.prototype.onMessage = function(data) {
 	}
 };
 
+CubePath.prototype.changeMapOrientation = function(cubeOrientation) {
+	this.mapOrientation = cubeOrientation;
+	main.control.action('path', {action: 'getCubeMap', data: {
+		orientation: this.mapOrientation,
+		accessible: this.accessible
+	}}, this.token);
+};
+
 CubePath.prototype.getPath = function(data) {
 	var cells = data.accessible;
+	this.accessible = cells;
 
-	main.control.action('path', {action: 'getCubeMap', data: {orientation: 'top', accessible: cells}}, this.token);
+	main.control.action('path', {action: 'getCubeMap', data: {orientation: this.mapOrientation, accessible: cells}}, this.token);
 	main.control.action('path', {action: 'getPathInfo', data: data}, this.token);
 
 	main.removeClass('accessible-path');

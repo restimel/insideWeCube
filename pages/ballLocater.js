@@ -124,28 +124,7 @@ BallLocater.prototype.render = function(container, position) {
 BallLocater.prototype.renderCube = function(container) {
 	this.mapOrientation = this.mapOrientation || 'top';
 
-	var that = this,
-		label = document.createElement('label'),
-		select = document.createElement('select');
-
-	label.textContent = $$('Map orientation: ');
-	select.onchange = function() {
-		that.getCubeMap(this.value);
-	};
-
-	[{id:'top', text:$$('INSIDE³ side is at the top')},
-	 {id:'bottom', text:$$('INSIDE³ side is at the bottom')}
-	].forEach(function(item) {
-		var option = document.createElement('option');
-		option.value = item.id;
-		option.textContent = item.text;
-		if (item.id === this.mapOrientation) {
-			option.selected = true;
-		}
-		select.add(option);
-	}, this);
-	label.appendChild(select);
-	container.appendChild(label);
+	container.appendChild(Helper.selectCubeOrientation(this.getCubeMap.bind(this), this.mapOrientation));
 
 	this.cubeSelectorContainer = document.createElement('section');
 	container.appendChild(this.cubeSelectorContainer);

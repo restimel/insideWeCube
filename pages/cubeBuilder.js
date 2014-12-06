@@ -77,7 +77,7 @@ CubeBuilder.prototype.render = function(container) {
 	main.control.action('getCubes', null, function(data) {
 		data.forEach(function(name) {
 			var option = document.createElement('option');
-			
+
 			option.value = option.textContent = name;
 			select.appendChild(option);
 		});
@@ -113,12 +113,19 @@ CubeBuilder.prototype.render = function(container) {
 	this.cubeInfo = info;
 
 	/* Section Minimap */
-	var minimap = document.createElement('section');
-	minimap.className = 'cube-minimap-section minimap';
-	minimap.onclick = function() {main.message('TODO pop-up with separate maps', 'info')};
-	container.appendChild(minimap);
+	var minimapSection = document.createElement('section');
+	minimapSection.className = 'cube-minimap-section';
 
-	this.cubeMinimap = minimap;
+	minimapSection.appendChild(Helper.selectCubeOrientation(
+		this.cubePath.changeMapOrientation.bind(this.cubePath), this.cubePath.mapOrientation));
+
+
+	var minimapContainer = document.createElement('div');
+	minimapContainer.onclick = this.renderMapStandalone.bind(this);
+	minimapSection.appendChild(minimapContainer);
+
+	container.appendChild(minimapSection);
+	this.cubeMinimap = minimapContainer;
 
 	/* render Levels */
 	this.levels.forEach(this.renderLevel, this);
@@ -244,6 +251,10 @@ CubeBuilder.prototype.renderInfo = function(info) {
 
 CubeBuilder.prototype.renderMiniMap = function(mapElements) {
 	this.cubeMinimap.innerHTML = mapElements.join(' ');
+};
+
+CubeBuilder.prototype.renderMapStandalone = function() {
+	main.message('TODO pop-up with separate maps', 'info');
 };
 
 CubeBuilder.prototype.reset = function() {
