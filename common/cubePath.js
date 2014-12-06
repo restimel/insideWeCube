@@ -91,3 +91,9 @@ CubePath.prototype.getPathInfo = function(info) {
 CubePath.prototype.getCubeMap = function(mapElements) {
 	this.cubeBuilder.renderMiniMap(mapElements);
 };
+
+CubePath.prototype.setColor = function(color) {
+	main.control.action('path', {action: 'setColor', data: {
+		color: color
+	}}, this.token);
+};

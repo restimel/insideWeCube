@@ -13,6 +13,7 @@ CubeBuilder.prototype.init = function() {
 	this.levels = [1, 2, 3, 4, 5, 6, 7].map(function(_, i) {
 		return new LevelConstructor(i, cubePath, this.color);
 	}, this);
+	this.cubePath.setColor(this.color);
 };
 
 CubeBuilder.prototype.render = function(container) {
@@ -263,11 +264,15 @@ CubeBuilder.prototype.renderMiniMap = function(mapElements) {
 };
 
 CubeBuilder.prototype.renderMapStandalone = function() {
+	var cssLink = Helper.cssPath.map(function(css) {
+		return '<link rel="stylesheet" type="text/css" href="'+ Helper.mainPath + '/' + css +'">';
+	}).join('');
 	var preview = window.open(null,"map_preview");
 	preview.document.write('<!DOCTYPE html><html><head><meta charset="utf-8"></head></body></html>')
-	preview.document.head.innerHTML = '<meta charset="utf-8"><title>' + $$('Map preview: %s', this.name) + '</title>';
-	preview.document.body.innerHTML = '<link rel="stylesheet" type="text/css" href="'+ Helper.mainPath + '/' + Helper.cssPath +'">' +
-									  '<h1>' + this.name + '</h1><section id="maps-preview"></section>';
+	preview.document.head.innerHTML = '<meta charset="utf-8">' +
+									  '<title>' + $$('Map preview: %s', this.name) + '</title>' +
+									  cssLink;
+	preview.document.body.innerHTML = '<h1>' + this.name + '</h1><section id="maps-preview"></section>';
 
 	this.cubePath.getMaps(function(maps) {
 		var html = maps.map(function(mapObject) {
@@ -297,6 +302,7 @@ CubeBuilder.prototype.changeColor = function(e) {
 
 	if (this.color != color && typeof color === 'string') {
 		this.color = color;
+		this.cubePath.setColor(color);
 		this.levels.forEach(function(lvl) {
 			lvl.changeColor(color);
 		});

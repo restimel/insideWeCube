@@ -14,7 +14,7 @@ V1.1
 		* switch level
 		✓ display small format map (and with reverse side)
 			✓ pop-up
-			→ change map color ?
+			✓ change map color
 			✓ change orientation
 			→ show/hide mini-map
 			+ give small map with different orientation (other than top/bottom)

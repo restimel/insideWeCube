@@ -653,6 +653,15 @@ Path.prototype.computePath = function() {
 };
 
 /**
+ * Change the cube color
+ * @param args {Object}
+ *		- color {String} the color of the cube
+ */
+Path.prototype.setColor = function(args) {
+	this.cube.color = args.color;
+};
+
+/**
  * Return the map of the current cube
  */
 Path.prototype.getCubeMap = function(data) {

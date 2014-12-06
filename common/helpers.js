@@ -31,6 +31,6 @@ var Helper = {
 	 * Configuration (default values)
 	 */
 
-	cssPath: 'css/main.css',
+	cssPath: ['css/main.css', 'css/cube3D.css'],
 	mainPath: ''
 };
