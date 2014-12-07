@@ -33,7 +33,7 @@ function main(container){
 	}
 }
 
-main.version = '1.0.6';
+main.version = '1.0.7';
 
 main.message = (function() {
 	var container = document.createDocumentFragment(),
