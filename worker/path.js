@@ -196,7 +196,7 @@ Path.prototype.countMovement = function(path, info, available, pst) {
 			if (rslt.nbDifficultCrossing) {
 				info.nbDifficultCrossing += rslt.nbDifficultCrossing;
 
-				// rslt.rotations[0] = '?-' + [currentCell.x, currentCell.y, currentCell.z].join('-');
+				rslt.rotations[0] = '?-' + [currentCell.x, currentCell.y, currentCell.z].join('-');
 			}
 
 			rotations = rotations.concat(rslt.rotations);

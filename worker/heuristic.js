@@ -332,9 +332,9 @@ Heuristic.prototype.wayBack = function(rsp) {
 			tmp = mvt.split('-');
 			if (tmp.length>1) {
 				rsltMvt.push({
-					x: tmp[1],
-					y: tmp[2],
-					z: tmp[3]
+					x: parseInt(tmp[1], 10),
+					y: parseInt(tmp[2], 10),
+					z: parseInt(tmp[3], 10)
 				});
 				mvt = '?';
 			}

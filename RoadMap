@@ -23,7 +23,7 @@ V1.1
 	Analyze Cube
 		✓ give sign instruction (in position)
 			✓ give sumary of instructions
-		* give better help on impossible help (direct movement or position (display a 4th column with level position))
+		✓ give better help on impossible help (direct movement or position (display a 4th column with level position))
 		✓ give position of possible cells in mini-map
 		+ (bonus) identify in which cube we are if no positions match
 
@@ -43,6 +43,7 @@ V1.1
 		Analyze Cube
 		* Skinning of the instructions to the way back
 			✓ auto-focus
+		* position and movement instruction are not sync (see Awful) => compute new orientation on hard passage
 
 		General
 		* use a custom font to avoid issue with missing characters
