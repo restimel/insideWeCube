@@ -93,6 +93,14 @@ About.prototype.render = function(container) {
 	flagIcon.appendChild(link);
 	credit.appendChild(flagIcon);
 
+	var fontAwesome = document.createElement('div');
+	fontAwesome.textContent = $$('Font icons: ');
+	link = document.createElement('a');
+	link.textContent = link.href = 'http://fontawesome.io/';
+	link.target = '_blank';
+	fontAwesome.appendChild(link);
+	credit.appendChild(fontAwesome);
+
 	credit.className = 'about-section';
 	container.appendChild(credit);
 

@@ -1,3 +1,8 @@
+@font-face{
+	font-family: fontAwesome;
+	src: url('../fonts/fontawesome-webfont.woff');
+}
+
 body {
 	background-color: #ffffff;
 }
@@ -123,6 +128,17 @@ summary {
 	float: right;
 }
 
+.cube-main-section {
+	position: absolute;
+	bottom: 0;
+	top: 100px;
+
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
 .cube-builder-section, .cube-info-section {
 	width: 50%;
 	margin-left: 0;
@@ -166,6 +182,7 @@ summary {
 
 .level-editor {
 	margin-bottom: 1em;
+	padding-left: 1em;
 }
 
 .constructor-table {
@@ -199,7 +216,8 @@ summary {
 }
 
 .cell-main-hole:before {
-	content: '⬤';
+	content: '\f111'; /* ⬤ */
+	font-family: fontAwesome;
 	color: rgba(0, 0, 0, 0.6);
 }
 .cell-wall, .cell-wallR-fill, .cell-wallD-fill {
@@ -247,10 +265,10 @@ summary {
 	text-align: center;
 }
 .mini-map td{
-	width: 10px;
-	height: 10px;
+	width: 12px;
+	height: 12px;
 	border: 1px solid rgba(0, 0, 0, 0.6);
-	font-size: 8.5px;
+	font-size: 10px;
 	padding: 2px;
 }
 .mini-map td:not(.unavailable){
@@ -266,7 +284,8 @@ summary {
 	border-color: transparent;
 }
 .mini-map .hole:before {
-	content: '⬤';
+	content: '\f111'; /* ⬤ */
+	font-family: fontAwesome;
 }
 .mini-map .passage-down {
 	border-bottom: none;
@@ -285,11 +304,28 @@ summary {
 	padding-left: 3px;
 }
 
-.mini-map .possible-location {
+.mini-map .possible-location,
+.mini-map .movement-location {
 	background-color: rgba(255, 255, 255, 0.3);
 }
-.mini-map .possible-location:before {
-	content: '◎';
+.mini-map .possible-location:after {
+	content: '\f128'; /* ? */
+	font-family: fontAwesome;
+}
+
+.analyze-step3 .mini-map .movement-location:after {
+	content: '\f1b0'; /* paw */
+	font-family: fontAwesome;
+}
+
+.analyze-step3 .mini-map .movement-location.movement-start:after {
+	content: '\f183'; /* man */
+	font-family: fontAwesome;
+}
+
+.analyze-step3 .mini-map .movement-location.movement-end:after {
+	content: '\f1ae'; /* happy man */
+	font-family: fontAwesome;
 }
 
 /* Analyzer */

@@ -46,5 +46,5 @@ V1.1
 		* position and movement instruction are not sync (see Awful) => compute new orientation on hard passage
 
 		General
-		* use a custom font to avoid issue with missing characters
+		✓ use a custom font to avoid issue with missing characters
 		* Prepare cubes with not normal size

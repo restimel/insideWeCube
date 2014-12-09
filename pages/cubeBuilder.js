@@ -99,17 +99,21 @@ CubeBuilder.prototype.render = function(container) {
 
 	container.appendChild(header);
 
+	var mainSection = document.createElement('section');
+	mainSection.className = 'cube-main-section';
+
 	/* Section Level builder */
 	var cubeBuilder = document.createElement('section');
 	cubeBuilder.className = 'cube-builder-section';
 
-	container.appendChild(cubeBuilder);
+	mainSection.appendChild(cubeBuilder);
 
 	/* Section Info */
 	var info = document.createElement('section');
 	info.className = 'cube-info-section';
-	container.appendChild(info);
+	mainSection.appendChild(info);
 
+	container.appendChild(mainSection);
 	this.cubeContainer = cubeBuilder;
 	this.cubeInfo = info;
 
