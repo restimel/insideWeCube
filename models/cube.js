@@ -346,7 +346,77 @@ Cube.prototype.renderMap = function(orientation, available, uid) {
 			return cell.x === x && cell.y === y && cell.z === z;
 		});
 	}
-}
+};
+
+/**
+ * Compute the new position when a movement occurs
+ */
+Cube.prototype.computePosition = function(position, mvt) {
+	var pst = {
+		r: position.r,
+		d: position.d,
+		b: position.b
+	};
+
+	switch (mvt) {
+		case '-r': pst.r = 0; break;
+		case 'r': pst.r = 1; break;
+		case '-d': pst.d = 0; break;
+		case 'd': pst.d = 1; break;
+		case '-b': pst.b = 0; break;
+		case 'b': pst.b = 1; break;
+	}
+
+	return pst;
+};
+
+/**
+ * Compute the best position for the given cell, where the ball shouldn't move at start
+ */
+Cube.prototype.computeBestPosition = function(cell, position, doNotChangeCell) {
+	var pst = position,
+		dCell;
+
+	if (this.couldMove(cell, pst)) {
+		dCell = this.get(cell.x, cell.y, cell.z);
+
+		if (pst.r && dCell.r) {
+			pst = this.computePosition(pst, '-r');
+		}
+		if (!pst.r && this.get(cell.x, cell.y - 1, cell.z).r) {
+			pst = this.computePosition(pst, 'r');
+		}
+
+		if (pst.d && dCell.d) {
+			pst = this.computePosition(pst, '-d');
+		}
+		if (!pst.d && this.get(cell.x - 1, cell.y, cell.z).d) {
+			pst = this.computePosition(pst, 'd');
+		}
+
+		if (pst.b && dCell.b) {
+			pst = this.computePosition(pst, '-b');
+		}
+		if (!pst.b && this.get(cell.x, cell.y, cell.z - 1).b) {
+			pst = this.computePosition(pst, 'b');
+		}
+
+		/* we should be in a room */
+		if (this.couldMove(cell, pst)) {
+			if (!doNotChangeCell) {
+				dCell = this.getMovement(cell, position, 0);
+				dCell = dCell[dCell.length - 1];
+				cell.x = dCell.x;
+				cell.y = dCell.y;
+				cell.z = dCell.z;
+			}
+
+			pst = position;
+		}
+	}
+
+	return pst;
+};
 
 /* Static method */
 
@@ -415,4 +485,4 @@ Cube.getDirection = function(c1, c2) {
 	}
 
 	return 0;
-}
+};

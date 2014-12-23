@@ -307,15 +307,15 @@ BallLocater.prototype.renderDetailedMap = function(instruction, i) {
 			var id = 'detail' + [i,cell.x, cell.y, cell.z].join('-'),
 				cell = document.getElementById(id);
 
-				if (cell) {
-					cell.classList.add('movement-location');
-					if (cellIndex === 0) {
-						cell.classList.add('movement-start');
-					}
-					if (cellIndex === bMvt.length - 1) {
-						cell.classList.add('movement-end');
-					}
+			if (cell) {
+				cell.classList.add('movement-location');
+				if (cellIndex === 0) {
+					cell.classList.add('movement-start');
 				}
+				if (cellIndex === bMvt.length - 1) {
+					cell.classList.add('movement-end');
+				}
+			}
 		});
 	}, 10);
 

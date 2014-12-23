@@ -196,7 +196,15 @@ Path.prototype.countMovement = function(path, info, available, pst) {
 			if (rslt.nbDifficultCrossing) {
 				info.nbDifficultCrossing += rslt.nbDifficultCrossing;
 
-				rslt.rotations[0] = '?-' + [currentCell.x, currentCell.y, currentCell.z].join('-');
+				var i = -1, currtCell;
+
+				do {
+					i++;
+					currtCell = path[iPath + i];
+					rslt.position = this.cube.computeBestPosition(currtCell, rslt.position, true);
+				} while (this.cube.couldMove(currtCell, rslt.position));
+				rslt.rotations[0] = '?-' + [currtCell.x, currtCell.y, currtCell.z].join('-');
+				rslt.lastPos = currtCell;
 			}
 
 			rotations = rotations.concat(rslt.rotations);
