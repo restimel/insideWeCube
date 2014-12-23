@@ -337,8 +337,14 @@ Heuristic.prototype.wayBack = function(rsp) {
 					z: parseInt(tmp[3], 10)
 				});
 				mvt = '?';
+				position = {
+					r: strToBoolean(tmp[4]),
+					d: strToBoolean(tmp[5]),
+					b: strToBoolean(tmp[6])
+				};
+			} else {
+				this.cube.computeBestPosition(rsltMvt[rsltMvt.length - 1], position, true);
 			}
-			position = this.cube.computeBestPosition(rsltMvt[rsltMvt.length - 1], position, true);
 		}
 		return {
 			mvt: mvt,
@@ -374,6 +380,13 @@ Heuristic.prototype.wayBack = function(rsp) {
 	self.postMessage({data: {action: 'wayBack', data: {
 		path: path
 	}}, token: this.token});
+
+	function strToBoolean(str) {
+		if (!str || ['0', 'false', 'undefined'].indexOf(str) !== -1) {
+			return false;
+		}
+		return true;
+	}
 };
 
 /**

@@ -203,7 +203,7 @@ Path.prototype.countMovement = function(path, info, available, pst) {
 					currtCell = path[iPath + i];
 					rslt.position = this.cube.computeBestPosition(currtCell, rslt.position, true);
 				} while (this.cube.couldMove(currtCell, rslt.position));
-				rslt.rotations[0] = '?-' + [currtCell.x, currtCell.y, currtCell.z].join('-');
+				rslt.rotations[0] = '?-' + [currtCell.x, currtCell.y, currtCell.z, rslt.position.r, rslt.position.d, rslt.position.b].join('-');
 				rslt.lastPos = currtCell;
 			}
 
