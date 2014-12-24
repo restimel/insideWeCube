@@ -314,7 +314,7 @@ summary {
 }
 
 .analyze-step3 .mini-map .movement-location:after {
-	content: '\f1b0'; /* paw */
+	content: '\f1db'; /* thin circle */
 	font-family: fontAwesome;
 }
 
