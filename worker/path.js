@@ -186,7 +186,7 @@ Path.prototype.avoid = function(cell, nCell) {
 };
 
 Path.prototype.countMovement = function(path, info, available, pst) {
-	var checkPosition = function(currentCell, ballLocation, mvt) {
+	var checkPosition = function(currentCell, ballLocation, mvt, willBeMoved) {
 		if (!Cube.comparePosition(ballLocation, currentCell)) {
 			info.nbMvtOutPath += ballMvt.length - iBallMvt;
 
@@ -214,7 +214,7 @@ Path.prototype.countMovement = function(path, info, available, pst) {
 			iBallMvt = ballMvt.length;
 
 			if (rslt.lastPos) {
-				moveBall(rslt.lastPos);
+				moveBall(rslt.lastPos, willBeMoved);
 			}
 
 			return false;
@@ -222,14 +222,21 @@ Path.prototype.countMovement = function(path, info, available, pst) {
 		return true;
 	}.bind(this),
 		// move path up to where the ball is now
-		moveBall = function(nPos) {
+		moveBall = function(nPos, willBeMoved) {
 			var i = iPath;
 			if (!Cube.comparePosition(nPos, currCell)) {
 				while (!Cube.comparePosition(nPos, path[i])) {
 					i++;
 				}
 
+				if (willBeMoved) {
+					i--;
+				}
+
 				iPath = i;
+				currCell = path[iPath];
+			} else if (willBeMoved) {
+				iPath--;
 				currCell = path[iPath];
 			}
 		};
@@ -268,7 +275,7 @@ Path.prototype.countMovement = function(path, info, available, pst) {
 		}
 		ballLocation = ballMvt[iBallMvt];
 		
-		checkPosition(currCell, ballLocation, ballMvt);
+		checkPosition(currCell, ballLocation, ballMvt, true);
 
 		iPath++;
 		iBallMvt++;

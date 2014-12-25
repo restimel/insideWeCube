@@ -43,7 +43,10 @@ V1.1
 		Analyze Cube
 		* Skinning of the instructions to the way back
 			✓ auto-focus
-		* position and movement instruction are not sync (see Awful) => compute new orientation on hard passage
+		* position and movement instruction are not sync (see Awful)
+			✓ compute new orientation on hard passage
+			* sometime a hard passage is detected when moving back (cf vicious on way back)
+			✓ warning movement is triggered in Awful due to wrong repositionnement after hard passage
 
 		General
 		✓ use a custom font to avoid issue with missing characters
