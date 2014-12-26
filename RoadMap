@@ -16,7 +16,7 @@ V1.1
 			✓ pop-up
 			✓ change map color
 			✓ change orientation
-			→ show/hide mini-map
+			* show/hide mini-map
 			+ give small map with different orientation (other than top/bottom)
 		+ do something (not log ?) when unexpected movement happens when rotated localy
 
@@ -24,11 +24,12 @@ V1.1
 		✓ give sign instruction (in position)
 			✓ give sumary of instructions
 		✓ give better help on impossible help (direct movement or position (display a 4th column with level position))
+			* give new position of the cube
 		✓ give position of possible cells in mini-map
 		+ (bonus) identify in which cube we are if no positions match
 
 	Cube3D
-		* fallback rendering for Browser which doesn't support RotateX
+		+ fallback rendering for Browser which doesn't support RotateX
 
  /!\ Bugs
  		Build Cube
