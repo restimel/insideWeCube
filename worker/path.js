@@ -361,11 +361,7 @@ Path.prototype.goFrom = function(fromCell, available, path, ref, currPosition, m
 			nbDifficultCrossing: 0,
 			rotations: []
 		},
-		position = {
-			r: currPosition.r,
-			d: currPosition.d,
-			b: currPosition.b
-		},
+		position = Cube.copyPosition(currPosition),
 		i;
 
 	if (!fromCell.preferences || typeof fromCell.preferences.r === 'undefined') {
@@ -383,9 +379,12 @@ Path.prototype.goFrom = function(fromCell, available, path, ref, currPosition, m
 	var mvt = this.cube.getMovement(fromCell, fromCell.preferences, fromCell.from);
 	var lastPos = mvt[mvt.length - 1];
 	var rot = Cube.fromDirection(fromCell.direction);
+	var lastMvt = rot.value ? rot.key : '-' + rot.key;
 
-	info.position = fromCell.preferences;
-	info.rotations.push(rot.value ? rot.key : '-' + rot.key);
+	info.position = Cube.copyPosition(fromCell.preferences);
+	position = Cube.copyPosition(fromCell.preferences);
+
+	info.rotations.push(lastMvt);
 
 	var iPath = -1;
 
@@ -491,11 +490,7 @@ Path.prototype.computePref = function(cell, nCell) {
 		pos = Cube.fromDirection(cell.direction);
 
 	if (!cell.preferences || typeof cell.preferences.r === 'undefined') {
-		cell.preferences = {
-			r: nCell.preferences.r,
-			d: nCell.preferences.d,
-			b: nCell.preferences.b
-		};
+		cell.preferences = Cube.copyPosition(nCell.preferences);
 
 		cell.avoid.forEach(function(dir) {
 			var p = Cube.fromDirection(dir);
@@ -516,11 +511,7 @@ Path.prototype.computePref = function(cell, nCell) {
 Path.prototype.getPathMvt = function(cell, cellTarget, startPosition, available, resetDirection) {
 	cell = available.filter(Cube.comparePosition.bind(Cube, cell))[0];
 	cellTarget = available.filter(Cube.comparePosition.bind(Cube, cellTarget))[0];
-	startPosition = {
-		b: startPosition.b,
-		d: startPosition.d,
-		r: startPosition.r
-	};
+	startPosition = Cube.copyPosition(startPosition);
 
 	this.setTarget(cellTarget);
 

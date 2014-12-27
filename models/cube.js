@@ -352,11 +352,7 @@ Cube.prototype.renderMap = function(orientation, available, uid) {
  * Compute the new position when a movement occurs
  */
 Cube.prototype.computePosition = function(position, mvt) {
-	var pst = {
-		r: position.r,
-		d: position.d,
-		b: position.b
-	};
+	var pst = Cube.copyPosition(position);
 
 	switch (mvt) {
 		case '-r': pst.r = 0; break;
@@ -485,4 +481,12 @@ Cube.getDirection = function(c1, c2) {
 	}
 
 	return 0;
+};
+
+Cube.copyPosition = function(position) {
+	return {
+		r: position.r,
+		d: position.d,
+		b: position.b
+	};
 };
