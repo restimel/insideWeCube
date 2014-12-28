@@ -24,7 +24,7 @@ V1.1
 		✓ give sign instruction (in position)
 			✓ give sumary of instructions
 		✓ give better help on impossible help (direct movement or position (display a 4th column with level position))
-			* give new position of the cube
+			✓ give new position of the cube
 		✓ give position of possible cells in mini-map
 		+ (bonus) identify in which cube we are if no positions match
 

@@ -605,7 +605,11 @@
 	},
 	"Cube properties": {
 		"en": "Cube properties",
-		"fr": "Propriétées du cube"
+		"fr": "Propriétés du cube"
+	},
+	"Cube should end up in this position:": {
+		"en": "Cube should end up in this position:",
+		"fr": "Le cube doit se retrouver dans cette position :"
 	},
 	"Tools": {
 		"en": "Tools",

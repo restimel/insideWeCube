@@ -479,13 +479,19 @@ BallLocater.prototype.selectCell = function(event) {
 
 BallLocater.prototype.textIntruction = function(mvt, position) {
 	position = position || this.position;
+	var str;
 
-	if (mvt === '') {
+	function displayPosition(position) {
 		var str = [];
 		str.push(position.b ? $$('The INSIDE³ side is at the top.') : $$('The INSIDE³ side is at the bottom.'));
-		str.push($$('The text is readable.'));
 		str.push(position.d === position.b ? $$('Your cube is slightly rotated backward.') : $$('Your cube is slightly rotated forward.'));
 		str.push(position.r ?  $$('Your cube is slightly rotated to the right.') : $$('Your cube is slightly rotated to the left.'));
+		return str;
+	}
+
+	if (mvt === '') {
+		str = displayPosition(position);
+		str.splice(1, 0, $$('The text is readable.'));
 		return str.join('<br>');
 	}
 
@@ -503,7 +509,13 @@ BallLocater.prototype.textIntruction = function(mvt, position) {
 					return $$('Rotate your cube forward to have the INSIDE³ side at the bottom.');
 				}
 			default:
-				return $$('I am sorry, I can\'t help you here :(');
+				str = displayPosition(position);
+				str.splice(0, 0,
+					$$('I am sorry, I can\'t help you here :('),
+					'',
+					$$('Cube should end up in this position:')
+				);
+				return str.join('<br>');
 		}
 	}else {
 		switch (mvt) {
@@ -519,7 +531,13 @@ BallLocater.prototype.textIntruction = function(mvt, position) {
 				}
 			case '-b': return $$('Rotate your cube to have the INSIDE³ side at the top.');
 			default:
-				return $$('I am sorry, I can\'t help you here :(');
+				str = displayPosition(position);
+				str.splice(0, 0,
+					$$('I am sorry, I can\'t help you here :('),
+					'',
+					$$('Cube should end up in this position:')
+				);
+				return str.join('<br>');
 		}
 	}
 };
