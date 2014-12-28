@@ -135,26 +135,29 @@ Cube.prototype.getMovement = function(cellPos, cubePosition, from) {
 		y = cellPos.y,
 		z = cellPos.z,
 		cell = this.get(x, y, z),
-		rslt = [cellPos];
+		rslt = [cellPos],
+		isFalling = [3, -3].indexOf(from) !== -1;
 
 	if (typeof cell.r === 'undefined') {
 		return [];
 	}
 
 	/* Z */
-	if (cubePosition.b && cell.b) {
-		return rslt.concat(this.getMovement({
-			x: x,
-			y: y,
-			z: z + 1
-		}, cubePosition, -3));
-	}
-	if (!cubePosition.b && this.get(x, y, z-1).b) {
-		return rslt.concat(this.getMovement({
-			x: x,
-			y: y,
-			z: z - 1
-		}, cubePosition, 3));
+	if (!isFalling) {
+		if (cubePosition.b && cell.b) {
+			return rslt.concat(this.getMovement({
+				x: x,
+				y: y,
+				z: z + 1
+			}, cubePosition, -3));
+		}
+		if (!cubePosition.b && this.get(x, y, z-1).b) {
+			return rslt.concat(this.getMovement({
+				x: x,
+				y: y,
+				z: z - 1
+			}, cubePosition, 3));
+		}
 	}
 
 	/* X/Y */
@@ -217,6 +220,24 @@ Cube.prototype.getMovement = function(cellPos, cubePosition, from) {
 				y: y - 1,
 				z: z
 			}, cubePosition, -1));
+		}
+	}
+
+	/* Z */
+	if (isFalling) {
+		if (cubePosition.b && cell.b) {
+			return rslt.concat(this.getMovement({
+				x: x,
+				y: y,
+				z: z + 1
+			}, cubePosition, -3));
+		}
+		if (!cubePosition.b && this.get(x, y, z-1).b) {
+			return rslt.concat(this.getMovement({
+				x: x,
+				y: y,
+				z: z - 1
+			}, cubePosition, 3));
 		}
 	}
 
