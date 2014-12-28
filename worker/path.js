@@ -292,17 +292,16 @@ Path.prototype.countMovement = function(path, info, available, pst) {
 Path.prototype.logRotations = function(position, pref, rotations, currCell) {
 	var verif;
 
-// console.log('?log_position1', [position.r, position.d, position.b].join(':'), pref, currCell.direction);
-
 	if ( typeof pref.r !== 'undefined' && position.r != pref.r && Math.abs(currCell.direction) !== 1) {
 		position.r = pref.r;
 		rotations.push(pref.r ? 'r' : '-r');
 		verif = this.cube.getMovement(currCell, position, currCell.from);
 		if (verif.length > 1) {
 			console.warn('Movement unexpected Right (cell, position, pref, verif, rotations)', currCell, position, pref, verif, rotations);
+			rotations.pop();
+			position.r = !pref.r;
 		}
 	}
-	// console.log('?log_position2', [position.r, position.d, position.b].join(':'), 'cell', [currCell.x, currCell.y, currCell.z].join(','));
 
 	if ( typeof pref.d !== 'undefined' && position.d != pref.d && Math.abs(currCell.direction) !== 2) {
 		position.d = pref.d;
@@ -310,6 +309,8 @@ Path.prototype.logRotations = function(position, pref, rotations, currCell) {
 		verif = this.cube.getMovement(currCell, position, currCell.from);
 		if (verif.length > 1) {
 			console.warn('Movement unexpected Down (cell, position, pref, verif, rotations)', currCell, position, pref, verif, rotations);
+			rotations.pop();
+			position.d = !pref.d;
 		}
 	}
 
@@ -319,6 +320,8 @@ Path.prototype.logRotations = function(position, pref, rotations, currCell) {
 		verif = this.cube.getMovement(currCell, position, currCell.from);
 		if (verif.length > 1) {
 			console.warn('Movement unexpected Bottom (cell, position, pref, verif, rotations)', currCell, position, pref, verif, rotations);
+			rotations.pop();
+			position.b = !pref.b;
 		}
 	}
 };
