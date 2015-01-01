@@ -129,7 +129,7 @@ CubeBuilder.prototype.render = function(container) {
 		this.cubePath.changeMapOrientation.bind(this.cubePath), this.cubePath.mapOrientation));
 
 	btn = document.createElement('button');
-	btn.textContent = $$('Map preview');
+	btn.textContent = $$('Maps preview');
 	btn.title = $$('Display maps in another tab');
 	btn.onclick = this.renderMapStandalone.bind(this);
 	minimapTool.appendChild(btn);
@@ -291,7 +291,7 @@ CubeBuilder.prototype.renderMapStandalone = function() {
 	var preview = window.open(null,"map_preview");
 	preview.document.write('<!DOCTYPE html><html><head><meta charset="utf-8"></head></body></html>')
 	preview.document.head.innerHTML = '<meta charset="utf-8">' +
-									  '<title>' + $$('Map preview: %s', this.name) + '</title>' +
+									  '<title>' + $$('Maps preview: %s', this.name) + '</title>' +
 									  cssLink;
 	preview.document.body.innerHTML = '<h1>' + this.name + '</h1><section id="maps-preview"></section>';
 

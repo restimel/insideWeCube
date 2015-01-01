@@ -431,12 +431,20 @@
 		"en": "Go to \"Import/Export\" and paste the code he sent you in the \"Import cubes\" area. Then click on \"Import\" button. If the code is valid you are able to select these cubes/levels in \"Cube manager\" or \"Lost in cube?\" menus.",
 		"fr": "Allez dans \"Import/Export\" et collez le code qui vous a été envoyé dans la section \"Importer des cubes\". Puis cliquez sur \"Importer\". Si le code est valide, vous trouverez ces niveaux/cubes dans les menus \"Gérer son cube\" et \"Perdu dans son cube ?\" "
 	},
+	"How can I print cube maps that I have created?": {
+		"en": "How can I print cube maps that I have created?",
+		"fr": "Comment puis-je imprimer les plans d'un cube que j'ai créé ?"
+	},
+	"Go to \"Cube Manager\" and select the cube to print. Then click on \"maps preview\" in the small maps section (this section must be opened first if it is reduced). A new tab will open displaying all maps of this cube. You can use the print feature of your browser.": {
+		"en": "Go to \"Cube Manager\" and select the cube to print. Then click on \"maps preview\" in the small maps section (this section must be opened first if it is reduced). A new tab will open displaying all maps of this cube. You can use the print feature of your browser.",
+		"fr": "Allez dans \"Gérer son cube\" et sélectionnez le cube à imprimer. Puis cliquez sur \"Affichage des plans\" dans la zone des plans miniatures (cette zone doit d'abord être ouverte si elle est réduite). Un nouvel onglet va s'ouvrir affichant tous les plans du cube. Vous pouvez utiliser la fonction d'impression intégrée à votre navigateur."
+	},
 	"What is the INSIDE³ side?": {
 		"en": "What is the INSIDE³ side?",
 		"fr": "Quelle est la face INSIDE³ ?"
 	},
-	"An insideZeCube cube has 2 noticeable sides.<ul><li>The \"INSIDE³\" side where you also see the name of the cube. This is the top side where the ball was when you have bought the cube.</li><li>The \"InsideZeCube.com\" side is where the cube can be open (when feasible). This is where the ball must be visible to finish the cube.</li></ul>In order to follow instructions, you should always keep one of these two sides at the top with the title readable.": {
-		"en": "An insideZeCube cube has 2 noticeable sides.<ul><li>The \"INSIDE³\" side where you also see the name of the cube. This is the top side where the ball was when you have bought the cube.</li><li>The \"InsideZeCube.com\" side is where the cube can be open (when feasible). This is where the ball must be visible to finish the cube.</li></ul>In order to follow instructions, you should always keep one of these two sides at the top with the title readable.",
+	"An insideZeCube cube has 2 noticeable sides.<ul><li>The \"INSIDE³\" side where you also see the name of the cube. This is the top side where the ball was when you have bought the cube.</li><li>The \"InsideZeCube.com\" side is where the cube can be opened (when feasible). This is where the ball must be visible to finish the cube.</li></ul>In order to follow instructions, you should always keep one of these two sides at the top with the title readable.": {
+		"en": "An insideZeCube cube has 2 noticeable sides.<ul><li>The \"INSIDE³\" side where you also see the name of the cube. This is the top side where the ball was when you have bought the cube.</li><li>The \"InsideZeCube.com\" side is where the cube can be opened (when feasible). This is where the ball must be visible to finish the cube.</li></ul>In order to follow instructions, you should always keep one of these two sides at the top with the title readable.",
 		"fr": "Un cube insideZeCube a 2 faces identifiables.<ul><li>La face \"INSIDE³\" où vous pouvez aussi remarquer le nom du cube. C'est la face supérieure où se trouvait la bille lorsque vous l'avez acheté.</li><li>La face \"InsideZeCube.com\" est celle où le cube peut s'ouvrir (quand il le permet). C'est là où la bille sera visible quand le cube est terminé.</li></ul>Pour suivre les instructions, vous devez toujours avoir l'une de ces deux faces en haut avec le titre lisible."
 	},
 	"Sometimes the helper can not help me and gives no clear instructions.": {
@@ -619,8 +627,8 @@
 		"en": "Load a cube",
 		"fr": "Charger un cube"
 	},
-	"Map preview": {
-		"en": "Map preview",
+	"Maps preview": {
+		"en": "Maps preview",
 		"fr": "Affichage des plans"
 	},
 	"Display maps in another tab": {
@@ -635,8 +643,8 @@
 		"en": "Show the maps preview",
 		"fr": "Agrandit la zone d'affichage des plans"
 	},
-	"Map preview: %s": {
-		"en": "Map preview: %s",
+	"Maps preview: %s": {
+		"en": "Maps preview: %s",
 		"fr": "Plans du cube : %s"
 	},
 	"Cube color": {
