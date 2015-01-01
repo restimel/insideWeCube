@@ -177,7 +177,7 @@ CubeBuilder.prototype.renderInfo = function(info) {
 
 	var length = info.length + 1,
 		available = info.available,
-		deadEnd = info.deadEnd,
+		deadEnd = Math.max(info.deadEnd, 0),
 		chgLevel = info.chgLevel,
 		chgDirection = info.chgDirection,
 		chgTop = info.chgTop,
