@@ -39,7 +39,7 @@ Heuristic.prototype.computePossible = function(direction, possible, pst, parent)
 		complexMove = [],
 		allMove = [],
 		mvt = this.computeMvt(direction),
-		position = this.computePosition(pst, mvt),
+		position = Cube.computePosition(pst, mvt),
 		node = {};
 
 	possible.forEach(function(p) {
@@ -323,7 +323,7 @@ Heuristic.prototype.wayBack = function(rsp) {
 	path = path.map(function(mvt) {
 		var tmp;
 
-		position = this.computePosition(position, mvt);
+		position = Cube.computePosition(position, mvt);
 		rsltMvt = this.cube.getMovement(rsltMvt[rsltMvt.length -1], position, -1);
 
 		var result = rsltMvt.length === 1 ? 0 : 1;
@@ -405,13 +405,6 @@ Heuristic.prototype.getPossibleCells = function(rsp) {
 };
 
 /* Helper */
-
-/**
- * Compute the new position when a movement occurs
- */
-Heuristic.prototype.computePosition = function(position, mvt) {
-	return this.cube.computePosition(position, mvt);
-};
 
 Heuristic.prototype.computeMvt = function(direction) {
 	var code = Cube.fromDirection(direction);
