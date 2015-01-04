@@ -155,7 +155,29 @@ summary {
 
 	padding: 1em;
 
+	background-color: rgba(255, 255, 255, 0.4);
 	box-shadow: 0 0 20px 5px;
+}
+
+.cube-minimap-section.hide {
+	display: none;
+}
+
+.cube-minimap-section.show~.cube-maximize-minimap-btn {
+	display: none;
+}
+
+.cube-maximize-minimap-btn {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+
+	padding: 0.5em;
+
+	box-shadow: 0 0 20px 5px;
+	font-family: fontAwesome;
+
+	cursor: pointer;
 }
 
 .cube-minimap-section .tool label {
@@ -164,6 +186,12 @@ summary {
 
 .cube-minimap-section .mini-map {
 	display: inline-block;
+	cursor: pointer;
+}
+
+.tool .reduce-btn {
+	float: right;
+	font-family: fontAwesome;
 	cursor: pointer;
 }
 
@@ -314,18 +342,21 @@ summary {
 }
 
 .analyze-step3 .mini-map .movement-location:after {
-	content: '\f1b0'; /* paw */
+	content: '\f1db'; /* thin circle */
 	font-family: fontAwesome;
+	font-size: 0.7em;
 }
 
 .analyze-step3 .mini-map .movement-location.movement-start:after {
 	content: '\f183'; /* man */
 	font-family: fontAwesome;
+	font-size: 1em;
 }
 
 .analyze-step3 .mini-map .movement-location.movement-end:after {
 	content: '\f1ae'; /* happy man */
 	font-family: fontAwesome;
+	font-size: 1.1em;
 }
 
 /* Analyzer */

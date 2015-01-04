@@ -5,11 +5,13 @@ New features
 	* Arrows helps to read instructions faster. An instructions summary has been added.
 	* Give possible ball location in mini-map when looking for the ball with heuristic.
 	* Give ball movements in mini-maps for detailed instructions.
-	* Add a mini-map preview in cube builder section. The preview can be displayed standalone.
+	* Add a mini-map preview in cube builder section. The preview can be displayed standalone to be printed.
 	* Compatibility check at start.
 	* Improve the compression of cube codes to export/import (the 1.0 code is still supported)
 	* filter cube and display only these cubes.
 
 Bugs fixed
 	* Auto-focus on the instructions section
-	* Find correct movements for difficult passages
+	* Find correct movements for some difficult passages
+	* Fix unwanted movement
+	* Fix Awful0 map

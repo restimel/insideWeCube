@@ -39,7 +39,7 @@ Heuristic.prototype.computePossible = function(direction, possible, pst, parent)
 		complexMove = [],
 		allMove = [],
 		mvt = this.computeMvt(direction),
-		position = this.computePosition(pst, mvt),
+		position = Cube.computePosition(pst, mvt),
 		node = {};
 
 	possible.forEach(function(p) {
@@ -323,7 +323,7 @@ Heuristic.prototype.wayBack = function(rsp) {
 	path = path.map(function(mvt) {
 		var tmp;
 
-		position = this.computePosition(position, mvt);
+		position = Cube.computePosition(position, mvt);
 		rsltMvt = this.cube.getMovement(rsltMvt[rsltMvt.length -1], position, -1);
 
 		var result = rsltMvt.length === 1 ? 0 : 1;
@@ -337,6 +337,13 @@ Heuristic.prototype.wayBack = function(rsp) {
 					z: parseInt(tmp[3], 10)
 				});
 				mvt = '?';
+				position = {
+					r: strToBoolean(tmp[4]),
+					d: strToBoolean(tmp[5]),
+					b: strToBoolean(tmp[6])
+				};
+			} else {
+				this.cube.computeBestPosition(rsltMvt[rsltMvt.length - 1], position, true);
 			}
 		}
 		return {
@@ -373,6 +380,13 @@ Heuristic.prototype.wayBack = function(rsp) {
 	self.postMessage({data: {action: 'wayBack', data: {
 		path: path
 	}}, token: this.token});
+
+	function strToBoolean(str) {
+		if (!str || ['0', 'false', 'undefined'].indexOf(str) !== -1) {
+			return false;
+		}
+		return true;
+	}
 };
 
 /**
@@ -392,28 +406,6 @@ Heuristic.prototype.getPossibleCells = function(rsp) {
 
 /* Helper */
 
-/**
- * Compute the new position when a movement occurs
- */
-Heuristic.prototype.computePosition = function(position, mvt) {
-	var pst = {
-		r: position.r,
-		d: position.d,
-		b: position.b
-	};
-
-	switch (mvt) {
-		case '-r': pst.r = 0; break;
-		case 'r': pst.r = 1; break;
-		case '-d': pst.d = 0; break;
-		case 'd': pst.d = 1; break;
-		case '-b': pst.b = 0; break;
-		case 'b': pst.b = 1; break;
-	}
-
-	return pst;
-};
-
 Heuristic.prototype.computeMvt = function(direction) {
 	var code = Cube.fromDirection(direction);
 
@@ -428,44 +420,5 @@ Heuristic.prototype.computeMvt = function(direction) {
  * Compute the best position for the given cell, where the ball shouldn't move at start
  */
 Heuristic.prototype.computeBestPosition = function(cell, position) {
-	var pst = position,
-		dCell;
-
-	if (this.cube.couldMove(cell, pst)) {
-		dCell = this.cube.get(cell.x, cell.y, cell.z);
-
-		if (pst.r && dCell.r) {
-			pst = this.computePosition(pst, '-r');
-		}
-		if (!pst.r && this.cube.get(cell.x, cell.y - 1, cell.z).r) {
-			pst = this.computePosition(pst, 'r');
-		}
-
-		if (pst.d && dCell.d) {
-			pst = this.computePosition(pst, '-d');
-		}
-		if (!pst.d && this.cube.get(cell.x - 1, cell.y, cell.z).d) {
-			pst = this.computePosition(pst, 'd');
-		}
-
-		if (pst.b && dCell.b) {
-			pst = this.computePosition(pst, '-b');
-		}
-		if (!pst.b && this.cube.get(cell.x, cell.y, cell.z - 1).b) {
-			pst = this.computePosition(pst, 'b');
-		}
-
-		/* we should be in a room */
-		if (this.cube.couldMove(cell, pst)) {
-			dCell = this.cube.getMovement(cell, position, 0);
-			dCell = dCell[dCell.length - 1];
-			cell.x = dCell.x;
-			cell.y = dCell.y;
-			cell.z = dCell.z;
-
-			pst = position;
-		}
-	}
-
-	return pst;
+	return this.cube.computeBestPosition(cell, position);
 };

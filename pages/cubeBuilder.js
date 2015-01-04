@@ -118,8 +118,9 @@ CubeBuilder.prototype.render = function(container) {
 	this.cubeInfo = info;
 
 	/* Section Minimap */
+	var showHide = document.body.offsetWidth > 1100 ? 'show' : 'hide';
 	var minimapSection = document.createElement('section');
-	minimapSection.className = 'cube-minimap-section';
+	minimapSection.className = 'cube-minimap-section ' + showHide;
 
 	var minimapTool = document.createElement('div');
 	minimapTool.className = 'tool';
@@ -128,18 +129,33 @@ CubeBuilder.prototype.render = function(container) {
 		this.cubePath.changeMapOrientation.bind(this.cubePath), this.cubePath.mapOrientation));
 
 	btn = document.createElement('button');
-	btn.textContent = $$('Map preview');
+	btn.textContent = $$('Maps preview');
+	btn.title = $$('Display maps in another tab');
 	btn.onclick = this.renderMapStandalone.bind(this);
+	minimapTool.appendChild(btn);
+
+	btn = document.createElement('button');
+	btn.textContent = '\uf00D'; // X (with fontawesome)
+	btn.className = 'reduce-btn';
+	btn.title = $$('Reduce the maps preview');
+	btn.onclick = main.changeClass.bind(this, minimapSection, 'show', 'hide');
 	minimapTool.appendChild(btn);
 
 	minimapSection.appendChild(minimapTool);
 
 	var minimapContainer = document.createElement('div');
-	minimapContainer.onclick = this.renderMapStandalone.bind(this);
+	minimapContainer.onclick = this.mapFocus.bind(this);
 	minimapSection.appendChild(minimapContainer);
 
 	container.appendChild(minimapSection);
 	this.cubeMinimap = minimapContainer;
+
+	btn = document.createElement('button');
+	btn.textContent = '\uf009'; // 4 squares (with fontawesome)
+	btn.className = 'cube-maximize-minimap-btn';
+	btn.title = $$('Show the maps preview');
+	btn.onclick = main.changeClass.bind(this, minimapSection, 'hide', 'show');
+	container.appendChild(btn);
 
 	/* render Levels */
 	this.levels.forEach(this.renderLevel, this);
@@ -150,6 +166,7 @@ CubeBuilder.prototype.renderLevel = function(level, i) {
 	var sct = document.createElement('section');
 
 	sct.className = 'level-editor';
+	sct.id = 'section-editor-level-' + i;
 
 	level.render(sct);
 	this.cubeContainer.appendChild(sct);
@@ -160,7 +177,7 @@ CubeBuilder.prototype.renderInfo = function(info) {
 
 	var length = info.length + 1,
 		available = info.available,
-		deadEnd = info.deadEnd,
+		deadEnd = Math.max(info.deadEnd, 0),
 		chgLevel = info.chgLevel,
 		chgDirection = info.chgDirection,
 		chgTop = info.chgTop,
@@ -171,11 +188,11 @@ CubeBuilder.prototype.renderInfo = function(info) {
 					 (available - length) * 1.5 / 24 + // 15
 					 //chgDirection * 0.3 + // 0
 					 chgLevel * 1.5 / 7 + // ~15 (current max ~7)
-					 chgTop * 1.8 + // ~35 (current max 17)
-					 nbMovement / 20 + // ~5 (current max ~3.5)
-					 nbMvtOutPath / 10 +
-					 nbDifficultCrossing * 3, // ~20 (current max 21)
-		maxDifficulty = 90,
+					 chgTop * 1.85 + // ~35 (current max 17)
+					 nbMovement * 0.1 + // ~5 (current max ~3.5)
+					 nbMvtOutPath * 0.1 +
+					 nbDifficultCrossing * 5, // ~15 (current max 3)
+		maxDifficulty = 95,
 		lowDifficulty = maxDifficulty / 3,
 		highDifficulty = maxDifficulty * 2 / 3;
 
@@ -274,7 +291,7 @@ CubeBuilder.prototype.renderMapStandalone = function() {
 	var preview = window.open(null,"map_preview");
 	preview.document.write('<!DOCTYPE html><html><head><meta charset="utf-8"></head></body></html>')
 	preview.document.head.innerHTML = '<meta charset="utf-8">' +
-									  '<title>' + $$('Map preview: %s', this.name) + '</title>' +
+									  '<title>' + $$('Maps preview: %s', this.name) + '</title>' +
 									  cssLink;
 	preview.document.body.innerHTML = '<h1>' + this.name + '</h1><section id="maps-preview"></section>';
 
@@ -286,6 +303,31 @@ CubeBuilder.prototype.renderMapStandalone = function() {
 		preview.document.getElementById('maps-preview').innerHTML = html.join('<br>');
 		preview.document.close();
 	});
+};
+
+CubeBuilder.prototype.mapFocus = function(event) {
+	var el = this.lookForLevelElement(event.target),
+		lvlId = el ? el.id.split('-')[1] : '',
+		elLevel = document.getElementById('section-editor-level-' + lvlId);
+
+	if (elLevel) {
+		if (elLevel.scrollIntoViewIfNeeded) {
+			elLevel.scrollIntoViewIfNeeded(true);
+		} else {
+			elLevel.scrollIntoView();
+		}
+	}
+};
+
+CubeBuilder.prototype.lookForLevelElement = function(element) {
+	while (element) {
+		if (!element.id || element.id.indexOf('mapLevel') !== 0) {
+			element = element.parentNode;
+		} else {
+			break;
+		}
+	}
+	return element;
 };
 
 CubeBuilder.prototype.reset = function() {

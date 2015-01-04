@@ -135,26 +135,29 @@ Cube.prototype.getMovement = function(cellPos, cubePosition, from) {
 		y = cellPos.y,
 		z = cellPos.z,
 		cell = this.get(x, y, z),
-		rslt = [cellPos];
+		rslt = [cellPos],
+		isFalling = [3, -3].indexOf(from) !== -1;
 
 	if (typeof cell.r === 'undefined') {
 		return [];
 	}
 
 	/* Z */
-	if (cubePosition.b && cell.b) {
-		return rslt.concat(this.getMovement({
-			x: x,
-			y: y,
-			z: z + 1
-		}, cubePosition, -3));
-	}
-	if (!cubePosition.b && this.get(x, y, z-1).b) {
-		return rslt.concat(this.getMovement({
-			x: x,
-			y: y,
-			z: z - 1
-		}, cubePosition, 3));
+	if (!isFalling) {
+		if (cubePosition.b && cell.b) {
+			return rslt.concat(this.getMovement({
+				x: x,
+				y: y,
+				z: z + 1
+			}, cubePosition, -3));
+		}
+		if (!cubePosition.b && this.get(x, y, z-1).b) {
+			return rslt.concat(this.getMovement({
+				x: x,
+				y: y,
+				z: z - 1
+			}, cubePosition, 3));
+		}
 	}
 
 	/* X/Y */
@@ -217,6 +220,24 @@ Cube.prototype.getMovement = function(cellPos, cubePosition, from) {
 				y: y - 1,
 				z: z
 			}, cubePosition, -1));
+		}
+	}
+
+	/* Z */
+	if (isFalling) {
+		if (cubePosition.b && cell.b) {
+			return rslt.concat(this.getMovement({
+				x: x,
+				y: y,
+				z: z + 1
+			}, cubePosition, -3));
+		}
+		if (!cubePosition.b && this.get(x, y, z-1).b) {
+			return rslt.concat(this.getMovement({
+				x: x,
+				y: y,
+				z: z - 1
+			}, cubePosition, 3));
 		}
 	}
 
@@ -317,8 +338,11 @@ Cube.prototype.renderMap = function(orientation, available, uid) {
 	computeClass = computeClass.bind(this);
 
 	for(z = 0; z < 7; z++) {
-		level = ['<table'];
-		level.push(' class="mini-map color-' + this.color+'">');
+		level = [
+			'<table',
+			' id="mapLevel', uid, '-', z, '"',
+			' class="mini-map color-', this.color, '">'
+		];
 
 		for(x = 0; x < 6; x++) {
 			row = ['<tr>'];
@@ -346,7 +370,55 @@ Cube.prototype.renderMap = function(orientation, available, uid) {
 			return cell.x === x && cell.y === y && cell.z === z;
 		});
 	}
-}
+};
+
+/**
+ * Compute the best position for the given cell, where the ball shouldn't move at start
+ */
+Cube.prototype.computeBestPosition = function(cell, position, doNotChangeCell) {
+	var pst = position,
+		dCell;
+
+	if (this.couldMove(cell, pst)) {
+		dCell = this.get(cell.x, cell.y, cell.z);
+
+		if (pst.r && dCell.r) {
+			pst = Cube.computePosition(pst, '-r');
+		}
+		if (!pst.r && this.get(cell.x, cell.y - 1, cell.z).r) {
+			pst = Cube.computePosition(pst, 'r');
+		}
+
+		if (pst.d && dCell.d) {
+			pst = Cube.computePosition(pst, '-d');
+		}
+		if (!pst.d && this.get(cell.x - 1, cell.y, cell.z).d) {
+			pst = Cube.computePosition(pst, 'd');
+		}
+
+		if (pst.b && dCell.b) {
+			pst = Cube.computePosition(pst, '-b');
+		}
+		if (!pst.b && this.get(cell.x, cell.y, cell.z - 1).b) {
+			pst = Cube.computePosition(pst, 'b');
+		}
+
+		/* we should be in a room */
+		if (this.couldMove(cell, pst)) {
+			if (!doNotChangeCell) {
+				dCell = this.getMovement(cell, position, 0);
+				dCell = dCell[dCell.length - 1];
+				cell.x = dCell.x;
+				cell.y = dCell.y;
+				cell.z = dCell.z;
+			}
+
+			pst = position;
+		}
+	}
+
+	return pst;
+};
 
 /* Static method */
 
@@ -415,4 +487,30 @@ Cube.getDirection = function(c1, c2) {
 	}
 
 	return 0;
-}
+};
+
+/**
+ * Compute the new position when a movement occurs
+ */
+Cube.computePosition = function(position, mvt) {
+	var pst = Cube.copyPosition(position);
+
+	switch (mvt) {
+		case '-r': pst.r = 0; break;
+		case 'r': pst.r = 1; break;
+		case '-d': pst.d = 0; break;
+		case 'd': pst.d = 1; break;
+		case '-b': pst.b = 0; break;
+		case 'b': pst.b = 1; break;
+	}
+
+	return pst;
+};
+
+Cube.copyPosition = function(position) {
+	return {
+		r: position.r,
+		d: position.d,
+		b: position.b
+	};
+};

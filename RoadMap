@@ -4,31 +4,27 @@ V1.1
 		✓ Save Language in localStorage
 		✓ warning message when browser is not compatible
 		✓ select which cube to export
-		* save Cubes built in localStorage
+		* save Cubes built in localStorage (or webDB)
 			* allow to remove cube from localStorage
+			* auto-save
 
 	Build Cube
 		✓ change Cube color
 		* key Shortcut (Ctrl+S)
 		✓ filter on cube
-		* switch level
 		✓ display small format map (and with reverse side)
 			✓ pop-up
 			✓ change map color
 			✓ change orientation
-			→ show/hide mini-map
-			+ give small map with different orientation (other than top/bottom)
-		+ do something (not log ?) when unexpected movement happens when rotated localy
+			✓ show/hide mini-map
+		✓ do something (not log ?) when unexpected movement happens when rotated localy
 
 	Analyze Cube
 		✓ give sign instruction (in position)
 			✓ give sumary of instructions
 		✓ give better help on impossible help (direct movement or position (display a 4th column with level position))
+			✓ give new position of the cube
 		✓ give position of possible cells in mini-map
-		+ (bonus) identify in which cube we are if no positions match
-
-	Cube3D
-		* fallback rendering for Browser which doesn't support RotateX
 
  /!\ Bugs
  		Build Cube
@@ -38,13 +34,41 @@ V1.1
 		✓ Do not found correct rotations  for some passage (Awful)
 				-→------?  -→-------?
 				   ↓  |	      |   ↓
-		* There are still issues if ball reach another valid path
+		✗ There are still issues if ball reach another valid path
 
 		Analyze Cube
-		* Skinning of the instructions to the way back
+		✗ Skinning of the instructions to the way back
 			✓ auto-focus
-		* position and movement instruction are not sync (see Awful) => compute new orientation on hard passage
+		✓ position and movement instruction are not sync (see Awful)
+			✓ compute new orientation on hard passage
+			✓ sometime a hard passage is detected when moving back (cf vicious on way back)
+			✓ warning movement is triggered in Awful due to wrong repositionnement after hard passage
 
 		General
 		✓ use a custom font to avoid issue with missing characters
-		* Prepare cubes with not normal size
+
+V1.2
+	General
+	* Prepare cubes with not normal size
+	* Allow to create cube with not normal size
+	
+	Paths
+	* Change algorithm to something like try all moves and see which is the shortest
+		→ should fix:
+			There are still issues if ball reach another valid path
+			Some hard passages
+	
+	Build Cube
+	* add comments to levels
+	* switch level (need idea about design)
+	+ give small map with different orientation (other than top/bottom like stickers)
+
+	Analyze Cube
+	✗ (bonus, if I really want) identify in which cube we are if no positions match
+
+	Cube3D
+	✗ (I don't think I'll do it) fallback rendering for Browser which doesn't support RotateX
+
+/!\ Bugs
+	Analyze Cube
+	+ Skinning of the instructions to the way back
