@@ -4,7 +4,7 @@ V1.1
 		✓ Save Language in localStorage
 		✓ warning message when browser is not compatible
 		✓ select which cube to export
-		* save Cubes built in localStorage (or webDB)
+		✓ save Cubes built in a indexedDb
 			* allow to remove cube from localStorage
 			* auto-save
 

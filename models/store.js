@@ -1,15 +1,20 @@
 var store = {
+	db: new Dbstore(),
 	cubes: [],
 	levels: [],
 
-	save: function(item) {
-		var i;
+	save: function(item, option) {
+		item = item.clone();
 
-		i = this.search(item, store.cubes);
+		if (!option || !option.fromDB) {
+			this.db.setCube(item, option);
+		}
+
+		var i = this.search(item, store.cubes);
 		if (i === -1) {
-			store.cubes.push(item.clone());
+			store.cubes.push(item);
 		} else {
-			store.cubes[i] = item.clone();
+			store.cubes[i] = item;
 		}
 	},
 

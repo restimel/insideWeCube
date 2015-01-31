@@ -29,6 +29,11 @@
 		errors.push('bind on function');
 	}
 
+	if (typeof self.indexedDB === 'undefined') {
+		warnings.push('indexDB');
+		features.push('Save locally your cube for next connection');
+	}
+
 	/* Manage issues */
 
 	if (errors.length) {

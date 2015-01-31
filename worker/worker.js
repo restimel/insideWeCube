@@ -53,6 +53,7 @@ if (typeof console === 'undefined') {
 }
 
 importScripts(
+	'indexDB.js',
 	'../models/store.js',
 	'../models/level.js',
 	'../models/cube.js',
@@ -114,13 +115,13 @@ self.onmessage = function(e) {
 
 var tempCube = new Cube();
 
-function saveCube(data) {
+function saveCube(data, option) {
 	tempCube.parse(data);
-	store.save(tempCube);
+	store.save(tempCube, option);
 	return 1;
 }
 
-function saveCubes(data) {
+function saveCubes(data, option) {
 	var obj;
 
 	try {
@@ -130,11 +131,15 @@ function saveCubes(data) {
 	}
 
 	if (obj instanceof Array) {
-		obj.forEach(saveCube);
+		obj.forEach(saveCubeCallback);
 		return obj.length;
 	} else {
-		saveCube(obj);
+		saveCube(obj, option);
 		return 1;
+	}
+
+	function saveCubeCallback(data) {
+		saveCube(data, option);
 	}
 }
 
@@ -146,22 +151,6 @@ function getCubeInfo(name) {
 	};
 }
 
-function preloadCubes(){
-	var xhr = new XMLHttpRequest(),
-		user = '',
-		password = '';
-	
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
-			saveCubes(xhr.responseText);
-		}
-	};
-	
-	xhr.open("GET", "../common/cubes.json", true, user, password);
-	xhr.send();
-}
-
 /* init worker */
-preloadCubes();
 var path = new Path();
 var heuristic = new Heuristic();
