@@ -1,3 +1,4 @@
+'use strict';
 
 (function(){
 	var path = location.pathname.split('/'),
@@ -162,5 +163,5 @@ function preloadCubes(){
 
 /* init worker */
 preloadCubes();
-path = new Path();
-heuristic = new Heuristic();
+var path = new Path();
+var heuristic = new Heuristic();
