@@ -93,6 +93,7 @@ var store = {
 
 		if (cube) {
 			cube.visible = visible;
+			this.db.setCube(cube, {keepOriginal: true});
 		}
 	}
 };

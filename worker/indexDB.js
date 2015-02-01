@@ -111,9 +111,19 @@ Dbstore.prototype.setCube = function(cube, option) {
 	if (this.db) {
 		option = option || {};
 		var name = cube.name;
-		var original = !!option.original;
-		var key = name + original
+		var isOriginal;
 
+		if (typeof option.original !== 'undefined') {
+			isOriginal = !!option.original;
+		} else if (option.keepOriginal) {
+			isOriginal = !!cube.original;
+		} else {
+			isOriginal = false;
+		}
+
+		var key = name + isOriginal;
+
+		cube.original = isOriginal;
 		var transaction = this.db.transaction(['cubes'], 'readwrite');
 		var request = transaction.objectStore('cubes').put(cube, key);
 	}
