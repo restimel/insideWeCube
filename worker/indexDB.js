@@ -129,6 +129,15 @@ Dbstore.prototype.setCube = function(cube, option) {
 	}
 };
 
+Dbstore.prototype.removeCube = function(cubeName) {
+	if (this.db) {
+		var key = cubeName + false;
+
+		var transaction = this.db.transaction(['cubes'], 'readwrite');
+		var request = transaction.objectStore('cubes').delete(key);
+	}
+};
+
 /* Static methods */
 
 Dbstore.error = function(message) {

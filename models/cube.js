@@ -13,9 +13,14 @@ Cube.prototype.init = function() {
 	}
 };
 
-Cube.prototype.clone = function() {
+Cube.prototype.clone = function(alsoMetaData) {
 	var cube = new Cube();
 	cube.parse(this.toJSON());
+
+	if (alsoMetaData) {
+		cube.visible = this.visible;
+		cube.original = this.original;
+	}
 
 	return cube;
 };
@@ -109,13 +114,18 @@ Cube.prototype.toJSON = function() {
 	};
 };
 
-Cube.prototype.parse = function(json) {
+Cube.prototype.parse = function(json, option) {
 	if (typeof json === 'string') {
 		json = JSON.parse(json);
 	}
 	this.name = json.name;
 	if (json.color) {
 		this.color = json.color;
+	}
+
+	if (option && option.fromDB) {
+		this.visible = !!json.visible;
+		this.original = !!json.original;
 	}
 
 	this.levels = [];

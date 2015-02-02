@@ -1,5 +1,6 @@
 function CubeBuilder(cubePath) {
 	this.cubePath = cubePath;
+	this.cubeRemover = new CubeRemover();
 	cubePath.setBuilder(this);
 	this.init();
 }
@@ -59,6 +60,11 @@ CubeBuilder.prototype.render = function(container) {
 	cubeProperty.appendChild(select);
 	this.elemColor = select;
 
+	var btn = document.createElement('button');
+	btn.textContent = $$('Save cube');
+	btn.onclick = this.save.bind(this);
+	cubeProperty.appendChild(btn);
+
 	header.appendChild(cubeProperty);
 
 	/* Tools */
@@ -85,14 +91,14 @@ CubeBuilder.prototype.render = function(container) {
 	});
 	tools.appendChild(select);
 
-	var btn = document.createElement('button');
+	btn = document.createElement('button');
 	btn.textContent = $$('Reset cube');
 	btn.onclick = this.reset.bind(this);
 	tools.appendChild(btn);
 
 	btn = document.createElement('button');
-	btn.textContent = $$('Save cube');
-	btn.onclick = this.save.bind(this);
+	btn.textContent = $$('Delete cubes');
+	btn.onclick = this.removeCubes.bind(this);
 	tools.appendChild(btn);
 
 	header.appendChild(tools);
@@ -362,6 +368,10 @@ CubeBuilder.prototype.changeName = function(e) {
 	} else {
 		this.name = e.target.value;
 	}
+};
+
+CubeBuilder.prototype.removeCubes = function(e) {
+	this.cubeRemover.render();
 };
 
 CubeBuilder.prototype.changeCube = function(e) {

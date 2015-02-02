@@ -4,7 +4,7 @@ var store = {
 	levels: [],
 
 	save: function(item, option) {
-		item = item.clone();
+		item = item.clone(true);
 
 		if (!option || !option.fromDB) {
 			this.db.setCube(item, option);
@@ -48,7 +48,7 @@ var store = {
 
 		this.cubes.forEach(function(cube) {
 			if (allCubes) {
-				list.push([cube.name, cube.visible]);
+				list.push([cube.name, cube.visible, cube.original]);
 			} else if (cube.visible) {
 				list.push(cube.name);
 			}
@@ -86,6 +86,13 @@ var store = {
 			});
 		});
 		return lvl;
+	},
+
+	removeCube: function(name) {
+		this.db.removeCube(name);
+
+		var i = this.search({name: name}, store.cubes);
+		this.cubes.splice(i, 1);
 	},
 
 	setVisible: function(name, visible) {

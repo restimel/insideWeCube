@@ -92,6 +92,10 @@ self.onmessage = function(e) {
 		case 'setVisible':
 			store.setVisible(args.cubeName, args.visible);
 			break;
+		case 'removeCube':
+			store.removeCube(args.cubeName);
+			//TODO message of deletion
+			break;
 		case 'path':
 			path.router(args, token);
 			break;
@@ -116,7 +120,7 @@ self.onmessage = function(e) {
 var tempCube = new Cube();
 
 function saveCube(data, option) {
-	tempCube.parse(data);
+	tempCube.parse(data, option);
 	store.save(tempCube, option);
 	return 1;
 }

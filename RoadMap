@@ -5,8 +5,9 @@ V1.1
 		✓ warning message when browser is not compatible
 		✓ select which cube to export
 		✓ save Cubes built in a indexedDb
-			* allow to remove cube from localStorage
+			✓ allow to remove cube from DBStorage
 			* auto-save
+			* FAQ
 
 	Build Cube
 		✓ change Cube color
@@ -27,7 +28,10 @@ V1.1
 		✓ give position of possible cells in mini-map
 
  /!\ Bugs
- 		Build Cube
+		Build Cube
+		* When modifying an original cube the new values are overwritten by the original cube at reload
+		* There are no messages of deletion success
+		* There are no confirmation before deletion
 		✓ The analysis is not re-run when cube is already loaded
 
 		Paths

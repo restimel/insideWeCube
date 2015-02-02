@@ -11,6 +11,11 @@ summary {
 	cursor: pointer;
 }
 
+.disabled {
+	color: #666;
+	font-style: italic;
+}
+
 .route-menu {
 	height: 3.5em;
 	top: 0;
@@ -474,6 +479,10 @@ dialog.dialog-cube-position > .body-cube-position {
 	width: 200px;
 	right: 0;
 	overflow: hidden;
+}
+
+.cube-remover .disabled {
+	margin-left: 1.2em;
 }
 
 /* Languages */

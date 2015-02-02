@@ -131,6 +131,10 @@
 		"en": "Reset cube",
 		"fr": "Recommencer"
 	},
+	"Delete cubes": {
+		"en": "Delete cubes",
+		"fr": "Supprimer des cubes"
+	},
 	"Cube can be solved.": {
 		"en": "Cube can be solved.",
 		"fr": "Le cube peut être résolu."
@@ -547,6 +551,14 @@
 		"en": "Set your cube current position",
 		"fr": "Définissez la position actuelle du cube"
 	},
+	"Original cube can't be removed!": {
+		"en": "Original cube can't be removed!",
+		"fr": "Les cubes d'origines ne peuvent être supprimés !"
+	},
+	"hidden": {
+		"en": "hidden",
+		"fr": "caché"
+	},
 	"Ok": {
 		"en": "Ok",
 		"fr": "Ok"
@@ -554,6 +566,14 @@
 	"Cancel": {
 		"en": "Cancel",
 		"fr": "Annuler"
+	},
+	"Close": {
+		"en": "Close",
+		"fr": "Fermer"
+	},
+	"Delete": {
+		"en": "Delete",
+		"fr": "Supprimer"
 	},
 	"INSIDE³ side is": {
 		"en": "INSIDE³ side is",
