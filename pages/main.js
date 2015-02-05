@@ -26,7 +26,7 @@ function main(container){
 			'warning',
 			{
 				keep: true,
-				timeout: 10000,
+				timeout: 20000,
 				html: true
 			}
 		);

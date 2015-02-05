@@ -401,13 +401,13 @@ CubeBuilder.prototype.changeCube = function(e) {
 CubeBuilder.prototype.save = function() {
 	var name = this.name;
 	if (name === '') {
-		main.message($$('Please enter a name for the cube.'), 'error');
+		main.message($$('Please enter a name for the cube.'), 'error', {timeout: 15000});
 		return false;
 	}
 
 	main.control.action('saveCube', JSON.stringify(this), function(data) {
 		if (data === 1) {
-			main.message($$('cube "%s" saved.', name), 'success');
+			main.message($$('cube "%s" saved.', name), 'success', {timeout: 7000});
 		}
 	});
 };

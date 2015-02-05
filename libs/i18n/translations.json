@@ -679,6 +679,14 @@
 		"en": "Instructions summary (%d)",
 		"fr": "Résumé des instructions (%d)"
 	},
+	"Cube \"%s\" has been replaced by its original version.": {
+		"en": "Cube \"%s\" has been replaced by its original version.",
+		"fr": "Le cube \"%s\" a été remplacé par sa version originale."
+	},
+	"Cube \"%s\" has been removed from your local storage.": {
+		"en": "Cube \"%s\" has been removed from your local storage.",
+		"fr": "Le cube \"%s\" a été supprimé de votre espace local."
+	},
 	"Save of the chosen language for next connection": {
 		"en": "Save of the chosen language for next connection",
 		"fr": "Enregistrement de la langue choisie pour la prochaine connexion"

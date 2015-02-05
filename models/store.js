@@ -92,10 +92,25 @@ var store = {
 	},
 
 	removeCube: function(name) {
-		this.db.removeCube(name);
-
+		var db = this.db;
 		var i = this.search({name: name}, store.cubes);
 		this.cubes.splice(i, 1);
+		db.removeCube(name, removeDone);
+
+		function removeDone(evt) {
+			setTimeout(function(){
+				db.getCube(name, hasCube);
+			}, 100);
+		}
+		function hasCube(cube) {
+			console.log(cube);
+			if (cube) {
+				self.saveCube(JSON.stringify(cube), {fromDB: true});
+				self.sendMessage($$('Cube "%s" has been replaced by its original version.', name));
+			} else {
+				self.sendMessage($$('Cube "%s" has been removed from your local storage.', name));
+			}
+		}
 	},
 
 	setVisible: function(name, visible) {

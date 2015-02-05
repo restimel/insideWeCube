@@ -16,6 +16,11 @@ Control.prototype.onmessage = function(e) {
 		if (!callback.persistent) {
 			delete this.callbacks[data.token];
 		}
+	} else if (data.data && data.data.action === 'message') {
+		main.message(data.data.message, data.data.type, {
+			keep: true,
+			timeout: 10000
+		});
 	} else {
 		try {
 			console.log(JSON.parse(data.log));

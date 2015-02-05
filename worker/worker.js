@@ -94,7 +94,6 @@ self.onmessage = function(e) {
 			break;
 		case 'removeCube':
 			store.removeCube(args.cubeName);
-			//TODO message of deletion
 			break;
 		case 'path':
 			path.router(args, token);
@@ -118,6 +117,18 @@ self.onmessage = function(e) {
 };
 
 var tempCube = new Cube();
+
+function sendMessage(message, type) {
+	type = type || 'success';
+
+	self.postMessage({
+		data: {
+			action: 'message',
+			message: message,
+			type: type
+		}
+	});
+}
 
 function saveCube(data, option) {
 	tempCube.parse(data, option);

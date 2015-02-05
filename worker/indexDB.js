@@ -80,6 +80,24 @@ Dbstore.prototype.loadToStore = function() {
 	}
 };
 
+Dbstore.prototype.getCube = function(name, callback) {
+	var cubes = [];
+
+	if (this.db) {
+		var request = this.db
+			.transaction(['cubes'], 'readonly')
+			.objectStore('cubes')
+			.index('name')
+			.get(name);
+
+		request.onsuccess = function(event) {
+			callback(event.target.result);
+		};
+	} else {
+		callback(null);
+	}
+};
+
 Dbstore.prototype.getCubes = function(callback) {
 	var cubes = [];
 
@@ -129,12 +147,16 @@ Dbstore.prototype.setCube = function(cube, option) {
 	}
 };
 
-Dbstore.prototype.removeCube = function(cubeName) {
+Dbstore.prototype.removeCube = function(cubeName, callback) {
 	if (this.db) {
 		var key = cubeName + false;
 
 		var transaction = this.db.transaction(['cubes'], 'readwrite');
 		var request = transaction.objectStore('cubes').delete(key);
+		request.onsuccess = callback;
+		request.onerror = callback;
+	} else {
+		callback(null);
 	}
 };
 
