@@ -7,7 +7,9 @@ V1.1
 		✓ save Cubes built in a indexedDb
 			✓ allow to remove cube from DBStorage
 			* auto-save
-			* FAQ
+			* FAQ 	→ how to retrieve original cube
+					→ how to remove cubes
+					→ What is draft cube
 
 	Build Cube
 		✓ change Cube color
@@ -29,7 +31,7 @@ V1.1
 
  /!\ Bugs
 		Build Cube
-		* When modifying an original cube the new values are overwritten by the original cube at reload
+		✓ When modifying an original cube the new values are overwritten by the original cube at reload
 		* There are no messages of deletion success
 		* There are no confirmation before deletion
 		✓ The analysis is not re-run when cube is already loaded

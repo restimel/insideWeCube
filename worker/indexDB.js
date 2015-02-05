@@ -26,7 +26,7 @@ Dbstore.prototype.onupgradeneeded = function(event) {
 	switch(event.oldVersion) {
 		case 0:
 			objectStore = this.db.createObjectStore('cubes');
-			objectStore.createIndex('name', 'name', { unique: false });
+			objectStore.createIndex('name', 'name', {unique: false});
 	}
 };
 

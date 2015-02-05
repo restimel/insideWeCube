@@ -5,8 +5,9 @@ var store = {
 
 	save: function(item, option) {
 		item = item.clone(true);
+		option = option || {};
 
-		if (!option || !option.fromDB) {
+		if (!option.fromDB) {
 			this.db.setCube(item, option);
 		}
 
@@ -14,7 +15,9 @@ var store = {
 		if (i === -1) {
 			store.cubes.push(item);
 		} else {
-			store.cubes[i] = item;
+			if (!option.fromDB || !item.original) {
+				store.cubes[i] = item;
+			}
 		}
 	},
 
