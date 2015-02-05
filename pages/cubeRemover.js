@@ -43,7 +43,19 @@ CubeRemover.prototype.render = function(container) {
 	dialogBox.showModal();
 
 	function deleteCubes() {
-		/* TODO confirmation */
+		if (!this.state.length) {
+			close();
+		}
+
+		if (!confirm($$('You are about to delete %d cubes:\n\t%s\nAre you sure to continue?',
+			this.state.length,
+			this.state.map(function(s) {
+				return s[0];
+			}).join('\n\t'))))
+		{
+			return false;
+		}
+
 		this.state.forEach(function(s) {
 			main.control.action('removeCube', {cubeName: s[0]});
 		});
@@ -78,6 +90,7 @@ CubeRemover.prototype.render = function(container) {
 CubeRemover.prototype.loadCube = function(list) {
 	var changeState = this.changeState.bind(this);
 	this.cubeSelector.innerHTML = '';
+	this.state = [];
 
 	list.forEach(function(cube, index) {
 		var cubeName = cube[0],

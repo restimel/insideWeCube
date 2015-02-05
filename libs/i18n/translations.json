@@ -127,6 +127,10 @@
 		"en": "Are you sure to be spoiled?\nDon't you want to try to solve it by yourself?",
 		"fr": "Êtes-vous sûr d'être aidé ?\nNe voulez-vous pas essayer par vous-même ?"
 	},
+	"You are about to delete %d cubes:\n\t%s\nAre you sure to continue?": {
+		"en": "You are about to delete %d cubes:\n\t%s\nAre you sure to continue?",
+		"fr": "Vous êtes sur le point de supprimer %d cubes :\n\t%s\nÊtes-vous sûr de vouloir continuer ?"
+	},
 	"Reset cube": {
 		"en": "Reset cube",
 		"fr": "Recommencer"

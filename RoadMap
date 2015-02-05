@@ -33,7 +33,7 @@ V1.1
 		Build Cube
 		✓ When modifying an original cube the new values are overwritten by the original cube at reload
 		✓ There are no messages of deletion success
-		* There are no confirmation before deletion
+		✓ There are no confirmation before deletion
 		✓ The analysis is not re-run when cube is already loaded
 
 		Paths
