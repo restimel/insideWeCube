@@ -7,13 +7,12 @@ V1.1
 		✓ save Cubes built in a indexedDb
 			✓ allow to remove cube from DBStorage
 			* auto-save to draft
-			* FAQ 	→ how to retrieve original cube
-					→ how to remove cubes
+			* FAQ 	✓ how to remove cubes
 					→ What is draft cube
 
 	Build Cube
 		✓ change Cube color
-		* key Shortcut (Ctrl+S)
+		* key Shortcut (Ctrl+S / Ctrl+z)
 		✓ filter on cube
 		✓ display small format map (and with reverse side)
 			✓ pop-up

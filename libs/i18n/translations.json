@@ -447,6 +447,22 @@
 		"en": "Go to \"Cube Manager\" and select the cube to print. Then click on \"maps preview\" in the small maps section (this section must be opened first if it is reduced). A new tab will open displaying all maps of this cube. You can use the print feature of your browser.",
 		"fr": "Allez dans \"Gérer son cube\" et sélectionnez le cube à imprimer. Puis cliquez sur \"Affichage des plans\" dans la zone des plans miniatures (cette zone doit d'abord être ouverte si elle est réduite). Un nouvel onglet va s'ouvrir affichant tous les plans du cube. Vous pouvez utiliser la fonction d'impression intégrée à votre navigateur."
 	},
+	"I have created lot of cube but I want to get rid of them. How can I remove them?": {
+		"en": "I have created lot of cube but I want to get rid of them. How can I remove them?",
+		"fr": "J'ai créé plein de cubes mais j'aimerai faire le ménage. Comment puis-je les supprimer?"
+	},
+	"Go to \"Cube Manager\" and click on \"Delete cubes\" button. Select cubes you want to remove and click on \"delete\". These cubes won't be display anymore in your browser.<br>Note: If you have customized an original cube and you remove it, the original maps are restored.": {
+		"en": "Go to \"Cube Manager\" and click on \"Delete cubes\" button. Select cubes you want to remove and click on \"delete\". These cubes won't be display anymore in your browser.<br>Note: If you have customized an original cube and you remove it, the original maps are restored.",
+		"fr": "Allez dans \"Gérer son cube\" et cliquez sur \"Supprimer des cubes\". Sélectionnez les cubes à supprimer et cliquez sur \"Supprimer\". Ces cubes n'existeront plus dans votre navigateur.<br>Remarque: Si vous avez modifié un cube original et que vous le supprimer, les cartes d'origines seront restaurées."
+	},
+	"How can I see only cubes I own?": {
+		"en": "How can I see only cubes I own?",
+		"fr": "Comment-puis voir seulement les cubes que je possède ?"
+	},
+	"Click on \"Filter\"  button and then unselect cube you don't want to see. They will not appear anymore in cubes selection. To be able to choose them again, re-select them in the \"Filter\" menu": {
+		"en": "Click on \"Filter\"  button and then unselect cube you don't want to see. They will not appear anymore in cubes selection. To be able to choose them again, re-select them in the \"Filter\" menu",
+		"fr": "Cliquez sur le bouton \"Filtre\" et désélectionnez les cubes que vous ne voulez plus voir. Ils n'apparaîtront plus dans le choix des sélections. Pour pouvoir les obtenir à nouveaux reséléctionnez les dans le menu \"Filtre\"."
+	},
 	"What is the INSIDE³ side?": {
 		"en": "What is the INSIDE³ side?",
 		"fr": "Quelle est la face INSIDE³ ?"

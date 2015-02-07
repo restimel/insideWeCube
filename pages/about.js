@@ -136,6 +136,14 @@ About.prototype.renderFAQ = function(container) {
 			a: $$('Go to "Cube Manager" and select the cube to print. Then click on "maps preview" in the small maps section (this section must be opened first if it is reduced). A new tab will open displaying all maps of this cube. You can use the print feature of your browser.')
 		},
 		{
+			q: $$('I have created lot of cube but I want to get rid of them. How can I remove them?'),
+			a: $$('Go to "Cube Manager" and click on "Delete cubes" button. Select cubes you want to remove and click on "delete". These cubes won\'t be display anymore in your browser.<br>Note: If you have customized an original cube and you remove it, the original maps are restored.')
+		},
+		{
+			q: $$('How can I see only cubes I own?'),
+			a: $$('Click on "Filter"  button and then unselect cube you don\'t want to see. They will not appear anymore in cubes selection. To be able to choose them again. Re-select them in the "Filter" menu')
+		},
+		{
 			q: $$('What is the INSIDE³ side?'),
 			a: $$('An insideZeCube cube has 2 noticeable sides.<ul><li>The "INSIDE³" side where you also see the name of the cube. This is the top side where the ball was when you have bought the cube.</li><li>The "InsideZeCube.com" side is where the cube can be opened (when feasible). This is where the ball must be visible to finish the cube.</li></ul>In order to follow instructions, you should always keep one of these two sides at the top with the title readable.')
 		},
