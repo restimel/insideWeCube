@@ -8,9 +8,16 @@ function Dbstore() {
 		request.onupgradeneeded = this.onupgradeneeded.bind(this);
 		request.onsuccess  = this.onConnection.bind(this);
 		/* TODO: */
-		request.onblocked  = function(event) {console.warn('onblocked', event);};
+		request.onblocked  = this.onupgradeneeded.bind(this);
 	}
 }
+
+Dbstore.prototype.onBlocked = function(event) {
+	sendMessage($$('insideWeCube is running in another tab. Its version is deprecated and must be refresh.'), 'info', {
+		time: 7000,
+		html: false
+	});
+};
 
 Dbstore.prototype.onOpenError = function(event) {
 	Dbstore.error('error while opening DB');
@@ -27,12 +34,19 @@ Dbstore.prototype.onupgradeneeded = function(event) {
 		case 0:
 			objectStore = this.db.createObjectStore('cubes');
 			objectStore.createIndex('name', 'name', {unique: false});
+
+			objectStore = this.db.createObjectStore('draft', {keyPath: 'history', autoIncrement: true});
 	}
 };
 
 Dbstore.prototype.onVersionChange = function(event) {
 	console.warn('indexedDB version has change in a newer tab. This page should be reloaded.');
-	//TODO close this database? and warn user about change won't be saved anymore
+	sendMessage($$('A newer version of insideWeCube is running in another tab. You can\'t save anymore your change.<br>Please refresh the page.'), 'error', {
+		time: false,
+		html: true
+	});
+	this.db.close();
+	this.db = false;
 };
 
 Dbstore.prototype.onConnection = function(event) {

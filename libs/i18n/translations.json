@@ -575,6 +575,14 @@
 		"en": "Original cube can't be removed!",
 		"fr": "Les cubes d'origines ne peuvent être supprimés !"
 	},
+	"insideWeCube is running in another tab. Its version is deprecated and must be refresh.": {
+		"en": "insideWeCube is running in another tab. Its version is deprecated and must be refresh.",
+		"fr": "insideWeCube est déjà en train de tourner dans un autre onglet. Sa version est obsolète et doit être relancées."
+	},
+	"": {
+		"en": "A newer version of insideWeCube is running in another tab. You can't save anymore your change.<br>Please refresh the page.",
+		"fr": "Une nouvelle version de insideWeCube tourne dans un autre onglet. Vous ne pouvez plus garder vos modifications.<br>Veuillez actualiser la page."
+	},
 	"hidden": {
 		"en": "hidden",
 		"fr": "caché"
