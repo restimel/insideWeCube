@@ -19,7 +19,8 @@ Control.prototype.onmessage = function(e) {
 	} else if (data.data && data.data.action === 'message') {
 		main.message(data.data.message, data.data.type, {
 			keep: true,
-			timeout: 10000
+			timeout: data.data.time,
+			html: data.data.html
 		});
 	} else {
 		try {

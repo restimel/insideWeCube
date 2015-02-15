@@ -118,13 +118,18 @@ self.onmessage = function(e) {
 
 var tempCube = new Cube();
 
-function sendMessage(message, type) {
+function sendMessage(message, type, option) {
+	optin = option || {};
 	type = type || 'success';
+	var time = typeof option.time === 'undefined' ? 10000 : option.time;
+	var html = option.html || false;
 
 	self.postMessage({
 		data: {
 			action: 'message',
 			message: message,
+			time: time,
+			html: html
 			type: type
 		}
 	});

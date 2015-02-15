@@ -141,7 +141,7 @@ About.prototype.renderFAQ = function(container) {
 		},
 		{
 			q: $$('How can I see only cubes I own?'),
-			a: $$('Click on "Filter"  button and then unselect cube you don\'t want to see. They will not appear anymore in cubes selection. To be able to choose them again. Re-select them in the "Filter" menu')
+			a: $$('Click on "Filter"  button and then unselect cube you don\'t want to see. They will not appear anymore in cubes selection. To be able to choose them again, re-select them in the "Filter" menu')
 		},
 		{
 			q: $$('What is the INSIDE³ side?'),
