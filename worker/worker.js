@@ -129,7 +129,7 @@ function sendMessage(message, type, option) {
 			action: 'message',
 			message: message,
 			time: time,
-			html: html
+			html: html,
 			type: type
 		}
 	});
