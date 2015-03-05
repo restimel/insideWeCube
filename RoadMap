@@ -64,9 +64,28 @@ V1.2
 			Some hard passages
 	
 	Build Cube
+	* Change start/Finish position
+	* Consider blocker on level that block the ball
+	* Block level7 at level7
+	* Do not propose other levels at level7 (on option it should be proposed)
+	* create an advanced tool for different options
+		* level7
+		* blockers cell
+		* cell tools
+			* hole (default)
+			* Start/Finish
+			* blockers
+			* Not accessible cell
 	* add comments to levels
 	* switch level (need idea about design)
 	+ give small map with different orientation (other than top/bottom like stickers)
+
+→	Auto-Generator
+	* create interface to choose levels and options
+	* compute levels to test solvabale cubes
+	* create interface to display solvable cubes
+		* select cubes user like and save them
+	+ interact with manage cube to edit it
 
 	Analyze Cube
 	✗ (bonus, if I really want) identify in which cube we are if no positions match
