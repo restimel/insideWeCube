@@ -1,68 +1,9 @@
 
-V1.1
-	General
-		✓ Save Language in localStorage
-		✓ warning message when browser is not compatible
-		✓ select which cube to export
-		✓ save Cubes built in a indexedDb
-			✓ allow to remove cube from DBStorage
-			✓ FAQ: how to remove cubes
-
-	Build Cube
-		✓ change Cube color
-		✗ auto-save to draft
-			→ FAQ: What is draft cube
-		✗ key Shortcut (Ctrl+S / Ctrl+z)
-		✓ filter on cube
-		✓ display small format map (and with reverse side)
-			✓ pop-up
-			✓ change map color
-			✓ change orientation
-			✓ show/hide mini-map
-		✓ do something (not log ?) when unexpected movement happens when rotated localy
-
-	Analyze Cube
-		✓ give sign instruction (in position)
-			✓ give sumary of instructions
-		✓ give better help on impossible help (direct movement or position (display a 4th column with level position))
-			✓ give new position of the cube
-		✓ give position of possible cells in mini-map
-
- /!\ Bugs
-		Build Cube
-		✓ When modifying an original cube the new values are overwritten by the original cube at reload
-		✓ There are no messages of deletion success
-		✓ There are no confirmation before deletion
-		✓ The analysis is not re-run when cube is already loaded
-
-		Paths
-		✓ Do not found correct rotations  for some passage (Awful)
-				-→------?  -→-------?
-				   ↓  |	      |   ↓
-		✗ There are still issues if ball reach another valid path
-
-		Analyze Cube
-		✗ Skinning of the instructions to the way back
-			✓ auto-focus
-		✓ position and movement instruction are not sync (see Awful)
-			✓ compute new orientation on hard passage
-			✓ sometime a hard passage is detected when moving back (cf vicious on way back)
-			✓ warning movement is triggered in Awful due to wrong repositionnement after hard passage
-
-		General
-		✓ use a custom font to avoid issue with missing characters
-
 V1.2
 	General
-	* Prepare cubes with not normal size
-	* Allow to create cube with not normal size
+	* Support cubes with not normal size
+		* Allow to create cube with not normal size
 	* accept key shortcut (see how to manage them through menu)
-	
-	Paths
-	* Change algorithm to something like try all moves and see which is the shortest
-		→ should fix:
-			There are still issues if ball reach another valid path
-			Some hard passages
 	
 	Build Cube
 	* Change start/Finish position
@@ -91,12 +32,23 @@ V1.2
 		* select cubes user like and save them
 	+ interact with manage cube to edit it
 
+/!\ Bugs
+	General
+	* translation is not done for compatibility check message
+
+	Analyze Cube
+	+ Skinning of the instructions to the way back
+
+──────────────────────────────────────────────────────
+V2.0 (or later... if enough motivation)
+	Paths
+	* Change algorithm to something like try all moves and see which is the shortest
+		→ should fix:
+			There are still issues if ball reach another valid path
+			Some hard passages
+
 	Analyze Cube
 	✗ (bonus, if I really want) identify in which cube we are if no positions match
 
 	Cube3D
 	✗ (I don't think I'll do it) fallback rendering for Browser which doesn't support RotateX
-
-/!\ Bugs
-	Analyze Cube
-	+ Skinning of the instructions to the way back
