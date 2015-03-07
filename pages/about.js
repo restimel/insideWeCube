@@ -133,7 +133,7 @@ About.prototype.renderFAQ = function(container) {
 		},
 		{
 			q: $$('How can I print cube maps that I have created?'),
-			a: $$('Go to "Cube Manager" and select the cube to print. Then click on "maps preview" in the small maps section (this section must be opened first if it is reduced). A new tab will open displaying all maps of this cube. You can use the print feature of your browser.')
+			a: $$('Go to "Cube Manager" and select the cube to print. Then click on "maps preview" in the small maps section at bottom right (this section must be opened first if it is reduced). A new tab will open displaying all maps of this cube. You can use the print feature of your browser.')
 		},
 		{
 			q: $$('I have created lot of cube but I want to get rid of them. How can I remove them?'),

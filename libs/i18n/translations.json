@@ -443,9 +443,9 @@
 		"en": "How can I print cube maps that I have created?",
 		"fr": "Comment puis-je imprimer les plans d'un cube que j'ai créé ?"
 	},
-	"Go to \"Cube Manager\" and select the cube to print. Then click on \"maps preview\" in the small maps section (this section must be opened first if it is reduced). A new tab will open displaying all maps of this cube. You can use the print feature of your browser.": {
-		"en": "Go to \"Cube Manager\" and select the cube to print. Then click on \"maps preview\" in the small maps section (this section must be opened first if it is reduced). A new tab will open displaying all maps of this cube. You can use the print feature of your browser.",
-		"fr": "Allez dans \"Gérer son cube\" et sélectionnez le cube à imprimer. Puis cliquez sur \"Affichage des plans\" dans la zone des plans miniatures (cette zone doit d'abord être ouverte si elle est réduite). Un nouvel onglet va s'ouvrir affichant tous les plans du cube. Vous pouvez utiliser la fonction d'impression intégrée à votre navigateur."
+	"Go to \"Cube Manager\" and select the cube to print. Then click on \"maps preview\" in the small maps section at bottom right (this section must be opened first if it is reduced). A new tab will open displaying all maps of this cube. You can use the print feature of your browser.": {
+		"en": "Go to \"Cube Manager\" and select the cube to print. Then click on \"maps preview\" in the small maps section at bottom right (this section must be opened first if it is reduced). A new tab will open displaying all maps of this cube. You can use the print feature of your browser.",
+		"fr": "Allez dans \"Gérer son cube\" et sélectionnez le cube à imprimer. Puis cliquez sur \"Affichage des plans\" dans la zone des plans miniatures en bas à droite (cette zone doit d'abord être ouverte si elle est réduite). Un nouvel onglet va s'ouvrir affichant tous les plans du cube. Vous pouvez utiliser la fonction d'impression intégrée à votre navigateur."
 	},
 	"I have created lot of cube but I want to get rid of them. How can I remove them?": {
 		"en": "I have created lot of cube but I want to get rid of them. How can I remove them?",
