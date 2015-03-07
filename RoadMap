@@ -6,13 +6,13 @@ V1.1
 		✓ select which cube to export
 		✓ save Cubes built in a indexedDb
 			✓ allow to remove cube from DBStorage
-			* auto-save to draft
-			* FAQ 	✓ how to remove cubes
-					→ What is draft cube
+			✓ FAQ: how to remove cubes
 
 	Build Cube
 		✓ change Cube color
-		* key Shortcut (Ctrl+S / Ctrl+z)
+		✗ auto-save to draft
+			→ FAQ: What is draft cube
+		✗ key Shortcut (Ctrl+S / Ctrl+z)
 		✓ filter on cube
 		✓ display small format map (and with reverse side)
 			✓ pop-up
@@ -56,6 +56,7 @@ V1.2
 	General
 	* Prepare cubes with not normal size
 	* Allow to create cube with not normal size
+	* accept key shortcut (see how to manage them through menu)
 	
 	Paths
 	* Change algorithm to something like try all moves and see which is the shortest
@@ -68,6 +69,9 @@ V1.2
 	* Consider blocker on level that block the ball
 	* Block level7 at level7
 	* Do not propose other levels at level7 (on option it should be proposed)
+	* auto-save to draft
+		→ FAQ: What is draft cube
+	* key Shortcut (Ctrl+S / Ctrl+z)
 	* create an advanced tool for different options
 		* level7
 		* blockers cell
