@@ -5,6 +5,7 @@ function Level (name) {
 		this.parse(name);
 	} else {
 		this.name = name;
+		this.lid = false;
 		this.cells = rowSize.map(initRow);
 	}
 }
@@ -35,6 +36,10 @@ Level.prototype.toJSON = function() {
 		obj.name = this.name;
 	}
 
+	if (this.lid) {
+		obj.lid = this.lid;
+	}
+
 	obj.cells = JSON.parse(JSON.stringify(this.cells)
 		.replace(/"[^"]+":(0|false|""),?/g, '')
 		.replace(/:true/g, ':1')
@@ -48,6 +53,7 @@ Level.prototype.parse = function(json) {
 		json = JSON.parse(json);
 	}
 	this.name = json.name || '';
+	this.lid = !!json.lid;
 	this.cells = json.cells;
 
 	this.normalizeCells();
@@ -70,7 +76,7 @@ function initRow() {
 			r: 0, //move to Right
 			d: 0, //move to Down
 			b: 0, //move bottom side (through level)
-			s: 0 // 0: normal, 1: start, -1: finish
+			s: 0 // 0: normal, 1: start, -1: finish, 2: pin at the current level, -2: pin at level bellow
 		};
 	});
 	return row;
