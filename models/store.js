@@ -60,11 +60,17 @@ var store = {
 		return list.sort();
 	},
 
-	getLevels: function() {
+	getLevels: function(options) {
+		options = options || {};
 		var list = [];
+		var lid = !!options.lid;
 		this.cubes.forEach(function(cube) {
 			if (cube.visible) {
 				cube.levels.forEach(function(level, i) {
+					if (lid != level.lid) {
+						return;
+					}
+
 					if (level.name && list.indexOf(level.name === -1)) {
 						list.push(level.name);
 					} else {

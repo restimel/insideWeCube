@@ -11,8 +11,10 @@ CubeBuilder.prototype.init = function() {
 	this.name = '';
 	this.color = 'blue';
 
+	var nbLevels = 7;
+
 	this.levels = [1, 2, 3, 4, 5, 6, 7].map(function(_, i) {
-		return new LevelConstructor(i, cubePath, this.color);
+		return new LevelConstructor(i, cubePath, this.color, {lastLevel: _ === nbLevels});
 	}, this);
 	this.cubePath.setColor(this.color);
 };

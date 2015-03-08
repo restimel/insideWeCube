@@ -84,7 +84,7 @@ self.onmessage = function(e) {
 			self.postMessage({data: store.getCubes(args), token: token});
 			break;
 		case 'getLevels':
-			self.postMessage({data: store.getLevels(), token: token});
+			self.postMessage({data: store.getLevels(args), token: token});
 			break;
 		case 'getLevel':
 			self.postMessage({data: store.getLevel(args), token: token});

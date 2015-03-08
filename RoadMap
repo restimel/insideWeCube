@@ -8,8 +8,9 @@ V1.2
 	Build Cube
 	* Change start/Finish position
 	* Consider blocker on level that block the ball
-	* Block level7 at level7
-	* Do not propose other levels at level7 (on option it should be proposed)
+	✓ Block level7 at level7
+	✓ Do not propose other levels at level7
+		* add an option to deactivate it
 	* auto-save to draft
 		→ FAQ: What is draft cube
 	* key Shortcut (Ctrl+S / Ctrl+z)
@@ -35,6 +36,9 @@ V1.2
 /!\ Bugs
 	General
 	* translation is not done for compatibility check message
+
+	Build Cube
+	* newly created cube does not save level7 as "lid"
 
 	Analyze Cube
 	+ Skinning of the instructions to the way back

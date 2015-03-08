@@ -1,8 +1,11 @@
-function LevelConstructor(index, cubePath, cubeColor) {
+function LevelConstructor(index, cubePath, cubeColor, options) {
+	options = options || {};
+
 	this.reset();
 	this.index = index;
 	this.cubePath = cubePath;
 	this.color = cubeColor;
+	this.lastLevel = !!options.lastLevel;
 }
 
 LevelConstructor.prototype.render = function(container) {
@@ -27,7 +30,7 @@ LevelConstructor.prototype.render = function(container) {
 	var select = document.createElement('select');
 	select.onchange = this.changeLevel.bind(this);
 	select.appendChild(document.createElement('option'));
-	main.control.action('getLevels', null, function(data) {
+	main.control.action('getLevels', {lid: this.lastLevel}, function(data) {
 		data.forEach(function(name) {
 			var option = document.createElement('option');
 			

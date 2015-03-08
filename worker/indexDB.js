@@ -12,6 +12,11 @@ function Dbstore() {
 	}
 }
 
+/*
+	To remove Db from browser:
+	indexedDB.deleteDatabase('iwcDB')
+*/
+
 Dbstore.prototype.onBlocked = function(event) {
 	sendMessage($$('insideWeCube is running in another tab. Its version is deprecated and must be refresh.'), 'info', {
 		time: 7000,
