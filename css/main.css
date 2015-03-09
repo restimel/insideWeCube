@@ -11,6 +11,10 @@ summary {
 	cursor: pointer;
 }
 
+.font-awesome {
+	font-family: fontAwesome;
+}
+
 .disabled {
 	color: #666;
 	font-style: italic;
@@ -335,6 +339,20 @@ summary {
 .mini-map .passage-left {
 	border-left: none;
 	padding-left: 3px;
+}
+.mini-map .start-cell:before {
+	content: 'S';
+}
+.mini-map .end-cell:before {
+	content: 'F';
+}
+.mini-map .pin:before {
+	content: '\f077'; /* ^ */
+	font-family: fontAwesome;
+}
+.mini-map .pin-top:before {
+	content: '\f078'; /* v */
+	font-family: fontAwesome;
 }
 
 .mini-map .possible-location,

@@ -1,7 +1,12 @@
 function LevelConstructor(index, cubePath, cubeColor, options) {
 	options = options || {};
 
-	this.reset();
+	this.reset({
+		lid: options.lid,
+		s: options.s ? options.s.filter(function(c) {
+				return c[2] === index;
+			}) : []
+	});
 	this.index = index;
 	this.cubePath = cubePath;
 	this.color = cubeColor;
@@ -125,8 +130,8 @@ LevelConstructor.prototype.renderLevel = function(container) {
 	container.appendChild(table);
 };
 
-LevelConstructor.prototype.reset = function() {
-	this.level = new Level('');
+LevelConstructor.prototype.reset = function(options) {
+	this.level = new Level('', options);
 };
 
 LevelConstructor.prototype.changeName = function(e) {

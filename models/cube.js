@@ -308,6 +308,16 @@ Cube.prototype.renderMap = function(orientation, available, uid) {
 					if (this.get(x, y-1, z).r) {
 						clName.push('passage-left');
 					}
+					if (cl.s === 1) {
+						clName.push('start-cell');
+					} else if (cl.s === -1) {
+						clName.push('end-cell');
+					} else if (cl.s === 2) {
+						clName.push('pin');
+					}
+					if (this.get(x, y, z-1).s === -2) {
+						clName.push('pin-top');
+					}
 					cell += ' id="map'+uid+'-'+x+'-'+y+'-'+z+'"';
 				} else {
 					clName.push('unavailable');
@@ -334,6 +344,16 @@ Cube.prototype.renderMap = function(orientation, available, uid) {
 					}
 					if (this.get(x, y-1, z).r) {
 						clName.push('passage-left');
+					}
+					if (cl.s === 1) {
+						clName.push('start-cell');
+					} else if (cl.s === -1) {
+						clName.push('end-cell');
+					} else if (cl.s === 2) {
+						clName.push('pin-top');
+					}
+					if (this.get(x, y, z-1).s === -2) {
+						clName.push('pin');
 					}
 					cell += ' id="map'+uid+'-'+x+'-'+y+'-'+z+'"';
 				} else {

@@ -1,3 +1,7 @@
+v1.1 → v1.2
+New features
+	* Manage level charateristics such as lid (which can not be moved to other levels) and pin (which can block the ball)
+
 v1.0 → v1.1
 New features
 	* Color cubes: cube can be saved with a color. It is then displayed with this color.

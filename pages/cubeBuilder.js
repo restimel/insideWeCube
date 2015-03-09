@@ -14,7 +14,16 @@ CubeBuilder.prototype.init = function() {
 	var nbLevels = 7;
 
 	this.levels = [1, 2, 3, 4, 5, 6, 7].map(function(_, i) {
-		return new LevelConstructor(i, cubePath, this.color, {lastLevel: _ === nbLevels});
+		return new LevelConstructor(i, cubePath, this.color, {
+			lid: _ === nbLevels,
+			lastLevel: _ === nbLevels,
+			s: [
+				[1,1,0,1], // start
+				[4,4,6,-1], // end
+				[1,2,0,2], // pin on first level
+				[4,3,5,-2] // pin on previous last level
+			]
+		});
 	}, this);
 	this.cubePath.setColor(this.color);
 };

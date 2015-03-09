@@ -1,12 +1,20 @@
 var rowSize = [1,2,3,4,5,6];
 
-function Level (name) {
+function Level (name, options) {
+	options = options || {};
+
 	if (typeof name === 'object') {
 		this.parse(name);
 	} else {
 		this.name = name;
-		this.lid = false;
+		this.lid = !!options.lid;
 		this.cells = rowSize.map(initRow);
+
+		if (options.s instanceof Array) {
+			options.s.forEach(function(cell) {
+				this.cells[cell[0]][cell[1]].s = cell[3];
+			}, this);
+		}
 	}
 }
 
