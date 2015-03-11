@@ -8,6 +8,8 @@ V1.2
 	Build Cube
 	* Change start/Finish position
 	* Consider Pin on level that block the ball
+		✓ simple movement with Pin
+		* moving up/down and fall on a pin
 		* consider pin that blocks below level to be build (no right wall for the cell bellow)
 	✓ Block level7 at level7
 	✓ Do not propose other levels at level7
