@@ -117,6 +117,8 @@ Cube.prototype.toJSON = function() {
 	return {
 		name: this.name,
 		color: this.color,
+		start: this.startCell,
+		end: this.finishCell,
 		levels: this.levels.map(function(l) {return l.toJSON();})
 	};
 };
@@ -128,6 +130,18 @@ Cube.prototype.parse = function(json, option) {
 	this.name = json.name;
 	if (json.color) {
 		this.color = json.color;
+	}
+
+	if (Cube.checkCell(json.start)) {
+		this.startCell = json.start;
+	} else {
+		this.startCell = {x: 1, y: 1, z: 0};
+	}
+
+	if (Cube.checkCell(json.end)) {
+		this.finishCell = json.end;
+	} else {
+		this.finishCell = {x: 4, y: 4, z: 6};
 	}
 
 	if (option && option.fromDB) {
@@ -551,3 +565,8 @@ Cube.copyPosition = function(position) {
 		b: position.b
 	};
 };
+
+
+Cube.checkCell = function (cell) {
+	return typeof cell === 'object' && typeof cell.x === 'number' && typeof cell.y === 'number' && typeof cell.z === 'number';
+}

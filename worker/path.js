@@ -28,106 +28,109 @@ Path.prototype.calculatePath = function() {
 			// deprecated call
 			return;
 		}
-
-		this.setTarget({x: 4, y: 4, z: 6});
-
-		var p = [],
-			w = [],
-			info = {
-				finish: false,
-				length: 1,
-				deadEnd: -1
-			},
-			that = this,
-			searchCell = function(cell) {
-				var i, li = p.length;
-				
-				for (i = li - 1; i >= 0; i--) {
-					if (Cube.comparePosition(p[i], cell)) {
-						return p[i];
-					}
-				}
-
-				li = w.length;
-				for (i = 0; i < li; i++) {
-					if (Cube.comparePosition(w[i], cell)) {
-						if (w[i].dst > cell.dst) {
-							w[i].dst = cell.dst;
-							w[i].parent = cell.parent;
-						}
-						return w[i];
-					}
-				}
-
-				return false;
-			},
-			addCell = function(ocell) {
-				var dst = ocell.dst + 1,
-					nextCells = this.cube.getNeighbours(ocell.x, ocell.y, ocell.z);
-				p.push(ocell);
-
-				ocell.linked = [];
-
-				nextCells.forEach(function(cell){
-					cell = that.createCell(cell);
-					cell.dst = dst;
-
-					var f = searchCell(cell);
-					if (!f) {
-						cell.parent = ocell;
-						w.push(cell);
-						ocell.linked.push(cell);
-					} else {
-						if (nextCells.length === 1) {
-							info.deadEnd++;
-						}
-						ocell.linked.push(f);
-					}
-				});
-			}.bind(this),
-			findClosest = function() {
-				var dst = Infinity,
-					pos = -1,
-					i, li = w.length;
-
-				for (i = 0; i < li; i++) {
-					if (w[i].dst < dst) {
-						dst = w[i].dst;
-						pos = i;
-					}
-				}
-
-				return pos;
-			},
-			createPath = function() {
-				var i, cell;
-				while (w.length) {
-					i = findClosest();
-					cell = w[i];
-					w.splice(i, 1);
-
-					if (cell.z === 6 && cell.x === 4 && cell.y === 4) {
-						info.finish = cell;
-						info.length = cell.dst;
-					}
-
-					addCell(cell);
-				}
-			},
-			firstCell = this.createCell({
-				x: 1,
-				y: 1,
-				z: 0,
-				parent: null,
-				linked: []
-			});
-
-		firstCell.dst = 0;
-		w.push(firstCell);
-		createPath();
-
-		this.result({accessible: p, info: info});
+		this.runCompute();
 	}.bind(this), 10);
+};
+
+Path.prototype.runCompute = function() {
+	var finishCell = cube.finishCell || {x: 4, y: 4, z: 6},
+		startCell = cube.startCell || {x: 1, y: 1, z: 0};
+
+	startCell.parent = null;
+	startCell.linked = [];
+
+	this.setTarget(finishCell);
+
+	var p = [],
+		w = [],
+		info = {
+			finish: false,
+			length: 1,
+			deadEnd: -1
+		},
+		that = this,
+		searchCell = function(cell) {
+			var i, li = p.length;
+			
+			for (i = li - 1; i >= 0; i--) {
+				if (Cube.comparePosition(p[i], cell)) {
+					return p[i];
+				}
+			}
+
+			li = w.length;
+			for (i = 0; i < li; i++) {
+				if (Cube.comparePosition(w[i], cell)) {
+					if (w[i].dst > cell.dst) {
+						w[i].dst = cell.dst;
+						w[i].parent = cell.parent;
+					}
+					return w[i];
+				}
+			}
+
+			return false;
+		},
+		addCell = function(ocell) {
+			var dst = ocell.dst + 1,
+				nextCells = this.cube.getNeighbours(ocell.x, ocell.y, ocell.z);
+			p.push(ocell);
+
+			ocell.linked = [];
+
+			nextCells.forEach(function(cell){
+				cell = that.createCell(cell);
+				cell.dst = dst;
+
+				var f = searchCell(cell);
+				if (!f) {
+					cell.parent = ocell;
+					w.push(cell);
+					ocell.linked.push(cell);
+				} else {
+					if (nextCells.length === 1) {
+						info.deadEnd++;
+					}
+					ocell.linked.push(f);
+				}
+			});
+		}.bind(this),
+		findClosest = function() {
+			var dst = Infinity,
+				pos = -1,
+				i, li = w.length;
+
+			for (i = 0; i < li; i++) {
+				if (w[i].dst < dst) {
+					dst = w[i].dst;
+					pos = i;
+				}
+			}
+
+			return pos;
+		},
+		createPath = function() {
+			var i, cell;
+			while (w.length) {
+				i = findClosest();
+				cell = w[i];
+				w.splice(i, 1);
+
+				if (cell.z === 6 && cell.x === 4 && cell.y === 4) {
+					info.finish = cell;
+					info.length = cell.dst;
+				}
+
+				addCell(cell);
+			}
+		},
+		firstCell = this.createCell(startCell);
+
+	firstCell.dst = 0;
+	w.push(firstCell);
+	createPath();
+
+	this.result({accessible: p, info: info});
 };
 
 /* could be override to use results elsewhere */
