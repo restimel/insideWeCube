@@ -114,13 +114,21 @@ Cube.prototype.getNeighbours = function (x, y, z) {
 };
 
 Cube.prototype.toJSON = function() {
-	return {
+	var json = {
 		name: this.name,
 		color: this.color,
-		start: this.startCell,
-		end: this.finishCell,
 		levels: this.levels.map(function(l) {return l.toJSON();})
 	};
+
+	if (this.startCell.x !== 1 || this.startCell.y !== 1 || this.startCell.z !== 0) {
+		json.start = this.startCell;
+	}
+
+	if (this.finishCell.x !== 4 || this.finishCell.y !== 4 || this.finishCell.z !== 6) {
+		json.end = this.finishCell;
+	}
+
+	return json;
 };
 
 Cube.prototype.parse = function(json, option) {
