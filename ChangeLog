@@ -3,6 +3,9 @@ New features
 	* Manage level charateristics such as lid (which can not be moved to other levels) and pin (which can block the ball)
 	* Manage a start and a finish at a different place
 
+Bugs fixed
+	* Fix error thrown in console when moving to another menu while a temporary message is displayed.
+
 v1.0 → v1.1
 New features
 	* Color cubes: cube can be saved with a color. It is then displayed with this color.

@@ -76,7 +76,9 @@ main.message = (function() {
 	};
 
 	f.close = function(elem) {
-		container.removeChild(elem);
+		if (container.contains(elem)) {
+			container.removeChild(elem);
+		}
 		var i = list.indexOf(elem);
 		list.splice(i, 1);
 	};
