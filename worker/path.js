@@ -33,8 +33,8 @@ Path.prototype.calculatePath = function() {
 };
 
 Path.prototype.runCompute = function() {
-	var finishCell = cube.finishCell || {x: 4, y: 4, z: 6},
-		startCell = cube.startCell || {x: 1, y: 1, z: 0};
+	var finishCell = this.cube.finishCell || {x: 4, y: 4, z: 6},
+		startCell = this.cube.startCell || {x: 1, y: 1, z: 0};
 
 	startCell.parent = null;
 	startCell.linked = [];

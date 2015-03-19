@@ -40,7 +40,7 @@ Cube.prototype.isFree = function (x, y, z) {
 	var cell = this.get(x, y, z),
 		oCell = this.get(x, y, z-1);
 
-	return (cell.s !== 2 || z === 0) && (oCell.s === -2 || z === this.levels.length-1);
+	return (cell.s !== 2 || z === 0) && (oCell.s !== -2 || z === this.levels.length-1);
 };
 
 /**
@@ -51,7 +51,7 @@ Cube.prototype.getNeighbours = function (x, y, z) {
 		cell = this.get(x, y, z);
 
 	// down
-	if (x < 5 && cell.d) {
+	if (x < 5 && cell.d && this.isFree(x+1, y, z)) {
 		directions.push({
 			x: x + 1,
 			y: y,
@@ -61,7 +61,7 @@ Cube.prototype.getNeighbours = function (x, y, z) {
 	}
 
 	// right
-	if (y < 5 && cell.r) {
+	if (y < 5 && cell.r && this.isFree(x, y+1, z)) {
 		directions.push({
 			x: x ,
 			y: y + 1,
@@ -81,7 +81,7 @@ Cube.prototype.getNeighbours = function (x, y, z) {
 	}
 
 	// up
-	if (x > 0 && this.get(x - 1, y, z).d) {
+	if (x > 0 && this.get(x - 1, y, z).d && this.isFree(x-1, y, z)) {
 		directions.push({
 			x: x -1,
 			y: y,
@@ -91,7 +91,7 @@ Cube.prototype.getNeighbours = function (x, y, z) {
 	}
 
 	// left
-	if (y > 0 && this.get(x, y - 1, z).r) {
+	if (y > 0 && this.get(x, y - 1, z).r && this.isFree(x, y-1, z)) {
 		directions.push({
 			x: x ,
 			y: y - 1,
