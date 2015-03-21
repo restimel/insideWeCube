@@ -31,6 +31,8 @@ function main(container){
 			}
 		);
 	}
+
+	Helper.mainLoaded();
 }
 
 main.version = '1.1.0';

@@ -59,7 +59,8 @@ importScripts(
 	'../models/cube.js',
 	'path.js',
 	'heuristic.js',
-	'../libs/i18n/translate-i18n.js'
+	'../libs/i18n/translate-i18n.js',
+	'../common/helpers.js'
 );
 
 self.onmessage = function(e) {
@@ -104,6 +105,9 @@ self.onmessage = function(e) {
 		case 'changeLng':
 			$$.changeLng(args);
 			break;
+		case 'config':
+			Object.keys(args).forEach(setConfig.bind(self, args));
+			break;
 		case 'getCubeInfo':
 			self.postMessage({
 				data: {
@@ -115,6 +119,14 @@ self.onmessage = function(e) {
 			break;
 	}
 };
+
+function setConfig(o, key) {
+	var value = o[key];
+
+	if (typeof value !== 'undefined' && value !== null) {
+		Helper.config[key] = value;
+	}
+}
 
 var tempCube = new Cube();
 
