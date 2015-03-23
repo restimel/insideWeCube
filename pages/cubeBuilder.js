@@ -112,6 +112,8 @@ CubeBuilder.prototype.render = function(container) {
 	btn.onclick = this.removeCubes.bind(this);
 	tools.appendChild(btn);
 
+	tools.appendChild(this.renderAdvancedTool());
+
 	header.appendChild(tools);
 
 	container.appendChild(header);
@@ -320,6 +322,63 @@ CubeBuilder.prototype.renderMapStandalone = function() {
 		preview.document.getElementById('maps-preview').innerHTML = html.join('<br>');
 		preview.document.close();
 	});
+};
+
+CubeBuilder.prototype.renderAdvancedTool = function() {
+	var option;
+	var select = document.createElement('select');
+	select.className = 'font-awesome';
+
+	option = document.createElement('option');
+	option.textContent = $$('Advanced option');
+	option.defaultSelected = true;
+	option.selected = true;
+	option.disabled = true;
+	select.add(option);
+
+	/*TODO instead title, add info box*/
+
+	option = document.createElement('option');
+	option.textContent = (Helper.config.lid ? '\uf046' : '\uf096') + ' ' + $$('lid only');
+	option.title = $$('If not selected non-lid levels can be chosen at last level');
+	option.value = 'lid';
+	option.callBack = function() {
+		this.levels[this.levels.length-1].render();
+	}.bind(this);
+	select.add(option);
+
+	option = document.createElement('option');
+	option.textContent = (Helper.config.pin ? '\uf046' : '\uf096') + ' ' + $$('through pin');
+	option.title = $$('If selected the pins do not block ball inside levels');
+	option.value = 'pin';
+	option.callBack = function() {
+		this.cubePath.computePath();
+	}.bind(this);
+	select.add(option);
+
+	option = document.createElement('option');
+	option.textContent = (Helper.config.advanced ? '\uf046' : '\uf096') + ' ' + $$('more tools');
+	option.title = $$('If selected more tools are available to edit levels (like setting pin, start Cell, ...)');
+	option.value = 'advTools';
+	option.callBack = this.renderAdvTools.bind(this);
+	select.add(option);
+
+	select.onchange = function() {
+		var value = !Helper.config[this.value],
+			option = this.selectedOptions[0],
+			content = option.textContent.substring(1);
+
+		Helper.config[this.value] = value;
+		option.textContent = (value ? '\uf046' : '\uf096') + content;
+		this.options[0].selected = true;
+		option.callBack(value);
+	};
+
+	return select;
+};
+
+CubeBuilder.prototype.renderAdvTools = function(val) {
+	console.log('TODO render tools', val)
 };
 
 CubeBuilder.prototype.mapFocus = function(event) {

@@ -40,7 +40,7 @@ Cube.prototype.isFree = function (x, y, z) {
 	var cell = this.get(x, y, z),
 		oCell = this.get(x, y, z-1);
 
-	return (cell.s !== 2 || z === 0) && (oCell.s !== -2 || z === this.levels.length-1);
+	return Helper.config.pin || ((cell.s !== 2 || z === 0) && (oCell.s !== -2 || z === this.levels.length-1));
 };
 
 /**

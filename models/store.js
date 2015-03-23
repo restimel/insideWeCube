@@ -67,7 +67,7 @@ var store = {
 		this.cubes.forEach(function(cube) {
 			if (cube.visible) {
 				cube.levels.forEach(function(level, i) {
-					if (lid != level.lid) {
+					if (lid != level.lid && (!lid || Helper.config.lid)) {
 						return;
 					}
 

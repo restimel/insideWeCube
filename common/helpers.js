@@ -47,7 +47,7 @@ var Helper = {
 	}
 
 	Helper.config._values = {
-		lid: get('lid', false), /* if true, allow to put other levels at last level */
+		lid: get('lid', true), /* if true, only lid levels can be sleected at last level */
 		pin: get('pin', false), /* if true, the ball is not block by pin */
 		advanced: get('advanced', false) /* if true it display advanced tools */
 	}
