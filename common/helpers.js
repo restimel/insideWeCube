@@ -42,8 +42,20 @@ var Helper = {
 	var hasMainControl = false;
 
 	function get(key, dfltValue) {
-		var value = hasLocalStorage ? self.localStorage.getItem(key) === 'true' : null;
-		return value === null ? dfltValue : value;
+		var value, val;
+
+		if (hasLocalStorage) {
+			value = self.localStorage.getItem(key);
+			if (value === null) {
+				value = dfltValue;
+			} else {
+				value = value === 'true';
+			}
+		} else {
+			value = dfltValue;
+		}
+
+		return value;
 	}
 
 	Helper.config._values = {
