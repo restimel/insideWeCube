@@ -35,6 +35,10 @@
 		"en": "Import",
 		"fr": "Importer"
 	},
+	"Advanced option": {
+		"en": "Advanced options",
+		"fr": "Options avancées"
+	},
 	"save level": {
 		"en": "Save level",
 		"fr": "Sauver le niveau"
@@ -58,6 +62,30 @@
 	"Level %s is not found.": {
 		"en": "Level %s is not found.",
 		"fr": "Le niveau %s n'a pas été trouvé"
+	},
+	"lid only": {
+		"en": "lid only",
+		"fr": "couvercle seulement"
+	},
+	"through pin": {
+		"en": "through pin",
+		"fr": "ignorer les embossements"
+	},
+	"more tools": {
+		"en": "more tools",
+		"fr": "plus d'outils"
+	},
+	"If not selected non-lid levels can be chosen at last level": {
+		"en": "If not selected non-lid levels can be chosen at last level",
+		"fr": "Si non sélectionné, tous les niveaux peuvent être choisi au dernier niveau"
+	},
+	"If selected the pins do not block ball inside levels": {
+		"en": "If selected the pins do not block ball inside levels",
+		"fr": "Si sélectionné, les embossements ne bloquent plus la bille dans les niveaux"
+	},
+	"If selected more tools are available to edit levels (like setting pin, start Cell, ...)": {
+		"en": "If selected more tools are available to edit levels (like setting pin, start Cell, ...)",
+		"fr": "Si sélectionné, plus d'outils sont disponible pour éditer les niveaux (comme définir des embossements, le départ ...)"
 	},
 	"An INSIDE³ solver: ": {
 		"en": "An INSIDE³ solver: ",
