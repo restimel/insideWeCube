@@ -699,6 +699,10 @@
 		"en": "Tools",
 		"fr": "Outils"
 	},
+	"Manager": {
+		"en": "Manager",
+		"fr": "Gestion"
+	},
 	"Load a cube": {
 		"en": "Load a cube",
 		"fr": "Charger un cube"

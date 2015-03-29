@@ -1,4 +1,4 @@
-function LevelConstructor(index, cubePath, cubeColor, options) {
+function LevelConstructor(index, cubePath, parentCube, cubeColor, options) {
 	options = options || {};
 
 	this.reset({
@@ -7,10 +7,13 @@ function LevelConstructor(index, cubePath, cubeColor, options) {
 				return c[2] === index;
 			}) : []
 	});
+
 	this.index = index;
 	this.cubePath = cubePath;
+	this.cube = parentCube;
 	this.color = cubeColor;
 	this.lastLevel = !!options.lastLevel;
+	this.action = 0;
 }
 
 LevelConstructor.prototype.render = function(container) {
@@ -85,12 +88,13 @@ LevelConstructor.prototype.renderLevel = function(container) {
 			el.id = 'main-' + x + '-' + y + '-' + this.index;
 			el.className = 'cell-main-' + (cell.b ? 'hole' : 'fill');
 
-			if (this.index === 0 && x === 1 && y === 1) {
-				el.textContent = $$('S');
-				el.title = $$('Start');
-			} else if (this.index === 6 && x === 4 && y === 4) {
-				el.textContent = $$('F');
-				el.title = $$('Finish');
+			if (this.startCL && x === this.startCL[0] && y === this.startCL[1]) {
+				this.setCell(el, 's1');
+			} else if (this.endCL && x === this.endCL[0] && y === this.endCL[1]) {
+				this.setCell(el, 's-1');
+			}
+			if (cell.s) {
+				this.setCell(el, 's'+cell.s);
 			}
 			row1.appendChild(el);
 
@@ -169,6 +173,53 @@ LevelConstructor.prototype.changeLevel = function(e) {
 	this.cubePath.loadLevel(this.index, lvl);
 };
 
+LevelConstructor.prototype.setAction = function(action) {
+	this.action = action;
+};
+
+LevelConstructor.prototype.setCell = function(el, type, val) {
+	var o = {
+		textContent: '',
+		title: ''
+	};
+	
+	if (!el) {
+		return;
+	}
+
+	if (val) {
+		switch (type) {
+			case 's1':
+				o.textContent = $$('S');
+				o.title = $$('Start');
+				break;
+			case 's-1':
+				o.textContent = $$('F');
+				o.title = $$('Finish');
+				break;
+			case 's2':
+				o.textContent = '^';
+				o.title = $$('pin inside the maze');
+				break;
+			case 's-2':
+				o.textContent = 'v';
+				o.title = $$('pin at the bottom of level');
+				break;
+		}
+	}
+
+	// will be remove
+	if (el.textContent === o.textContent) {
+		o = {
+			textContent: '',
+			title: ''
+		};
+	}
+
+	el.textContent = o.textContent;
+	el.title = o.title;
+};
+
 LevelConstructor.prototype.change = function(e) {
 	var el = e.target,
 		id = el.id,
@@ -182,9 +233,21 @@ LevelConstructor.prototype.change = function(e) {
 
 	switch (id[0]){
 		case 'main':
-			type = 'b';
+			switch (this.action) {
+				case 0: type = 'b'; break;
+				case 1:	type = 's1'; this.cube.startCell(id.slice(1).map(parseFloat)); break;
+				case -1: type = 's-1'; this.cube.endCell(id.slice(1).map(parseFloat)); break;
+				case 2:	type = 's2'; break;
+				case -2: type = 's-2'; break;
+				default: return;
+			}
+
 			val = this.level.toggle(id[1], id[2], type);
-			el.className = 'cell-main-' + (val ? 'hole' : 'fill');
+			if (type === 'b') {
+				el.className = 'cell-main-' + (val ? 'hole' : 'fill');
+			} else {
+				this.setCell(el, type, val);
+			}
 			break;
 		case 'wallR':
 			type = 'r';
@@ -199,6 +262,48 @@ LevelConstructor.prototype.change = function(e) {
 	}
 
 	this.cubePath.setCell(id[1], id[2], this.index, type, val);
+};
+
+LevelConstructor.prototype.startCell = function(id) {
+	var el;
+
+	if (this.startCL && this.startCL[0] === id[0] && this.startCL[1] === id[1] && this.startCL[2] === id[2]) {
+		return;
+	}
+
+	if (this.startCL) {
+		el = document.getElementById('main-' + this.startCL[0] + '-' + this.startCL[1] + '-' + this.startCL[2]);
+		this.setCell(el, '');
+	}
+
+	if (id[2] === this.index) {
+		el = document.getElementById('main-' + id[0] + '-' + id[1] + '-' + id[2]);
+		this.setCell(el, 's1');
+		this.startCL = id.concat([]);
+	} else {
+		this.startCL = null;
+	}
+};
+
+LevelConstructor.prototype.endCell = function(id) {
+	var el;
+
+	if (this.endCL && this.endCL[0] === id[0] && this.endCL[1] === id[1] && this.endCL[2] === id[2]) {
+		return;
+	}
+
+	if (this.endCL) {
+		el = document.getElementById('main-' + this.endCL[0] + '-' + this.endCL[1] + '-' + this.endCL[2]);
+		this.setCell(el, '');
+	}
+
+	if (id[2] === this.index) {
+		el = document.getElementById('main-' + id[0] + '-' + id[1] + '-' + id[2]);
+		this.setCell(el, 's-1');
+		this.endCL = id.concat([]);
+	} else {
+		this.endCL = null;
+	}
 };
 
 LevelConstructor.prototype.save = function() {

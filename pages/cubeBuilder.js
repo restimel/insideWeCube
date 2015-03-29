@@ -14,7 +14,7 @@ CubeBuilder.prototype.init = function() {
 	var nbLevels = 7;
 
 	this.levels = [1, 2, 3, 4, 5, 6, 7].map(function(_, i) {
-		return new LevelConstructor(i, cubePath, this.color, {
+		return new LevelConstructor(i, cubePath, this, this.color, {
 			lid: _ === nbLevels,
 			lastLevel: _ === nbLevels,
 			s: [
@@ -25,6 +25,8 @@ CubeBuilder.prototype.init = function() {
 			]
 		});
 	}, this);
+	this.startCell([1,1,0]);
+	this.endCell([4,4,6]);
 	this.cubePath.setColor(this.color);
 };
 
@@ -78,12 +80,12 @@ CubeBuilder.prototype.render = function(container) {
 
 	header.appendChild(cubeProperty);
 
-	/* Tools */
-	var tools = document.createElement('fieldset');
-	tools.className = 'cube-header-field';
+	/* Manager */
+	var manager = document.createElement('fieldset');
+	manager.className = 'cube-header-field';
 	legend = document.createElement('legend');
-	legend.textContent = $$('Tools');
-	tools.appendChild(legend);
+	legend.textContent = $$('Manager');
+	manager.appendChild(legend);
 
 	select = document.createElement('select');
 	select.onchange = this.changeCube.bind(this);
@@ -100,21 +102,71 @@ CubeBuilder.prototype.render = function(container) {
 			select.appendChild(option);
 		});
 	});
-	tools.appendChild(select);
+	manager.appendChild(select);
 
 	btn = document.createElement('button');
 	btn.textContent = $$('Reset cube');
 	btn.onclick = this.reset.bind(this);
-	tools.appendChild(btn);
+	manager.appendChild(btn);
 
 	btn = document.createElement('button');
 	btn.textContent = $$('Delete cubes');
 	btn.onclick = this.removeCubes.bind(this);
-	tools.appendChild(btn);
+	manager.appendChild(btn);
 
-	tools.appendChild(this.renderAdvancedTool());
+	manager.appendChild(this.renderAdvancedTool());
 
-	header.appendChild(tools);
+	header.appendChild(manager);
+
+	/* Tools */
+	this.action = 0;
+	this.toolBox = document.createElement('fieldset');
+	this.toolBox.className = 'cube-header-field';
+	legend = document.createElement('legend');
+	legend.textContent = $$('Tools');
+	this.toolBox.appendChild(legend);
+
+	btn = document.createElement('button');
+	btn.className = 'selected font-awesome';
+	btn.textContent = '\uf111';
+	btn.title = $$('Set holes');
+	btn.onclick = this.setAction.bind(this);
+	btn.value = 0;
+	this.toolBox.appendChild(btn);
+
+	btn = document.createElement('button');
+	btn.className = 'font-awesome';
+	btn.textContent = $$('S');
+	btn.title = $$('Start');
+	btn.onclick = this.setAction.bind(this);
+	btn.value = 1;
+	this.toolBox.appendChild(btn);
+
+	btn = document.createElement('button');
+	btn.className = 'font-awesome';
+	btn.textContent = $$('F');
+	btn.title = $$('Finish');
+	btn.onclick = this.setAction.bind(this);
+	btn.value = -1;
+	this.toolBox.appendChild(btn);
+
+	btn = document.createElement('button');
+	btn.className = 'font-awesome';
+	btn.textContent = '^';
+	btn.title = $$('Pin inside maze');
+	btn.onclick = this.setAction.bind(this);
+	btn.value = 2;
+	this.toolBox.appendChild(btn);
+
+	btn = document.createElement('button');
+	btn.className = 'font-awesome';
+	btn.textContent = 'v';
+	btn.title = $$('Pin at the bottom of level');
+	btn.onclick = this.setAction.bind(this);
+	btn.value = -2;
+	this.toolBox.appendChild(btn);
+
+	header.appendChild(this.toolBox);
 
 	container.appendChild(header);
 
@@ -379,6 +431,22 @@ CubeBuilder.prototype.renderAdvancedTool = function() {
 
 CubeBuilder.prototype.renderAdvTools = function(val) {
 	console.log('TODO render tools', val)
+}
+
+CubeBuilder.prototype.setAction = function(event) {
+	var btn = event.target;
+	var value = parseInt(btn.value, 10);
+
+	if (this.action !== value) {
+		this.levels.forEach(function(level) {
+			level.setAction(value);
+		});
+
+		this.action = value;
+
+		main.removeClass('selected', this.toolBox);
+		btn.classList.add('selected');
+	}
 };
 
 CubeBuilder.prototype.mapFocus = function(event) {
@@ -404,6 +472,18 @@ CubeBuilder.prototype.lookForLevelElement = function(element) {
 		}
 	}
 	return element;
+};
+
+CubeBuilder.prototype.startCell = function(id) {
+	this.levels.forEach(function(lvl) {
+		lvl.startCell(id);
+	});
+};
+
+CubeBuilder.prototype.endCell = function(id) {
+	this.levels.forEach(function(lvl) {
+		lvl.endCell(id);
+	});
 };
 
 CubeBuilder.prototype.reset = function() {

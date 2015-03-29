@@ -204,6 +204,10 @@ summary {
 	cursor: pointer;
 }
 
+.cube-header-field .selected {
+	background-color: #EFEF8A;
+}
+
 #maps-preview .mini-map {
 	display: inline-block;
 }
