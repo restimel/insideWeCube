@@ -40,10 +40,10 @@ AdvancedOptions.prototype.render = function(container) {
 			callback: this.call_pin
 		},
 		{
-			id: 'advTools',
+			id: 'advanced',
 			shortName: $$('more tools'),
 			longName: $$('If selected more tools are available to edit levels (like setting pin, start Cell, ...)'),
-			selected: Helper.config.adv,
+			selected: Helper.config.advanced,
 			callback: this.call_adv
 		}
 	]);

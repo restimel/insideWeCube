@@ -15,6 +15,10 @@ summary {
 	font-family: fontAwesome;
 }
 
+.hidden {
+	display: none;
+}
+
 .disabled {
 	color: #666;
 	font-style: italic;

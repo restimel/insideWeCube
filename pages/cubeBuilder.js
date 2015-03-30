@@ -142,7 +142,7 @@ CubeBuilder.prototype.render = function(container) {
 	/* Tools */
 	this.action = 0;
 	this.toolBox = document.createElement('fieldset');
-	this.toolBox.className = 'cube-header-field';
+	this.toolBox.className = 'cube-header-field' + (Helper.config.advanced ? '' : ' hidden');
 	legend = document.createElement('legend');
 	legend.textContent = $$('Tools');
 	this.toolBox.appendChild(legend);
@@ -407,7 +407,11 @@ CubeBuilder.prototype.renderAdvancedTool = function() {
 };
 
 CubeBuilder.prototype.renderAdvTools = function(val) {
-	console.log('TODO render tools', val)
+	if (val) {
+		this.toolBox.classList.remove('hidden');
+	} else {
+		this.toolBox.classList.add('hidden');
+	}
 }
 
 CubeBuilder.prototype.setAction = function(event) {
