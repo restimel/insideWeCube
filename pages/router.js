@@ -3,6 +3,7 @@ function Router(contentContainer) {
 	var cube = new CubeBuilder(new CubePath()),
 		importExport = new exportImport(),
 		cubeAnalyzer = new CubeAnalyzer(),
+		cubeGenerator = new CubeGenerator(),
 		about = new About(),
 
 		cubeFilter = new CubeFilter();
@@ -17,6 +18,11 @@ function Router(contentContainer) {
 			name: 'Lost in cube?',
 			route: 'analyzer',
 			object: cubeAnalyzer
+		},
+		{
+			name: 'Look for new maze?',
+			route: 'generator',
+			object: cubeGenerator
 		},
 		{
 			name: 'Import/Export',
