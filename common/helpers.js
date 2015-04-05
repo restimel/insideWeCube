@@ -27,6 +27,37 @@ var Helper = {
 		return label;
 	},
 
+	buildSelect: function buildSelect(select, list, selectedList) {
+		selectedList = selectedList || [];
+
+		list.forEach(function(opt) {
+			var option, value;
+
+			if (opt.options instanceof Array) {
+				option = document.createElement('optGroup');
+				option.label = opt.name;
+				buildSelect(option, opt.options, selectedList);
+			} else {
+				if (typeof opt === 'string') {
+					opt = {name: opt};
+				}
+
+				option = document.createElement('option');
+				option.textContent = opt.name;
+				option.value = value = opt.id || opt.name;
+				if (selectedList.indexOf(value) !== -1) {
+					option.selected = true;
+				}
+			}
+
+			if (typeof select.add === 'function') {
+				select.add(option);
+			} else {
+				select.appendChild(option);
+			}
+		});
+	},
+
 	/**
 	 * Configuration (default values)
 	 */

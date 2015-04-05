@@ -63,23 +63,50 @@ var store = {
 	getLevels: function(options) {
 		options = options || {};
 		var list = [];
+		var lvlList;
 		var lid = !!options.lid;
+		var allLvl = !!options.allLevels;
+		var groupByCube = !!options.groupByCube;
+
 		this.cubes.forEach(function(cube) {
 			if (cube.visible) {
+				lvlList = [];
 				cube.levels.forEach(function(level, i) {
-					if (lid != level.lid && (!lid || Helper.config.lid)) {
+					if (!allLvl && lid != level.lid && (!lid || Helper.config.lid)) {
 						return;
 					}
 
-					if (level.name && list.indexOf(level.name === -1)) {
-						list.push(level.name);
+					if (level.name && lvlList.indexOf(level.name === -1)) {
+						lvlList.push(level.name);
 					} else {
-						list.push(cube.name + '-' + (i+1));
+						lvlList.push(cube.name + '-' + (i+1));
 					}
 				});
+
+				if (groupByCube) {
+					list.push({
+						name: cube.name,
+						options: lvlList
+					});
+				} else {
+					list = list.concat(lvlList);
+				}
 			}
 		});
-		return list.sort();
+
+		var compare;
+		if (typeof Intl === 'function') {
+			compare = new Intl.Collator($$.getCurrentLng(), {sensitivity: 'base'}).compare;
+		} else {
+			compare = function(a, b) {return a.localeCompare(b, $$.getCurrentLng(), {sensitivity: 'base'});};
+		}
+
+		return list.sort(function(e1, e2) {
+			var n1 = e1.hasOwnProperty('name') ? e1.name : e1;
+			var n2 = e2.hasOwnProperty('name') ? e2.name : e2;
+
+			return compare(n1, n2)
+		});
 	},
 
 	getLevel: function(name) {

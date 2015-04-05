@@ -24,7 +24,8 @@ AdvancedOptions.prototype.render = function(container) {
 	body.className = 'body-cube-filter';
 	this.optionSelector = document.createElement('div');
 	this.optionSelector.className = 'filter-container';
-	this.loadOption([
+
+	var optionList = [
 		{
 			id: 'lid',
 			shortName: $$('lid only'),
@@ -46,9 +47,10 @@ AdvancedOptions.prototype.render = function(container) {
 			selected: Helper.config.advanced,
 			callback: this.call_adv
 		}
-	]);
+	];
+	this.loadOption(optionList);
 	body.appendChild(this.optionSelector);
-	
+
 	/* dialog box */
 	prepareDialog();
 
