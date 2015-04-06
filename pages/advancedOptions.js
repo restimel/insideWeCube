@@ -2,6 +2,8 @@ function AdvancedOptions(option) {
 	this.call_lid = option.call_lid;
 	this.call_pin = option.call_pin;
 	this.call_adv = option.call_adv;
+
+	this.hideMoreTools = option.hideMoreTools;
 }
 
 AdvancedOptions.prototype.render = function(container) {
@@ -48,6 +50,11 @@ AdvancedOptions.prototype.render = function(container) {
 			callback: this.call_adv
 		}
 	];
+
+	if (this.hideMoreTools) {
+		optionList.pop();
+	}
+
 	this.loadOption(optionList);
 	body.appendChild(this.optionSelector);
 
