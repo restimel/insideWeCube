@@ -58,6 +58,7 @@ importScripts(
 	'../models/level.js',
 	'../models/cube.js',
 	'path.js',
+	'generator.js',
 	'heuristic.js',
 	'../libs/i18n/translate-i18n.js',
 	'../common/helpers.js'
@@ -98,6 +99,9 @@ self.onmessage = function(e) {
 			break;
 		case 'path':
 			path.router(args, token);
+			break;
+		case 'generator':
+			generator.router(args, token);
 			break;
 		case 'heuristic':
 			heuristic.router(args, token);
@@ -187,4 +191,5 @@ function getCubeInfo(name) {
 
 /* init worker */
 var path = new Path();
+var generator = new Generator();
 var heuristic = new Heuristic();
