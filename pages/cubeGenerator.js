@@ -33,20 +33,27 @@ CubeGenerator.prototype.render = function(container) {
 	this.elements.levelSelector = section;
 	container.appendChild(section);
 
+	/* Research evolution */
+	section = document.createElement('section');
+	section.className = 'generator-research-status';
+	this.elements.researchStatus = section;
+	container.appendChild(section);
+
 	/* cube solution */
 	section = document.createElement('section');
 	section.className = 'generator-cube-solution';
-	this.elements.CubeSolution = section;
+	this.elements.cubeSolution = section;
 	container.appendChild(section);
 
 	/* cube details */
 	section = document.createElement('section');
 	section.className = 'generator-cube-details';
-	this.elements.CubeSolution = section;
+	this.elements.cubeDetails = section;
 	container.appendChild(section);
 
 	this.renderMenu();
 	this.renderLevelSelector();
+	this.renderResearchStatus();
 };
 
 CubeGenerator.prototype.renderMenu = function() {
@@ -68,7 +75,19 @@ CubeGenerator.prototype.renderMenu = function() {
 		button.onclick = this.advancedOptions.render.bind(this.advancedOptions);
 		container.appendChild(button);
 	} else {
-		container.textContent = 'TODO';
+		button = document.createElement('button');
+		button.className = 'font-awesome'
+		button.textContent = '\uf0c7'; //save
+		button.title = $$('Save selected cubes');
+		button.onclick = this.saveCubes.bind(this);
+		button.disabled = true; // TODO activate it
+		container.appendChild(button);
+
+		button = document.createElement('button');
+		button.textContent = this.state === 'running' ? $$('Stop research') : $$('Change research option');
+		button.title = this.state === 'running' ? $$('Stop the current search') : $$('Change configuration to do a new research');
+		button.onclick = this.cancelSearch.bind(this);
+		container.appendChild(button);
 	}
 };
 
@@ -117,7 +136,36 @@ CubeGenerator.prototype.renderLevelSelector = function() {
 	}, this.getLevels.bind(this));
 };
 
-/* Actions */
+
+CubeGenerator.prototype.renderResearchStatus = function() {
+	var container = this.elements.researchStatus,
+		progress, label, button;
+
+	var DBG_max = 1234567890,
+		DBG_value = 154567654;
+
+	container.innerHTML = '';
+
+	progress = document.createElement('progress');
+	progress.id = 'progress_generator_search';
+	progress.max = DBG_max;
+	progress.value = DBG_value;
+	container.appendChild(progress);
+
+	label = document.createElement('label');
+	label.htmlFor = 'progress_generator_search';
+	label.textContent = $$('%D / %D', DBG_value, DBG_max);
+	label.title = $$('%d / %d', DBG_value, DBG_max);
+	container.appendChild(label);
+
+	button = document.createElement('button');
+	button.textContent = $$('Stop');
+	button.title = $$('Stop the current search');
+	button.onclick = this.cancelSearch.bind(this);
+	container.appendChild(button);
+};
+
+/* Methods */
 
 CubeGenerator.prototype.changeState = function(state) {
 	var issues;
@@ -151,12 +199,24 @@ CubeGenerator.prototype.isRunningValid = function() {
 	return issues;
 };
 
+/* Action */
+
 CubeGenerator.prototype.changeLevelSelected = function(evt) {
 	this.computeOption.levels = Array.prototype.filter.call(evt.target.options, function(el) {
 		return el.selected;
 	}).map(function(el) {
 		return el.value;
 	});
+};
+
+CubeGenerator.prototype.saveCubes = function() {
+	console.warn('TODO: save cubes');
+	main.message('TODO → save selected cubes', 'WARNING');
+};
+
+CubeGenerator.prototype.cancelSearch = function() {
+	console.warn('TODO: cancel research', this.state);
+	main.message($$('TODO → cancel research (%s)', this.state), 'WARNING');
 };
 
 /* Action from worker */

@@ -79,6 +79,8 @@
 				case '%u':
 				case '%d':
 					return Number(k);
+				case '%D':
+					return prettyNb(k);
 				case '%G':
 					return Number(k).toString().toUpperCase();
 				case '%i':
@@ -189,6 +191,19 @@
 		}
 
 		return n.toFixed(digit - i.length);
+	}
+
+	function prettyNb(nb) {
+		var i = parseInt(nb, 10),
+			suffix = 0,
+			list = ['','k', 'M', 'G', 'T', 'P', 'Z'];
+
+		while (i/1000 > 1) {
+			suffix++;
+			i /= 1000;
+		}
+
+		return i.toFixed(2) + list[suffix];
 	}
 
 	function loadTranslation(){
