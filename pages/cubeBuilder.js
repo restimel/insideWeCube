@@ -70,16 +70,7 @@ CubeBuilder.prototype.render = function(container) {
 	item.textContent = $$('Cube color');
 	select.appendChild(item);
 	select.onchange = this.changeColor.bind(this);
-	Cube3D.getColor().forEach(function(color) {
-		var option = document.createElement('option');
-
-		option.value = color.code;
-		option.textContent = color.name;
-		if (this.color === color.code) {
-			option.selected = true;
-		}
-		select.appendChild(option);
-	}, this);
+	Helper.buildSelect(select, Cube3D.getColor(), this.color);
 	cubeProperty.appendChild(select);
 	this.elemColor = select;
 
@@ -107,12 +98,7 @@ CubeBuilder.prototype.render = function(container) {
 	item.textContent = $$('Load a cube');
 	select.appendChild(item);
 	main.control.action('getCubes', null, function(data) {
-		data.forEach(function(name) {
-			var option = document.createElement('option');
-
-			option.value = option.textContent = name;
-			select.appendChild(option);
-		});
+		Helper.buildSelect(select, data);
 	});
 	manager.appendChild(select);
 

@@ -38,13 +38,8 @@ LevelConstructor.prototype.render = function(container) {
 	var select = document.createElement('select');
 	select.onchange = this.changeLevel.bind(this);
 	select.appendChild(document.createElement('option'));
-	main.control.action('getLevels', {lid: this.lastLevel}, function(data) {
-		data.forEach(function(name) {
-			var option = document.createElement('option');
-			
-			option.value = option.textContent = name;
-			select.appendChild(option);
-		});
+	main.control.action('getLevels', {lid: this.lastLevel, groupByCube: true}, function(data) {
+		Helper.buildSelect(select, data);
 	});
 	container.appendChild(select);
 

@@ -1,5 +1,5 @@
 function CubeGenerator() {
-	this.advancedOptions = new AdvancedOptions({});
+	this.advancedOptions = new AdvancedOptions({hideMoreTools: true});
 	this.token = main.control.add(this.onMessage.bind(this));
 
 	this.init();

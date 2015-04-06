@@ -29,6 +29,9 @@ var Helper = {
 
 	buildSelect: function buildSelect(select, list, selectedList) {
 		selectedList = selectedList || [];
+		if (!(selectedList instanceof Array)) {
+			selectedList = [selectedList];
+		}
 
 		list.forEach(function(opt) {
 			var option, value;
@@ -44,7 +47,7 @@ var Helper = {
 
 				option = document.createElement('option');
 				option.textContent = opt.name;
-				option.value = value = opt.id || opt.name;
+				option.value = value = opt.id || opt.code || opt.name;
 				if (selectedList.indexOf(value) !== -1) {
 					option.selected = true;
 				}
