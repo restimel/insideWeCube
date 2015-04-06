@@ -67,6 +67,7 @@ var store = {
 		var lid = !!options.lid;
 		var allLvl = !!options.allLevels;
 		var groupByCube = !!options.groupByCube;
+		var name;
 
 		this.cubes.forEach(function(cube) {
 			if (cube.visible) {
@@ -77,10 +78,14 @@ var store = {
 					}
 
 					if (level.name && lvlList.indexOf(level.name === -1)) {
-						lvlList.push(level.name);
+						name = level.name;
 					} else {
-						lvlList.push(cube.name + '-' + (i+1));
+						name = cube.name + '-' + (i+1);
 					}
+					lvlList.push({
+						name: name,
+						id: cube.name + '§' + name
+					});
 				});
 
 				if (groupByCube) {
@@ -111,17 +116,30 @@ var store = {
 
 	getLevel: function(name) {
 		var lvl = null;
-		this.cubes.some(function(cube) {
+		var tmp = name.split('§');
+		var cubeName = tmp[0];
+		var lvlName = tmp[1];
+		var cube = this.getCube(cubeName);
+
+		if (!cube) {
+			lvlName = name;
+			this.cubes.some(getLevelFromCube);
+		} else {
+			getLevelFromCube(cube);
+		}
+
+		return lvl;
+
+		function getLevelFromCube(cube) {
 			return cube.levels.some(function(level, i) {
-				if ((level.name && level.name === name)
-				||	 cube.name + '-' + (i+1) === name) {
+				if ((level.name && level.name === lvlName)
+				||	 cube.name + '-' + (i+1) === lvlName) {
 					lvl = level;
 					return true;
 				}
 				return false;
 			});
-		});
-		return lvl;
+		}
 	},
 
 	removeCube: function(name) {
