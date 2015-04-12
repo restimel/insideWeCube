@@ -135,6 +135,10 @@ summary {
 
 /* Cube Generator */
 
+.generator-level-selector select[multiple] {
+	min-height: 12em;
+}
+
 .generator-research-status {
 	width: 100%;
 	padding: 0.5em;

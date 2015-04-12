@@ -680,6 +680,14 @@ Path.prototype.loadLevel = function(args) {
 	this.calculatePath();
 };
 
+Path.prototype.loadLevels = function(levels) {
+	levels.forEach(function(levelName, index) {
+		this.cube.levels[index].parse(store.getLevel(levelName).toJSON());
+	}, this);
+
+	this.runCompute();
+};
+
 Path.prototype.reset = function(args) {
 	this.cube = new Cube();
 	this.cube.init();

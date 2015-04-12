@@ -783,6 +783,14 @@
 		"en": "Some features will not work correctly with your browser:",
 		"fr": "Quelques fonctionnalités ne marcherons pas correctement avec votre navigateur :"
 	},
+	"%d / %d": {
+		"en": "%d / %d",
+		"fr": "%d /%d"
+	},
+	"%D / %D": {
+		"en": "%D / %D",
+		"fr": "%D /%D"
+	},
 	"License: (%s) you are free to use, share and modify it if you keep credits to authors and contributors.": {
 		"en": "License: (%s) you are free to use, share and modify it if you keep credits to authors and contributors.",
 		"fr": "Licence: (%s) vous êtes libre de l'utiliser, de le partager et de le modifier si vous continuez à l'attribuer aux auteurs et contributeurs."

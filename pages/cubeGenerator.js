@@ -150,12 +150,14 @@ CubeGenerator.prototype.renderResearchStatus = function() {
 	progress.id = 'progress_generator_search';
 	progress.max = DBG_max;
 	progress.value = DBG_value;
+	this.elements.runningProgress = progress;
 	container.appendChild(progress);
 
 	label = document.createElement('label');
 	label.htmlFor = 'progress_generator_search';
 	label.textContent = $$('%D / %D', DBG_value, DBG_max);
 	label.title = $$('%d / %d', DBG_value, DBG_max);
+	this.elements.runningState = label;
 	container.appendChild(label);
 
 	button = document.createElement('button');
@@ -183,6 +185,13 @@ CubeGenerator.prototype.changeState = function(state) {
 			} else {
 				main.message.clear();
 				this.state = state;
+				this.countSolvable = 0;
+				main.control.action('generator', {
+					action: 'compute',
+					data: {
+						levels: this.computeOption.levels
+					}
+				}, this.token);
 				console.warn('TODO run compute and switch page');
 			}
 			break;
@@ -220,11 +229,42 @@ CubeGenerator.prototype.cancelSearch = function() {
 };
 
 /* Action from worker */
+
 CubeGenerator.prototype.getLevels = function(list) {
 	Helper.buildSelect(this.elements.levelsSelect, list, this.computeOption.levels);
 };
 
+CubeGenerator.prototype.issueBeforeRun = function(issues) {
+	main.message(issues.join('<br>'), 'error', {html:true});
+	this.changeState('config');
+};
+
+CubeGenerator.prototype.runningState = function(data) {
+	var label = this.elements.runningState;
+	var progress = this.elements.runningProgress;
+
+	progress.value = data.index;
+	progress.max = data.total;
+
+	label.textContent = $$('%D / %D', data.index, data.total);
+	label.title = $$('%d / %d', data.index, data.total);
+};
+
+CubeGenerator.prototype.result = function(data) {
+	this.countSolvable++;
+	console.warn('todo ',this.countSolvable, data);
+};
+
+CubeGenerator.prototype.finished = function(data) {
+	console.warn('FINISH', data);
+};
+
+CubeGenerator.prototype.debug = function(data) { // TODO delete this method
+	console.debug(data);
+};
+
 /* listener */
+
 CubeGenerator.prototype.onMessage = function(data) {
 	var action = data.action;
 
