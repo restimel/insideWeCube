@@ -2,6 +2,7 @@ function AdvancedOptions(option) {
 	this.call_lid = option.call_lid;
 	this.call_pin = option.call_pin;
 	this.call_adv = option.call_adv;
+	this.call_trsfmLvl = option.call_trsfmLvl;
 
 	this.hideMoreTools = option.hideMoreTools;
 }
@@ -41,6 +42,13 @@ AdvancedOptions.prototype.render = function(container) {
 			longName: $$('If selected the pins do not block ball inside levels'),
 			selected: Helper.config.pin,
 			callback: this.call_pin
+		},
+		{
+			id: 'trsfmLvl',
+			shortName: $$('rotate levels'),
+			longName: $$('If selected, allow to rotate levels'),
+			selected: Helper.config.trsfmLvl,
+			callback: this.call_trsfmLvl
 		},
 		{
 			id: 'advanced',

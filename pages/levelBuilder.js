@@ -35,15 +35,39 @@ LevelConstructor.prototype.render = function(container) {
 	inputName.onchange = this.changeName.bind(this);
 	container.appendChild(inputName);
 
-	var select = document.createElement('select');
-	select.onchange = this.changeLevel.bind(this);
+	var slctLevel = document.createElement('select');
+	slctLevel.onchange = this.changeLevel.bind(this);
 	var option = document.createElement('option');
 	option.textContent = $$('Load a level');
 	option.disabled = true;
-	select.appendChild(option);
+	slctLevel.add(option);
 	main.control.action('getLevels', {lid: this.lastLevel, groupByCube: true}, function(data) {
-		Helper.buildSelect(select, data);
+		Helper.buildSelect(slctLevel, data);
 	});
+	container.appendChild(slctLevel);
+
+	/* Transform tool select */
+	var select = document.createElement('select');
+	select.className = 'font-awesome' + (Helper.config.trsfmLvl ? '' : ' hidden');
+	select.onchange = this.rotateLevel.bind(this);
+	option = document.createElement('option');
+	option.textContent = $$('Rotate the level');
+	option.disabled = true;
+	option.selected = true;
+	select.add(option);
+	option = document.createElement('option');
+	option.value = -90;
+	option.textContent = '\uf064 ' + $$('Rotate 90° clockwise');
+	select.add(option);
+	option = document.createElement('option');
+	option.value = 90;
+	option.textContent = '\uf112 ' + $$('Rotate 90° counter-clockwise');
+	select.add(option);
+	option = document.createElement('option');
+	option.value = 180;
+	option.textContent = '\uf079 ' + $$('Rotate 180°');
+	select.add(option);
+	this.transformTool = select;
 	container.appendChild(select);
 
 	this.renderLevel(container);
@@ -132,6 +156,14 @@ LevelConstructor.prototype.renderLevel = function(container) {
 	container.appendChild(table);
 };
 
+LevelConstructor.prototype.renderTransform = function(val) {
+	if (val) {
+		this.transformTool.classList.remove('hidden');
+	} else {
+		this.transformTool.classList.add('hidden');
+	}
+};
+
 LevelConstructor.prototype.reset = function(options) {
 	this.level = new Level('', options);
 };
@@ -169,6 +201,15 @@ LevelConstructor.prototype.changeLevel = function(e) {
 	}.bind(this));
 
 	this.cubePath.loadLevel(this.index, lvl);
+};
+
+LevelConstructor.prototype.rotateLevel = function(e) {
+	var val = typeof e === 'object' ? e.target.value : e;
+
+	this.level.rotate(val);
+	this.render();
+
+	this.cubePath.rotateLevel(this.index, val);
 };
 
 LevelConstructor.prototype.setAction = function(action) {

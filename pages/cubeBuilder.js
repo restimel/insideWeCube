@@ -8,6 +8,7 @@ function CubeBuilder(cubePath) {
 		call_pin: function() {
 			this.cubePath.computePath();
 		}.bind(this),
+		call_trsfmLvl: this.renderTransform.bind(this),
 		call_adv: this.renderAdvTools.bind(this)
 	});
 	cubePath.setBuilder(this);
@@ -398,7 +399,13 @@ CubeBuilder.prototype.renderAdvTools = function(val) {
 	} else {
 		this.toolBox.classList.add('hidden');
 	}
-}
+};
+
+CubeBuilder.prototype.renderTransform = function(val) {
+	this.levels.forEach(function(lvl) {
+		lvl.renderTransform(val);
+	});
+};
 
 CubeBuilder.prototype.setAction = function(event) {
 	var btn = event.target;

@@ -95,55 +95,51 @@ var Helper = {
 	Helper.config._values = {
 		lid: get('lid', true), /* if true, only lid levels can be sleected at last level */
 		pin: get('pin', false), /* if true, the ball is not block by pin */
+		trsfmLvl: get('trsfmLvl', false), /* if true, allow to transform level (rotation, ...) */
 		advanced: get('advanced', false) /* if true it display advanced tools */
 	}
 
-	Object.defineProperty(Helper.config, 'lid', {
-		get: function() {
-			return this._values.lid;
-		},
-		set: function(val) {
+	function buildGet(property) {
+		return function() {
+			return this._values[property];
+		};
+	}
+
+	function buildBooleanSet(property) {
+		return function(val) {
 			val = !!val;
+			var obj;
+
 			if (hasLocalStorage) {
-				self.localStorage.setItem('lid', val);
+				self.localStorage.setItem(property, val);
 			}
 			if (hasMainControl) {
-				main.control.action('config', {lid: val});
+				obj = {};
+				obj[property] = val;
+				main.control.action('config', obj);
 			}
-			this._values.lid = val;
-		}
+			this._values[property] = val;
+		};
+	}
+
+	Object.defineProperty(Helper.config, 'lid', {
+		get: buildGet('lid'),
+		set: buildBooleanSet('lid')
 	});
 
 	Object.defineProperty(Helper.config, 'pin', {
-		get: function() {
-			return this._values.pin;
-		},
-		set: function(val) {
-			val = !!val;
-			if (hasLocalStorage) {
-				self.localStorage.setItem('pin', val);
-			}
-			if (hasMainControl) {
-				main.control.action('config', {pin: val});
-			}
-			this._values.pin = val;
-		}
+		get: buildGet('pin'),
+		set: buildBooleanSet('pin')
+	});
+
+	Object.defineProperty(Helper.config, 'trsfmLvl', {
+		get: buildGet('trsfmLvl'),
+		set: buildBooleanSet('trsfmLvl')
 	});
 
 	Object.defineProperty(Helper.config, 'advanced', {
-		get: function() {
-			return this._values.advanced;
-		},
-		set: function(val) {
-			val = !!val;
-			if (hasLocalStorage) {
-				self.localStorage.setItem('advanced', val);
-			}
-			if (hasMainControl) {
-				main.control.action('config', {advanced: val});
-			}
-			this._values.advanced = val;
-		}
+		get: buildGet('advanced'),
+		set: buildBooleanSet('advanced')
 	});
 
 	Helper.mainLoaded = function() {

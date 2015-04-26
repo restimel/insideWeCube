@@ -736,6 +736,14 @@ Path.prototype.loadLevels = function(levels) {
 	// SPY.stop('loadLevels-run');
 };
 
+Path.prototype.rotateLevel = function(args) {
+	var index = args.index,
+		rotation = args.rotation;
+
+	this.cube.levels[index].rotate(rotation);
+	this.calculatePath();
+};
+
 Path.prototype.reset = function(args) {
 	this.cube = new Cube();
 	this.cube.init();

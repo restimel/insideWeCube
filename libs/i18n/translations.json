@@ -95,9 +95,13 @@
 		"en": "more tools",
 		"fr": "plus d'outils"
 	},
+	"rotate levels": {
+		"en": "rotate levels",
+		"fr": "rotation des plateaux"
+	},
 	"If not selected non-lid levels can be chosen at last level": {
 		"en": "If not selected non-lid levels can be chosen at last level",
-		"fr": "Si non sélectionné, tous les niveaux peuvent être choisi au dernier niveau"
+		"fr": "Si non sélectionné, tous les plateaux peuvent être choisis au dernier niveau"
 	},
 	"If selected the pins do not block ball inside levels": {
 		"en": "If selected the pins do not block ball inside levels",
@@ -106,6 +110,10 @@
 	"If selected more tools are available to edit levels (like setting pin, start Cell, ...)": {
 		"en": "If selected more tools are available to edit levels (like setting pin, start Cell, ...)",
 		"fr": "Si sélectionné, plus d'outils sont disponible pour éditer les niveaux (comme définir des embossements, le départ ...)"
+	},
+	"If selected, allow to rotate levels": {
+		"en": "If selected, allow to rotate levels",
+		"fr": "Si sélectionné, les plateaux peuvent être tournés."
 	},
 	"An INSIDE³ solver: ": {
 		"en": "An INSIDE³ solver: ",
@@ -730,6 +738,22 @@
 	"Load a level": {
 		"en": "Load a level",
 		"fr": "Charger un plateau"
+	},
+	"Rotate the level": {
+		"en": "Rotate the level",
+		"fr": "Tourner le plateau"
+	},
+	"Rotate 90° clockwise": {
+		"en": "Rotate 90° clockwise",
+		"fr": "Tourner de 90° sens horaire"
+	},
+	"Rotate 90° counter-clockwise": {
+		"en": "Rotate 90° counter-clockwise",
+		"fr": "Tourner de 90° sens anti-horaire"
+	},
+	"Rotate 180°": {
+		"en": "Rotate 180°",
+		"fr": "Tourner de 180°"
 	},
 	"Maps preview": {
 		"en": "Maps preview",

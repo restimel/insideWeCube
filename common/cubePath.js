@@ -20,6 +20,18 @@ CubePath.prototype.loadLevel = function(index, levelName) {
 	main.control.action('path', data, this.token);
 };
 
+CubePath.prototype.rotateLevel = function(index, rotation) {
+	var data = {
+		action: 'rotateLevel',
+		data: {
+			index: index,
+			rotation: rotation
+		}
+	};
+
+	main.control.action('path', data, this.token);
+};
+
 CubePath.prototype.reset = function(index, levelName) {
 	var data = {
 		action: 'reset'
