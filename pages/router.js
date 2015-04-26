@@ -20,7 +20,7 @@ function Router(contentContainer) {
 			object: cubeAnalyzer
 		},
 		{
-			name: 'Look for new maze?',
+			name: 'Look for new mazes!',
 			route: 'generator',
 			object: cubeGenerator
 		},

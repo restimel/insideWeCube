@@ -63,18 +63,22 @@ summary {
 
 .message .info {
 	box-shadow:	-4px 0px 6px 0px #84eaf6;
+	background-color: rgba(240, 250, 255, 0.6);
 }
 
 .message .success {
 	box-shadow:	-4px 0px 6px 0px #59d86c;
+	background-color: rgba(240, 255, 240, 0.6);
 }
 
 .message .warning {
 	box-shadow:	-4px 0px 6px 0px #e9d86c;
+	background-color: rgba(255, 250, 240, 0.6);
 }
 
 .message .error {
 	box-shadow:	-4px 0px 6px 0px #f68484;
+	background-color: rgba(255, 240, 240, 0.6);
 }
 
 /* Route Menu */

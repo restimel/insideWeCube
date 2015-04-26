@@ -1,7 +1,8 @@
 v1.1 → v1.2
 New features
-	* Manage level charateristics such as lid (which can not be moved to other levels) and pin (which can block the ball)
+	* Manage level characteristics such as lid (which can not be moved to other levels) and pin (which can block the ball)
 	* Manage a start and a finish at a different place
+	* Allow to rotate levels
 
 Bugs fixed
 	* Fix error thrown in console when moving to another menu while a temporary message is displayed.
