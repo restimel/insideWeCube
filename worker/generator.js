@@ -39,15 +39,16 @@ Generator.prototype.runningCompute = function() {
 	this.running = true;
 	this.timer = performance.now();
 	
-	var t = performance.now();
-	var count = 0;
-	var t1, t2;
-	var measure = {t1:0, t2:0};
+	// var t = performance.now();
+	// var count = 0;
+	// var t1, t2;
+	// var measure = {t1:0, t2:0};
 	while (this.running) {
-		count++;
-		t1 = performance.now();
-		this.path.loadLevels(this.lastGLevel.getLevels().map(LevelGenerator._getLvlId));
-		measure.t1 += performance.now() - t1;
+		// count++;
+		// t1 = performance.now();
+		// this.path.loadLevels(this.lastGLevel.getLevels().map(LevelGenerator._getLvlId));
+		this.path.loadLevels(this.lastGLevel.getLevels());
+		// measure.t1 += performance.now() - t1;
 
 		if (performance.now() - this.timer > timeBeforeRefresh) {
 			this.result('runningState', this.lastGLevel.getIndexStatus());
@@ -58,12 +59,12 @@ Generator.prototype.runningCompute = function() {
 		if (this.lastGLevel.inc() === -1) {
 			this.running = false;
 		}
-		measure.t2 += performance.now() - t2;
+		// measure.t2 += performance.now() - t2;
 	}
-	t = performance.now() -t;
-	this.result('debug',{name:'total', time: t, mean: t/count});
-	this.result('debug',{name:'path', time: measure.t1, mean: measure.t1/count});
-	this.result('debug',{name:'next', time: measure.t2, mean: measure.t2/count});
+	// t = performance.now() -t;
+	// this.result('debug',{name:'total', time: t, mean: t/count});
+	// this.result('debug',{name:'path', time: measure.t1, mean: measure.t1/count});
+	// this.result('debug',{name:'next', time: measure.t2, mean: measure.t2/count});
 };
 
 Generator.prototype.pathResult = function(rslt) {

@@ -41,6 +41,7 @@ Path.prototype.runCompute = function() {
 
 	this.setTarget(finishCell);
 
+	// SPY.start('runCompute-createVar');
 	var p = [],
 		w = [],
 		info = {
@@ -49,7 +50,9 @@ Path.prototype.runCompute = function() {
 			deadEnd: -1
 		},
 		that = this,
-		searchCell = function(cell) {
+		searchCell = function(cell){
+			// SPY.start('searchCell');
+			var r = (function(cell) {
 			var i, li = p.length;
 			
 			for (i = li - 1; i >= 0; i--) {
@@ -70,15 +73,44 @@ Path.prototype.runCompute = function() {
 			}
 
 			return false;
-		},
+		})(cell);
+		// SPY.stop('searchCell');
+		return r;},
 		addCell = function(ocell) {
+			// SPY.start('addCell');
+			// SPY.start('addCell-1');
 			var dst = ocell.dst + 1,
 				nextCells = this.cube.getNeighbours(ocell.x, ocell.y, ocell.z);
+			// SPY.stop('addCell-1');
+			// SPY.start('addCell-2');
 			p.push(ocell);
+			// SPY.stop('addCell-2');
 
 			ocell.linked = [];
 
-			nextCells.forEach(function(cell){
+			// SPY.start('addCell-3');
+			// nextCells.forEach(function(cell){
+			// 	cell = that.createCell(cell);
+			// 	cell.dst = dst;
+
+			// 	var f = searchCell(cell);
+			// 	if (!f) {
+			// 		cell.parent = ocell;
+			// 		w.push(cell);
+			// 		ocell.linked.push(cell);
+			// 	} else {
+			// 		if (nextCells.length === 1) {
+			// 			info.deadEnd++;
+			// 		}
+			// 		ocell.linked.push(f);
+			// 	}
+			// });
+
+			var i = 0;
+			var li = nextCells.length;
+			var cell;
+			while (i<li) {
+				cell = nextCells[i];
 				cell = that.createCell(cell);
 				cell.dst = dst;
 
@@ -93,9 +125,13 @@ Path.prototype.runCompute = function() {
 					}
 					ocell.linked.push(f);
 				}
-			});
+				i++;
+			}
+			// SPY.stop('addCell-3');
+			// SPY.stop('addCell');
 		}.bind(this),
 		findClosest = function() {
+			// SPY.start('findClosest');
 			var dst = Infinity,
 				pos = -1,
 				i, li = w.length;
@@ -107,9 +143,11 @@ Path.prototype.runCompute = function() {
 				}
 			}
 
+// SPY.stop('findClosest');
 			return pos;
 		},
 		createPath = function() {
+			// SPY.start('createPath');
 			var i, cell;
 			while (w.length) {
 				i = findClosest();
@@ -123,8 +161,10 @@ Path.prototype.runCompute = function() {
 
 				addCell(cell);
 			}
+			// SPY.stop('createPath');
 		},
 		firstCell = this.createCell(startCell);
+	// SPY.stop('runCompute-createVar');
 
 	firstCell.dst = 0;
 	w.push(firstCell);
@@ -681,11 +721,19 @@ Path.prototype.loadLevel = function(args) {
 };
 
 Path.prototype.loadLevels = function(levels) {
-	levels.forEach(function(levelName, index) {
-		this.cube.levels[index].parse(store.getLevel(levelName).toJSON());
-	}, this);
+	// SPY.start('loadLevels-load');
+	// levels.forEach(function(levelName, index) {
+	// 	this.cube.levels[index].parse(store.getLevel(levelName).toJSON());
+	// }, this);
 
+	levels.forEach(function(lvl, index) {
+		this.cube.levels[index] = lvl;
+	}, this);
+	// SPY.stop('loadLevels-load');
+
+	// SPY.start('loadLevels-run');
 	this.runCompute();
+	// SPY.stop('loadLevels-run');
 };
 
 Path.prototype.reset = function(args) {

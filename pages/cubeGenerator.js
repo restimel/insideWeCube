@@ -14,6 +14,8 @@ CubeGenerator.prototype.init = function() {
 
 /* render */
 CubeGenerator.prototype.render = function(container) {
+	main.message($$('The generator is under developpement and is not fully available.<br>You can play with it but there is no warranty that all features are working correctly!<br>Some buttons can be linked to no actions.<br><br>If you fall in an unwanted behavior and nothing is working anymore you should reload the page.'), 'error', {html:true});
+
 	this.container = container;
 	this.container.innerHTML = '';
 
@@ -208,6 +210,36 @@ CubeGenerator.prototype.isRunningValid = function() {
 	return issues;
 };
 
+CubeGenerator.prototype.addCubeBox = function(levels, difficulty, maxDifficulty) {
+	var container = this.elements.cubeSolution;
+
+	var box = document.createElement('div');
+	box.className = 'cube-generated';
+
+	var meter = document.createElement('meter');
+	meter.value = difficulty;
+	meter.optimum = 0;
+	meter.low = maxDifficulty / 3;
+	meter.high = 2 * maxDifficulty / 3;
+	meter.max = maxDifficulty;
+	box.appendChild(meter);
+
+	var input = document.createElement('input');
+	input.type = 'checkbox';
+	input.title = $$('Save this configuration as a cube');
+	input.onchange = function() {console.log('todo')};
+	box.appendChild(input);
+
+	input = document.createElement('input');
+	input.type = 'text';
+	input.placeholder = $$('cube name');
+	input.title = $$('name of the cube when it will be saved');
+	input.onchange = function() {console.log('todo')};
+	box.appendChild(input);
+
+	container.appendChild(box);
+};
+
 /* Action */
 
 CubeGenerator.prototype.changeLevelSelected = function(evt) {
@@ -253,10 +285,28 @@ CubeGenerator.prototype.runningState = function(data) {
 CubeGenerator.prototype.result = function(data) {
 	this.countSolvable++;
 	console.warn('todo ',this.countSolvable, data);
+
+	var available = data.accessible.length;
+	var length = data.info.length;
+	var deadEnd = data.info.deadEnd;
+	var difficulty = available; //TODO
+	var maxDifficulty = 216;
+
+	// difficulty = length * 1.1 / 24 + // 11
+	// 				 (available - length) * 1.5 / 24 + // 15
+	// 				 //chgDirection * 0.3 + // 0
+	// 				 chgLevel * 1.5 / 7 + // ~15 (current max ~7)
+	// 				 chgTop * 1.85 + // ~35 (current max 17)
+	// 				 nbMovement * 0.1 + // ~5 (current max ~3.5)
+	// 				 nbMvtOutPath * 0.1 +
+	// 				 nbDifficultCrossing * 5, // ~15 (current max 3)
+	// 	maxDifficulty = 95,
+
+	this.addCubeBox(data.levels, difficulty, maxDifficulty);
 };
 
 CubeGenerator.prototype.finished = function(data) {
-	console.warn('FINISH', data);
+	console.warn('FINISH', this.countSolvable, data);
 };
 
 CubeGenerator.prototype.debug = function(data) { // TODO delete this method
