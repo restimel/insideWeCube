@@ -40,6 +40,7 @@ LevelConstructor.prototype.render = function(container) {
 	var option = document.createElement('option');
 	option.textContent = $$('Load a level');
 	option.disabled = true;
+	option.selected = true;
 	slctLevel.add(option);
 	main.control.action('getLevels', {lid: this.lastLevel, groupByCube: true}, function(data) {
 		Helper.buildSelect(slctLevel, data);
