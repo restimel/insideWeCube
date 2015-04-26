@@ -37,7 +37,10 @@ LevelConstructor.prototype.render = function(container) {
 
 	var select = document.createElement('select');
 	select.onchange = this.changeLevel.bind(this);
-	select.appendChild(document.createElement('option'));
+	var option = document.createElement('option');
+	option.textContent = $$('Load a level');
+	option.disabled = true;
+	select.appendChild(option);
 	main.control.action('getLevels', {lid: this.lastLevel, groupByCube: true}, function(data) {
 		Helper.buildSelect(select, data);
 	});

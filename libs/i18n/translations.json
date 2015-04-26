@@ -727,6 +727,10 @@
 		"en": "Load a cube",
 		"fr": "Charger un cube"
 	},
+	"Load a level": {
+		"en": "Load a level",
+		"fr": "Charger un plateau"
+	},
 	"Maps preview": {
 		"en": "Maps preview",
 		"fr": "Affichage des plans"
