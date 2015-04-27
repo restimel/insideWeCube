@@ -35,7 +35,7 @@ function main(container){
 	Helper.mainLoaded();
 }
 
-main.version = '1.1.2';
+main.version = '1.1.3';
 
 main.message = (function() {
 	var container = document.createDocumentFragment(),
