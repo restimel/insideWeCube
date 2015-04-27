@@ -20,6 +20,7 @@ CubeBuilder.prototype.init = function() {
 
 	this.name = '';
 	this.color = 'blue';
+	this.displayingShortPath = false;
 
 	var nbLevels = 7;
 
@@ -288,7 +289,16 @@ CubeBuilder.prototype.renderInfo = function(info) {
 		elMovement = document.createElement('section'),
 		elCbReverse = document.createElement('section'),
 		elHardCells = document.createElement('section'),
+		dspShortPath = document.createElement('button'),
 		meter, label;
+
+	var changeShortDisplay = function() {
+		this.displayingShortPath = !this.displayingShortPath;
+		this.displayShortPath();
+
+		dspShortPath.title = this.displayingShortPath ? $$('hide the shortest path') : $$('show the shortest path');
+		dspShortPath.textContent = this.displayingShortPath ? '\uf070' : '\uf06e';
+	}.bind(this);
 
 	availability.className = 'info';
 	elDeadEnd.className = 'info';
@@ -299,6 +309,11 @@ CubeBuilder.prototype.renderInfo = function(info) {
 
 		pathLength.className = 'info';
 		pathLength.textContent = $$('%i cells must be crossed (%2%%).', length, 100 * length/available);
+
+		changeShortDisplay(); changeShortDisplay();
+		dspShortPath.onclick = changeShortDisplay;
+		dspShortPath.className = 'font-awesome';
+		pathLength.appendChild(dspShortPath);
 
 		elDeadEnd.textContent = $$('%i dead-ends (%2%%)', deadEnd, 100 * (available - length)/available);
 
@@ -365,6 +380,7 @@ CubeBuilder.prototype.renderInfo = function(info) {
 CubeBuilder.prototype.renderMiniMap = function(mapElements) {
 	if (this.cubeMinimap) {
 		this.cubeMinimap.innerHTML = mapElements.join(' ');
+		this.displayShortPath();
 	}
 };
 
@@ -420,6 +436,49 @@ CubeBuilder.prototype.setAction = function(event) {
 
 		main.removeClass('selected', this.toolBox);
 		btn.classList.add('selected');
+	}
+};
+
+CubeBuilder.prototype.managePath = function(data) {
+	var cells = data.accessible;
+	var info = data.info;
+	var c;
+
+	/* accessibles */
+	main.removeClass('accessible-path');
+	cells.forEach(function(cell) {
+		var el = document.getElementById('main-' + cell.x + '-' + cell.y + '-' + cell.z);
+		if (el) {
+			el.classList.add('accessible-path');
+		} else {
+			console.warn('element not found: ', cell, cells)
+		}
+	});
+
+	this.shortPath = [];
+	c = info.finish;
+
+	while(c) {
+		this.shortPath.push({
+			x: c.x,
+			y: c.y,
+			z: c.z
+		});
+		c = c.parent;
+	}
+};
+
+CubeBuilder.prototype.displayShortPath = function(event) {
+	main.removeClass('short-path');
+	if (this.displayingShortPath) {
+		this.shortPath.forEach(function(cell) {
+		var el = document.getElementById('main-' + cell.x + '-' + cell.y + '-' + cell.z);
+			if (el) {
+				el.classList.add('short-path');
+			} else {
+				console.warn('element not found: ', cell, this.shortPath)
+			}
+		});
 	}
 };
 

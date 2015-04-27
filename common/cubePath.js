@@ -90,15 +90,7 @@ CubePath.prototype.getPath = function(data) {
 	main.control.action('path', {action: 'getCubeMap', data: {orientation: this.mapOrientation, accessible: cells}}, this.token);
 	main.control.action('path', {action: 'getPathInfo', data: data}, this.token);
 
-	main.removeClass('accessible-path');
-	cells.forEach(function(cell) {
-		var el = document.getElementById('main-' + cell.x + '-' + cell.y + '-' + cell.z);
-		if (el) {
-			el.classList.add('accessible-path');
-		} else {
-			console.warn('element not found: ', cell, cells)
-		}
-	});
+	this.cubeBuilder.managePath(data);
 };
 
 CubePath.prototype.getPathInfo = function(info) {

@@ -195,6 +195,14 @@
 		"en": "Delete cubes",
 		"fr": "Supprimer des cubes"
 	},
+	"hide the shortest path": {
+		"en": "hide the shortest path",
+		"fr": "ne plus afficher le plus court chemin"
+	},
+	"show the shortest path": {
+		"en": "show the shortest path",
+		"fr": "afficher le plus court chemin"
+	},
 	"Cube can be solved.": {
 		"en": "Cube can be solved.",
 		"fr": "Le cube peut être résolu."
