@@ -1,6 +1,7 @@
 function CubeGenerator() {
 	this.advancedOptions = new AdvancedOptions({hideMoreTools: true});
 	this.token = main.control.add(this.onMessage.bind(this));
+	this.cube = new Cube();
 
 	this.init();
 }
@@ -210,7 +211,7 @@ CubeGenerator.prototype.isRunningValid = function() {
 	return issues;
 };
 
-CubeGenerator.prototype.addCubeBox = function(levels, difficulty, maxDifficulty) {
+CubeGenerator.prototype.addCubeBox = function(levels, accessible, difficulty, maxDifficulty) {
 	var container = this.elements.cubeSolution;
 
 	var box = document.createElement('div');
@@ -227,6 +228,7 @@ CubeGenerator.prototype.addCubeBox = function(levels, difficulty, maxDifficulty)
 	var input = document.createElement('input');
 	input.type = 'checkbox';
 	input.title = $$('Save this configuration as a cube');
+	input.onclick = function(e) {e.stopPropagation();};
 	input.onchange = function() {console.log('todo')};
 	box.appendChild(input);
 
@@ -234,8 +236,17 @@ CubeGenerator.prototype.addCubeBox = function(levels, difficulty, maxDifficulty)
 	input.type = 'text';
 	input.placeholder = $$('cube name');
 	input.title = $$('name of the cube when it will be saved');
+	input.onclick = function(e) {e.stopPropagation();};
 	input.onchange = function() {console.log('todo')};
 	box.appendChild(input);
+
+	box.onclick = function(e) {
+		console.log(levels);
+		this.cube.load(levels, function() {
+			var maps = this.cube.renderMap('top', accessible);
+			this.elements.cubeDetails.innerHTML = maps.join('<br>');
+		}.bind(this));
+	}.bind(this);
 
 	container.appendChild(box);
 };
@@ -286,7 +297,8 @@ CubeGenerator.prototype.result = function(data) {
 	this.countSolvable++;
 	console.warn('todo ',this.countSolvable, data);
 
-	var available = data.accessible.length;
+	var accessible = data.accessible;
+	var available = accessible.length;
 	var length = data.info.length;
 	var deadEnd = data.info.deadEnd;
 	var difficulty = available; //TODO
@@ -302,7 +314,7 @@ CubeGenerator.prototype.result = function(data) {
 	// 				 nbDifficultCrossing * 5, // ~15 (current max 3)
 	// 	maxDifficulty = 95,
 
-	this.addCubeBox(data.levels, difficulty, maxDifficulty);
+	this.addCubeBox(data.levels, accessible, difficulty, maxDifficulty);
 };
 
 CubeGenerator.prototype.finished = function(data) {

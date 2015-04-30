@@ -25,6 +25,31 @@ Cube.prototype.clone = function(alsoMetaData) {
 	return cube;
 };
 
+Cube.prototype.load = function (levels, callback) {
+	var that = this;
+	var count = levels.length;
+
+	levels.forEach(function(lvl, i) {
+		if (typeof store === 'object') {
+			that.addLevel(i, store.getLevel(new Level(lvl)));
+			checkEnd();
+		}
+		else {
+			main.control.action('getLevel', lvl, function(json) {
+				that.addLevel(i, new Level(json));
+				checkEnd();
+			});
+		}
+	});
+
+	function checkEnd() {
+		--count;
+		if (!count) {
+			callback();
+		}
+	}
+};
+
 Cube.prototype.addLevel = function (z, level) {
 	this.levels[z] = level;
 };
