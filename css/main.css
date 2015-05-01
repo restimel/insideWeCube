@@ -139,12 +139,34 @@ summary {
 
 /* Cube Generator */
 
+.generator-menu {
+	position: absolute;
+	left: 0;
+	width: 300px;
+	top: 10px;
+	height: 50px;
+	text-align: center;
+}
+
+.generator-level-selector {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 60px;
+	bottom: 0;
+	overflow: auto;
+}
+
 .generator-level-selector select[multiple] {
 	min-height: 12em;
 }
 
 .generator-research-status {
-	width: 100%;
+	position: absolute;
+	top: 10px;
+	height: 50px;
+	left: 300px;
+	right: 175px;
 	padding: 0.5em;
 	text-align: center;
 }
@@ -173,13 +195,19 @@ summary {
 .generator-cube-solution {
 	position: absolute;
 	left: 0;
-	right: 150px;
+	right: 175px;
+	top: 60px;
+	bottom: 0;
+	overflow: auto;
 }
 
 .generator-cube-details {
 	position: absolute;
 	width: 150px;
 	right: 0;
+	top: 1em;
+	bottom: 0;
+	overflow: auto;
 }
 
 .cube-generated {

@@ -186,6 +186,10 @@ dialog.fake-dialog {
    -ms-transform: translateX(-50px) translateY(-200px) rotateX(-135deg);
    transform: translateX(-50px) translateY(-200px) rotateX(-135deg);
 }
+.cube-shadow .grid{
+   border-collapse: collapse;
+}
+
 .cube-shadow .grid>td{
    border: 3px dotted gray;
    border-collapse: collapse;
