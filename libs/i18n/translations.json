@@ -99,6 +99,62 @@
 		"en": "rotate levels",
 		"fr": "rotation des plateaux"
 	},
+	"Select all levels that can be put inside the cube. (You need to select at least 7 levels)": {
+		"en": "Select all levels that can be put inside the cube. (You need to select at least 7 levels)",
+		"fr": "Sélectionnez tous les plateaux que vous voulez éventuellement mettre dans le cube. (Vous devez choisir au moins 7 plateaux)"
+	},
+	"Select at least 7 levels": {
+		"en": "Select at least 7 levels",
+		"fr": "Choisissez au moins 7 plateaux"
+	},
+	"Please select at least 1 lid level": {
+		"en": "Please select at least 1 lid level",
+		"fr": "Veuillez choisir au moins 1 plateau couvercle"
+	},
+	"Look for possible maze": {
+		"en": "Look for possible maze",
+		"fr": "Rechercher les combinaisons possible"
+	},
+	"Look for solvable cubes from selected levels": {
+		"en": "Look for solvable cubes from selected levels",
+		"fr": "Recherche les cubes réalisable à partir des plateaux choisis"
+	},
+	"Stop": {
+		"en": "Stop",
+		"fr": "Arrêter"
+	},
+	"Stop the current search": {
+		"en": "Stop the current search",
+		"fr": "Arrêter la recherche en cours"
+	},
+	"Choose levels": {
+		"en": "Choose levels",
+		"fr": "Choix des plateaux"
+	},
+	"cube name": {
+		"en": "cube name",
+		"fr": "nom du cube"
+	},
+	"name of the cube when it will be saved": {
+		"en": "name of the cube when it will be saved",
+		"fr": "nom du cube quand il sera enregistré"
+	},
+	"Save this configuration as a cube": {
+		"en": "Save this configuration as a cube",
+		"fr": "Enregistrer cette configuration en tant que cube"
+	},
+	"(search completed)": {
+		"en": "(search completed)",
+		"fr": "(analyse terminée)"
+	},
+	"Number of solvable cubes: %D": {
+		"en": "Number of solvable cubes: %D",
+		"fr": "Nombre de cubes réalisable: %D"
+	},
+	"Number of solvable cubes: %d": {
+		"en": "Number of solvable cubes: %d",
+		"fr": "Nombre de cubes réalisable: %d"
+	},
 	"If not selected non-lid levels can be chosen at last level": {
 		"en": "If not selected non-lid levels can be chosen at last level",
 		"fr": "Si non sélectionné, tous les plateaux peuvent être choisis au dernier niveau"

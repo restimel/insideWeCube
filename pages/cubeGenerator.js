@@ -57,6 +57,8 @@ CubeGenerator.prototype.render = function(container) {
 	this.renderMenu();
 	this.renderLevelSelector();
 	this.renderResearchStatus();
+
+	this.changeState();
 };
 
 CubeGenerator.prototype.renderMenu = function() {
@@ -142,24 +144,24 @@ CubeGenerator.prototype.renderLevelSelector = function() {
 
 CubeGenerator.prototype.renderResearchStatus = function() {
 	var container = this.elements.researchStatus,
-		progress, label, button;
+		progress, label, button, div;
 
-	var DBG_max = 1234567890,
-		DBG_value = 154567654;
+	var init_max = 0,
+		init_value = 1;
 
 	container.innerHTML = '';
 
 	progress = document.createElement('progress');
 	progress.id = 'progress_generator_search';
-	progress.max = DBG_max;
-	progress.value = DBG_value;
+	progress.max = init_max;
+	progress.value = init_value;
 	this.elements.runningProgress = progress;
 	container.appendChild(progress);
 
 	label = document.createElement('label');
 	label.htmlFor = 'progress_generator_search';
-	label.textContent = $$('%D / %D', DBG_value, DBG_max);
-	label.title = $$('%d / %d', DBG_value, DBG_max);
+	label.textContent = $$('%D / %D', init_value, init_max);
+	label.title = $$('%d / %d', init_value, init_max);
 	this.elements.runningState = label;
 	container.appendChild(label);
 
@@ -167,18 +169,31 @@ CubeGenerator.prototype.renderResearchStatus = function() {
 	button.textContent = $$('Stop');
 	button.title = $$('Stop the current search');
 	button.onclick = this.cancelSearch.bind(this);
+	this.elements.stopSearch = button;
 	container.appendChild(button);
+
+	div = document.createElement('div');
+	this.elements.nbFound = div;
+	container.appendChild(div);
 };
 
 /* Methods */
 
 CubeGenerator.prototype.changeState = function(state) {
-	var issues;
+	var issues
+
+	if (!state) {
+		state = this.state;
+	}
 
 	switch(state) {
 		case 'config':
 			this.state = state;
-			console.warn('TODO: changeState config')
+
+			this.elements.levelSelector.classList.remove('hidden');
+			this.elements.researchStatus.classList.add('hidden');
+			this.elements.cubeSolution.classList.add('hidden');
+			this.elements.cubeDetails.classList.add('hidden');
 			break;
 		case 'running':
 			issues = this.isRunningValid();
@@ -195,7 +210,26 @@ CubeGenerator.prototype.changeState = function(state) {
 						levels: this.computeOption.levels
 					}
 				}, this.token);
-				console.warn('TODO run compute and switch page');
+				console.warn('TODO change menu');
+
+				this.elements.levelSelector.classList.add('hidden');
+				this.elements.researchStatus.classList.remove('hidden');
+				this.elements.cubeSolution.classList.remove('hidden');
+				this.elements.cubeDetails.classList.remove('hidden');
+
+				if (this.elements.stopSearch) {
+					this.elements.stopSearch.classList.remove('hidden');
+				}
+			}
+			break;
+		case 'result':
+			this.elements.levelSelector.classList.add('hidden');
+			this.elements.researchStatus.classList.remove('hidden');
+			this.elements.cubeSolution.classList.remove('hidden');
+			this.elements.cubeDetails.classList.remove('hidden');
+
+			if (this.elements.stopSearch) {
+				this.elements.stopSearch.classList.add('hidden');
 			}
 			break;
 	}
@@ -241,11 +275,13 @@ CubeGenerator.prototype.addCubeBox = function(levels, accessible, difficulty, ma
 	box.appendChild(input);
 
 	box.onclick = function(e) {
-		console.log(levels);
 		this.cube.load(levels, function() {
 			var maps = this.cube.renderMap('top', accessible);
 			this.elements.cubeDetails.innerHTML = maps.join('<br>');
 		}.bind(this));
+
+		main.removeClass('box-active');
+		box.classList.add('box-active');
 	}.bind(this);
 
 	container.appendChild(box);
@@ -285,17 +321,20 @@ CubeGenerator.prototype.issueBeforeRun = function(issues) {
 CubeGenerator.prototype.runningState = function(data) {
 	var label = this.elements.runningState;
 	var progress = this.elements.runningProgress;
+	var total = data.total;
+	var value = Math.min(data.index, total);
 
-	progress.value = data.index;
-	progress.max = data.total;
+	progress.value = value;
+	progress.max = total;
 
-	label.textContent = $$('%D / %D', data.index, data.total);
-	label.title = $$('%d / %d', data.index, data.total);
+	label.textContent = $$('%D / %D', value, total);
+	label.title = $$('%d / %d', value, total);
 };
 
 CubeGenerator.prototype.result = function(data) {
 	this.countSolvable++;
-	console.warn('todo ',this.countSolvable, data);
+	this.elements.nbFound.textContent = $$('Number of solvable cubes: %D', this.countSolvable);
+	this.elements.nbFound.title = $$('Number of solvable cubes: %d', this.countSolvable);
 
 	var accessible = data.accessible;
 	var available = accessible.length;
@@ -318,7 +357,9 @@ CubeGenerator.prototype.result = function(data) {
 };
 
 CubeGenerator.prototype.finished = function(data) {
-	console.warn('FINISH', this.countSolvable, data);
+	this.elements.runningState.textContent += ' ' + $$('(search completed)');
+
+	this.changeState('result');
 };
 
 CubeGenerator.prototype.debug = function(data) { // TODO delete this method

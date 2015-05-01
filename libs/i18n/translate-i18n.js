@@ -203,7 +203,7 @@
 			i /= 1000;
 		}
 
-		return i.toFixed(2) + list[suffix];
+		return (suffix ? i.toFixed(2) : i) + list[suffix];
 	}
 
 	function loadTranslation(){

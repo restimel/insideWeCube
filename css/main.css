@@ -150,19 +150,36 @@ summary {
 }
 
 .generator-research-status progress {
-	width: 160px;
+	width: 300px;
 }
 
 .generator-research-status progress+label {
 	display: inline-block;
 	position: relative;
-	left: -160px;
-	width: 160px;
+	left: -300px;
+	width: 300px;
 }
 
 .generator-research-status button {
 	position: relative;
-	left: -120px;
+	left: -280px;
+}
+
+.generator-research-status div {
+	position: relative;
+	left: -150px;
+}
+
+.generator-cube-solution {
+	position: absolute;
+	left: 0;
+	right: 150px;
+}
+
+.generator-cube-details {
+	position: absolute;
+	width: 150px;
+	right: 0;
 }
 
 .cube-generated {
@@ -172,6 +189,11 @@ summary {
 	box-shadow: 0px 6px 10px 0px #7f7f7f;
 	border-radius: 10px;
 	margin: 5px;
+	cursor: pointer;
+}
+
+.cube-generated.box-active {
+	box-shadow: 0px 6px 15px 0px #afaf3f;
 }
 
 .cube-generated meter {
