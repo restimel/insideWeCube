@@ -36,6 +36,12 @@ CubeGenerator.prototype.render = function(container) {
 	this.elements.levelSelector = section;
 	container.appendChild(section);
 
+	/* Information */
+	section = document.createElement('section');
+	section.className = 'generator-information';
+	this.elements.researchInfo = section;
+	container.appendChild(section);
+
 	/* Research evolution */
 	section = document.createElement('section');
 	section.className = 'generator-research-status';
@@ -177,10 +183,27 @@ CubeGenerator.prototype.renderResearchStatus = function() {
 	container.appendChild(div);
 };
 
+CubeGenerator.prototype.renderInfo = function() {
+	var container = this.elements.researchInfo;
+	container.innerHTML = '';
+
+	var div;
+
+	div = document.createElement('div');
+	div.innerHTML = $$('Nb level selected: %d', this.computeOption.levels.length);
+	container.appendChild(div);
+};
+
 /* Methods */
 
 CubeGenerator.prototype.changeState = function(state) {
-	var issues
+	var issues;
+	var updateState = function() {
+		if (state !== this.state) {
+			this.state = state;
+			this.renderMenu();
+		}
+	}.bind(this);
 
 	if (!state) {
 		state = this.state;
@@ -188,9 +211,10 @@ CubeGenerator.prototype.changeState = function(state) {
 
 	switch(state) {
 		case 'config':
-			this.state = state;
+			updateState();
 
 			this.elements.levelSelector.classList.remove('hidden');
+			this.elements.researchInfo.classList.remove('hidden');
 			this.elements.researchStatus.classList.add('hidden');
 			this.elements.cubeSolution.classList.add('hidden');
 			this.elements.cubeDetails.classList.add('hidden');
@@ -202,7 +226,7 @@ CubeGenerator.prototype.changeState = function(state) {
 				main.message(issues.join('<br>'), 'error', {html:true});
 			} else {
 				main.message.clear();
-				this.state = state;
+				updateState();
 				this.countSolvable = 0;
 				main.control.action('generator', {
 					action: 'compute',
@@ -213,6 +237,7 @@ CubeGenerator.prototype.changeState = function(state) {
 				console.warn('TODO change menu');
 
 				this.elements.levelSelector.classList.add('hidden');
+				this.elements.researchInfo.classList.add('hidden');
 				this.elements.researchStatus.classList.remove('hidden');
 				this.elements.cubeSolution.classList.remove('hidden');
 				this.elements.cubeDetails.classList.remove('hidden');
@@ -223,7 +248,9 @@ CubeGenerator.prototype.changeState = function(state) {
 			}
 			break;
 		case 'result':
+			updateState();
 			this.elements.levelSelector.classList.add('hidden');
+			this.elements.researchInfo.classList.add('hidden');
 			this.elements.researchStatus.classList.remove('hidden');
 			this.elements.cubeSolution.classList.remove('hidden');
 			this.elements.cubeDetails.classList.remove('hidden');
@@ -295,6 +322,8 @@ CubeGenerator.prototype.changeLevelSelected = function(evt) {
 	}).map(function(el) {
 		return el.value;
 	});
+
+	this.renderInfo();
 };
 
 CubeGenerator.prototype.saveCubes = function() {

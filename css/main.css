@@ -161,6 +161,16 @@ summary {
 	min-height: 12em;
 }
 
+.generator-information {
+	position: absolute;
+	top: 10px;
+	height: 50px;
+	left: 300px;
+	right: 0;
+	padding: 0.5em;
+	text-align: center;
+}
+
 .generator-research-status {
 	position: absolute;
 	top: 10px;
