@@ -111,6 +111,10 @@
 		"en": "Please select at least 1 lid level",
 		"fr": "Veuillez choisir au moins 1 plateau couvercle"
 	},
+	"Please select at least %d non-lid levels": {
+		"en": "Please select at least %d non-lid levels",
+		"fr": "Veuillez choisir au moins %d plateau non-couvercle"
+	},
 	"Look for possible maze": {
 		"en": "Look for possible maze",
 		"fr": "Rechercher les combinaisons possible"

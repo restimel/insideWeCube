@@ -147,7 +147,6 @@ CubeGenerator.prototype.renderLevelSelector = function() {
 	}, this.getLevels.bind(this));
 };
 
-
 CubeGenerator.prototype.renderResearchStatus = function() {
 	var container = this.elements.researchStatus,
 		progress, label, button, div;
@@ -183,14 +182,26 @@ CubeGenerator.prototype.renderResearchStatus = function() {
 	container.appendChild(div);
 };
 
-CubeGenerator.prototype.renderInfo = function() {
+CubeGenerator.prototype.renderInfo = function(data) {
+	var nbLvl = data.nbLvl;
+	var nbLid = data.nbLid;
+	var nbPossibilities = data.nbPossibilities.total || 0;
+
 	var container = this.elements.researchInfo;
 	container.innerHTML = '';
 
 	var div;
 
 	div = document.createElement('div');
-	div.innerHTML = $$('Nb level selected: %d', this.computeOption.levels.length);
+	div.innerHTML = $$('Nb normal level selected: %d', nbLvl) +
+					'<br>' +
+				    $$('Nb lid level selected: %d', nbLid);
+	container.appendChild(div);
+
+	div = document.createElement('div');
+	div.innerHTML = $$('Nb of possible combinaison: %d', nbPossibilities) +
+					'<br>' +
+				    $$('Estimated time: %d s', Math.ceil(nbPossibilities / 100));
 	container.appendChild(div);
 };
 
@@ -323,7 +334,12 @@ CubeGenerator.prototype.changeLevelSelected = function(evt) {
 		return el.value;
 	});
 
-	this.renderInfo();
+	main.control.action('generator', {
+		action: 'loadLevels',
+		data: {
+			levels: this.computeOption.levels
+		}
+	}, this.token);
 };
 
 CubeGenerator.prototype.saveCubes = function() {
@@ -389,6 +405,10 @@ CubeGenerator.prototype.finished = function(data) {
 	this.elements.runningState.textContent += ' ' + $$('(search completed)');
 
 	this.changeState('result');
+};
+
+CubeGenerator.prototype.computeInformations = function(data) {
+	this.renderInfo(data);
 };
 
 CubeGenerator.prototype.debug = function(data) { // TODO delete this method

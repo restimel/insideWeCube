@@ -4,9 +4,20 @@ function createWorker() {
 	}
 
 	var worker = {
-		postMessage: function() {
-			this.port.postMessage.apply(this.port, arguments);
-		},
+		postMessage: (function() {
+			var store = [];
+			var messages = function() {
+				store.push(arguments);
+			};
+
+			messages.send = function(w) {
+				store.forEach(function(args) {
+					w.postMessage.apply(w, args);
+				});
+			};
+
+			return messages;
+		})(),
 		onmessage: function() {},
 		terminate: function() {
 			self.postMessage({data: {action: 'terminateWorker'}});
@@ -20,9 +31,24 @@ function createWorker() {
 }
 
 createWorker.link = function (port) {
-	createWorker.buildingWorker.port = port;
-	port.onmessage = function() {
-		createWorker.buildingWorker.onmessage.apply(createWorker.buildingWorker, arguments);
-	};
+	var worker = createWorker.buildingWorker;
+	var postMessages = worker.postMessage;
+
+	worker.port = port;
+	port.onmessage = createWorker.onmessage(worker);
+	worker.postMessage = createWorker.postMessage;
+	postMessages.send(worker);
+
 	createWorker.buildingWorker = null;
+};
+
+/* save method */
+createWorker.postMessage = function() {
+	this.port.postMessage.apply(this.port, arguments);
+};
+
+createWorker.onmessage = function(worker) {
+	return function() {
+		worker.onmessage.apply(worker, arguments);
+	}
 };

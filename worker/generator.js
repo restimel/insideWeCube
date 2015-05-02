@@ -23,6 +23,26 @@ Generator.prototype.router = function(args, token) {
 	}
 };
 
+/* Communication with back worker */
+
+Generator.prototype.createWorker = function(forceNew) {
+	if (!forceNew && this.worker && this.worker.status === 'waiting') {
+		return;
+	}
+
+	if (this.worker && this.worker.status !== 'waiting') {
+		this.worker.terminate();
+	}
+
+	this.worker = createWorker();
+	this.worker.onmessage = this.backWorkerMessage.bind(this);
+	this.worker.status = 'waiting';
+};
+
+Generator.prototype.backWorkerMessage = function() {
+	console.log('TODO onmessage', arguments);
+};
+
 /* Action */
 
 Generator.prototype.result = function(action, data) {
@@ -89,6 +109,7 @@ Generator.prototype.prepareLevels = function(levels) {
 
 	levels.forEach(function(level) {
 		var lvl = store.getLevel(level);
+		if (!lvl) return;
 		lvl.id = level;
 
 		if (lvl.lid) {
@@ -100,18 +121,53 @@ Generator.prototype.prepareLevels = function(levels) {
 			}
 		}
 	}, this);
+
+	/* prepare the levels */
+	var p = null;
+	var nb = this.size - 1;
+	var i = this.size;
+	this.gLevels = [];
+	while(--i) {
+		p = new LevelGenerator(this.levels, nb - i, p, this.finish.bind(this));
+		this.gLevels.push(p);
+	}
+	p = new LevelGenerator(this.lidLevels, nb, p, this.finish.bind(this));
+	this.gLevels.push(p);
+	this.lastGLevel = p;
 };
 
 /* Routing */
 
+Generator.prototype.loadLevels = function(data) {
+	var levels = data.levels;
+	var backWorker = data.backWorker;
+	this.prepareLevels(levels);
+
+	console.log('loadLevels')
+
+	if (!backWorker) {
+		console.log('loadLevels not in backworker');
+		this.createWorker(false);
+		this.worker.postMessage({action: 'generator', args: {action: 'loadLevels', data: {levels: levels, backWorker: true}}});
+
+		/* compute the number of possibility */
+		this.result('computeInformations', {
+			nbPossibilities: this.lastGLevel.getIndexStatus(),
+			nbLvl: this.levels.length,
+			nbLid: this.lidLevels.length
+		});
+	}
+};
+
 Generator.prototype.compute = function(data) {
 	var levels = data.levels;
-	var lidOnly = Helper.config.lid;
 	var issue = [];
 
-	var w = createWorker();
+	console.log('compute')
 
-	this.prepareLevels();
+	// var w = createWorker();
+
+	// this.prepareLevels(levels);
 
 	/* define configuration */
 	// this.lidLevels = [];
@@ -145,21 +201,8 @@ Generator.prototype.compute = function(data) {
 		return;
 	}
 
-	/* prepare the levels */
-	var p = null;
-	var nb = this.size - 1;
-	var i = this.size;
-	this.gLevels = [];
-	while(--i) {
-		p = new LevelGenerator(this.levels, nb - i, p, this.finish.bind(this));
-		this.gLevels.push(p);
-	}
-	p = new LevelGenerator(this.lidLevels, nb, p, this.finish.bind(this));
-	this.gLevels.push(p);
-	this.lastGLevel = p;
-
 	/* compute the number of possibility */
-	this.result('runningState', p.getIndexStatus());
+	this.result('runningState', this.lastGLevel.getIndexStatus());
 
 	/* run the computation */
 	this.runningCompute();
@@ -211,8 +254,8 @@ LevelGenerator.prototype.getCurrent = function() {
 		}
 	}
 
-	this.current = lvl;
-	return lvl;
+	this.current = lvl || null;
+	return this.current;
 };
 
 LevelGenerator.prototype.inc = function() {
