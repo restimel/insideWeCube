@@ -60,6 +60,7 @@ importScripts(
 	'path.js',
 	'generator.js',
 	'heuristic.js',
+	'createWorker.js',
 	'../libs/i18n/translate-i18n.js',
 	'../common/helpers.js'
 );
@@ -120,6 +121,13 @@ self.onmessage = function(e) {
 				},
 				token: token
 			});
+			break;
+		case 'newWorker':
+			createWorker.link(e.ports[0]);
+			break;
+		case 'changePort':
+			self.postMessage = e.ports[0].postMessage;
+			e.ports[0].onmessage = self.onmessage;
 			break;
 	}
 };

@@ -22,6 +22,25 @@ Control.prototype.onmessage = function(e) {
 			timeout: data.data.time,
 			html: data.data.html
 		});
+	} else if (data.data && data.data.action === 'newWorker') {
+		if (typeof MessageChannel === 'undefined') {
+			main.message($$('Your browser does not support MessageChannel. You could not use this feature.'), 'error');
+			return;
+		}
+		if (this.backWorker) {
+			this.backWorker.terminate();
+		}
+		var channel = new MessageChannel();
+		this.worker.postMessage({action: 'newWorker'}, [channel.port1]);
+		this.backWorker = new Worker('worker/worker.js');
+		this.backWorker.postMessage({action: 'changePort'}, [channel.port2]);
+	} else if (data.data && data.data.action === 'terminateWorker') {
+		if (!this.backWorker) {
+			console.warn('the back worker has been asked to be terminate but it does not exist');
+			return;
+		}
+		this.backWorker.terminate();
+		this.backWorker = null;
 	} else {
 		try {
 			console.log(JSON.parse(data.log));

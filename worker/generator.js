@@ -80,12 +80,8 @@ Generator.prototype.finish = function() {
 	this.running = false;
 };
 
-/* Routing */
-
-Generator.prototype.compute = function(data) {
-	var levels = data.levels;
+Generator.prototype.prepareLevels = function(levels) {
 	var lidOnly = Helper.config.lid;
-	var issue = [];
 
 	/* define configuration */
 	this.lidLevels = [];
@@ -104,6 +100,36 @@ Generator.prototype.compute = function(data) {
 			}
 		}
 	}, this);
+};
+
+/* Routing */
+
+Generator.prototype.compute = function(data) {
+	var levels = data.levels;
+	var lidOnly = Helper.config.lid;
+	var issue = [];
+
+	var w = createWorker();
+
+	this.prepareLevels();
+
+	/* define configuration */
+	// this.lidLevels = [];
+	// this.levels = []
+
+	// levels.forEach(function(level) {
+	// 	var lvl = store.getLevel(level);
+	// 	lvl.id = level;
+
+	// 	if (lvl.lid) {
+	// 		this.lidLevels.push(lvl);
+	// 	} else {
+	// 		this.levels.push(lvl);
+	// 		if (!lidOnly) {
+	// 			this.lidLevels.push(lvl);
+	// 		}
+	// 	}
+	// }, this);
 
 	/* check configuration */
 	if (!this.lidLevels.length) {
