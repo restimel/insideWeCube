@@ -1,13 +1,16 @@
 function Generator() {
 	this.cube = new Cube();
-	this.size = 7;
 	this.gLevels = [];
 	this.path = new Path();
 	this.path.result = this.pathResult.bind(this);
-	this.timer = 0;
+	this.status = 'not ready';
 
 	this.cube.init();
 }
+
+Generator.prototype.size = 7;
+Generator.prototype.sid = 0; /*single id */
+Generator.prototype.timer = 0;
 
 Generator.prototype.router = function(args, token) {
 	var route = args.action,
@@ -100,8 +103,16 @@ Generator.prototype.finish = function() {
 	this.running = false;
 };
 
-Generator.prototype.prepareLevels = function(levels) {
+Generator.prototype.prepareLevels = function(levels, sid) {
 	var lidOnly = Helper.config.lid;
+	var good = true;
+
+	if (!sid) {
+		this.sid++;
+	} else
+	if (this.sid > sid) {
+		return; /*deprecated call */
+	}
 
 	/* define configuration */
 	this.lidLevels = [];
@@ -109,7 +120,10 @@ Generator.prototype.prepareLevels = function(levels) {
 
 	levels.forEach(function(level) {
 		var lvl = store.getLevel(level);
-		if (!lvl) return;
+		if (!lvl) {
+			good = false;
+			return;
+		}
 		lvl.id = level;
 
 		if (lvl.lid) {
@@ -121,6 +135,17 @@ Generator.prototype.prepareLevels = function(levels) {
 			}
 		}
 	}, this);
+
+	if (!good) {
+		if (this.status === 'waiting levels') {
+			console.warn('some levels can not be loaded :(');
+			this.status = 'not ready';
+			return;
+		}
+		this.status = 'waiting levels';
+		setTimeout(this.prepareLevels.bind(this, levels, this.sid), 1000);
+		return;
+	}
 
 	/* prepare the levels */
 	var p = null;
@@ -134,6 +159,8 @@ Generator.prototype.prepareLevels = function(levels) {
 	p = new LevelGenerator(this.lidLevels, nb, p, this.finish.bind(this));
 	this.gLevels.push(p);
 	this.lastGLevel = p;
+
+	this.status = 'ready';
 };
 
 /* Routing */
@@ -143,10 +170,9 @@ Generator.prototype.loadLevels = function(data) {
 	var backWorker = data.backWorker;
 	this.prepareLevels(levels);
 
-	console.log('loadLevels')
+	this.backWorker = backWorker;
 
 	if (!backWorker) {
-		console.log('loadLevels not in backworker');
 		this.createWorker(false);
 		this.worker.postMessage({action: 'generator', args: {action: 'loadLevels', data: {levels: levels, backWorker: true}}});
 
@@ -159,33 +185,22 @@ Generator.prototype.loadLevels = function(data) {
 	}
 };
 
-Generator.prototype.compute = function(data) {
-	var levels = data.levels;
+Generator.prototype.compute = function(data, attempts) {
 	var issue = [];
+	attempts = typeof attempts === 'number' ? attempts : 1;
 
-	console.log('compute')
+	if (this.status !== 'ready') {
+		if (!attempts) {
+			this.result('issueBeforeRun', [$$('Some levels have failed to load. Try again, but if it persists check that your list is up-to-date.')]);
+			return;
+		}
 
-	// var w = createWorker();
-
-	// this.prepareLevels(levels);
-
-	/* define configuration */
-	// this.lidLevels = [];
-	// this.levels = []
-
-	// levels.forEach(function(level) {
-	// 	var lvl = store.getLevel(level);
-	// 	lvl.id = level;
-
-	// 	if (lvl.lid) {
-	// 		this.lidLevels.push(lvl);
-	// 	} else {
-	// 		this.levels.push(lvl);
-	// 		if (!lidOnly) {
-	// 			this.lidLevels.push(lvl);
-	// 		}
-	// 	}
-	// }, this);
+		this.loadLevels(data);
+		if (this.status !== 'ready') {
+			setTimeout(this.compute.bind(this, data, --attempts), 1500);
+			return;
+		}
+	}
 
 	/* check configuration */
 	if (!this.lidLevels.length) {
