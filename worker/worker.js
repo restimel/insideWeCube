@@ -126,7 +126,7 @@ self.onmessage = function(e) {
 			createWorker.link(e.ports[0]);
 			break;
 		case 'changePort':
-			self.postMessage = e.ports[0].postMessage;
+			self.postMessage = e.ports[0].postMessage.bind(e.ports[0]);
 			e.ports[0].onmessage = self.onmessage;
 			break;
 	}

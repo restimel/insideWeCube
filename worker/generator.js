@@ -42,8 +42,23 @@ Generator.prototype.createWorker = function(forceNew) {
 	this.worker.status = 'waiting';
 };
 
-Generator.prototype.backWorkerMessage = function() {
-	console.log('TODO onmessage', arguments);
+Generator.prototype.backWorkerMessage = function(e) {
+	var action = e.data.data.action;
+	var data = e.data.data.data;
+
+	switch(action) {
+		case 'runningState':
+		case 'result':
+		case 'finished':
+			this.result(action, data);
+			break;
+		default:
+			console.log('unknown action', action);
+	}
+};
+
+Generator.prototype.sendToWorker = function(route, data) {
+	this.worker.postMessage({action: 'generator', args: {action: route, data: data}});
 };
 
 /* Action */
@@ -165,6 +180,28 @@ Generator.prototype.prepareLevels = function(levels, sid) {
 
 /* Routing */
 
+Generator.prototype.startCompute = function(data, attempts) {
+	if (this.status !== 'ready') {
+		attempts = typeof attempts === 'number' ? attempts : 1;
+		if (!attempts) {
+			this.result('issueBeforeRun', [$$('Some levels have failed to load. Try again, but if it persists check that your list is up-to-date.')]);
+			return;
+		}
+
+		this.loadLevels(data);
+		if (this.status !== 'ready') {
+			setTimeout(this.startCompute.bind(this, data, --attempts), 1500);
+			return;
+		}
+	}
+
+	/* compute the number of possibility */
+	this.result('runningState', this.lastGLevel.getIndexStatus());
+
+	/* run the computation */
+	this.runningCompute();
+};
+
 Generator.prototype.loadLevels = function(data) {
 	var levels = data.levels;
 	var backWorker = data.backWorker;
@@ -174,7 +211,7 @@ Generator.prototype.loadLevels = function(data) {
 
 	if (!backWorker) {
 		this.createWorker(false);
-		this.worker.postMessage({action: 'generator', args: {action: 'loadLevels', data: {levels: levels, backWorker: true}}});
+		this.sendToWorker('loadLevels', {levels: levels, backWorker: true});
 
 		/* compute the number of possibility */
 		this.result('computeInformations', {
@@ -216,11 +253,12 @@ Generator.prototype.compute = function(data, attempts) {
 		return;
 	}
 
-	/* compute the number of possibility */
-	this.result('runningState', this.lastGLevel.getIndexStatus());
+	this.sendToWorker('startCompute', data);
+	// /* compute the number of possibility */
+	// this.result('runningState', this.lastGLevel.getIndexStatus());
 
-	/* run the computation */
-	this.runningCompute();
+	// /* run the computation */
+	// this.runningCompute();
 };
 
 /********************************************************
