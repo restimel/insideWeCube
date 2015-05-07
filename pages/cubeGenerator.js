@@ -2,6 +2,7 @@ function CubeGenerator() {
 	this.advancedOptions = new AdvancedOptions({hideMoreTools: true});
 	this.token = main.control.add(this.onMessage.bind(this));
 	this.cube = new Cube();
+	this.saveList = [null];
 
 	this.init();
 }
@@ -285,6 +286,8 @@ CubeGenerator.prototype.isRunningValid = function() {
 
 CubeGenerator.prototype.addCubeBox = function(levels, accessible, difficulty, maxDifficulty) {
 	var container = this.elements.cubeSolution;
+	var saveIndex;
+	var saveName;
 
 	var box = document.createElement('div');
 	box.className = 'cube-generated';
@@ -301,7 +304,19 @@ CubeGenerator.prototype.addCubeBox = function(levels, accessible, difficulty, ma
 	input.type = 'checkbox';
 	input.title = $$('Save this configuration as a cube');
 	input.onclick = function(e) {e.stopPropagation();};
-	input.onchange = function() {console.log('todo')};
+	input.onchange = function(e) {
+		var input = e.target;
+
+		if (input.checked) {
+			saveIndex = saveIndex || this.saveList.length;
+			this.saveList[saveIndex] = {
+				name: saveName,
+				levels: ['TODO']
+			};
+		} else {
+			this.saveList[saveIndex] = null;
+		}
+	}.bind(this);
 	box.appendChild(input);
 
 	input = document.createElement('input');
@@ -309,7 +324,12 @@ CubeGenerator.prototype.addCubeBox = function(levels, accessible, difficulty, ma
 	input.placeholder = $$('cube name');
 	input.title = $$('name of the cube when it will be saved');
 	input.onclick = function(e) {e.stopPropagation();};
-	input.onchange = function() {console.log('todo')};
+	input.onchange = function(e) {
+		saveName = e.target.value;
+		if (saveIndex) {
+			this.saveList[saveIndex].name = saveName;
+		}
+	}.bind(this);
 	box.appendChild(input);
 
 	box.onclick = function(e) {
