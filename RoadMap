@@ -1,39 +1,42 @@
 
 V1.2
 	General
-	* Support cubes with not normal size
-		* Allow to create cube with not normal size
+	+ Support cubes with not normal size
+		+ Allow to create cube with not normal size
 	* accept key shortcut (see how to manage them through menu)
 	
 	Build Cube
 	✓ Change start/Finish position
-	* Consider Pin on level that block the ball
+	✓ Consider Pin on level that block the ball
 		✓ simple movement with Pin
 		* moving up/down and fall on a pin
 		* consider pin that blocks below level to be build (no right wall for the cell bellow)
 	✓ Block level7 at level7
 	✓ Do not propose other levels at level7
-		* add an option to deactivate it
+		✓ add an option to deactivate it
 	* auto-save to draft
 		→ FAQ: What is draft cube
 	* key Shortcut (Ctrl+S / Ctrl+z)
-	* create an advanced tool for different options
+	✓ create an advanced tool for different options
 		✓ level7
 		✓ blockers cell
-		* cell tools
+		✓ cell tools
 			✓ hole (default)
 			✓ Start/Finish
 			✓ pin
-			* Not accessible cell
+			+ Not accessible cell
 	* add comments to levels
 	* switch level (need idea about design)
 	+ give small map with different orientation (other than top/bottom like stickers)
 
 →	Auto-Generator
-	* create interface to choose levels and options
-	* compute levels to test solvabale cubes
-	* create interface to display solvable cubes
-		* select cubes user like and save them
+	✓ create interface to choose levels and options
+		✓ select levels
+		* change start position
+		* allow to rotate levels
+	✓ compute levels to test solvabale cubes
+	✓ create interface to display solvable cubes
+		✓ select cubes user like and save them
 	+ interact with manage cube to edit it
 
 /!\ Bugs

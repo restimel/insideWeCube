@@ -97,7 +97,7 @@ CubeGenerator.prototype.renderMenu = function() {
 		button = document.createElement('button');
 		button.textContent = this.state === 'running' ? $$('Stop analyze') : $$('Do another analysis');
 		button.title = this.state === 'running' ? $$('Stop the current search') : $$('Change configuration to do a new analysis');
-		button.onclick = this.cancelSearch.bind(this);
+		button.onclick = this.state === 'running' ? this.cancelSearch.bind(this) : this.changeState.bind(this, 'config');
 		container.appendChild(button);
 	}
 };
@@ -237,6 +237,7 @@ CubeGenerator.prototype.changeState = function(state) {
 				main.message(issues.join('<br>'), 'error', {html:true});
 			} else {
 				main.message.clear();
+				this.elements.cubeSolution.innerHTML = '';
 				updateState();
 				this.countSolvable = 0;
 				main.control.action('generator', {
@@ -245,7 +246,6 @@ CubeGenerator.prototype.changeState = function(state) {
 						levels: this.computeOption.levels
 					}
 				}, this.token);
-				console.warn('TODO change menu');
 
 				this.elements.levelSelector.classList.add('hidden');
 				this.elements.researchInfo.classList.add('hidden');

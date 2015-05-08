@@ -4,6 +4,7 @@ New features
 	* Manage a start and a finish at a different place
 	* Allow to rotate levels in cube manager
 	* Allow to highlight the shortest path in cube manager
+	* Search which cube are possible to create from a set of levels
 
 Bugs fixed
 	* Fix error thrown in console when moving to another menu while a temporary message is displayed.
