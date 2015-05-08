@@ -75,6 +75,9 @@ self.onmessage = function(e) {
 		case 'saveCube':
 			self.postMessage({data: saveCube(args), token: token});
 			break;
+		case 'saveCubeFromLevels':
+			self.postMessage({data: saveCubeFromLevels(args), token: token});
+			break;
 		case 'importCubes':
 			self.postMessage({data: saveCubes(args), token: token});
 			break;
@@ -163,6 +166,26 @@ function saveCube(data, option) {
 	tempCube.parse(data, option);
 	store.save(tempCube, option);
 	return 1;
+}
+
+function saveCubeFromLevels(data, option) {
+	option = option || data.option || {};
+
+	data.levels.forEach(function(levelName, index) {
+		tempCube.levels[index].parse(store.getLevel(levelName).toJSON());
+	}, this);
+	var name = data.name;
+	var i = 0;
+
+	if (!name) {
+		do {
+			name = 'generatedCube-' + i++;
+		} while(store.search({name: name}, store.cubes) > -1);
+	}
+
+	tempCube.name = name;
+	store.save(tempCube, option);
+	return name;
 }
 
 function saveCubes(data, option) {

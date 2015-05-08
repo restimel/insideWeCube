@@ -92,7 +92,6 @@ CubeGenerator.prototype.renderMenu = function() {
 		button.textContent = '\uf0c7'; //save
 		button.title = $$('Save selected cubes');
 		button.onclick = this.saveCubes.bind(this);
-		button.disabled = true; // TODO activate it
 		container.appendChild(button);
 
 		button = document.createElement('button');
@@ -311,7 +310,7 @@ CubeGenerator.prototype.addCubeBox = function(levels, accessible, difficulty, ma
 			saveIndex = saveIndex || this.saveList.length;
 			this.saveList[saveIndex] = {
 				name: saveName,
-				levels: ['TODO']
+				levels: levels
 			};
 		} else {
 			this.saveList[saveIndex] = null;
@@ -363,8 +362,29 @@ CubeGenerator.prototype.changeLevelSelected = function(evt) {
 };
 
 CubeGenerator.prototype.saveCubes = function() {
-	console.warn('TODO: save cubes');
-	main.message('TODO → save selected cubes', 'WARNING');
+	var list = this.saveList.filter(function(item) { return item;});
+	var finalName = [];
+	
+	if (confirm($$('will you save these %d cubes?', list.length) + '\n' + list.map(function(c) {return c.name || $$('unnamed')}).join('\n'))) {
+		list.forEach(function(cube) {
+			main.control.action('saveCubeFromLevels', cube, 
+		cubeSaved);
+		});
+	};
+
+	function cubeSaved(name) {
+		finalName.push(name);
+
+		if (finalName.length === list.length) {
+			main.message(
+				$$('cubes saved:') + '<br>' + finalName.join('<br>'),
+				'success',
+				{
+					html: true
+				}
+			);
+		}
+	}
 };
 
 CubeGenerator.prototype.cancelSearch = function() {
@@ -405,8 +425,13 @@ CubeGenerator.prototype.result = function(data) {
 	var available = accessible.length;
 	var length = data.info.length;
 	var deadEnd = data.info.deadEnd;
-	var difficulty = available; //TODO
-	var maxDifficulty = 216;
+	// var difficulty = available; //TODO
+	// var maxDifficulty = 216;
+
+	var difficulty = length * 1.2 / 24 + // 12
+					 (available - length) * 1.5 / 24 + // 15;
+					 deadEnd * 0.3;
+	var maxDifficulty = 35;
 
 	// difficulty = length * 1.1 / 24 + // 11
 	// 				 (available - length) * 1.5 / 24 + // 15
