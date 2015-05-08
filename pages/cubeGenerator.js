@@ -95,8 +95,8 @@ CubeGenerator.prototype.renderMenu = function() {
 		container.appendChild(button);
 
 		button = document.createElement('button');
-		button.textContent = this.state === 'running' ? $$('Stop research') : $$('Change research option');
-		button.title = this.state === 'running' ? $$('Stop the current search') : $$('Change configuration to do a new research');
+		button.textContent = this.state === 'running' ? $$('Stop analyze') : $$('Do another analysis');
+		button.title = this.state === 'running' ? $$('Stop the current search') : $$('Change configuration to do a new analysis');
 		button.onclick = this.cancelSearch.bind(this);
 		container.appendChild(button);
 	}
@@ -363,9 +363,8 @@ CubeGenerator.prototype.changeLevelSelected = function(evt) {
 
 CubeGenerator.prototype.saveCubes = function() {
 	var list = this.saveList.filter(function(item) { return item;});
-	var finalName = [];
 	
-	if (confirm($$('will you save these %d cubes?', list.length) + '\n' + list.map(function(c) {return c.name || $$('unnamed')}).join('\n'))) {
+	if (confirm($$('will you save these %d cubes?', list.length) + '\n' + list.map(function(c) {return c.name || $$('unnamed cube')}).join('\n'))) {
 		list.forEach(function(cube) {
 			main.control.action('saveCubeFromLevels', cube, 
 		cubeSaved);
@@ -373,23 +372,18 @@ CubeGenerator.prototype.saveCubes = function() {
 	};
 
 	function cubeSaved(name) {
-		finalName.push(name);
-
-		if (finalName.length === list.length) {
-			main.message(
-				$$('cubes saved:') + '<br>' + finalName.join('<br>'),
-				'success',
-				{
-					html: true
-				}
-			);
-		}
+		main.message($$('cube "%s" saved', name), 'success');
 	}
 };
 
 CubeGenerator.prototype.cancelSearch = function() {
-	console.warn('TODO: cancel research', this.state);
-	main.message($$('TODO → cancel research (%s)', this.state), 'WARNING');
+	main.control.action('generator', {
+		action: 'stop',
+		data: {}
+	}, this.token);
+	main.message($$('The search has been interrupted!'), 'info');
+	this.elements.runningState.textContent += ' ' + $$('(canceled)');
+	this.changeState('result');
 };
 
 /* Action from worker */

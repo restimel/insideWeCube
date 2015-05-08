@@ -47,9 +47,10 @@ Generator.prototype.backWorkerMessage = function(e) {
 	var data = e.data.data.data;
 
 	switch(action) {
+		case 'finished':
+			this.worker.status = 'waiting';
 		case 'runningState':
 		case 'result':
-		case 'finished':
 			this.result(action, data);
 			break;
 		default:
@@ -180,6 +181,16 @@ Generator.prototype.prepareLevels = function(levels, sid) {
 
 /* Routing */
 
+Generator.prototype.stop = function(data) {
+	if (this.worker && this.worker.status === 'running') {
+		this.worker.terminate();
+		this.createWorker(true);
+		this.sendToWorker('loadLevels', {levels: this.rawLevels, backWorker: true});
+	} else {
+		console.log('issue with worker status', this.worker && this.worker.status);
+	}
+};
+
 Generator.prototype.startCompute = function(data, attempts) {
 	if (this.status !== 'ready') {
 		attempts = typeof attempts === 'number' ? attempts : 1;
@@ -212,6 +223,8 @@ Generator.prototype.loadLevels = function(data) {
 	if (!backWorker) {
 		this.createWorker(false);
 		this.sendToWorker('loadLevels', {levels: levels, backWorker: true});
+
+		this.rawLevels = levels;
 
 		/* compute the number of possibility */
 		this.result('computeInformations', {
@@ -254,6 +267,7 @@ Generator.prototype.compute = function(data, attempts) {
 	}
 
 	this.sendToWorker('startCompute', data);
+	this.worker.status = 'running';
 	// /* compute the number of possibility */
 	// this.result('runningState', this.lastGLevel.getIndexStatus());
 

@@ -127,9 +127,45 @@
 		"en": "Stop",
 		"fr": "Arrêter"
 	},
+	"Stop analyze": {
+		"en": "Stop analyze",
+		"fr": "Arrêter la recherche"
+	},
 	"Stop the current search": {
 		"en": "Stop the current search",
 		"fr": "Arrêter la recherche en cours"
+	},
+	"Do another analysis": {
+		"en": "Do another analysis",
+		"fr": "Nouvelle recherche"
+	},
+	"unnamed": {
+		"en": "unnamed cube",
+		"fr": "cube non nommé"
+	},
+	"will you save these %d cubes?": {
+		"en": "will you save these %d cubes?",
+		"fr": "voulez-vous enregistrer ces %d cubes ?"
+	},
+	"Save selected cubes": {
+		"en": "Save selected cubes",
+		"fr": "Enregistrer les cubes sélectionnés"
+	},
+	"cube \"%s\" saved": {
+		"en": "cube \"%s\" saved",
+		"fr": "cube \"%s\" enregistré"
+	},
+	"Estimated time: %d s": {
+		"en": "Estimated time: %d s",
+		"fr": "Temps estimé: %d s"
+	},
+	"Change configuration to do a new analysis": {
+		"en": "Change configuration to do a new analysis",
+		"fr": "Changer la configuration pour effectuer une nouvelle recherche"
+	},
+	"The search has been interrupted!": {
+		"en": "The search has been interrupted!",
+		"fr": "La recherche a été interrompue !"
 	},
 	"Choose levels": {
 		"en": "Choose levels",
@@ -150,6 +186,10 @@
 	"(search completed)": {
 		"en": "(search completed)",
 		"fr": "(analyse terminée)"
+	},
+	"(canceled)": {
+		"en": "(canceled)",
+		"fr": "(annulée)"
 	},
 	"Number of solvable cubes: %D": {
 		"en": "Number of solvable cubes: %D",
