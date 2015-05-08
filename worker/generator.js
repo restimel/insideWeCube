@@ -48,6 +48,7 @@ Generator.prototype.backWorkerMessage = function(e) {
 
 	switch(action) {
 		case 'finished':
+			console.log($$('Estimated time: %T', (performance.now() - this.timer)/1000))
 			this.worker.status = 'waiting';
 		case 'runningState':
 		case 'result':
@@ -268,11 +269,7 @@ Generator.prototype.compute = function(data, attempts) {
 
 	this.sendToWorker('startCompute', data);
 	this.worker.status = 'running';
-	// /* compute the number of possibility */
-	// this.result('runningState', this.lastGLevel.getIndexStatus());
-
-	// /* run the computation */
-	// this.runningCompute();
+	this.timer = performance.now();
 };
 
 /********************************************************

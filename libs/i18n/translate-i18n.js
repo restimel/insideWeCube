@@ -5,6 +5,25 @@
 	var path = './';
 	var isReady = false;
 
+	var localTranslation = {
+		time_day: {
+			en: 'd',
+			fr: 'j'
+		},
+		time_hour: {
+			en: 'h',
+			fr: 'h'
+		},
+		time_min: {
+			en: 'min',
+			fr: 'min'
+		},
+		time_sec: {
+			en: 's',
+			fr: 's'
+		}
+	};
+
 	var lng = self.navigator.language;
 
 	if (typeof self.localStorage !== 'undefined') {
@@ -96,6 +115,8 @@
 					return Number(k).toExponential();
 				case '%E':
 					return Number(k).toExponential().toUpperCase();
+				case '%T':
+					return delayFormat(k);
 				case '%0':
 				case '%2':
 					return pad(k, 2);
@@ -204,6 +225,32 @@
 		}
 
 		return (suffix ? i.toFixed(2) : i) + list[suffix];
+	}
+
+	function delayFormat(nb) {
+		var d = Math.floor(nb / 86400);
+		var h = Math.floor((nb % 86400) / 3600);
+		var min = Math.floor((nb % 3600) / 60);
+		var s = Math.floor(nb % 60);
+		var str = [];
+
+		if (d) {
+			str.push(d + localTranslation.time_day[lng]);
+		}
+
+		if (h) {
+			str.push(h + localTranslation.time_hour[lng]);
+		}
+
+		if (min) {
+			str.push(min + localTranslation.time_min[lng]);
+		}
+
+		if (s) {
+			str.push(s + localTranslation.time_sec[lng]);
+		}
+
+		return str.join(' ');
 	}
 
 	function loadTranslation(){

@@ -16,8 +16,6 @@ CubeGenerator.prototype.init = function() {
 
 /* render */
 CubeGenerator.prototype.render = function(container) {
-	main.message($$('The generator is under developpement and is not fully available.<br>You can play with it but there is no warranty that all features are working correctly!<br>Some buttons can be linked to no actions.<br><br>If you fall in an unwanted behavior and nothing is working anymore you should reload the page.'), 'error', {html:true});
-
 	this.container = container;
 	this.container.innerHTML = '';
 
@@ -193,15 +191,15 @@ CubeGenerator.prototype.renderInfo = function(data) {
 	var div;
 
 	div = document.createElement('div');
-	div.innerHTML = $$('Nb normal level selected: %d', nbLvl) +
+	div.innerHTML = $$('Number of selected levels: %d', nbLvl + nbLid) +
 					'<br>' +
-				    $$('Nb lid level selected: %d', nbLid);
+				    $$('%d generic levels. %d lid levels', nbLvl, nbLid);
 	container.appendChild(div);
 
 	div = document.createElement('div');
-	div.innerHTML = $$('Nb of possible combinations: %d', nbPossibilities) +
+	div.innerHTML = $$('Number of combinations: %d', nbPossibilities) +
 					'<br>' +
-				    $$('Estimated time: %d s', Math.ceil(nbPossibilities / 100));
+				    $$('Estimated time: %T', Math.ceil(nbPossibilities * 0.006));
 	container.appendChild(div);
 };
 
@@ -381,7 +379,7 @@ CubeGenerator.prototype.cancelSearch = function() {
 		action: 'stop',
 		data: {}
 	}, this.token);
-	main.message($$('The search has been interrupted!'), 'info');
+	main.message($$('The search has been interrupted!'), 'info', {timeout: 4000});
 	this.elements.runningState.textContent += ' ' + $$('(canceled)');
 	this.changeState('result');
 };

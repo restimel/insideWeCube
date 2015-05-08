@@ -37,6 +37,15 @@ function main(container){
 
 main.version = '1.1.3';
 
+/**
+ * Display notification
+ * 
+ * options:
+ * 	 - keep {Boolean}: keep previous messages
+ * 	 - html {Boolean}: display message as HTML (must be XSS safe)
+ * 	 - timeout {Number}: time before the message disappears
+ *
+ **/
 main.message = (function() {
 	var container = document.createDocumentFragment(),
 		list = [];

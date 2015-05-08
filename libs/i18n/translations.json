@@ -155,9 +155,21 @@
 		"en": "cube \"%s\" saved",
 		"fr": "cube \"%s\" enregistré"
 	},
-	"Estimated time: %d s": {
-		"en": "Estimated time: %d s",
-		"fr": "Temps estimé: %d s"
+	"Number of selected levels: %d": {
+		"en": "Number of selected levels: %d",
+		"fr": "Nb de plateaux sélectionné: %d"
+	},
+	"%d generic levels. %d lid levels": {
+		"en": "%d generic levels. %d lid levels",
+		"fr": "%d plateaux génériques. %d couvercles"
+	},
+	"Number of combinations: %d": {
+		"en": "Number of combinations: %d",
+		"fr": "Nb de combinaisons: %d"
+	},
+	"Estimated time: %T": {
+		"en": "Estimated time: %T",
+		"fr": "Temps estimé: %T"
 	},
 	"Change configuration to do a new analysis": {
 		"en": "Change configuration to do a new analysis",
