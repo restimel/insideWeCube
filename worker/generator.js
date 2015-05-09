@@ -4,6 +4,7 @@ function Generator() {
 	this.path = new Path();
 	this.path.result = this.pathResult.bind(this);
 	this.status = 'not ready';
+	this.deepest = this.size -1;
 
 	this.cube.init();
 }
@@ -92,6 +93,7 @@ Generator.prototype.runningCompute = function() {
 		// t1 = performance.now();
 		// this.path.loadLevels(this.lastGLevel.getLevels().map(LevelGenerator._getLvlId));
 		this.path.loadLevels(this.lastGLevel.getLevels());
+
 		// measure.t1 += performance.now() - t1;
 
 		if (performance.now() - this.timer > timeBeforeRefresh) {
@@ -99,12 +101,16 @@ Generator.prototype.runningCompute = function() {
 			this.timer = performance.now();
 		}
 
-		t2 = performance.now();
-		if (this.lastGLevel.inc() === -1) {
+		// t2 = performance.now();
+		// if (this.lastGLevel.inc() === -1) {
+		// 	this.running = false;
+		// }
+		if (this.gLevels[this.deepest].inc(true) === -1) {
 			this.running = false;
 		}
 		// measure.t2 += performance.now() - t2;
 	}
+	// console.log('nb loop', count);
 	// t = performance.now() -t;
 	// this.result('debug',{name:'total', time: t, mean: t/count});
 	// this.result('debug',{name:'path', time: measure.t1, mean: measure.t1/count});
@@ -116,6 +122,7 @@ Generator.prototype.pathResult = function(rslt) {
 		rslt.levels = this.lastGLevel.getLevels().map(LevelGenerator._getLvlId);
 		this.result(rslt);
 	}
+	this.deepest = rslt.info.deepest;
 };
 
 Generator.prototype.finish = function() {
@@ -326,7 +333,7 @@ LevelGenerator.prototype.getCurrent = function() {
 	return this.current;
 };
 
-LevelGenerator.prototype.inc = function() {
+LevelGenerator.prototype.inc = function(updateNext) {
 	this.offset++;
 	if (!this.getCurrent()) {
 		if (this.previous) {
@@ -338,10 +345,19 @@ LevelGenerator.prototype.inc = function() {
 			this.callback('finish');
 			return -1;
 		}
-		return this.inc();
+		return this.inc(updateNext);
+	}
+
+	if (updateNext && this.next) {
+		this.next.resetIndex();
 	}
 
 	return this.offset;
+};
+
+LevelGenerator.prototype.resetIndex = function() {
+	this.offset = -1;
+	this.inc(true);
 };
 
 LevelGenerator.prototype.getIndexStatus = function() {

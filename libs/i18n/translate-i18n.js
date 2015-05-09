@@ -21,6 +21,10 @@
 		time_sec: {
 			en: 's',
 			fr: 's'
+		},
+		time_msec: {
+			en: 'ms',
+			fr: 'ms'
 		}
 	};
 
@@ -232,6 +236,7 @@
 		var h = Math.floor((nb % 86400) / 3600);
 		var min = Math.floor((nb % 3600) / 60);
 		var s = Math.floor(nb % 60);
+		var ms = Math.floor((nb%1) * 1000);
 		var str = [];
 
 		if (d) {
@@ -248,6 +253,10 @@
 
 		if (s) {
 			str.push(s + localTranslation.time_sec[lng]);
+		}
+
+		if (ms) {
+			str.push(ms + localTranslation.time_msec[lng]);
 		}
 
 		return str.join(' ');

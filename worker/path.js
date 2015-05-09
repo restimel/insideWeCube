@@ -35,6 +35,9 @@ Path.prototype.calculatePath = function() {
 Path.prototype.runCompute = function() {
 	var finishCell = this.cube.finishCell || {x: 4, y: 4, z: 6},
 		startCell = this.cube.startCell || {x: 1, y: 1, z: 0};
+	var deepest = 0;
+
+	var max = Math.max;
 
 	startCell.parent = null;
 	startCell.linked = [];
@@ -84,28 +87,12 @@ Path.prototype.runCompute = function() {
 			// SPY.stop('addCell-1');
 			// SPY.start('addCell-2');
 			p.push(ocell);
+			deepest = max(deepest, ocell.z);
 			// SPY.stop('addCell-2');
 
 			ocell.linked = [];
 
 			// SPY.start('addCell-3');
-			// nextCells.forEach(function(cell){
-			// 	cell = that.createCell(cell);
-			// 	cell.dst = dst;
-
-			// 	var f = searchCell(cell);
-			// 	if (!f) {
-			// 		cell.parent = ocell;
-			// 		w.push(cell);
-			// 		ocell.linked.push(cell);
-			// 	} else {
-			// 		if (nextCells.length === 1) {
-			// 			info.deadEnd++;
-			// 		}
-			// 		ocell.linked.push(f);
-			// 	}
-			// });
-
 			var i = 0;
 			var li = nextCells.length;
 			var cell;
@@ -170,6 +157,7 @@ Path.prototype.runCompute = function() {
 	w.push(firstCell);
 	createPath();
 
+	info.deepest = deepest;
 	this.result({accessible: p, info: info});
 };
 
@@ -601,14 +589,6 @@ Path.prototype.getPathMvt = function(cell, cellTarget, startPosition, available,
 	/* compute path */
 	this.computeDist(cellTarget, 'dstFromTarget');
 	var path = this.buildPath(cell, [cellTarget]);
-
-/* still needed? */
-	// if (resetDirection) {
-	// 	path.forEach(function(cell) {
-	// 		delete cell.direction;
-	// 	});
-	// }
-/* still needed ??? */
 
 	/* compute avoid & pref */
 	this.getDirections(path.reverse());
