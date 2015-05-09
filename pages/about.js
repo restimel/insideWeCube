@@ -136,6 +136,18 @@ About.prototype.renderFAQ = function(container) {
 			a: $$('Go to "Cube Manager" and select the cube to print. Then click on "maps preview" in the small maps section at bottom right (this section must be opened first if it is reduced). A new tab will open displaying all maps of this cube. You can use the print feature of your browser.')
 		},
 		{
+			q: $$('I am looking for all mazes I can create from cubes I own.'),
+			a: $$('Go to "Look for new mazes!", select levels you own and click on "Look for possible maze". All combinations you can create will appear. Warning: in some cases it can take a very long time!')
+		},
+		{
+			q: $$('Why the estimated difficulty is different between \"Cube manager\" and \"Look for new mazes!\"?'),
+			a: $$('In \"Look for new mazes!\" to avoid taking more time to compute, the estimation is based only on the number of available cells and dead-ends.<br>In \"Cube manager\", only one cube is analyzed, so a more complex algorithm is run including the number of needed rotations to solve it.')
+		},
+		{
+			q: $$('I would like to save the generated cubes.'),
+			a: $$('When possible solutions are displayed, you can click on them to see what they look like. If you tick their checkbox and then click on "save" they will be saved with the given name (if no name is provided a generated name will be given).')
+		},
+		{
 			q: $$('I have created lot of cube but I want to get rid of them. How can I remove them?'),
 			a: $$('Go to "Cube Manager" and click on "Delete cubes" button. Select cubes you want to remove and click on "delete". These cubes won\'t be display anymore in your browser.<br>Note: If you have customized an original cube and you remove it, the original maps are restored.')
 		},
@@ -166,6 +178,10 @@ About.prototype.renderFAQ = function(container) {
 		{
 			q: $$('Why is it called "Inside We cube"?'),
 			a: $$('<ol><li>I had to find a name ;)</li><li>When you type "InsideZeCube" with a wrong AZERTY↔QWERTY keyboard configuration you get "InsideWeCube".</li><li>Because INSIDE this application WE solve CUBEs.</li></ol>')
+		},
+		{
+			q: $$('Which technologies have been used for this program?'),
+			a: $$('This is built only with JavaScript. There is nothing stored outside your browser.<br>No frameworks have been used. The whole application is hand made.')
 		}
 	];
 

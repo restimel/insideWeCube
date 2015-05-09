@@ -139,7 +139,7 @@
 		"en": "Do another analysis",
 		"fr": "Nouvelle recherche"
 	},
-	"unnamed": {
+	"unnamed cube": {
 		"en": "unnamed cube",
 		"fr": "cube non nommé"
 	},
@@ -170,6 +170,10 @@
 	"Estimated time: %T": {
 		"en": "Estimated time: %T",
 		"fr": "Temps estimé: %T"
+	},
+	"Spent time to find out solutions: %T": {
+		"en": "Spent time to find out solutions: %T",
+		"fr": "Temps mis pour trouver les solutions: %T"
 	},
 	"Change configuration to do a new analysis": {
 		"en": "Change configuration to do a new analysis",
@@ -202,6 +206,10 @@
 	"(canceled)": {
 		"en": "(canceled)",
 		"fr": "(annulée)"
+	},
+	"generated cube - %d": {
+		"en": "generated cube - %d",
+		"fr": "cube généré - %d"
 	},
 	"Number of solvable cubes: %D": {
 		"en": "Number of solvable cubes: %D",
@@ -575,6 +583,10 @@
 		"en": "Languages icons: ",
 		"fr": "Les icônes de langues : "
 	},
+	"Font icons: ": {
+		"en": "Font icons: ",
+		"fr": "Icônes textuelles : "
+	},
 	"The application doesn't seem to work.": {
 		"en": "The application doesn't seem to work.",
 		"fr": "L'application ne semble pas marcher."
@@ -671,6 +683,30 @@
 		"en": "Try to find someone who know maps of your cube and import them with the import/export tool.",
 		"fr": "Trouvez quelqu'un qui les connaît et importez-les avec l'outil d'import/export."
 	},
+	"I am looking for all mazes I can create from cubes I own.": {
+		"en": "I am looking for all mazes I can create from cubes I own.",
+		"fr": "Je cherche à connaître toutes les possibilités que je peux créer à partir de mes cubes."
+	},
+	"Go to \"Look for new mazes!\", select levels you own and click on \"Look for possible maze\". All combinations you can create will appear. Warning: in some cases it can take a very long time!": {
+		"en": "Go to \"Look for new mazes!\", select levels you own and click on \"Look for possible maze\". All combinations you can create will appear. Warning: in some cases it can take a very long time!",
+		"fr": "Allez dans \"Découvrir d'autres plans !\", choisissez les plateaux que vous possédez et cliquez sur \"Rechercher les combinaisons possibles\". Toutes les combinaisons que vous pouvez créer vont apparaître. Attention: dans certains cas, cela peut prendre beaucoup de temps."
+	},
+	"Why the estimated difficulty is different between \"Cube manager\" and \"Look for new mazes!\"?": {
+		"en": "Why the estimated difficulty is different between \"Cube manager\" and \"Look for new mazes!\"?",
+		"fr": "Pourquoi la difficulté estimée est différente entre \"Gérer son cube\" et \"Découvrir d'autres plans !\" ?"
+	},
+	"In \"Look for new mazes!\" to avoid taking more time to compute, the estimation is based only on the number of available cells and dead-ends.<br>In \"Cube manager\", only one cube is analyzed, so a more complex algorithm is run including the number of needed rotations to solve it.": {
+		"en": "In \"Look for new mazes!\" to avoid taking more time to compute, the estimation is based only on the number of available cells and dead-ends.<br>In \"Cube manager\", only one cube is analyzed, so a more complex algorithm is run including the number of needed rotations to solve it.",
+		"fr": "Dans \"Découvrir d'autres plans !\", pour éviter de consommer trop de temps, l'estimation est calculée uniquement sur le nombre de cases atteignables et le nombre d'impasses.<br>Dans \"Gérer son cube\", comme un seul cube est étudié, un algorithme plus complexe est utilisé qui prend en compte le nombre de rotations nécessaires pour résoudre le cube."
+	},
+	"I would like to save the generated cubes.": {
+		"en": "I would like to save the generated cubes.",
+		"fr": "Je voudrais garder des cubes générés."
+	},
+	"When possible solutions are displayed, you can click on them to see what they look like. If you tick their checkbox and then click on \"save\" they will be saved with the given name (if no name is provided a generated name will be given).": {
+		"en": "When possible solutions are displayed, you can click on them to see what they look like. If you tick their checkbox and then click on \"save\" they will be saved with the given name (if no name is provided a generated name will be given).",
+		"fr": "Quand les solutions possibles sont affichées, vous pouvez leur cliquer dessus pour voir les plans. Si vous cochez la case puis vous cliquez sur \"enregistrer\" ils seront enregistrés avec le nom que vous leur avez donné (s'il n'y a pas de nom, un nom automatique leur est donné)."
+	},
 	"Why does it look so awful?": {
 		"en": "Why does it look so awful?",
 		"fr": "Pourquoi est-ce aussi moche ?"
@@ -686,6 +722,14 @@
 	"<ol><li>I had to find a name ;)</li><li>When you type \"InsideZeCube\" with a wrong AZERTY↔QWERTY keyboard configuration you get \"InsideWeCube\".</li><li>Because INSIDE this application WE solve CUBEs.</li></ol>": {
 		"en": "<ol><li>I had to find a name ;)</li><li>When you type \"InsideZeCube\" with a wrong AZERTY↔QWERTY keyboard configuration you get \"InsideWeCube\".</li><li>Because INSIDE this application WE solve CUBEs.</li></ol>",
 		"fr": "<ol><li>Je devais bien trouver un nom ;)</li><li>Quand vous tapez \"InsideZeCube\" avec une mauvaise configuration clavier AZERTY↔QWERTY vous obtenez \"InsideWeCube\".</li><li>Parce que dans (INSIDE) cette application nous (WE) résolvons les CUBEs.</li></ol>"
+	},
+	"Which technologies have been used for this program?": {
+		"en": "Which technologies have been used for this program?",
+		"fr": "Quelles technologies ont été utilisées pour réaliser ce programme ?"
+	},
+	"This is built only with JavaScript. There is nothing stored outside your browser.<br>No frameworks have been used. The whole application is hand made.": {
+		"en": "This is built only with JavaScript. There is nothing stored outside your browser.<br>No frameworks have been used. The whole application is hand made.",
+		"fr": "Il a été construit uniquement avec du JavaScript. Rien n'est stocké ailleurs que sur votre navigateur.<br>Aucun framework n'a été utilisé. Cette application a été entièrement construite à la main."
 	},
 	"This is not my current position!": {
 		"en": "This is not my current position!",

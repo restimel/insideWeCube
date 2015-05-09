@@ -4,7 +4,7 @@ function AdvancedOptions(option) {
 	this.call_adv = option.call_adv;
 	this.call_trsfmLvl = option.call_trsfmLvl;
 
-	this.hideMoreTools = option.hideMoreTools;
+	this.hideOptions = option.hideOptions;
 }
 
 AdvancedOptions.prototype.render = function(container) {
@@ -59,8 +59,10 @@ AdvancedOptions.prototype.render = function(container) {
 		}
 	];
 
-	if (this.hideMoreTools) {
-		optionList.pop();
+	if (this.hideOptions) {
+		optionList = optionList.filter(function(opt) {
+			return this.hideOptions.indexOf(opt.id) === -1;
+		}, this);
 	}
 
 	this.loadOption(optionList);

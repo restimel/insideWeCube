@@ -48,14 +48,18 @@ Generator.prototype.backWorkerMessage = function(e) {
 
 	switch(action) {
 		case 'finished':
-			console.log($$('Estimated time: %T', (performance.now() - this.timer)/1000))
+			console.info($$('Spent time to find out solutions: %T', (performance.now() - this.timer)/1000))
 			this.worker.status = 'waiting';
 		case 'runningState':
 		case 'result':
 			this.result(action, data);
 			break;
+		case 'computeInformations':
+		case 'newWorker':
+			/* Ignore these requests */
+			return;
 		default:
-			console.log('unknown action', action);
+			console.warn('unknown action', action);
 	}
 };
 

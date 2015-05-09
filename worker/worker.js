@@ -12,7 +12,7 @@
 
 if (typeof console === 'undefined') {
 	console = {};
-	console.log = console.warn = console.error = function(){
+	console.log = console.warn = console.error = console.info = function(){
 		try {
 			self.postMessage({log: JSON.stringify(arguments)});
 		} catch (e) {
@@ -179,7 +179,7 @@ function saveCubeFromLevels(data, option) {
 
 	if (!name) {
 		do {
-			name = 'generatedCube-' + i++;
+			name = $$('generated cube - %d', i++);
 		} while(store.search({name: name}, store.cubes) > -1);
 	}
 

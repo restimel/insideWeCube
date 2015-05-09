@@ -1,5 +1,5 @@
 function CubeGenerator() {
-	this.advancedOptions = new AdvancedOptions({hideMoreTools: true});
+	this.advancedOptions = new AdvancedOptions({hideOptions: ['advanced', 'trsfmLvl']});
 	this.token = main.control.add(this.onMessage.bind(this));
 	this.cube = new Cube();
 	this.saveList = [null];
@@ -370,7 +370,7 @@ CubeGenerator.prototype.saveCubes = function() {
 	};
 
 	function cubeSaved(name) {
-		main.message($$('cube "%s" saved', name), 'success');
+		main.message($$('cube "%s" saved', name), 'success', {keep: true, timeout: 15000});
 	}
 };
 
