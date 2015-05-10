@@ -547,6 +547,14 @@
 		"en": "red",
 		"fr": "rouge"
 	},
+	"yellow": {
+		"en": "yellow",
+		"fr": "jaune"
+	},
+	"pink": {
+		"en": "pink",
+		"fr": "rose"
+	},
 	"Your data is not a valid import.\nIt is not possible to load any cube from it.": {
 		"en": "Your data is not a valid import.\nIt is not possible to load any cube from it.",
 		"fr": "Vos données ne sont pas valides.\nIl n'est pas possible de charger des cubes."

@@ -238,7 +238,9 @@ Cube3D.getColor = function() {
 		{code: 'crystal', name: $$('crystal')},
 		{code: 'green', name: $$('green')},
 		{code: 'orange', name: $$('orange')},
-		{code: 'red', name: $$('red')}
+		{code: 'red', name: $$('red')},
+		{code: 'yellow', name: $$('yellow')},
+		{code: 'pink', name: $$('pink')},
 	].sort(function(a, b) {return a.name > b.name;});
 };
 

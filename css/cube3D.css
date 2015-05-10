@@ -117,6 +117,10 @@ dialog.fake-dialog {
    background-color: yellow;
 }
 
+.cube-pink .face, .color-pink{
+   background-color: deeppink;
+}
+
 .cube-crystal .face, .color-crystal{
    background-color: transparent;
 }
