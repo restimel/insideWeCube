@@ -919,6 +919,10 @@
 		"en": "Rotate 180°",
 		"fr": "Tourner de 180°"
 	},
+	"Is a lid level:": {
+		"en": "Is a lid level:",
+		"fr": "Est un couvercle :"
+	},
 	"Maps preview": {
 		"en": "Maps preview",
 		"fr": "Affichage des plans"

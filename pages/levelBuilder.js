@@ -71,6 +71,20 @@ LevelConstructor.prototype.render = function(container) {
 	this.transformTool = select;
 	container.appendChild(select);
 
+	var label, input;
+	/* option to tell it is a lid level */
+	if (this.lastLevel && Helper.config.advanced) {
+		label = document.createElement('label');
+		label.className = 'lid-level-option';
+		input = document.createElement('input');
+		input.type = 'checkbox';
+		input.checked = this.level.lid;
+		input.onchange = this.changeLidLevel.bind(this, input);
+		label.textContent = $$('Is a lid level:');
+		label.appendChild(input);
+		container.appendChild(label);
+	}
+
 	this.renderLevel(container);
 };
 
@@ -202,6 +216,11 @@ LevelConstructor.prototype.changeLevel = function(e) {
 	}.bind(this));
 
 	this.cubePath.loadLevel(this.index, lvl);
+};
+
+LevelConstructor.prototype.changeLidLevel = function(input) {
+	var isLid = input.checked
+	this.level.lid = isLid;
 };
 
 LevelConstructor.prototype.rotateLevel = function(e) {

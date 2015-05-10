@@ -415,6 +415,7 @@ CubeBuilder.prototype.renderAdvTools = function(val) {
 	} else {
 		this.toolBox.classList.add('hidden');
 	}
+	this.levels[this.levels.length-1].render();
 };
 
 CubeBuilder.prototype.renderTransform = function(val) {

@@ -278,6 +278,10 @@ summary {
 	overflow: auto;
 }
 
+.cube-builder-section .lid-level-option {
+	margin-left: 1em;
+}
+
 .cube-minimap-section {
 	position: absolute;
 	bottom: 0;
