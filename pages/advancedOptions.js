@@ -31,14 +31,14 @@ AdvancedOptions.prototype.render = function(container) {
 	var optionList = [
 		{
 			id: 'lid',
-			shortName: $$('lid only'),
+			shortName: $$('last level is lid only'),
 			longName: $$('If not selected non-lid levels can be chosen at last level'),
 			selected: Helper.config.lid,
 			callback: this.call_lid
 		},
 		{
 			id: 'pin',
-			shortName: $$('through pin'),
+			shortName: $$('ball goes through pin'),
 			longName: $$('If selected the pins do not block ball inside levels'),
 			selected: Helper.config.pin,
 			callback: this.call_pin

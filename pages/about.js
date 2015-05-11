@@ -145,15 +145,39 @@ About.prototype.renderFAQ = function(container) {
 		},
 		{
 			q: $$('I would like to save the generated cubes.'),
-			a: $$('When possible solutions are displayed, you can click on them to see what they look like. If you tick their checkbox and then click on "save" they will be saved with the given name (if no name is provided a generated name will be given).')
+			a: $$('When possible solutions are displayed, you can click on them to see what they look like. If you tick their checkbox and then click on \"save\" (%s) they will be saved with the given name (if no name is provided a generated name will be given).', '\uf0c7')
 		},
 		{
 			q: $$('I have created lot of cube but I want to get rid of them. How can I remove them?'),
-			a: $$('Go to "Cube Manager" and click on "Delete cubes" button. Select cubes you want to remove and click on "delete". These cubes won\'t be display anymore in your browser.<br>Note: If you have customized an original cube and you remove it, the original maps are restored.')
+			a: $$('Go to "Cube Manager" and click on "Delete cubes" button (%s). Select cubes you want to remove and click on "delete". These cubes won\'t be display anymore in your browser.<br>Note: If you have customized an original cube and you remove it, the original maps are restored.', '\uf1b3\uf014')
 		},
 		{
 			q: $$('How can I see only cubes I own?'),
 			a: $$('Click on "Filter"  button and then unselect cube you don\'t want to see. They will not appear anymore in cubes selection. To be able to choose them again, re-select them in the "Filter" menu')
+		},
+		{
+			q: $$('What are \"lid\" levels?'),
+			a: $$('These levels are the ones which close the cube box. These levels cannot go inside the cube, they must stay at the last level.')
+		},
+		{
+			q: $$('What are \"%s\", \"%s\" or \"pin\"?', '\uf077', '\uf078'),
+			a: $$('\"Pins\" are the thin piece which blocks the ball at the start (which is inside the level (%s)) or at the end (which is below the previous level (%s)).', '\uf077', '\uf078')
+		},
+		{
+			q: $$('How can I change the start/end of a cube? or define pin? or set level as \"lid\"?'),
+			a: $$('In the \"Cube manager\", you can set configuration with the button %s. If you tick \"more tools\", you will access new tools to change the start/end cell, to set if a cell has a pin. And at the last level you can define it as a lid.', '\uf085')
+		},
+		{
+			q: $$('How can I change that ball is not block by \"pins\"?'),
+			a: $$('In the configuration dialog (%s), if you tick \"ball goes through pin\", pins will be ignored when your cubes will be evaluated.', '\uf085')
+		},
+		{
+			q: $$('How can I choose any levels at the last level?'),
+			a: $$('In the configuration dialog (%s), if you tick \"last level is lid only\", you can choose only level which are lid at the last level. Untick it to be able to choose any levels.', '\uf085')
+		},
+		{
+			q: $$('How can I rotate levels?'),
+			a: $$('In the configuration dialog (%s), if you tick \"rotate levels\", you will be able to change the level rotation.', '\uf085')
 		},
 		{
 			q: $$('What is the INSIDE³ side?'),

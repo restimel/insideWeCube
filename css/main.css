@@ -658,6 +658,7 @@ dialog.dialog-cube-position > .body-cube-position {
 	padding: 1em;
 	display: block;
 	box-shadow: 0px 1em 1em -0.5em black;
+	font-family: fontAwesome;
 }
 
 .about-section > summary{

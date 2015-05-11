@@ -83,12 +83,12 @@
 		"en": "Level %s is not found.",
 		"fr": "Le niveau %s n'a pas été trouvé"
 	},
-	"lid only": {
-		"en": "lid only",
-		"fr": "couvercle seulement"
+	"last level is lid only": {
+		"en": "last level is lid only",
+		"fr": "seulement des couvercles au dernier niveau"
 	},
-	"through pin": {
-		"en": "through pin",
+	"ball goes through pin": {
+		"en": "ball goes through pin",
 		"fr": "ignorer les embossements"
 	},
 	"more tools": {
@@ -647,17 +647,65 @@
 		"en": "I have created lot of cube but I want to get rid of them. How can I remove them?",
 		"fr": "J'ai créé plein de cubes mais j'aimerai faire le ménage. Comment puis-je les supprimer?"
 	},
-	"Go to \"Cube Manager\" and click on \"Delete cubes\" button. Select cubes you want to remove and click on \"delete\". These cubes won't be display anymore in your browser.<br>Note: If you have customized an original cube and you remove it, the original maps are restored.": {
-		"en": "Go to \"Cube Manager\" and click on \"Delete cubes\" button. Select cubes you want to remove and click on \"delete\". These cubes won't be display anymore in your browser.<br>Note: If you have customized an original cube and you remove it, the original maps are restored.",
-		"fr": "Allez dans \"Gérer son cube\" et cliquez sur \"Supprimer des cubes\". Sélectionnez les cubes à supprimer et cliquez sur \"Supprimer\". Ces cubes n'existeront plus dans votre navigateur.<br>Remarque: Si vous avez modifié un cube original et que vous le supprimer, les cartes d'origines seront restaurées."
+	"Go to \"Cube Manager\" and click on \"Delete cubes\" button (%s). Select cubes you want to remove and click on \"delete\". These cubes won't be display anymore in your browser.<br>Note: If you have customized an original cube and you remove it, the original maps are restored.": {
+		"en": "Go to \"Cube Manager\" and click on \"Delete cubes\" button (%s). Select cubes you want to remove and click on \"delete\". These cubes won't be display anymore in your browser.<br>Note: If you have customized an original cube and you remove it, the original maps are restored.",
+		"fr": "Allez dans \"Gérer son cube\" et cliquez sur \"Supprimer des cubes\" (%s). Sélectionnez les cubes à supprimer et cliquez sur \"Supprimer\". Ces cubes n'existeront plus dans votre navigateur.<br>Remarque: Si vous avez modifié un cube original et que vous le supprimez, les cartes d'origines seront restaurées."
 	},
 	"How can I see only cubes I own?": {
 		"en": "How can I see only cubes I own?",
-		"fr": "Comment-puis voir seulement les cubes que je possède ?"
+		"fr": "Comment puis-je voir seulement les cubes que je possède ?"
 	},
 	"Click on \"Filter\"  button and then unselect cube you don't want to see. They will not appear anymore in cubes selection. To be able to choose them again, re-select them in the \"Filter\" menu": {
 		"en": "Click on \"Filter\"  button and then unselect cube you don't want to see. They will not appear anymore in cubes selection. To be able to choose them again, re-select them in the \"Filter\" menu",
 		"fr": "Cliquez sur le bouton \"Filtre\" et désélectionnez les cubes que vous ne voulez plus voir. Ils n'apparaîtront plus dans le choix des sélections. Pour pouvoir les obtenir à nouveaux reséléctionnez les dans le menu \"Filtre\"."
+	},
+	"What are \"lid\" levels?": {
+		"en": "What are \"lid\" levels?",
+		"fr": "Que sont les plateaux \"couvercle\" ?"
+	},
+	"These levels are the ones which close the cube box. These levels cannot go inside the cube, they must stay at the last level.": {
+		"en": "These levels are the ones which close the cube box. These levels cannot go inside the cube, they must stay at the last level.",
+		"fr": "Ce sont les plateaux qui ferment le cube. Ces plateaux ne peuvent pas se placer dans le cube, ils doivent être situés au dernier niveau."
+	},
+	"What are \"%s\", \"%s\" or \"pin\"?": {
+		"en": "What are \"%s\", \"%s\" or \"pin\"?",
+		"fr": "Que sont les symboles \"%s\", \"%s\" ou les \"embossements\" ?"
+	},
+	"\"Pins\" are the thin piece which blocks the ball at the start (which is inside the level (%s)) or at the end (which is below the previous level (%s)).": {
+		"en": "\"Pins\" are the thin piece which blocks the ball at the start (which is inside the level (%s)) or at the end (which is below the previous level (%s)).",
+		"fr": "Les \"embossements\" sont les morceaux permettant de bloquer la bille au début (qui est situé dans le plateau (%s)) ou à la fin (qui est situé sous le plateau précédent (%s))."
+	},
+	"How can I change the start/end of a cube? or define pin? or set level as \"lid\"?": {
+		"en": "How can I change the start/end of a cube? or define pin? or set level as \"lid\"?",
+		"fr": "Comment puis-je changer la case de départ/de fin? ou définir un embossement? ou définir un plateau comme \"couvercle\" ?"
+	},
+	"In the \"Cube manager\", you can set configuration with the button %s. If you tick \"more tools\", you will access new tools to change the start/end cell, to set if a cell has a pin. And at the last level you can define it as a lid.": {
+		"en": "In the \"Cube manager\", you can set configuration with the button %s. If you tick \"more tools\", you will access new tools to change the start/end cell, to set if a cell has a pin. And at the last level you can define it as a lid.",
+		"fr": "Dans \"Gérer son cube\", vous pouvez changer la configuration en cliquant sur le bouton %s. Si vous cochez \"plus d'outils\", vous aurez accès à de nouveaux outils pour éditer le cube comme pour changer le début ou la fin, ou définir un embossement. Au dernier niveau, vous pourrez le définir en tant que un \"couvercle\"."
+	},
+	"How can I change that ball is not block by \"pins\"?": {
+		"en": "How can I change that ball is not block by \"pins\"?",
+		"fr": "Comment puis-je changer le fait que la bille soit bloquée par les embossements ?"
+	},
+	"In the configuration dialog (%s), if you tick \"ball goes through pin\", pins will be ignored when your cubes will be evaluated.": {
+		"en": "In the configuration dialog (%s), if you tick \"ball goes through pin\", pins will be ignored when your cubes will be evaluated.",
+		"fr": "Dans la fenêtre de configuration (%s), si vous chochez \"ignorer les embossements\", la bille ne sera plus génée par les embossements pour le calcul des mouvements."
+	},
+	"How can I choose any levels at the last level?": {
+		"en": "How can I choose any levels at the last level?",
+		"fr": "Comment puis-je choisir tous les plateaux au dernier niveau ?"
+	},
+	"In the configuration dialog (%s), if you tick \"last level is lid only\", you can choose only level which are lid at the last level. Untick it to be able to choose any levels.": {
+		"en": "In the configuration dialog (%s), if you tick \"last level is lid only\", you can choose only level which are lid at the last level. Untick it to be able to choose any levels.",
+		"fr": "Dans la fenêtre de configuration (%s), si vous chochez \"seulement des couvercles au dernier niveau\", vous pouvez seulement choisir des couvercles en tant que dernier niveau. Décochez-la pour pouvoir choisir n'importe quel plateau."
+	},
+	"How can I rotate levels?": {
+		"en": "How can I rotate levels?",
+		"fr": "Comment puis-je tourner des plateaux ?"
+	},
+	"In the configuration dialog (%s), if you tick \"rotate levels\", you will be able to change the level rotation.": {
+		"en": "In the configuration dialog (%s), if you tick \"rotate levels\", you will be able to change the level rotation.",
+		"fr": "Dans la fenêtre de configuration (%s), si vous chochez \"rotation des plateaux\", vous pourrez tourner les plateaux."
 	},
 	"What is the INSIDE³ side?": {
 		"en": "What is the INSIDE³ side?",
@@ -711,9 +759,9 @@
 		"en": "I would like to save the generated cubes.",
 		"fr": "Je voudrais garder des cubes générés."
 	},
-	"When possible solutions are displayed, you can click on them to see what they look like. If you tick their checkbox and then click on \"save\" they will be saved with the given name (if no name is provided a generated name will be given).": {
-		"en": "When possible solutions are displayed, you can click on them to see what they look like. If you tick their checkbox and then click on \"save\" they will be saved with the given name (if no name is provided a generated name will be given).",
-		"fr": "Quand les solutions possibles sont affichées, vous pouvez leur cliquer dessus pour voir les plans. Si vous cochez la case puis vous cliquez sur \"enregistrer\" ils seront enregistrés avec le nom que vous leur avez donné (s'il n'y a pas de nom, un nom automatique leur est donné)."
+	"When possible solutions are displayed, you can click on them to see what they look like. If you tick their checkbox and then click on \"save\" (%s) they will be saved with the given name (if no name is provided a generated name will be given).": {
+		"en": "When possible solutions are displayed, you can click on them to see what they look like. If you tick their checkbox and then click on \"save\" (%s) they will be saved with the given name (if no name is provided a generated name will be given).",
+		"fr": "Quand les solutions possibles sont affichées, vous pouvez leur cliquer dessus pour voir les plans. Si vous cochez la case puis vous cliquez sur \"enregistrer\" (%s) ils seront enregistrés avec le nom que vous leur avez donné (s'il n'y a pas de nom, un nom automatique leur est donné)."
 	},
 	"Why does it look so awful?": {
 		"en": "Why does it look so awful?",
