@@ -35,7 +35,7 @@ function main(container){
 	Helper.mainLoaded();
 }
 
-main.version = '1.1.4';
+main.version = '1.1.5';
 
 /**
  * Display notification
