@@ -195,6 +195,9 @@
 	matching.configuration = function(option) {
 		if (typeof option.path === 'string') {
 			path = option.path;
+			if (path.lastIndexOf('/') !== path.length - 1) {
+				path += '/';
+			}
 		}
 	}
 	

@@ -36,7 +36,7 @@ Control.prototype.onmessage = function(e) {
 		this.backWorker.postMessage({action: 'changePort'}, [channel.port2]);
 	} else if (data.data && data.data.action === 'terminateWorker') {
 		if (!this.backWorker) {
-			console.warn('the back worker has been asked to be terminate but it does not exist');
+			console.warn('the back worker has been asked to be terminated but it does not exist');
 			return;
 		}
 		this.backWorker.terminate();
