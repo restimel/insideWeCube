@@ -3,7 +3,7 @@ function Dbstore() {
 		this.db = false;
 		this.loadData();
 	} else {
-		var request = self.indexedDB.open('iwcDB', 1);
+		var request = self.indexedDB.open('iwcDB', 2);
 		request.onerror = this.onOpenError.bind(this);
 		request.onupgradeneeded = this.onupgradeneeded.bind(this);
 		request.onsuccess  = this.onConnection.bind(this);
@@ -41,6 +41,7 @@ Dbstore.prototype.onupgradeneeded = function(event) {
 			objectStore.createIndex('name', 'name', {unique: false});
 
 			objectStore = this.db.createObjectStore('draft', {keyPath: 'history', autoIncrement: true});
+		case 1:
 	}
 };
 
