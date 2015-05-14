@@ -142,13 +142,13 @@ BallLocater.prototype.renderCubeSelector = function(cubeHtml) {
 
 	var elem = document.getElementById('map-1-1-0');
 	if (elem) {
-		elem.textContent = $$('S');
+		elem.classList.add('start-cell');
 		elem.title = $$('Start');
 	}
 
 	elem = document.getElementById('map-4-4-6');
 	if (elem) {
-		elem.textContent = $$('F');
+		elem.classList.add('end-cell');
 		elem.title = $$('Finish');
 	}
 

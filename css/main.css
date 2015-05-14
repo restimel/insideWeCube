@@ -3,6 +3,25 @@
 	src: url('../fonts/fontawesome-webfont.woff');
 }
 
+/* Internalization */
+/* en */
+.lng-en .mini-map .start-cell:before {
+	content: 'S';
+}
+.lng-en .mini-map .end-cell:before {
+	content: 'F';
+}
+
+/* fr */
+.lng-fr .mini-map .start-cell:before {
+	content: 'D';
+}
+.lng-fr .mini-map .end-cell:before {
+	content: 'F';
+}
+
+/* end of internalization */
+
 body {
 	background-color: #ffffff;
 }
@@ -474,12 +493,6 @@ summary {
 .mini-map .passage-left {
 	border-left: none;
 	padding-left: 3px;
-}
-.mini-map .start-cell:before {
-	content: 'S';
-}
-.mini-map .end-cell:before {
-	content: 'F';
 }
 .mini-map .pin:before {
 	content: '\f077'; /* ^ */

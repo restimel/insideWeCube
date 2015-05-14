@@ -1,9 +1,9 @@
 function main(container){
+	main.container = container;
+
 	main.control = new Control();
 	main.router = new Router();
 	main.language = new Languages(main.refresh);
-
-	main.container = container;
 
 	main.createBody(container);
 	main.control.action('changeLng', $$.getCurrentLng());
