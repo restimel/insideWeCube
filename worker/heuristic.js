@@ -306,7 +306,7 @@ Heuristic.prototype.renderCube = function(rsp, count) {
 
 Heuristic.prototype.wayBack = function(rsp) {
 	var cell = rsp.cell,
-		target = rsp.target ? {x:4, y:4, z:6} : {x:1, y:1, z:0},
+		target = rsp.target ? this.cube.finishCell : this.cube.startCell,
 		lastTopPosition = !rsp.target,
 		startPosition = this.computeBestPosition(cell, rsp.position),
 		position = startPosition,

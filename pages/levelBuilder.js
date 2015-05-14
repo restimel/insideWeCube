@@ -1,14 +1,12 @@
 function LevelConstructor(index, cubePath, parentCube, cubeColor, options) {
 	options = options || {};
+	this.index = index;
 
 	this.reset({
 		lid: options.lid,
-		s: options.s ? options.s.filter(function(c) {
-				return c[2] === index;
-			}) : []
+		s: options.s ? options.s : []
 	});
 
-	this.index = index;
 	this.cubePath = cubePath;
 	this.cube = parentCube;
 	this.color = cubeColor;
@@ -180,6 +178,11 @@ LevelConstructor.prototype.renderTransform = function(val) {
 };
 
 LevelConstructor.prototype.reset = function(options) {
+	var cellOptions = options.s.filter(function(c) {
+		return c[2] === this.index && c[3] !== 1 && c[3] !== -1;
+	}, this);
+
+	options.s = cellOptions;
 	this.level = new Level('', options);
 };
 
