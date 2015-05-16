@@ -29,11 +29,13 @@ LevelConstructor.prototype.render = function(container) {
 	header.textContent = (this.index + 1) + '-';
 	container.appendChild(header);
 
+	var toolBar  = document.createElement('div');
+
 	var inputName = document.createElement('input');
 	inputName.placeholder = $$('level identifier');
 	inputName.value = this.level.name || '';
 	inputName.onchange = this.changeName.bind(this);
-	container.appendChild(inputName);
+	toolBar.appendChild(inputName);
 
 	var slctLevel = document.createElement('select');
 	slctLevel.onchange = this.changeLevel.bind(this);
@@ -45,7 +47,7 @@ LevelConstructor.prototype.render = function(container) {
 	main.control.action('getLevels', {lid: this.lastLevel, groupByCube: true}, function(data) {
 		Helper.buildSelect(slctLevel, data);
 	});
-	container.appendChild(slctLevel);
+	toolBar.appendChild(slctLevel);
 
 	/* Transform tool select */
 	var select = document.createElement('select');
@@ -69,7 +71,7 @@ LevelConstructor.prototype.render = function(container) {
 	option.textContent = '\uf079 ' + $$('Rotate 180°');
 	select.add(option);
 	this.transformTool = select;
-	container.appendChild(select);
+	toolBar.appendChild(select);
 
 	var label, input;
 	/* option to tell it is a lid level */
@@ -82,10 +84,19 @@ LevelConstructor.prototype.render = function(container) {
 		input.onchange = this.changeLidLevel.bind(this, input);
 		label.textContent = $$('Is a lid level:');
 		label.appendChild(input);
-		container.appendChild(label);
+		toolBar.appendChild(label);
 	}
+	container.appendChild(toolBar);
 
+	/* level */
 	this.renderLevel(container);
+
+	/* message */
+	this.elementMessage = document.createElement('div');
+	this.elementMessage.className = 'lvl-message ' + this.message.type;
+	this.textContent = this.message.text;
+	container.appendChild(this.elementMessage);
+	this.checkInfo();
 };
 
 LevelConstructor.prototype.renderLevel = function(container) {
@@ -93,7 +104,8 @@ LevelConstructor.prototype.renderLevel = function(container) {
 		container = this.container;
 	}
 
-	var table = document.createElement('table'),
+	var tableContainer = document.createElement('div'),
+		table = document.createElement('table'),
 		row1, row2,	el, cell, x, y, bord;
 
 	bord = document.createElement('td');
@@ -168,7 +180,22 @@ LevelConstructor.prototype.renderLevel = function(container) {
 	}
 
 	table.onclick = this.change.bind(this);
-	container.appendChild(table);
+	tableContainer.appendChild(table);
+
+	tableContainer.className = 'level-container';
+	container.appendChild(tableContainer);
+};
+
+LevelConstructor.prototype.renderMessage = function(message, type) {
+	message = typeof message === 'string' ? message : this.message.text;
+	type = type || this.message.type;
+
+	this.elementMessage.textContent = message;
+	main.changeClass(this.elementMessage, this.message.type, type);
+	this.message = {
+		text: message,
+		type: type
+	};
 };
 
 LevelConstructor.prototype.renderTransform = function(val) {
@@ -181,6 +208,10 @@ LevelConstructor.prototype.renderTransform = function(val) {
 
 LevelConstructor.prototype.reset = function(options) {
 	this.level = new Level('', options);
+	this.message = {
+		message: '',
+		type: 'none'
+	};
 };
 
 LevelConstructor.prototype.changeName = function(e) {
@@ -207,9 +238,17 @@ LevelConstructor.prototype.changeLevel = function(e) {
 	}
 
 	main.control.action('getLevel', lvl, function(l) {
+		var nextlvl;
+
 		if (l) {
 			this.parse(l);
 			this.render();
+
+			this.checkInfo();
+			nextlvl = this.cube.levels[this.index +1];
+			if (nextlvl) {
+				nextlvl.checkInfo();
+			}
 		} else {
 			main.message($$('Level %s is not found.', lvl), 'error');
 		}
@@ -241,7 +280,7 @@ LevelConstructor.prototype.setCell = function(el, type, val) {
 		textContent: '',
 		title: ''
 	};
-	
+
 	if (!el) {
 		return;
 	}
@@ -271,10 +310,22 @@ LevelConstructor.prototype.setCell = function(el, type, val) {
 	el.title = o.title;
 };
 
+LevelConstructor.prototype.checkInfo = function() {
+	var message = '';
+	var type = 'none';
+
+	if (this.index && this.level.hasPinConflict(this.cube.levels[this.index - 1].level.getOutSidePins())) {
+		message = $$('This level won\'t be well positioned due to the pin under the previous level.');
+		type = 'error';
+	}
+
+	this.renderMessage(message, type);
+};
+
 LevelConstructor.prototype.change = function(e) {
 	var el = e.target,
 		id = el.id,
-		val;
+		val, lvl;
 
 	if (!id) {
 		return false;
@@ -298,12 +349,17 @@ LevelConstructor.prototype.change = function(e) {
 				el.className = 'cell-main-' + (val ? 'hole' : 'fill');
 			} else {
 				this.setCell(el, type+val, true);
+				lvl = this.cube.levels[this.index +1];
+				if (lvl) {
+					lvl.checkInfo();
+				}
 			}
 			break;
 		case 'wallR':
 			type = 'r';
 			val = this.level.toggle(id[1], id[2], type);
 			el.className = 'cell-wallR-' + (val ? 'hole' : 'fill');
+			this.checkInfo();
 			break;
 		case 'wallD':
 			type = 'd';

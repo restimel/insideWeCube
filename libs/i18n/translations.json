@@ -379,6 +379,10 @@
 		"en": "cube \"%s\" saved.",
 		"fr": "cube \"%s\" enregistré."
 	},
+	"This level won't be well positioned due to the pin under the previous level.": {
+		"en": "This level won't be well positioned due to the pin under the previous level.",
+		"fr": "Ce plateau ne sera pas positionné correctement à cause de l'embossement du plateau précédent."
+	},
 	"Instructions": {
 		"en": "Instructions",
 		"fr": "Instructions"
