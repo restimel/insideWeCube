@@ -368,7 +368,7 @@ Path.prototype.buildPath = function(cell, endCells) {
 			return shortest;
 		}, {dstFromTarget: Infinity});
 		path.push(cell);
-	} while (!endCells.some(Cube.comparePosition.bind(Cube, cell)));
+	} while (cell.linked && !endCells.some(Cube.comparePosition.bind(Cube, cell)));
 
 	return path;
 }
