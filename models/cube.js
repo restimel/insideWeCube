@@ -2,6 +2,9 @@ function Cube (name) {
 	this.name = name;
 	this.levels = [];
 	this.visible = true;
+
+	this.startCell = {x: 1, y: 1, z: 0};
+	this.finishCell = {x: 4, y: 4, z: 6};
 }
 
 Cube.prototype.init = function() {
@@ -146,11 +149,19 @@ Cube.prototype.toJSON = function() {
 	};
 
 	if (this.startCell.x !== 1 || this.startCell.y !== 1 || this.startCell.z !== 0) {
-		json.start = this.startCell;
+		json.start = {
+			x: this.startCell.x,
+			y: this.startCell.y,
+			z: this.startCell.z
+		};
 	}
 
 	if (this.finishCell.x !== 4 || this.finishCell.y !== 4 || this.finishCell.z !== 6) {
-		json.end = this.finishCell;
+		json.end = {
+			x: this.finishCell.x,
+			y: this.finishCell.y,
+			z: this.finishCell.z
+		};
 	}
 
 	return json;
@@ -339,6 +350,21 @@ Cube.prototype.couldMove = function(cellPos, cubePosition) {
 	return false;
 };
 
+Cube.prototype.getClassFromCell = function(cell, classList, x, y, z) {
+	if (Cube.comparePosition(this.startCell, {x: x, y: y, z: z}) || cell.s === 1) {
+		classList.push('start-cell');
+	}
+	if (Cube.comparePosition(this.finishCell, {x: x, y: y, z: z}) || cell.s === -1) {
+		classList.push('end-cell');
+	}
+	if (cell.s === 2) {
+		classList.push('pin');
+	}
+	if (this.get(x, y, z-1).s === -2) {
+		classList.push('pin-top');
+	}
+};
+
 Cube.prototype.renderMap = function(orientation, available, uid) {
 	uid = uid || '';
 	var cube = [],
@@ -366,16 +392,7 @@ Cube.prototype.renderMap = function(orientation, available, uid) {
 					if (this.get(x, y-1, z).r) {
 						clName.push('passage-left');
 					}
-					if (cl.s === 1) {
-						clName.push('start-cell');
-					} else if (cl.s === -1) {
-						clName.push('end-cell');
-					} else if (cl.s === 2) {
-						clName.push('pin');
-					}
-					if (this.get(x, y, z-1).s === -2) {
-						clName.push('pin-top');
-					}
+					this.getClassFromCell(cl, clName, x, y, z);
 					cell += ' id="map'+uid+'-'+x+'-'+y+'-'+z+'"';
 				} else {
 					clName.push('unavailable');
@@ -403,16 +420,7 @@ Cube.prototype.renderMap = function(orientation, available, uid) {
 					if (this.get(x, y-1, z).r) {
 						clName.push('passage-left');
 					}
-					if (cl.s === 1) {
-						clName.push('start-cell');
-					} else if (cl.s === -1) {
-						clName.push('end-cell');
-					} else if (cl.s === 2) {
-						clName.push('pin-top');
-					}
-					if (this.get(x, y, z-1).s === -2) {
-						clName.push('pin');
-					}
+					this.getClassFromCell(cl, clName, x, y, z);
 					cell += ' id="map'+uid+'-'+x+'-'+y+'-'+z+'"';
 				} else {
 					clName.push('unavailable');

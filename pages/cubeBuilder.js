@@ -130,6 +130,7 @@ CubeBuilder.prototype.render = function(container) {
 
 	/* Tools */
 	this.action = 0;
+	this.propagateAction();
 	this.toolBox = document.createElement('fieldset');
 	this.toolBox.className = 'cube-header-field' + (Helper.config.advanced ? '' : ' hidden');
 	legend = document.createElement('legend');
@@ -425,16 +426,20 @@ CubeBuilder.prototype.renderTransform = function(val) {
 	});
 };
 
+CubeBuilder.prototype.propagateAction = function() {
+	var value = this.action;
+	this.levels.forEach(function(level) {
+		level.setAction(value);
+	});
+};
+
 CubeBuilder.prototype.setAction = function(event) {
 	var btn = event.target;
 	var value = parseInt(btn.value, 10);
 
 	if (this.action !== value) {
-		this.levels.forEach(function(level) {
-			level.setAction(value);
-		});
-
 		this.action = value;
+		this.propagateAction();
 
 		main.removeClass('selected', this.toolBox);
 		btn.classList.add('selected');
@@ -564,9 +569,9 @@ CubeBuilder.prototype.endCell = function(id) {
 			};
 		} else if (!this.finishCL) {
 			this.finishCL = {
-				x: 1,
-				y: 1,
-				z: 0
+				x: 4,
+				y: 4,
+				z: 6
 			};
 		}
 		id = [this.finishCL.x, this.finishCL.y, this.finishCL.z];

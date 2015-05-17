@@ -1,9 +1,9 @@
 function main(container){
+	main.container = container;
+
 	main.control = new Control();
 	main.router = new Router();
 	main.language = new Languages(main.refresh);
-
-	main.container = container;
 
 	main.createBody(container);
 	main.control.action('changeLng', $$.getCurrentLng());
@@ -35,7 +35,7 @@ function main(container){
 	Helper.mainLoaded();
 }
 
-main.version = '1.1.4';
+main.version = '1.1.5';
 
 /**
  * Display notification

@@ -1,12 +1,20 @@
 function Languages(refresh) {
 	this.isOpen = false;
 	this.callBack = refresh;
+	this.lastLng = 'lng-en';
 
 	this.close = function() {
 		document.body.removeEventListener('click', this.close, true);
 		this.renderClose();
 	}.bind(this);
+	this.setLng();
 }
+
+Languages.prototype.setLng = function(container) {
+	var lng = 'lng-' + $$.getCurrentLng();
+	main.changeClass(main.container, this.lastLng, lng);
+	this.lastLng = lng;
+};
 
 Languages.prototype.render = function(container) {
 	this.section = document.createElement('section');
@@ -69,6 +77,7 @@ Languages.prototype.changeLng = function(lng) {
 	if ($$.getCurrentLng() !== lng) {
 		$$.changeLng(lng);
 		main.control.action('changeLng', lng);
+		this.setLng();
 		this.callBack();
 	}
 	this.close();

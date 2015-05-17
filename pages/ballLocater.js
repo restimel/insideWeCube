@@ -140,15 +140,17 @@ BallLocater.prototype.renderCubeSelector = function(cubeHtml) {
 	});
 	this.cubeSelectorContainer.innerHTML = this.cubeHtml.join('');
 
-	var elem = document.getElementById('map-1-1-0');
+	var id = 'map-' + this.cubeStart.x + '-' + this.cubeStart.y + '-' + this.cubeStart.z;
+	var elem = document.getElementById(id);
 	if (elem) {
-		elem.textContent = $$('S');
+		elem.classList.add('start-cell');
 		elem.title = $$('Start');
 	}
 
-	elem = document.getElementById('map-4-4-6');
+	id = 'map-' + this.cubeEnd.x + '-' + this.cubeEnd.y + '-' + this.cubeEnd.z;
+	elem = document.getElementById(id);
 	if (elem) {
-		elem.textContent = $$('F');
+		elem.classList.add('end-cell');
 		elem.title = $$('Finish');
 	}
 
@@ -429,6 +431,8 @@ BallLocater.prototype.onMessage = function(data) {
 			break;
 		case 'cubeInfo':
 			this.cubeColor = data.info.color;
+			this.cubeStart = data.info.start;
+			this.cubeEnd = data.info.end;
 			if (this.container) {
 				this.render();
 			}

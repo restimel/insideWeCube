@@ -5,7 +5,10 @@
 		i = path.indexOf('worker');
 
 	path = path.slice(0, i);
-	path = '/' + path.join('/');
+	path = path.join('/');
+	if (path.indexOf('/') !== 0) {
+		path = '/' + path;
+	}
 
 	self.$$configuration = {path: path};
 })();
