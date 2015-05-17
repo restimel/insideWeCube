@@ -175,6 +175,10 @@ Generator.prototype.prepareLevels = function(levels, sid) {
 		return;
 	}
 
+	this.levels.forEach(function(lvl) {
+		lvl.pins = lvl.getOutSidePins();
+	});
+
 	/* prepare the levels */
 	var p = null;
 	var nb = this.size - 1;
@@ -336,6 +340,7 @@ LevelGenerator.prototype.getCurrent = function() {
 LevelGenerator.prototype.inc = function(updateNext) {
 	this.offset++;
 	if (!this.getCurrent()) {
+		/* the current level is not available */
 		if (this.previous) {
 			if (this.previous.inc() === -1) {
 				return -1;
@@ -345,6 +350,9 @@ LevelGenerator.prototype.inc = function(updateNext) {
 			this.callback('finish');
 			return -1;
 		}
+		return this.inc(updateNext);
+	} else if (this.previous && this.current.hasPinConflict(this.previous.current.pins)) {
+		/* the current level can not been put under previous level */
 		return this.inc(updateNext);
 	}
 

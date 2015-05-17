@@ -34,7 +34,7 @@ V1.2
 		✓ select levels
 		* change start position
 		* allow to rotate levels
-		* manage pin for levels selector
+		✓ manage pin for levels selector
 	✓ compute levels to test solvabale cubes
 	✓ create interface to display solvable cubes
 		✓ select cubes user like and save them
