@@ -7,6 +7,7 @@ function CubeBuilder(cubePath) {
 		}.bind(this),
 		call_pin: function() {
 			this.cubePath.computePath();
+			this.levels.forEach(function(lvl) {lvl.checkInfo();});
 		}.bind(this),
 		call_trsfmLvl: this.renderTransform.bind(this),
 		call_adv: this.renderAdvTools.bind(this)

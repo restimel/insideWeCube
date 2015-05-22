@@ -10,7 +10,7 @@ V1.2
 	✓ Consider Pin on level that block the ball
 		✓ simple movement with Pin
 		* moving up/down and fall on a pin
-		* consider pin that blocks below level to be build (no right wall for the cell bellow)
+		✓ consider pin that blocks below level to be build (no right wall for the cell bellow)
 	✓ Block level7 at level7
 	✓ Do not propose other levels at level7
 		✓ add an option to deactivate it
@@ -34,6 +34,7 @@ V1.2
 		✓ select levels
 		* change start position
 		* allow to rotate levels
+		✓ manage pin for levels selector
 	✓ compute levels to test solvabale cubes
 	✓ create interface to display solvable cubes
 		✓ select cubes user like and save them

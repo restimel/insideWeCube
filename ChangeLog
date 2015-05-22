@@ -1,6 +1,6 @@
 v1.1 → v1.2
 New features
-	* Manage level characteristics such as lid (which can not be moved to other levels) and pin (which can block the ball)
+	* Manage level characteristics such as lid (which can not be moved to other levels) and pin (which can block the ball or can block level below)
 	* Manage a start and a finish at a different place
 	* Allow to rotate levels in cube manager
 	* Allow to highlight the shortest path in cube manager

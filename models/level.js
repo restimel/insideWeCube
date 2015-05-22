@@ -100,6 +100,32 @@ Level.prototype.rotate = function (rotation) {
 	}
 };
 
+Level.prototype.getOutSidePins = function() {
+	var pins = [];
+
+	this.cells.forEach(function(row, x) {
+		row.forEach(function (cell, y) {
+			if (cell.s === -2) {
+				pins.push({
+					x: x,
+					y: y
+				});
+			}
+		});
+	});
+
+	return pins;
+};
+
+Level.prototype.hasPinConflict = function(pins) {
+	var conflict = !Helper.config.pin &&
+		pins.some(function(cell) {
+			return !this.get(cell.x, cell.y).r;
+		}, this);
+
+	return conflict;
+};
+
 Level.prototype.toggle = function (x, y, property, value) {
 	if (property === 's') {
 		switch (value) {
