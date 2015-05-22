@@ -332,7 +332,9 @@ CubeGenerator.prototype.addCubeBox = function(levels, accessible, difficulty, ma
 	box.onclick = function(e) {
 		this.cube.load(levels, function() {
 			var maps = this.cube.renderMap('top', accessible);
-			this.elements.cubeDetails.innerHTML = maps.join('<br>');
+			this.elements.cubeDetails.innerHTML = maps.map(function(mp, i) {
+				return mp + '<caption>' + CubeGenerator.getLevelName(levels[i]) + '</caption>';
+			}).join('<br>');
 		}.bind(this));
 
 		main.removeClass('box-active');
@@ -462,4 +464,12 @@ CubeGenerator.prototype.onMessage = function(data) {
 	} else {
 		console.warn('Path action unknown', action, data);
 	}
+};
+
+/* Static methods */
+
+CubeGenerator.getLevelName = function(lvlName) {
+	var slices = lvlName.split('§');
+	var name = slices[slices.length - 1];
+	return name;
 };
