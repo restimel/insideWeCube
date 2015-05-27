@@ -21,6 +21,7 @@ LevelConstructor.prototype.render = function(container) {
 		container = this.container;
 		container.innerHTML = '';
 	}
+	var label, input, textarea, messageArea;
 
 	var header = document.createElement('header');
 
@@ -71,7 +72,6 @@ LevelConstructor.prototype.render = function(container) {
 	this.transformTool = select;
 	toolBar.appendChild(select);
 
-	var label, input;
 	/* option to tell it is a lid level */
 	if (this.lastLevel && Helper.config.advanced) {
 		label = document.createElement('label');
@@ -86,21 +86,27 @@ LevelConstructor.prototype.render = function(container) {
 	}
 	container.appendChild(toolBar);
 
-	var textarea = document.createElement('textarea');
+	/* level */
+	this.renderLevel(container);
+
+	messageArea = document.createElement('div');
+	messageArea.className = 'message-area';
+
+	/* comments */
+	textarea = document.createElement('textarea');
 	textarea.placeholder = $$('note about this level');
 	textarea.value = this.level.cmt || '';
 	textarea.onchange = this.onCommentChange.bind(this);
-	container.appendChild(textarea);
-
-	/* level */
-	this.renderLevel(container);
+	messageArea.appendChild(textarea);
 
 	/* message */
 	this.elementMessage = document.createElement('div');
 	this.elementMessage.className = 'lvl-message ' + this.message.type;
 	this.textContent = this.message.text;
-	container.appendChild(this.elementMessage);
+	messageArea.appendChild(this.elementMessage);
 	this.checkInfo();
+
+	container.appendChild(messageArea);
 };
 
 LevelConstructor.prototype.renderLevel = function(container) {
