@@ -269,17 +269,18 @@ CubeBuilder.prototype.renderInfo = function(info) {
 		nbMovement = info.nbMovement,
 		nbMvtOutPath = info.nbMvtOutPath,
 		nbDifficultCrossing = info.nbDifficultCrossing,
-		difficulty = length * 1.1 / 24 + // 11
-					 (available - length) * 1.5 / 24 + // 15
+		difficulty = //length * 1.13 / 24 + // 11
+					 (available - length) * 0.1 + // 7.7
 					 //chgDirection * 0.3 + // 0
-					 chgLevel * 1.5 / 7 + // ~15 (current max ~7)
-					 chgTop * 1.85 + // ~35 (current max 17)
-					 nbMovement * 0.1 + // ~5 (current max ~3.5)
-					 nbMvtOutPath * 0.1 +
-					 nbDifficultCrossing * 5, // ~15 (current max 3)
-		maxDifficulty = 95,
+					 chgLevel * 0.5 + // 37
+					 // chgTop * 1.85 + // ~35 (current max 17)
+					 nbMovement * 0.5 + // 59
+					 chgTop / nbMovement * 10 + // 3
+					 nbMvtOutPath * 2 + //42
+					 nbDifficultCrossing * 11, // 44
+		maxDifficulty = 150,
 		lowDifficulty = maxDifficulty / 3,
-		highDifficulty = maxDifficulty * 2 / 3;
+		highDifficulty = maxDifficulty * 2 / 3 -2;
 
 	var finish = document.createElement('section'),
 		pathLength = document.createElement('section'),
