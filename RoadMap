@@ -26,8 +26,13 @@ V1.2
 			✓ pin
 			+ Not accessible cell
 	✓ add comments to levels
-	* switch level (need idea about design)
 	+ give small map with different orientation (other than top/bottom like stickers)
+
+	Path
+	✓ Change algorithm to something like try all moves and see which is the shortest (done when ball is lost)
+		→ should fix:
+			There are still issues if ball reach another valid path
+			Some hard passages
 
 →	Auto-Generator
 	✓ create interface to choose levels and options
@@ -49,11 +54,9 @@ V1.2
 
 ──────────────────────────────────────────────────────
 V2.0 (or later... if enough motivation)
-	Paths
-	* Change algorithm to something like try all moves and see which is the shortest
-		→ should fix:
-			There are still issues if ball reach another valid path
-			Some hard passages
+
+	Build cube
+	* switch level (need idea about design)
 
 	Analyze Cube
 	✗ (bonus, if I really want) identify in which cube we are if no positions match
