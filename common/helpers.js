@@ -9,9 +9,16 @@ var Helper = {
 			callback(this.value);
 		};
 
-		[{id: 'top', text: $$('INSIDE³ side is at the top')},
-		 {id: 'bottom', text: $$('INSIDE³ side is at the bottom')}
-		].forEach(function(item) {
+		var selectors = [
+			{id: 'top', text: $$('The INSIDE³ side is at the top.')},
+			{id: 'bottom', text: $$('The INSIDE³ side is at the bottom.')},
+			{id: 'right', text: $$('The right side is at the top.')},
+			{id: 'left', text: $$('The left side is at the top.')},
+			{id: 'front', text: $$('The front side is at the top.')},
+			{id: 'back', text: $$('The back side is at the top.')}
+		];
+
+		selectors.forEach(function(item) {
 			var option = document.createElement('option');
 			option.value = item.id;
 			option.textContent = item.text;

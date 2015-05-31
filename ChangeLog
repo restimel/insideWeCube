@@ -6,6 +6,7 @@ New features
 	* Allow to highlight the shortest path in cube manager
 	* Allow to let comments on levels
 	* Search which cube are possible to create from a set of levels
+	* Can display stickers map (the map on sides)
 
 Bugs fixed
 	* Fix error thrown in console when moving to another menu while a temporary message is displayed.

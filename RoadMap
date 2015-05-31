@@ -26,7 +26,9 @@ V1.2
 			✓ pin
 			+ Not accessible cell
 	✓ add comments to levels
-	+ give small map with different orientation (other than top/bottom like stickers)
+	✓ give small map with different orientation (other than top/bottom like stickers)
+		* add an option to watch/hide them
+		* display them in print mode
 
 	Path
 	✓ Change algorithm to something like try all moves and see which is the shortest (done when ball is lost)
@@ -40,6 +42,8 @@ V1.2
 		* change start position
 		* allow to rotate levels
 		✓ manage pin for levels selector
+	* manage level by level
+		* add an interface to tell wich level are allowed on each level
 	✓ compute levels to test solvabale cubes
 	✓ create interface to display solvable cubes
 		✓ select cubes user like and save them

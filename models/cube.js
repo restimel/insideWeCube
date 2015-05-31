@@ -367,83 +367,143 @@ Cube.prototype.getClassFromCell = function(cell, classList, x, y, z) {
 
 Cube.prototype.renderMap = function(orientation, available, uid) {
 	uid = uid || '';
-	var cube = [],
-		x, y, z,
-		level, row, cell,
-		cl, clName,
-		computeClass = {
-			'top': function(x, y, z) {
-				var cl;
-
-				if (isAvailable(x, y, z)) {
-					cl = this.get(x, y, z);
-					if (cl.b) {
-						clName.push('hole');
-					}
-					if (cl.d) {
-						clName.push('passage-down');
-					}
-					if (cl.r) {
-						clName.push('passage-right');
-					}
-					if (this.get(x-1, y, z).d) {
-						clName.push('passage-up');
-					}
-					if (this.get(x, y-1, z).r) {
-						clName.push('passage-left');
-					}
-					this.getClassFromCell(cl, clName, x, y, z);
-					cell += ' id="map'+uid+'-'+x+'-'+y+'-'+z+'"';
-				} else {
-					clName.push('unavailable');
+	var cube = [];
+	var x, y, z;
+	var lx, ly, lz;
+	var level, row, cell;
+	var cl, clName;
+	var that = this;
+	var computeClass = {
+			'top': function(ox, oy, oz) {
+				var x = ox,
+					y = oy,
+					z = oz;
+				var map = {
+					TOP: 'TOP',
+					BOTTOM: 'BOTTOM',
+					RIGHT: 'RIGHT',
+					LEFT: 'LEFT',
+					DOWN: 'DOWN',
+					UP: 'UP'
 				}
+
+				clName = clName.concat(getClassName(x, y, z, map));
 			},
-			'bottom': function(x, y, z) {
-				var cl;
-				z = 6 - z;
-				x = 5 - x;
+			'bottom': function(ox, oy, oz) {
+				var x = lx - ox - 1,
+					y = oy,
+					z = lz - oz - 1;
 
-				if (isAvailable(x, y, z)) {
-					cl = this.get(x, y, z);
-					if (this.get(x, y, z - 1).b) {
-						clName.push('hole');
-					}
-					if (cl.d) {
-						clName.push('passage-up');
-					}
-					if (cl.r) {
-						clName.push('passage-right');
-					}
-					if (this.get(x-1, y, z).d) {
-						clName.push('passage-down');
-					}
-					if (this.get(x, y-1, z).r) {
-						clName.push('passage-left');
-					}
-					this.getClassFromCell(cl, clName, x, y, z);
-					cell += ' id="map'+uid+'-'+x+'-'+y+'-'+z+'"';
-				} else {
-					clName.push('unavailable');
+				var map = {
+					TOP: 'BOTTOM',
+					BOTTOM: 'TOP',
+					RIGHT: 'RIGHT',
+					LEFT: 'LEFT',
+					DOWN: 'UP',
+					UP: 'DOWN'
 				}
+
+				clName = clName.concat(getClassName(x, y, z, map));
+			},
+			'right': function(ox, oy, oz) {
+				var x = ox,
+					y = lz - oz - 1,
+					z = oy;
+
+				var map = {
+					TOP: 'RIGHT',
+					BOTTOM: 'LEFT',
+					RIGHT: 'BOTTOM',
+					LEFT: 'TOP',
+					DOWN: 'DOWN',
+					UP: 'UP'
+				}
+
+				clName = clName.concat(getClassName(x, y, z, map));
+			},
+			'left': function(ox, oy, oz) {
+				var x = lx - ox - 1,
+					y = oz,
+					z = oy;
+
+				var map = {
+					TOP: 'LEFT',
+					BOTTOM: 'RIGHT',
+					RIGHT: 'BOTTOM',
+					LEFT: 'TOP',
+					DOWN: 'UP',
+					UP: 'DOWN'
+				}
+
+				clName = clName.concat(getClassName(x, y, z, map));
+			},
+			'front': function(ox, oy, oz) {
+				var x = lz - oz - 1,
+					y = lx - ox - 1,
+					z = oy;
+
+				var map = {
+					TOP: 'DOWN',
+					BOTTOM: 'UP',
+					RIGHT: 'BOTTOM',
+					LEFT: 'TOP',
+					DOWN: 'LEFT',
+					UP: 'RIGHT'
+				}
+
+				clName = clName.concat(getClassName(x, y, z, map));
+			},
+			'back': function(ox, oy, oz) {
+				var x = oz,
+					y = ox,
+					z = oy;
+
+				var map = {
+					TOP: 'UP',
+					BOTTOM: 'DOWN',
+					RIGHT: 'BOTTOM',
+					LEFT: 'TOP',
+					DOWN: 'RIGHT',
+					UP: 'LEFT'
+				}
+
+				clName = clName.concat(getClassName(x, y, z, map));
 			}
 		}[orientation];
+
+	switch(orientation) {
+		case 'top':
+		case 'bottom':
+			lx = 6;
+			ly = 6;
+			lz = this.levels.length;
+			break;
+
+		case 'right':
+		case 'left':
+		case 'front':
+		case 'back':
+			lx = 6;
+			ly = this.levels.length;
+			lz = 6;
+			break;
+	}
 
 	if (typeof computeClass !== 'function') {
 		return [];
 	}
-	computeClass = computeClass.bind(this);
 
-	for(z = 0; z < 7; z++) {
+	for(z = 0; z < lz; z++) {
 		level = [
 			'<table',
 			' id="mapLevel', uid, '-', z, '"',
 			' class="mini-map color-', this.color, '">'
 		];
 
-		for(x = 0; x < 6; x++) {
+		for(x = 0; x < lx; x++) {
 			row = ['<tr>'];
 
-			for(y = 0; y < 6; y++) {
+			for(y = 0; y < ly; y++) {
 				clName = [''];
 				cell = '<td';
 
@@ -465,6 +525,52 @@ Cube.prototype.renderMap = function(orientation, available, uid) {
 		return available.some(function(cell) {
 			return cell.x === x && cell.y === y && cell.z === z;
 		});
+	}
+
+	function getNeighbors(x, y, z) {
+		var cell = that.get(x, y, z);
+		var neighbors = {
+			TOP: that.get(x, y, z-1).b,
+			BOTTOM: cell.b,
+			LEFT: that.get(x, y - 1, z).r,
+			RIGHT: cell.r,
+			UP: that.get(x - 1, y, z).d,
+			DOWN: cell.d
+		};
+
+		return neighbors;
+	}
+
+	function getClassName(x, y, z, map) {
+		var clName = [];
+		var neighbors;
+
+		if (isAvailable(x, y, z)) {
+			neighbors = getNeighbors(x, y, z);
+
+			if (neighbors[map.BOTTOM]) {
+				clName.push('hole');
+			}
+			if (neighbors[map.DOWN]) {
+				clName.push('passage-down');
+			}
+			if (neighbors[map.RIGHT]) {
+				clName.push('passage-right');
+			}
+			if (neighbors[map.UP]) {
+				clName.push('passage-up');
+			}
+			if (neighbors[map.LEFT]) {
+				clName.push('passage-left');
+			}
+			that.getClassFromCell(that.get(x, y, z), clName, x, y, z);
+
+			// manage cell's id
+			cell += ' id="map'+uid+'-'+x+'-'+y+'-'+z+'"';
+		} else {
+			clName.push('unavailable');
+		}
+		return clName;
 	}
 };
 

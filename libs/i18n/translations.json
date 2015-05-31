@@ -475,6 +475,22 @@
 		"en": "The INSIDE³ side is at the bottom.",
 		"fr": "La face INSIDE³ est en bas."
 	},
+	"The right side is at the top.": {
+		"en": "The right side is at the top.",
+		"fr": "La face droite est en haut."
+	},
+	"The left side is at the top.": {
+		"en": "The left side is at the top.",
+		"fr": "La face gauche est en haut."
+	},
+	"The front side is at the top.": {
+		"en": "The front side is at the top.",
+		"fr": "La face frontale est en haut."
+	},
+	"The back side is at the top.": {
+		"en": "The back side is at the top.",
+		"fr": "La face arrière est en haut."
+	},
 	"Your cube is slightly rotated backward.": {
 		"en": "Your cube is slightly rotated backward.",
 		"fr": "Le cube est penché vers vous."
@@ -814,14 +830,6 @@
 	"Map orientation: ": {
 		"en": "Map orientation: ",
 		"fr": "Orientation de la carte : "
-	},
-	"INSIDE³ side is at the top": {
-		"en": "INSIDE³ side is at the top",
-		"fr": "la face INSIDE³ est en haut"
-	},
-	"INSIDE³ side is at the bottom": {
-		"en": "INSIDE³ side is at the bottom",
-		"fr": "la face INSIDE³ est en bas"
 	},
 	"Level %d": {
 		"en": "Level %d",
