@@ -1,7 +1,7 @@
 function About() {}
 
 About.prototype.render = function(container) {
-	var contributors = []; /* add your Github name here if you have contributes to this application */
+	var contributors = ['Dav1d23']; /* add your Github name here if you have contributes to this application */
 
 	var program = document.createElement('details'),
 		credit = document.createElement('details'),
