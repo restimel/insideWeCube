@@ -247,13 +247,13 @@
 		"en": "Author: %s",
 		"fr": "Auteur : %s"
 	},
-	"Version: %s": {
-		"en": "Version: %s",
-		"fr": "Version : %s"
+	"Version: %s (%s)": {
+		"en": "Version: %s (%s)",
+		"fr": "Version : %s (%s)"
 	},
-	"Date: %s": {
-		"en": "Date: %s",
-		"fr": "Date : %s"
+	"Creation date: %s": {
+		"en": "Creation date: %s",
+		"fr": "Date de création : %s"
 	},
 	"Restart analysis": {
 		"en": "Restart analysis",
@@ -606,6 +606,14 @@
 	"The application doesn't seem to work.": {
 		"en": "The application doesn't seem to work.",
 		"fr": "L'application ne semble pas marcher."
+	},
+	"I am not able to load any cubes.": {
+		"en": "I am not able to load any cubes.",
+		"fr": "Je ne vois aucun cube à charger."
+	},
+	"This can be a download issue. Try to reload the page (F5).<br>If you still see no cubes check the filter menu, maybe all cubes are hidden.": {
+		"en": "This can be a download issue. Try to reload the page (F5).<br>If you still see no cubes check the filter menu, maybe all cubes are hidden.",
+		"fr": "Il doit s'agir d'un problème de téléchargement. Essayer de recharger la page (F5).<br>Si vous ne voyez toujours aucun cubes, vérifier dans le menu \"Filtrer les cubes\" que les cubes ne soient pas tous cachés."
 	},
 	"Try with another browser or a newer version of your browser.<br>This application is written with HTML5 API, only modern browsers can run correctly this application. Some features may not work correctly depending on your browser version.<br>It doesn't work at all on Internet Explorer 9 and prior versions.": {
 		"en": "Try with another browser or a newer version of your browser.<br>This application is written with HTML5 API, only modern browsers can run correctly this application. Some features may not work correctly depending on your browser version.<br>It doesn't work at all on Internet Explorer 9 and prior versions.",

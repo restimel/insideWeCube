@@ -49,6 +49,13 @@ V1.2
 	General
 	* translation is not done for compatibility check message
 
+	Filter
+	* deleting a hidden cube does not work
+	* saving a cube change it as hidden
+
+	About
+	* Dates are always in English
+
 	Analyze Cube
 	+ Skinning of the instructions to the way back
 

@@ -52,11 +52,11 @@ About.prototype.render = function(container) {
 	}
 
 	var version = document.createElement('div');
-	version.textContent = $$('Version: %s', main.version);
+	version.textContent = $$('Version: %s (%s)', main.version, main.lastMainUpdate.toDateString());
 	program.appendChild(version);
 
 	var date = document.createElement('div');
-	date.textContent = $$('Date: %s', (new Date(1403301600000)).toDateString());
+	date.textContent = $$('Creation date: %s', (new Date(1403301600000)).toDateString());
 	program.appendChild(date);
 
 	var license = document.createElement('div');
@@ -114,6 +114,10 @@ About.prototype.renderFAQ = function(container) {
 		{
 			q: $$('The application doesn\'t seem to work.'),
 			a: $$('Try with another browser or a newer version of your browser.<br>This application is written with HTML5 API, only modern browsers can run correctly this application. Some features may not work correctly depending on your browser version.<br>It doesn\'t work at all on Internet Explorer 9 and prior versions.')
+		},
+		{
+			q: $$('I am not able to load any cubes.'),
+			a: $$('This can be a download issue. Try to reload the page (F5).<br>If you still see no cubes check the filter menu, maybe all cubes are hidden.')
 		},
 		{
 			q: $$('How can I build a new maze from cubes I have?'),
