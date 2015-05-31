@@ -1,9 +1,17 @@
+Legend:
+ * task that should be done for this version
+ + task which could be great to do but will be done if enough motivation or in a later version
+ ✓ task done in this version
+ ✗ dropped task
+ ? need more thinking on this task
+
 
 V1.2
 	General
 	+ Support cubes with not normal size
 		+ Allow to create cube with not normal size
 	* accept key shortcut (see how to manage them through menu)
+	+ Minification: do a minify version
 	
 	Build Cube
 	✓ Change start/Finish position
@@ -67,7 +75,7 @@ V1.2
 V2.0 (or later... if enough motivation)
 
 	Build cube
-	* switch level (need idea about design)
+	? switch level (need idea about design)
 
 	Analyze Cube
 	✗ (bonus, if I really want) identify in which cube we are if no positions match
