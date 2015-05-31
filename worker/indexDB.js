@@ -1,9 +1,11 @@
+var dbVersion = 3;
+
 function Dbstore() {
 	if (typeof self.indexedDB === 'undefined') {
 		this.db = false;
 		this.loadData();
 	} else {
-		var request = self.indexedDB.open('iwcDB', 2);
+		var request = self.indexedDB.open('iwcDB', dbVersion);
 		request.onerror = this.onOpenError.bind(this);
 		request.onupgradeneeded = this.onupgradeneeded.bind(this);
 		request.onsuccess  = this.onConnection.bind(this);
@@ -42,6 +44,7 @@ Dbstore.prototype.onupgradeneeded = function(event) {
 
 			objectStore = this.db.createObjectStore('draft', {keyPath: 'history', autoIncrement: true});
 		case 1:
+		case 2:
 	}
 };
 
