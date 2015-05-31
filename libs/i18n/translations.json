@@ -1,103 +1,128 @@
 {
 	"Cube name": {
 		"en": "Cube name",
-		"fr": "Nom du cube"
+		"fr": "Nom du cube",
+		"it": "Nome del cubo"
 	},
 	"Cube manager": {
 		"en": "Cube manager",
-		"fr": "Gérer son cube"
+		"fr": "Gérer son cube",
+		"it": "Gestire il mio cubo"
 	},
 	"Lost in cube?": {
 		"en": "Lost in cube?",
-		"fr": "Perdu dans son cube ?"
+		"fr": "Perdu dans son cube ?",
+		"it": "Perso nel cubo ?"
 	},
 	"Look for new mazes!": {
 		"en": "Look for new mazes!",
-		"fr": "Découvrir d'autres plans !"
+		"fr": "Découvrir d'autres plans !",
+		"it": "Scopri nuovi labirinti!"
 	},
 	"Import/Export": {
 		"en": "Import/Export",
-		"fr": "Importer/Exporter"
+		"fr": "Importer/Exporter",
+		"it": "Importa/Esporta"
 	},
 	"?": {
 		"en": "?",
-		"fr": "?"
+		"fr": "?",
+		"it": "?"
 	},
 	"Filter cubes": {
 		"en": "Filter cubes",
-		"fr": "Filtrer les cubes"
+		"fr": "Filtrer les cubes",
+		"it": "Filtrare i cubi"
 	},
 	"level identifier": {
 		"en": "level identifier",
-		"fr": "identification du niveau"
+		"fr": "identification du niveau",
+		"it": "scopri il livello"
 	},
 	"Save cube": {
 		"en": "Save cube",
-		"fr": "Enregistrer le cube"
+		"fr": "Enregistrer le cube",
+		"it": "Salva il cubo"
 	},
 	"Import": {
 		"en": "Import",
-		"fr": "Importer"
+		"fr": "Importer",
+		"it": "Importa"
 	},
 	"Advanced options": {
 		"en": "Advanced options",
-		"fr": "Options avancées"
+		"fr": "Options avancées",
+		"it": "Opzioni avanzate"
 	},
 	"Manage options": {
 		"en": "Manage options",
-		"fr": "Configuration d'options"
+		"fr": "Configuration d'options",
+		"it": "Gestisci le opzioni"
 	},
 	"save level": {
 		"en": "Save level",
-		"fr": "Sauver le niveau"
+		"fr": "Sauver le niveau",
+		"it": "Salva il livello"
 	},
 	"Set holes": {
 		"en": "Set holes",
-		"fr": "Ajoute des trous"
+		"fr": "Ajoute des trous",
+		"it": "Aggiungi i buchi"
 	},
 	"Pin inside maze": {
 		"en": "Pin inside maze",
-		"fr": "Embossement dans le labyrinthe"
+		"fr": "Embossement dans le labyrinthe",
+		"it": "Protuberanza nel labirinto"
 	},
 	"Pin at the bottom of level": {
 		"en": "Pin at the bottom of level",
-		"fr": "Embossement à l'arrière du plateau"
+		"fr": "Embossement à l'arrière du plateau",
+		"it": "Protuberanza dietro il livello"
 	},
 	"S": {
 		"en": "S",
-		"fr": "D"
+		"fr": "D",
+		"it": "I"
 	},
 	"Start": {
 		"en": "Start",
-		"fr": "Début"
+		"fr": "Début",
+		"it": "Inizio"
 	},
 	"F": {
 		"en": "F",
-		"fr": "F"
+		"fr": "F",
+		"it": "F"
 	},
 	"Finish": {
 		"en": "Finish",
-		"fr": "Fin"
+		"fr": "Fin",
+		"it": "Fine"
 	},
 	"Level %s is not found.": {
 		"en": "Level %s is not found.",
-		"fr": "Le niveau %s n'a pas été trouvé"
+		"fr": "Le niveau %s n'a pas été trouvé",
+		"it": "Livello %s non trovato"
 	},
 	"last level is lid only": {
 		"en": "last level is lid only",
-		"fr": "seulement des couvercles au dernier niveau"
+		"fr": "seulement des couvercles au dernier niveau",
+		"it": "solo delle copertine nell'ultimo livello"
 	},
 	"ball goes through pin": {
 		"en": "ball goes through pin",
-		"fr": "ignorer les embossements"
+		"fr": "ignorer les embossements",
+		"it": "ignorare le protuberanze"
 	},
 	"more tools": {
 		"en": "more tools",
-		"fr": "plus d'outils"
+		"fr": "plus d'outils",
+		"it": "più strumenti"
 	},
 	"rotate levels": {
 		"en": "rotate levels",
-		"fr": "rotation des plateaux"
+		"fr": "rotation des plateaux",
+		"it": "rotazione dei livelli"
 	},
 	"note about this level": {
 		"en": "note about this level",
@@ -105,919 +130,1148 @@
 	},
 	"Select all levels that can be put inside the cube. (You need to select at least 7 levels)": {
 		"en": "Select all levels that can be put inside the cube. (You need to select at least 7 levels)",
-		"fr": "Sélectionnez tous les plateaux que vous voulez éventuellement mettre dans le cube. (Vous devez choisir au moins 7 plateaux)"
+		"fr": "Sélectionnez tous les plateaux que vous voulez éventuellement mettre dans le cube. (Vous devez choisir au moins 7 plateaux)",
+		"it": "Seleziona tutti i livelli che possono essere inseriti nel cubo. (Dovete selezionare almeno 7 livelli)"
 	},
 	"Select at least 7 levels": {
 		"en": "Select at least 7 levels",
-		"fr": "Choisissez au moins 7 plateaux"
+		"fr": "Choisissez au moins 7 plateaux",
+		"it": "Scegliete almeno 7 livelli"
 	},
 	"Please select at least 1 lid level": {
 		"en": "Please select at least 1 lid level",
-		"fr": "Veuillez choisir au moins 1 plateau couvercle"
+		"fr": "Veuillez choisir au moins 1 plateau couvercle",
+		"it": "Scegliete almeno un livello copertina"
 	},
 	"Please select at least %d non-lid levels": {
 		"en": "Please select at least %d non-lid levels",
-		"fr": "Veuillez choisir au moins %d plateau non-couvercle"
+		"fr": "Veuillez choisir au moins %d plateau non-couvercle",
+		"it": "Scegliete almeno %d livelli non copertina"
 	},
 	"Look for possible maze": {
 		"en": "Look for possible maze",
-		"fr": "Rechercher les combinaisons possibles"
+		"fr": "Rechercher les combinaisons possibles",
+		"it": "Ricercare le possibili combinazioni"
 	},
 	"Look for solvable cubes from selected levels": {
 		"en": "Look for solvable cubes from selected levels",
-		"fr": "Recherche les cubes réalisable à partir des plateaux choisis"
+		"fr": "Recherche les cubes réalisable à partir des plateaux choisis",
+		"it": "Ricercare i cubi realizzabili a partire dei livelli selezionati"
 	},
 	"Stop": {
 		"en": "Stop",
-		"fr": "Arrêter"
+		"fr": "Arrêter",
+		"it": "Ferma"
 	},
 	"Stop analyze": {
 		"en": "Stop analyze",
-		"fr": "Arrêter la recherche"
+		"fr": "Arrêter la recherche",
+		"it": "Ferma l'analisi"
 	},
 	"Stop the current search": {
 		"en": "Stop the current search",
-		"fr": "Arrêter la recherche en cours"
+		"fr": "Arrêter la recherche en cours",
+		"it": "Ferma la ricerca corrente"
 	},
 	"Do another analysis": {
 		"en": "Do another analysis",
-		"fr": "Nouvelle recherche"
+		"fr": "Nouvelle recherche",
+		"it": "Nuova ricerca"
 	},
 	"unnamed cube": {
 		"en": "unnamed cube",
-		"fr": "cube non nommé"
+		"fr": "cube non nommé",
+		"it": "cubo senza nome"
 	},
 	"will you save these %d cubes?": {
 		"en": "will you save these %d cubes?",
-		"fr": "voulez-vous enregistrer ces %d cubes ?"
+		"fr": "voulez-vous enregistrer ces %d cubes ?",
+		"it": "Volete salvare questi %d cubi?"
 	},
 	"Save selected cubes": {
 		"en": "Save selected cubes",
-		"fr": "Enregistrer les cubes sélectionnés"
+		"fr": "Enregistrer les cubes sélectionnés",
+		"it": "Salva i cubi selezionati"
 	},
 	"cube \"%s\" saved": {
 		"en": "cube \"%s\" saved",
-		"fr": "cube \"%s\" enregistré"
+		"fr": "cube \"%s\" enregistré",
+		"it": "cubo \"%s\" salvato"
 	},
 	"Number of selected levels: %d": {
 		"en": "Number of selected levels: %d",
-		"fr": "Nb de plateaux sélectionné: %d"
+		"fr": "Nb de plateaux sélectionné: %d",
+		"it": "Numero di livelli selezionati: %d"
 	},
 	"%d generic levels. %d lid levels": {
 		"en": "%d generic levels. %d lid levels",
-		"fr": "%d plateaux génériques. %d couvercles"
+		"fr": "%d plateaux génériques. %d couvercles",
+		"it": "%d livelli generici, %d copertine"
 	},
 	"Number of combinations: %d": {
 		"en": "Number of combinations: %d",
-		"fr": "Nb de combinaisons: %d"
+		"fr": "Nb de combinaisons: %d",
+		"it": "Numero di combinazioni: %d"
 	},
 	"Estimated time: %T": {
 		"en": "Estimated time: %T",
-		"fr": "Temps estimé: %T"
+		"fr": "Temps estimé: %T",
+		"it": "Tempo stimato: %T"
 	},
 	"Spent time to find out solutions: %T": {
 		"en": "Spent time to find out solutions: %T",
-		"fr": "Temps mis pour trouver les solutions: %T"
+		"fr": "Temps mis pour trouver les solutions: %T",
+		"it": "Tempo utilizzato per trovare le soluzioni: %T"
 	},
 	"Change configuration to do a new analysis": {
 		"en": "Change configuration to do a new analysis",
-		"fr": "Changer la configuration pour effectuer une nouvelle recherche"
+		"fr": "Changer la configuration pour effectuer une nouvelle recherche",
+		"it": "Cambiare la configurazione per una nuova analisi"
 	},
 	"The search has been interrupted!": {
 		"en": "The search has been interrupted!",
-		"fr": "La recherche a été interrompue !"
+		"fr": "La recherche a été interrompue !",
+		"it": "La ricerca è stata interrotta!"
 	},
 	"Choose levels": {
 		"en": "Choose levels",
-		"fr": "Choix des plateaux"
+		"fr": "Choix des plateaux",
+		"it": "Scelta dei livelli"
 	},
 	"cube name": {
 		"en": "cube name",
-		"fr": "nom du cube"
+		"fr": "nom du cube",
+		"it": "nome del cubo"
 	},
 	"name of the cube when it will be saved": {
 		"en": "name of the cube when it will be saved",
-		"fr": "nom du cube quand il sera enregistré"
+		"fr": "nom du cube quand il sera enregistré",
+		"it": "nome del cubo quando sarà salvato"
 	},
 	"Save this configuration as a cube": {
 		"en": "Save this configuration as a cube",
-		"fr": "Enregistrer cette configuration en tant que cube"
+		"fr": "Enregistrer cette configuration en tant que cube",
+		"it": "Salva questa configurazione come cubo"
 	},
 	"(search completed)": {
 		"en": "(search completed)",
-		"fr": "(analyse terminée)"
+		"fr": "(analyse terminée)",
+		"it": "(ricerca completata)"
 	},
 	"(canceled)": {
 		"en": "(canceled)",
-		"fr": "(annulée)"
+		"fr": "(annulée)",
+		"it": "(annullato)"
 	},
 	"generated cube - %d": {
 		"en": "generated cube - %d",
-		"fr": "cube généré - %d"
+		"fr": "cube généré - %d",
+		"it": "cubi generati - %d"
 	},
 	"Number of solvable cubes: %D": {
 		"en": "Number of solvable cubes: %D",
-		"fr": "Nombre de cubes réalisable: %D"
+		"fr": "Nombre de cubes réalisable: %D",
+		"it": "Numero di cubi realizzabili: %D"
 	},
 	"Number of solvable cubes: %d": {
 		"en": "Number of solvable cubes: %d",
-		"fr": "Nombre de cubes réalisable: %d"
+		"fr": "Nombre de cubes réalisable: %d",
+		"it": "Numero di cubi realizzabili: %D"
 	},
 	"If not selected non-lid levels can be chosen at last level": {
 		"en": "If not selected non-lid levels can be chosen at last level",
-		"fr": "Si non sélectionné, tous les plateaux peuvent être choisis au dernier niveau"
+		"fr": "Si non sélectionné, tous les plateaux peuvent être choisis au dernier niveau",
+		"it": "Se non selezionati, tutti i livelli possono essere scelti come ultimo livello"
 	},
 	"If selected the pins do not block ball inside levels": {
 		"en": "If selected the pins do not block ball inside levels",
-		"fr": "Si sélectionné, les embossements ne bloquent plus la bille dans les niveaux"
+		"fr": "Si sélectionné, les embossements ne bloquent plus la bille dans les niveaux",
+		"it": "Se selezionate, le protuberanze non bloccano la pallina nell'ultimo livello"
 	},
 	"If selected more tools are available to edit levels (like setting pin, start Cell, ...)": {
 		"en": "If selected more tools are available to edit levels (like setting pin, start Cell, ...)",
-		"fr": "Si sélectionné, plus d'outils sont disponible pour éditer les niveaux (comme définir des embossements, le départ ...)"
+		"fr": "Si sélectionné, plus d'outils sont disponible pour éditer les niveaux (comme définir des embossements, le départ ...)",
+		"it": "Se selezionati, più strumenti sono disponibili nell'editore di livelli (come definire una protuberanza, la partenza ...)"
 	},
 	"If selected, allow to rotate levels": {
 		"en": "If selected, allow to rotate levels",
-		"fr": "Si sélectionné, les plateaux peuvent être tournés."
+		"fr": "Si sélectionné, les plateaux peuvent être tournés.",
+		"it": "Se selezionato, il livello può essere ruotato."
 	},
 	"An INSIDE³ solver: ": {
 		"en": "An INSIDE³ solver: ",
-		"fr": "Un résolveur d'INSIDE³ : "
+		"fr": "Un résolveur d'INSIDE³ : ",
+		"it": "Un risolutore di INSIDE³ : "
 	},
 	"Author: %s": {
 		"en": "Author: %s",
-		"fr": "Auteur : %s"
+		"fr": "Auteur : %s",
+		"it": "Autore : %s"
 	},
 	"Version: %s": {
 		"en": "Version: %s",
-		"fr": "Version : %s"
+		"fr": "Version : %s",
+		"it": "Versione : %s"
 	},
 	"Date: %s": {
 		"en": "Date: %s",
-		"fr": "Date : %s"
+		"fr": "Date : %s",
+		"it": "Data : %s"
 	},
 	"Restart analysis": {
 		"en": "Restart analysis",
-		"fr": "Redémarrer l'analyse"
+		"fr": "Redémarrer l'analyse",
+		"it": "Rilanciare l'analisi"
 	},
 	"Select your cube": {
 		"en": "Select your cube",
-		"fr": "Choisissez votre cube"
+		"fr": "Choisissez votre cube",
+		"it": "Selezionate il vostro cubo"
 	},
 	"Select the cube where you are lost: ": {
 		"en": "Select the cube where you are lost: ",
-		"fr": "Sélectionner le cube où vous êtes perdu : "
+		"fr": "Sélectionner le cube où vous êtes perdu : ",
+		"it": "Selezionate il cubo nel quale vi siete persi"
 	},
 	"Locate the ball": {
 		"en": "Locate the ball",
-		"fr": "Trouvons la bille"
+		"fr": "Trouvons la bille",
+		"it": "Troviamo la pallina"
 	},
 	"We will try to identify where the ball is.": {
 		"en": "We will try to identify where the ball is.",
-		"fr": "Nous allons essayer de trouver où se trouve la bille."
+		"fr": "Nous allons essayer de trouver où se trouve la bille.",
+		"it": "Cercheremo di trovare dove si trova la pallina."
 	},
 	"If you know where the ball is, please click on the corresponding cell.": {
 		"en": "If you know where the ball is, please click on the corresponding cell.",
-		"fr": "Si vous savez où se trouve la bille, cliquez sur la case correpondante."
+		"fr": "Si vous savez où se trouve la bille, cliquez sur la case correpondante.",
+		"it": "Se sapete dove si trova la pallina, cliccate sulla cella corrispondente."
 	},
 	"If you don't know where the ball is, please follow the instructions.": {
 		"en": "If you don't know where the ball is, please follow the instructions.",
-		"fr": "Si vous ne savez pas où se trouve la bille, suivez les instructions."
+		"fr": "Si vous ne savez pas où se trouve la bille, suivez les instructions.",
+		"it": "Se non sapete dove si trova la pallina, seguite le istruzioni"
 	},
 	"I have lost my ball! I don't know what happened!": {
 		"en": "I have lost my ball! I don't know what happened!",
-		"fr": "J'ai perdu ma bille! Je ne sais pas ce qu'il s'est passé !"
+		"fr": "J'ai perdu ma bille! Je ne sais pas ce qu'il s'est passé !",
+		"it": "Ho perduto la pallina! Non so più cosa è succeso !"
 	},
 	"Find your way back": {
 		"en": "Find your way back",
-		"fr": "Retrouvons le chemin du retour"
+		"fr": "Retrouvons le chemin du retour",
+		"it": "Cerchiamo il sentiero di ritorno"
 	},
 	"Where do you want to go?": {
 		"en": "Where do you want to go?",
-		"fr": "Où voulez-vous aller ?"
+		"fr": "Où voulez-vous aller ?",
+		"it": "Dove volete andate ?"
 	},
 	"To the start.": {
 		"en": "To the start.",
-		"fr": "Vers le départ."
+		"fr": "Vers le départ.",
+		"it": "Verso l'inizio."
 	},
 	"To the end.": {
 		"en": "To the end.",
-		"fr": "Vers l'arrivée."
+		"fr": "Vers l'arrivée.",
+		"it": "Verso la fine."
 	},
 	"Are you sure to be spoiled?\nDon't you want to try to solve it by yourself?": {
 		"en": "Are you sure to be spoiled?\nDon't you want to try to solve it by yourself?",
-		"fr": "Êtes-vous sûr d'être aidé ?\nNe voulez-vous pas essayer par vous-même ?"
+		"fr": "Êtes-vous sûr d'être aidé ?\nNe voulez-vous pas essayer par vous-même ?",
+		"it": "Sicuri di volere aiuto?\nNon volete provare da soli ?"
 	},
 	"You are about to delete %d cubes:\n\t%s\nAre you sure to continue?": {
 		"en": "You are about to delete %d cubes:\n\t%s\nAre you sure to continue?",
-		"fr": "Vous êtes sur le point de supprimer %d cubes :\n\t%s\nÊtes-vous sûr de vouloir continuer ?"
+		"fr": "Vous êtes sur le point de supprimer %d cubes :\n\t%s\nÊtes-vous sûr de vouloir continuer ?",
+		"it": "State per cancellare %d cubi :\n\t%s\nSicuri di voler continuare ?"
 	},
 	"Reset cube": {
 		"en": "Reset cube",
-		"fr": "Recommencer"
+		"fr": "Recommencer",
+		"it": "Ricominciare"
 	},
 	"Delete cubes": {
 		"en": "Delete cubes",
-		"fr": "Supprimer des cubes"
+		"fr": "Supprimer des cubes",
+		"it": "Cancellare i cubi"
 	},
 	"hide the shortest path": {
 		"en": "hide the shortest path",
-		"fr": "ne plus afficher le plus court chemin"
+		"fr": "ne plus afficher le plus court chemin",
+		"it": "non mostrare il cammino più breve"
 	},
 	"show the shortest path": {
 		"en": "show the shortest path",
-		"fr": "afficher le plus court chemin"
+		"fr": "afficher le plus court chemin",
+		"it": "mostrare il cammino più breve"
 	},
 	"Cube can be solved.": {
 		"en": "Cube can be solved.",
-		"fr": "Le cube peut être résolu."
+		"fr": "Le cube peut être résolu.",
+		"it": "Il cubo può essere risolto"
 	},
 	"%i cells must be crossed (%2%%).": {
 		"en": "%i cells must be crossed (%2%%).",
-		"fr": "%i cases doivent être traversées (%2%%)."
+		"fr": "%i cases doivent être traversées (%2%%).",
+		"it": "%i celle devono essere attraversate (%2%%)."
 	},
 	"%i dead-ends (%2%%)": {
 		"en": "%i dead-ends (%2%%)",
-		"fr": "%i impasses (%2%%)"
+		"fr": "%i impasses (%2%%)",
+		"it": "%i cammini senza soluzione (%2%%)"
 	},
 	"%i turns inside levels (%2%%)": {
 		"en": "%i turns inside levels (%2%%)",
-		"fr": "%i virages à l'intérieur des niveaux (%2%%)"
+		"fr": "%i virages à l'intérieur des niveaux (%2%%)",
+		"it": "%i curve all'interno del livello (%2%%)",
 	},
 	"%i movements through levels (%2%%)": {
 		"en": "%i movements through levels (%2%%)",
-		"fr": "%i déplacements à travers les niveaux (%2%%)"
+		"fr": "%i déplacements à travers les niveaux (%2%%)",
+		"it": "%i movimenti all'interno del livello (%2%%)",
 	},
 	"%i cube rotations are needed (at least)": {
 		"en": "%i cube rotations are needed (at least)",
-		"fr": "%i rotations de cube sont nécessaires (au moins)"
+		"fr": "%i rotations de cube sont nécessaires (au moins)",
+		"it": "%i rotazioni del cubo sono necessarie (almeno)"
 	},
 	"%i upside-down cube flips are needed (at least)": {
 		"en": "%i upside-down cube flips are needed (at least)",
-		"fr": "%i renversements de cube sont nécessaires (au moins)"
+		"fr": "%i renversements de cube sont nécessaires (au moins)",
+		"it": "%i capovolgimenti del cubo sono necessari (almeno)"
 	},
 	"%i hardcore passages": {
 		"en": "%i hardcore passages",
-		"fr": "%i passages difficiles"
+		"fr": "%i passages difficiles",
+		"it": "%i passaggi difficili"
 	},
 	"Cube difficulty: ": {
 		"en": "Cube difficulty: ",
-		"fr": "Difficulté du cube : "
+		"fr": "Difficulté du cube : ",
+		"it": "Difficoltà del cubo : "
 	},
 	"Cube is not solvable.": {
 		"en": "Cube is not solvable.",
-		"fr": "Le cube ne peut être résolu."
+		"fr": "Le cube ne peut être résolu.",
+		"it": "Il cubo non può essere risolto."
 	},
 	"%i dead-ends": {
 		"en": "%i dead-ends",
-		"fr": "%i impasses"
+		"fr": "%i impasses",
+		"it": "%i cammini senza soluzione"
 	},
 	"%i cells are accessible (%2%%).": {
 		"en": "%i cells are accessible (%2%%).",
-		"fr": "%i cases sont accessibles (%2%%)."
+		"fr": "%i cases sont accessibles (%2%%).",
+		"it": "%i celle sono accessibili (%2%%)."
 	},
 	"Please enter a name for the cube.": {
 		"en": "Please enter a name for the cube.",
-		"fr": "Veuillez entrer un nom pourle cube."
+		"fr": "Veuillez entrer un nom pour le cube.",
+		"it": "Inserite un nome per il cubo."
 	},
 	"cube \"%s\" saved.": {
 		"en": "cube \"%s\" saved.",
-		"fr": "cube \"%s\" enregistré."
+		"fr": "cube \"%s\" enregistré.",
+		"it": "cubo \"%s\" salvato."
 	},
 	"This level won't be well positioned due to the pin under the previous level.": {
 		"en": "This level won't be well positioned due to the pin under the previous level.",
-		"fr": "Ce plateau ne sera pas positionné correctement à cause de l'embossement du plateau précédent."
+		"fr": "Ce plateau ne sera pas positionné correctement à cause de l'embossement du plateau précédent.",
+		"it": "Questo livello non sarà posizionato correttamente a causa della protuberanza sul livello precedente."
 	},
 	"Instructions": {
 		"en": "Instructions",
-		"fr": "Instructions"
+		"fr": "Instructions",
+		"it": "Instruzioni"
 	},
 	"Expected position": {
 		"en": "Expected position",
-		"fr": "Position attendue"
+		"fr": "Position attendue",
+		"it": "Posizione attesa"
 	},
 	"Results": {
 		"en": "Results",
-		"fr": "Résultats"
+		"fr": "Résultats",
+		"it": "Risultati"
 	},
 	"What did you observe?": {
 		"en": "What did you observe?",
-		"fr": "Qu'avez-vous remarqué ?"
+		"fr": "Qu'avez-vous remarqué ?",
+		"it": "Cosa avete osservato ?"
 	},
 	"Expected results": {
 		"en": "Expected results",
-		"fr": "Résultats attendus"
+		"fr": "Résultats attendus",
+		"it": "Risultato atteso"
 	},
 	"Ball movement": {
 		"en": "Ball movement",
-		"fr": "Déplacement de la bille"
+		"fr": "Déplacement de la bille",
+		"it": "Spostamento della pallina"
 	},
 	"No cell in this cube fits your observation. Are you sure of your answer?": {
 		"en": "No cell in this cube fits your observation. Are you sure of your answer?",
-		"fr": "Aucune case de ce cube ne correspond à vos observations. Êtes-vous sûr de vos réponses ?"
+		"fr": "Aucune case de ce cube ne correspond à vos observations. Êtes-vous sûr de vos réponses ?",
+		"it": "Nessuna cella del cubo corrisponde alle vostre osservazioni. Siete sicuri delle risposte ?"
 	},
 	"Many cells fit your observation. It is not possible to differenciate them :( %s": {
 		"en": "Many cells fit your observation. It is not possible to differenciate them :( %s",
-		"fr": "Plusieurs cases correspondent à vos observations. Il n'est pas possible de les différencier :( %s"
+		"fr": "Plusieurs cases correspondent à vos observations. Il n'est pas possible de les différencier :( %s",
+		"it": "Più celle corrispondono alle vostre osservazioni. E' impossibile distinguerle :( %s"
 	},
 	"The ball location has been found!": {
 		"en": "The ball location has been found!",
-		"fr": "La bille a été repérée !"
+		"fr": "La bille a été repérée !",
+		"it": "La pallina è stata trovata !"
 	},
 	"Rotate your cube slightly to the right.": {
 		"en": "Rotate your cube slightly to the right.",
-		"fr": "Pencher le cube à droite."
+		"fr": "Pencher le cube à droite.",
+		"it": "Inclinare il cubo a destra."
 	},
 	"Rotate your cube slightly to the left.": {
 		"en": "Rotate your cube slightly to the left.",
-		"fr": "Pencher le cube à gauche."
+		"fr": "Pencher le cube à gauche.",
+		"it": "Inclinare il cubo a sinistra."
 	},
 	"Rotate your cube slightly backward.": {
 		"en": "Rotate your cube slightly backward.",
-		"fr": "Pencher le cube vers vous."
+		"fr": "Pencher le cube vers vous.",
+		"it": "Inclinare il cubo verso di voi."
 	},
 	"Rotate your cube slightly forward.": {
 		"en": "Rotate your cube slightly forward.",
-		"fr": "Pencher le cube vers l'avant."
+		"fr": "Pencher le cube vers l'avant.",
+		"it": "Inclinare il cubo in avanti."
 	},
 	"Rotate your cube to have the INSIDE³ side at the bottom.": {
 		"en": "Rotate your cube to have the INSIDE³ side at the bottom.",
-		"fr": "Tourner le cube pour avoir la face INSIDE³ en bas."
+		"fr": "Tourner le cube pour avoir la face INSIDE³ en bas.",
+		"it": "Routare il cubo per avere la faccia INSIDE³ in basso."
 	},
 	"Rotate your cube backward to have the INSIDE³ side at the bottom.": {
 		"en": "Rotate your cube backward to have the INSIDE³ side at the bottom.",
-		"fr": "Retourner le cube en l'amenant vers vous pour avoir la face INSIDE³ en bas."
+		"fr": "Retourner le cube en l'amenant vers vous pour avoir la face INSIDE³ en bas.",
+		"it": "Routare il cubo verso di voi per avere la faccia INSIDE³ in basso."
 	},
 	"Rotate your cube forward to have the INSIDE³ side at the bottom.": {
 		"en": "Rotate your cube forward to have the INSIDE³ side at the bottom.",
-		"fr": "Retourner le cube par l'avant pour avoir la face INSIDE³ en bas."
+		"fr": "Retourner le cube par l'avant pour avoir la face INSIDE³ en bas.",
+		"it": "Routare il cubo in avanti per avere la faccia INSIDE³ in basso."
 	},
 	"I am sorry, I can't help you here :(": {
 		"en": "I am sorry, I can't help you here :(",
-		"fr": "Désolé, je ne peux pas vous aider là :("
+		"fr": "Désolé, je ne peux pas vous aider là :(",
+		"it": "Chiedo scusa, ma non posso aiutarvi :("
 	},
 	"Rotate your cube forward to have the INSIDE³ side at the top.": {
 		"en": "Rotate your cube forward to have the INSIDE³ side at the top.",
-		"fr": "Retourner le cube par l'avant pour avoir la face INSIDE³ en haut."
+		"fr": "Retourner le cube par l'avant pour avoir la face INSIDE³ en haut.",
+		"it": "Routare il cubo per avere la faccia INSIDE³ in alto."
 	},
 	"Rotate your cube backward to have the INSIDE³ side at the top.": {
 		"en": "Rotate your cube backward to have the INSIDE³ side at the top.",
-		"fr": "Retourner le cube vers vous pour avoir la face INSIDE³ en haut."
+		"fr": "Retourner le cube vers vous pour avoir la face INSIDE³ en haut.",
+		"it": "Routare il cubo verso di voi per avere la faccia INSIDE³ in alto."
 	},
 	"Rotate your cube to have the INSIDE³ side at the top.": {
 		"en": "Rotate your cube to have the INSIDE³ side at the top.",
-		"fr": "Tourner le cube pour avoir la face INSIDE³ en haut."
+		"fr": "Tourner le cube pour avoir la face INSIDE³ en haut.",
+		"it": "Routare il cubo in avanti per avere la faccia INSIDE³ in alto."
 	},
 	"The INSIDE³ side is at the top.": {
 		"en": "The INSIDE³ side is at the top.",
-		"fr": "La face INSIDE³ est en haut."
+		"fr": "La face INSIDE³ est en haut.",
+		"it": "La faccia INSIDE³ è in alto."
 	},
 	"The INSIDE³ side is at the bottom.": {
 		"en": "The INSIDE³ side is at the bottom.",
-		"fr": "La face INSIDE³ est en bas."
+		"fr": "La face INSIDE³ est en bas.",
+		"it": "La faccia INSIDE³ è in basso."
 	},
 	"Your cube is slightly rotated backward.": {
 		"en": "Your cube is slightly rotated backward.",
-		"fr": "Le cube est penché vers vous."
+		"fr": "Le cube est penché vers vous.",
+		"it": "Il cubo è inclinato verso di voi."
 	},
 	"Your cube is slightly rotated forward.": {
 		"en": "Your cube is slightly rotated forward.",
-		"fr": "Le cube est penché vers l'avant."
+		"fr": "Le cube est penché vers l'avant.",
+		"it": "Il cubo è inclinato in avanti."
 	},
 	"Your cube is slightly rotated to the right.": {
 		"en": "Your cube is slightly rotated to the right.",
-		"fr": "Le cube est penché vers la droite."
+		"fr": "Le cube est penché vers la droite.",
+		"it": "Il cubo è inclinato a destra."
 	},
 	"Your cube is slightly rotated to the left.": {
 		"en": "Your cube is slightly rotated to the left.",
-		"fr": "Le cube est penché vers la gauche."
+		"fr": "Le cube est penché vers la gauche.",
+		"it": "Il cubo è inclinato verso a sinistra."
 	},
 	"The text is readable.": {
 		"en": "The text is readable.",
-		"fr": "Le texte est lisible."
+		"fr": "Le texte est lisible.",
+		"it": "E' possibile leggere il testo."
 	},
 	"I am not sure what happened...": {
 		"en": "I am not sure what happened...",
-		"fr": "Je ne suis pas sûr de ce qu'il s'est passé..."
+		"fr": "Je ne suis pas sûr de ce qu'il s'est passé...",
+		"it": "Non sono sicuro di cosa sia accaduto..."
 	},
 	"The ball has not moved.": {
 		"en": "The ball has not moved.",
-		"fr": "La bille n'a pas bougé."
+		"fr": "La bille n'a pas bougé.",
+		"it": "La pallina non si è mossa."
 	},
 	"The ball has moved.": {
 		"en": "The ball has moved.",
-		"fr": "La bille a bougé."
+		"fr": "La bille a bougé.",
+		"it": "La pallina si è mossa."
 	},
 	"The ball has moved and fallen.": {
 		"en": "The ball has moved and fallen.",
-		"fr": "La bille a bougé et est tombée."
+		"fr": "La bille a bougé et est tombée.",
+		"it": "La pallina si è mossa ed è caduta."
 	},
 	"Something should happen but I don't know what :(": {
 		"en": "Something should happen but I don't know what :(",
-		"fr": "Quelque chose doit se passer mais je ne sais pas quoi :("
+		"fr": "Quelque chose doit se passer mais je ne sais pas quoi :(",
+		"it": "Qualcosa deve succedere ma non so cosa :("
 	},
 	"Import cubes": {
 		"en": "Import cubes",
-		"fr": "Importer des cubes"
+		"fr": "Importer des cubes",
+		"it": "Importare i cubi"
 	},
 	"Export cubes": {
 		"en": "Export cubes",
-		"fr": "Exporter les cubes"
+		"fr": "Exporter les cubes",
+		"it": "Esportare i cubi"
 	},
 	"%d cubes loaded": {
 		"en": "%d cubes loaded",
-		"fr": "%d cubes chargés"
+		"fr": "%d cubes chargés",
+		"it": "%d cubi caricati"
 	},
 	"black": {
 		"en": "black",
-		"fr": "noir"
+		"fr": "noir",
+		"it": "nero"
 	},
 	"blue": {
 		"en": "blue",
-		"fr": "bleu"
+		"fr": "bleu",
+		"it": "blu"
 	},
 	"brown": {
 		"en": "brown",
-		"fr": "marron"
+		"fr": "marron",
+		"it": "marrone"
 	},
 	"crystal": {
 		"en": "crystal",
-		"fr": "cristal"
+		"fr": "cristal",
+		"it": "cristallo"
 	},
 	"green": {
 		"en": "green",
-		"fr": "vert"
+		"fr": "vert",
+		"it": "verde"
 	},
 	"orange": {
 		"en": "orange",
-		"fr": "orange"
+		"fr": "orange",
+		"it": "arancione"
 	},
 	"red": {
 		"en": "red",
-		"fr": "rouge"
+		"fr": "rouge",
+		"it": "rosso"
 	},
 	"yellow": {
 		"en": "yellow",
-		"fr": "jaune"
+		"fr": "jaune",
+		"it": "giallo"
 	},
 	"pink": {
 		"en": "pink",
-		"fr": "rose"
+		"fr": "rose",
+		"it": "rosa"
 	},
 	"Your data is not a valid import.\nIt is not possible to load any cube from it.": {
 		"en": "Your data is not a valid import.\nIt is not possible to load any cube from it.",
-		"fr": "Vos données ne sont pas valides.\nIl n'est pas possible de charger des cubes."
+		"fr": "Vos données ne sont pas valides.\nIl n'est pas possible de charger des cubes.",
+		"it": "Il vostro dato non è valido.\nNon è possibile caricare i vostri cubi."
 	},
 	"Your data are not a valid import.\nIt is not possible to load any cube from it.": {
 		"en": "Your data are not a valid import.\nIt is not possible to load any cube from it.",
-		"fr": "Ces données ne peuvent pas être importées.\nIl n'a pas été possible de charger des cubes."
+		"fr": "Ces données ne peuvent pas être importées.\nIl n'a pas été possible de charger des cubes.",
+		"it": "Il vostri dati non sono validi.\nNon è possibile caricare i vostri cubi."
 	},
 	"FAQ": {
 		"en": "FAQ",
-		"fr": "FAQ"
+		"fr": "FAQ",
+		"it": "FAQ"
 	},
 	"About the program": {
 		"en": "About the program",
-		"fr": "À propos du programme"
+		"fr": "À propos du programme",
+		"it": "A proposito del programma"
 	},
 	"Contributors: %s": {
 		"en": "Contributors: %s",
-		"fr": "Contributeurs : %s"
+		"fr": "Contributeurs : %s",
+		"it": "Contributori : %s"
 	},
 	"Contribution: Sources are available on %s.": {
 		"en": "Contribution: Sources are available on %s.",
-		"fr": "Contribution : Les sources sont disponibles sur %s."
+		"fr": "Contribution : Les sources sont disponibles sur %s.",
+		"it": "Contribuzione : I sorgenti sono disponibili su %s."
 	},
 	"Credits": {
 		"en": "Credits",
-		"fr": "Crédits"
+		"fr": "Crédits",
+		"it": "Crediti"
 	},
 	"The game: ": {
 		"en": "The game: ",
-		"fr": "Le jeu : "
+		"fr": "Le jeu : ",
+		"it": "Il gioco : "
 	},
 	"Languages icons: ": {
 		"en": "Languages icons: ",
-		"fr": "Les icônes de langues : "
+		"fr": "Les icônes de langues : ",
+		"it": "Le icone delle lingue : "
 	},
 	"Font icons: ": {
 		"en": "Font icons: ",
-		"fr": "Icônes textuelles : "
+		"fr": "Icônes textuelles : ",
+		"it": "I font delle icone : "
 	},
 	"The application doesn't seem to work.": {
 		"en": "The application doesn't seem to work.",
-		"fr": "L'application ne semble pas marcher."
+		"fr": "L'application ne semble pas marcher.",
+		"it": "L'applicazione sembra non funzionare."
 	},
 	"Try with another browser or a newer version of your browser.<br>This application is written with HTML5 API, only modern browsers can run correctly this application. Some features may not work correctly depending on your browser version.<br>It doesn't work at all on Internet Explorer 9 and prior versions.": {
 		"en": "Try with another browser or a newer version of your browser.<br>This application is written with HTML5 API, only modern browsers can run correctly this application. Some features may not work correctly depending on your browser version.<br>It doesn't work at all on Internet Explorer 9 and prior versions.",
-		"fr": "Essayez avec un autre navigateur ou une version plus récente de votre navigateur.<br>Cette application utilise l'API HTML5 et seuls les navigateurs modernes peuvent faire fonctionner ce programme. Quelques fonctionnalités peuvent ne pas marcher pleinement selon la version de votre navigateur.<br>L'application ne fonctionne pas avec Internet Explorer 9 (et ses précédentes versions)."
+		"fr": "Essayez avec un autre navigateur ou une version plus récente de votre navigateur.<br>Cette application utilise l'API HTML5 et seuls les navigateurs modernes peuvent faire fonctionner ce programme. Quelques fonctionnalités peuvent ne pas marcher pleinement selon la version de votre navigateur.<br>L'application ne fonctionne pas avec Internet Explorer 9 (et ses précédentes versions).",
+		"it": "Prova con un altro navigatore o una nuova versione del tuo navigatore.<br>Questa applicazione utilizza le API HTML5 e solo i navigatori moderni possono far funzionare questo programma. Qualche funzionalità potrebbe non funzionare completamente a seconda della versione del vostro navigatore.<br>L'applicazione non funziona con Internet Explorer 9 (e versioni precedenti)."
 	},
 	"How can I build a new maze from cubes I have?": {
 		"en": "How can I build a new maze from cubes I have?",
-		"fr": "Comment construire de nouveaux puzzles à partir de mes cubes ?"
+		"fr": "Comment construire de nouveaux puzzles à partir de mes cubes ?",
+		"it": "Come posso costruire dei nuovi labirinti a partire dai miei cubi ?"
 	},
 	"Go to \"Cube Manager\" and build your cube with your own levels. On the right you'll see if your cube is solvable and the difficulty of your construction.<br>If you have levels that are not in the database, you can build and save them (don't forget to also save your creation in \"Import/Export\" menu in order to re-use cubes/levels you built)": {
 		"en": "Go to \"Cube Manager\" and build your cube with your own levels. On the right you'll see if your cube is solvable and the difficulty of your construction.<br>If you have levels that are not in the database, you can build and save them (don't forget to also save your creation in \"Import/Export\" menu in order to re-use cubes/levels you built).",
-		"fr": "Allez dans \"Gérer son cube\" et construisez votre cube avec les niveaux que vous possédez. À droite, vous pouvez vérifier que votre puzzle est réalisable et voir son niveau de difficulté.<br>Si vous possédez des niveaux qui ne sont pas dans la base, vous pouvez les créer et les sauvegarder (n'oubliez pas de les sauver aussi dans le menu \"Import/Export\" pour pouvoir les réutiliser plus tard)."
+		"fr": "Allez dans \"Gérer son cube\" et construisez votre cube avec les niveaux que vous possédez. À droite, vous pouvez vérifier que votre puzzle est réalisable et voir son niveau de difficulté.<br>Si vous possédez des niveaux qui ne sont pas dans la base, vous pouvez les créer et les sauvegarder (n'oubliez pas de les sauver aussi dans le menu \"Import/Export\" pour pouvoir les réutiliser plus tard).",
+		"it": "Andate in \"Gestire il mio cubo\" e costruite il vostro cubo con i livelli che avete. A destra, potete verificare che il vostro labirinto è realizzabile a vedere il suo livello di difficoltà.<br>Se possedete dei livelli che non sono tra quelli standard, potete crearli et salvarli (non dimenticatevi di salvarli anche nel menu \"Importa/Esporta\" per poterli riutilizzare più tardi),"
 	},
 	"How can I reset my real cube without opening it?": {
 		"en": "How can I restart my real cube without opening it?",
-		"fr": "Comment puis-je recommencer mon vrai cube sans l'ouvrir ?"
+		"fr": "Comment puis-je recommencer mon vrai cube sans l'ouvrir ?",
+		"it": "Come posso ricominciare il mio vero cubo senza aprirlo ?"
 	},
 	"Go to \"Lost in cube?\" and follow the instructions. The first instructions will help to know where your ball is in the cube. Then instructions are given to bring back the ball to the start (or the end, but it is better if you solve it by your own, isn't it?).": {
 		"en": "Go to \"Lost in cube?\" and follow the instructions. The first instructions will help to know where your ball is in the cube. Then instructions are given to bring back the ball to the start (or the end, but it is better if you solve it by your own, isn't it?).",
-		"fr": "Allez dans \"Perdu dans son cube ?\" et suivez les instructions. La première série d'instructions vous aidera à retrouver la bille. Puis la seconde vous aidera à ramener la bille au départ (ou à l'arrivée, mais c'est mieux de le résoudre soi-même, n'est-ce pas ?)."
+		"fr": "Allez dans \"Perdu dans son cube ?\" et suivez les instructions. La première série d'instructions vous aidera à retrouver la bille. Puis la seconde vous aidera à ramener la bille au départ (ou à l'arrivée, mais c'est mieux de le résoudre soi-même, n'est-ce pas ?).",
+		"it": "Andate nella pagina \"Perso nel cubo ?\" et seguite le instruzioni. La prima serie di instruzioni vi aiuterà a trovare la pallina. La seconda vi aiuterà a portare la pallina all'inizio (o alla fine, ma è meglio risolverlo da soli, non è vero ?)."
 	},
 	"How to send a cube map to a friend?": {
 		"en": "How to send a cube map to a friend?",
-		"fr": "Comment partager la carte d'un cube avec un ami ?"
+		"fr": "Comment partager la carte d'un cube avec un ami ?",
+		"it": "Come condividere le informazioni di un cubo con un amico ?"
 	},
 	"Go to \"Import/Export\" and copy the code in \"export cubes\" area. Paste this code in a text file if you want to save it on your computer. You can also send this code to a friend. He will be able to import it on his computer with this application.": {
 		"en": "Go to \"Import/Export\" and copy the code in \"Export cubes\" area. Paste this code in a text file if you want to save it on your computer. You can also send this code to a friend. He will be able to import it on his computer with this application.",
-		"fr": "Allez dans \"Import/Export\" et copiez le code situé dans la zone \"Exporter les cubes\". Collez ce code dans un fichier texte pour le sauvegarder. Ou vous pouvez envoyer ce code à vos amis qui pourront charger vos cubes avec cette application."
+		"fr": "Allez dans \"Import/Export\" et copiez le code situé dans la zone \"Exporter les cubes\". Collez ce code dans un fichier texte pour le sauvegarder. Ou vous pouvez envoyer ce code à vos amis qui pourront charger vos cubes avec cette application.",
+		"it": "Andate in \"Importa/Esporta\" e copiate il codice situato nella zona \"Esportare i cubi\". Copiatelo in un documento di testo per salvarlo. Altrimenti potet inviare il codice al vostro amico che potrà caricare il vostro cubo con questa applicazione."
 	},
 	"How to read a cube sent by a friend?": {
 		"en": "How to read a cube sent by a friend?",
-		"fr": "Comment voir le cube envoyé par un ami ?"
+		"fr": "Comment voir le cube envoyé par un ami ?",
+		"it": "Come leggere il cubo inviato da un amico ?"
 	},
 	"Go to \"Import/Export\" and paste the code he sent you in the \"import cubes\" area. Then click on \"Import\" button. If the code is valid you are able to select these cubes/levels in \"Cube manager\" or \"Lost in cube?\" menus.": {
 		"en": "Go to \"Import/Export\" and paste the code he sent you in the \"Import cubes\" area. Then click on \"Import\" button. If the code is valid you are able to select these cubes/levels in \"Cube manager\" or \"Lost in cube?\" menus.",
-		"fr": "Allez dans \"Import/Export\" et collez le code qui vous a été envoyé dans la section \"Importer des cubes\". Puis cliquez sur \"Importer\". Si le code est valide, vous trouverez ces niveaux/cubes dans les menus \"Gérer son cube\" et \"Perdu dans son cube ?\" "
+		"fr": "Allez dans \"Import/Export\" et collez le code qui vous a été envoyé dans la section \"Importer des cubes\". Puis cliquez sur \"Importer\". Si le code est valide, vous trouverez ces niveaux/cubes dans les menus \"Gérer son cube\" et \"Perdu dans son cube ?\" ",
+		"it": "Andate in \"Importa/Esporta\" e incollate il codice che vi è stato inviato nella sezione \"Importare i cubi\". Cliccate poi su \"Importa\". Se il codice è valido, troverete i livelli/cubi nel menu \"Gestire il mio cubo\" e \"Perso nel cubo ?\" "
 	},
 	"How can I print cube maps that I have created?": {
 		"en": "How can I print cube maps that I have created?",
-		"fr": "Comment puis-je imprimer les plans d'un cube que j'ai créé ?"
+		"fr": "Comment puis-je imprimer les plans d'un cube que j'ai créé ?",
+		"it": "Come posso stampare le informazioni di un cubo che ho creato ?"
 	},
 	"Go to \"Cube Manager\" and select the cube to print. Then click on \"maps preview\" in the small maps section at bottom right (this section must be opened first if it is reduced). A new tab will open displaying all maps of this cube. You can use the print feature of your browser.": {
 		"en": "Go to \"Cube Manager\" and select the cube to print. Then click on \"maps preview\" in the small maps section at bottom right (this section must be opened first if it is reduced). A new tab will open displaying all maps of this cube. You can use the print feature of your browser.",
-		"fr": "Allez dans \"Gérer son cube\" et sélectionnez le cube à imprimer. Puis cliquez sur \"Affichage des plans\" dans la zone des plans miniatures en bas à droite (cette zone doit d'abord être ouverte si elle est réduite). Un nouvel onglet va s'ouvrir affichant tous les plans du cube. Vous pouvez utiliser la fonction d'impression intégrée à votre navigateur."
+		"fr": "Allez dans \"Gérer son cube\" et sélectionnez le cube à imprimer. Puis cliquez sur \"Affichage des plans\" dans la zone des plans miniatures en bas à droite (cette zone doit d'abord être ouverte si elle est réduite). Un nouvel onglet va s'ouvrir affichant tous les plans du cube. Vous pouvez utiliser la fonction d'impression intégrée à votre navigateur.",
+		"it": "Andare in \"Gestire il mio cubo\" e selezionare il cubo da stampare. Cliccare poi su \"Mostrare le informazioni\" nella zona con le informazioni in basso a destra (questa zona deve essere aperta se è ridotta). Una nuova pagina si aprirà per mostrare tutte le informaioni del cubo. Potete utilizzare la funziona di stampa integrata nel vostro navigatore."
 	},
 	"I have created lot of cube but I want to get rid of them. How can I remove them?": {
 		"en": "I have created lot of cube but I want to get rid of them. How can I remove them?",
-		"fr": "J'ai créé plein de cubes mais j'aimerai faire le ménage. Comment puis-je les supprimer?"
+		"fr": "J'ai créé plein de cubes mais j'aimerai faire le ménage. Comment puis-je les supprimer?",
+		"it": "Ho create molti cubo ma voglio eliminarli. Come posso fare per cancellarli?"
 	},
 	"Go to \"Cube Manager\" and click on \"Delete cubes\" button (%s). Select cubes you want to remove and click on \"delete\". These cubes won't be display anymore in your browser.<br>Note: If you have customized an original cube and you remove it, the original maps are restored.": {
 		"en": "Go to \"Cube Manager\" and click on \"Delete cubes\" button (%s). Select cubes you want to remove and click on \"delete\". These cubes won't be display anymore in your browser.<br>Note: If you have customized an original cube and you remove it, the original maps are restored.",
-		"fr": "Allez dans \"Gérer son cube\" et cliquez sur \"Supprimer des cubes\" (%s). Sélectionnez les cubes à supprimer et cliquez sur \"Supprimer\". Ces cubes n'existeront plus dans votre navigateur.<br>Remarque: Si vous avez modifié un cube original et que vous le supprimez, les cartes d'origines seront restaurées."
+		"fr": "Allez dans \"Gérer son cube\" et cliquez sur \"Supprimer des cubes\" (%s). Sélectionnez les cubes à supprimer et cliquez sur \"Supprimer\". Ces cubes n'existeront plus dans votre navigateur.<br>Remarque: Si vous avez modifié un cube original et que vous le supprimez, les cartes d'origines seront restaurées.",
+		"it": "Andate in \"Gestire il mio cubo\" e cliccate su \"Cancellare i cubi\" (%s). Selezionate i cubi da cancellare e cliccate su \"Cancellare\". Questi cubi non esisteranno più nel vostro navigatore.<br>Nota: se avete modificato un cubo originale et lo cancellate, le informazioni originali saranno ripristinate."
 	},
 	"How can I see only cubes I own?": {
 		"en": "How can I see only cubes I own?",
-		"fr": "Comment puis-je voir seulement les cubes que je possède ?"
+		"fr": "Comment puis-je voir seulement les cubes que je possède ?",
+		"it": "Come posso vedere solamente i cubi che ho ?"
 	},
 	"Click on \"Filter\"  button and then unselect cube you don't want to see. They will not appear anymore in cubes selection. To be able to choose them again, re-select them in the \"Filter\" menu": {
 		"en": "Click on \"Filter\"  button and then unselect cube you don't want to see. They will not appear anymore in cubes selection. To be able to choose them again, re-select them in the \"Filter\" menu",
-		"fr": "Cliquez sur le bouton \"Filtre\" et désélectionnez les cubes que vous ne voulez plus voir. Ils n'apparaîtront plus dans le choix des sélections. Pour pouvoir les obtenir à nouveaux reséléctionnez les dans le menu \"Filtre\"."
+		"fr": "Cliquez sur le bouton \"Filtre\" et désélectionnez les cubes que vous ne voulez plus voir. Ils n'apparaîtront plus dans le choix des sélections. Pour pouvoir les obtenir à nouveaux reséléctionnez les dans le menu \"Filtre\".",
+		"it": "Cliccate sul bottone \"Filtra\" et deselezionate i cubi che non volete più vedere. Non appariranno più nella vostra selezione. Potete du nuovo ottenerne l'accesso riselezionandoli nel menu \"Filtra\"."
 	},
 	"What are \"lid\" levels?": {
 		"en": "What are \"lid\" levels?",
-		"fr": "Que sont les plateaux \"couvercle\" ?"
+		"fr": "Que sont les plateaux \"couvercle\" ?",
+		"it": "Cosa sono i livelli \"copertina\" ?"
 	},
 	"These levels are the ones which close the cube box. These levels cannot go inside the cube, they must stay at the last level.": {
 		"en": "These levels are the ones which close the cube box. These levels cannot go inside the cube, they must stay at the last level.",
-		"fr": "Ce sont les plateaux qui ferment le cube. Ces plateaux ne peuvent pas se placer dans le cube, ils doivent être situés au dernier niveau."
+		"fr": "Ce sont les plateaux qui ferment le cube. Ces plateaux ne peuvent pas se placer dans le cube, ils doivent être situés au dernier niveau.",
+		"it": "Sono i livelli che chiudono il cubo. Questi livelli non possono essere posizionati all'interno del cubo, devono essere posizionati all'ultimo livello."
 	},
 	"What are \"%s\", \"%s\" or \"pin\"?": {
 		"en": "What are \"%s\", \"%s\" or \"pin\"?",
-		"fr": "Que sont les symboles \"%s\", \"%s\" ou les \"embossements\" ?"
+		"fr": "Que sont les symboles \"%s\", \"%s\" ou les \"embossements\" ?",
+		"it": "Cosa sono i simboli \"%s\", \"%s\" o le \"protuberanze\" ?",
 	},
 	"\"Pins\" are the thin piece which blocks the ball at the start (which is inside the level (%s)) or at the end (which is below the previous level (%s)).": {
 		"en": "\"Pins\" are the thin piece which blocks the ball at the start (which is inside the level (%s)) or at the end (which is below the previous level (%s)).",
-		"fr": "Les \"embossements\" sont les morceaux permettant de bloquer la bille au début (qui est situé dans le plateau (%s)) ou à la fin (qui est situé sous le plateau précédent (%s))."
+		"fr": "Les \"embossements\" sont les morceaux permettant de bloquer la bille au début (qui est situé dans le plateau (%s)) ou à la fin (qui est situé sous le plateau précédent (%s)).",
+		"it": "Le \"protuberanze\" sono dei pezzi che permettono di bloccare la pallina all'inizio (che è situata nel livello (%s)) o alla fine (che è situata sotto il livello precedente (%s))."
 	},
 	"How can I change the start/end of a cube? or define pin? or set level as \"lid\"?": {
 		"en": "How can I change the start/end of a cube? or define pin? or set level as \"lid\"?",
-		"fr": "Comment puis-je changer la case de départ/de fin? ou définir un embossement? ou définir un plateau comme \"couvercle\" ?"
+		"fr": "Comment puis-je changer la case de départ/de fin? ou définir un embossement? ou définir un plateau comme \"couvercle\" ?",
+		"it": "Come posso cambiare la cella di partenza/fine di un cubo? O definire una protuberanza? O definire un livello come \"copertina\" ?"
 	},
 	"In the \"Cube manager\", you can set configuration with the button %s. If you tick \"more tools\", you will access new tools to change the start/end cell, to set if a cell has a pin. And at the last level you can define it as a lid.": {
 		"en": "In the \"Cube manager\", you can set configuration with the button %s. If you tick \"more tools\", you will access new tools to change the start/end cell, to set if a cell has a pin. And at the last level you can define it as a lid.",
-		"fr": "Dans \"Gérer son cube\", vous pouvez changer la configuration en cliquant sur le bouton %s. Si vous cochez \"plus d'outils\", vous aurez accès à de nouveaux outils pour éditer le cube comme pour changer le début ou la fin, ou définir un embossement. Au dernier niveau, vous pourrez le définir en tant que un \"couvercle\"."
+		"fr": "Dans \"Gérer son cube\", vous pouvez changer la configuration en cliquant sur le bouton %s. Si vous cochez \"plus d'outils\", vous aurez accès à de nouveaux outils pour éditer le cube comme pour changer le début ou la fin, ou définir un embossement. Au dernier niveau, vous pourrez le définir en tant que un \"couvercle\".",
+		"it": "In \"Gestire il mio cubo\" potete cambiare la configurazione cliccando sul bottone %s. Se selezionate \"più strumenti\", avrete accesso a dei nuovi strumenti per editare il cubo come per modificare l'inizio o la fine, definire una protuberanza. All'ultimo livello, potrete definirlo come \"copertina\"."   
 	},
 	"How can I change that ball is not block by \"pins\"?": {
 		"en": "How can I change that ball is not block by \"pins\"?",
-		"fr": "Comment puis-je changer le fait que la bille soit bloquée par les embossements ?"
+		"fr": "Comment puis-je changer le fait que la bille soit bloquée par les embossements ?",
+		"it": "Come posso modificare il fatto che la pallina non sia bloccata da una protuberanza ?"
 	},
 	"In the configuration dialog (%s), if you tick \"ball goes through pin\", pins will be ignored when your cubes will be evaluated.": {
 		"en": "In the configuration dialog (%s), if you tick \"ball goes through pin\", pins will be ignored when your cubes will be evaluated.",
-		"fr": "Dans la fenêtre de configuration (%s), si vous chochez \"ignorer les embossements\", la bille ne sera plus génée par les embossements pour le calcul des mouvements."
+		"fr": "Dans la fenêtre de configuration (%s), si vous chochez \"ignorer les embossements\", la bille ne sera plus génée par les embossements pour le calcul des mouvements.",
+		"it": "Nella finestra di configurazione (%s), potete selezionare \"ignorare le protuberanze\", e la pallina non sarà più disturbata dalle protuberanze per il calcolo dei movimenti."
 	},
 	"How can I choose any levels at the last level?": {
 		"en": "How can I choose any levels at the last level?",
-		"fr": "Comment puis-je choisir tous les plateaux au dernier niveau ?"
+		"fr": "Comment puis-je choisir tous les plateaux au dernier niveau ?",
+		"it": "Come posso scegliere tutti i livelli all'ultimo livello ?"
 	},
 	"In the configuration dialog (%s), if you tick \"last level is lid only\", you can choose only level which are lid at the last level. Untick it to be able to choose any levels.": {
 		"en": "In the configuration dialog (%s), if you tick \"last level is lid only\", you can choose only level which are lid at the last level. Untick it to be able to choose any levels.",
-		"fr": "Dans la fenêtre de configuration (%s), si vous chochez \"seulement des couvercles au dernier niveau\", vous pouvez seulement choisir des couvercles en tant que dernier niveau. Décochez-la pour pouvoir choisir n'importe quel plateau."
+		"fr": "Dans la fenêtre de configuration (%s), si vous chochez \"seulement des couvercles au dernier niveau\", vous pouvez seulement choisir des couvercles en tant que dernier niveau. Décochez-la pour pouvoir choisir n'importe quel plateau.",
+		"it": "Nella finestra di configurazione (%s), se selezionate \"solamente delle copertine all'ultimo livello\", potete solamente scegliere delle copertine come ultimo livello. Deselezionate l'opzione per poter scegliere qualunque livello."
 	},
 	"How can I rotate levels?": {
 		"en": "How can I rotate levels?",
-		"fr": "Comment puis-je tourner des plateaux ?"
+		"fr": "Comment puis-je tourner des plateaux ?",
+		"it": "Come posso ruotare i livelli ?"
 	},
 	"In the configuration dialog (%s), if you tick \"rotate levels\", you will be able to change the level rotation.": {
 		"en": "In the configuration dialog (%s), if you tick \"rotate levels\", you will be able to change the level rotation.",
-		"fr": "Dans la fenêtre de configuration (%s), si vous chochez \"rotation des plateaux\", vous pourrez tourner les plateaux."
+		"fr": "Dans la fenêtre de configuration (%s), si vous chochez \"rotation des plateaux\", vous pourrez tourner les plateaux.",
+		"it": "Nella finestra di configurazione (%s), se selezionate \"rotazione dei livelli\", potrete ruotare i livelli."
 	},
 	"What is the INSIDE³ side?": {
 		"en": "What is the INSIDE³ side?",
-		"fr": "Quelle est la face INSIDE³ ?"
+		"fr": "Quelle est la face INSIDE³ ?",
+		"it": "Quale è la faccia INSIDE³ ?"
 	},
 	"An insideZeCube cube has 2 noticeable sides.<ul><li>The \"INSIDE³\" side where you also see the name of the cube. This is the top side where the ball was when you have bought the cube.</li><li>The \"InsideZeCube.com\" side is where the cube can be opened (when feasible). This is where the ball must be visible to finish the cube.</li></ul>In order to follow instructions, you should always keep one of these two sides at the top with the title readable.": {
 		"en": "An insideZeCube cube has 2 noticeable sides.<ul><li>The \"INSIDE³\" side where you also see the name of the cube. This is the top side where the ball was when you have bought the cube.</li><li>The \"InsideZeCube.com\" side is where the cube can be opened (when feasible). This is where the ball must be visible to finish the cube.</li></ul>In order to follow instructions, you should always keep one of these two sides at the top with the title readable.",
-		"fr": "Un cube insideZeCube a 2 faces identifiables.<ul><li>La face \"INSIDE³\" où vous pouvez aussi remarquer le nom du cube. C'est la face supérieure où se trouvait la bille lorsque vous l'avez acheté.</li><li>La face \"InsideZeCube.com\" est celle où le cube peut s'ouvrir (quand il le permet). C'est là où la bille sera visible quand le cube est terminé.</li></ul>Pour suivre les instructions, vous devez toujours avoir l'une de ces deux faces en haut avec le titre lisible."
+		"fr": "Un cube insideZeCube a 2 faces identifiables.<ul><li>La face \"INSIDE³\" où vous pouvez aussi remarquer le nom du cube. C'est la face supérieure où se trouvait la bille lorsque vous l'avez acheté.</li><li>La face \"InsideZeCube.com\" est celle où le cube peut s'ouvrir (quand il le permet). C'est là où la bille sera visible quand le cube est terminé.</li></ul>Pour suivre les instructions, vous devez toujours avoir l'une de ces deux faces en haut avec le titre lisible.",
+		"it": "Un cubo insideZeCube ha due facce identificabili.<ul><li>La faccia \"INSIDE³\" dove potete anche notare il nome del cubo. E' la faccia superiore dove si trova la pallina all'acquisto del cubo.</li><li>La faccia \"InsideZeCube.com\" dove il cubo si può aprire (se è permesso). E' la che la pallina sarà visibile quando il cubo è terminato.</li></ul>Per seguire le instruzioni, dovete sempre avere una delle due facce in alto con il titolo leggibile."
 	},
 	"Sometimes the helper can not help me and gives no clear instructions.": {
 		"en": "Sometimes the helper can not help me and gives no clear instructions.",
-		"fr": "Parfois les instructions ne peuvent pas m'aider ou ne sont pas claires."
+		"fr": "Parfois les instructions ne peuvent pas m'aider ou ne sont pas claires.",
+		"it": "Qualche volta le instruzioni non mi aiutano o non sono chiare."
 	},
 	"This happen when a complex movement must be done (like a diagonal movement). Current algorithm can not resolve such movement. I am very sorry, you have to find the correct movement on your own :(<br>This may happen in difficult cubes (Awful, Vicious and Mortal)": {
 		"en": "This happen when a complex movement must be done (like a diagonal movement). Current algorithm can not resolve such movement. I am very sorry, you have to find the correct movement on your own :(<br>This may happen in difficult cubes (Awful, Vicious and Mortal)",
-		"fr": "Cela arrive lorsqu'un mouvement compliqué doit être effectué (comme un mouvement en diagonale). L'algorithme actuel ne sait pas résoudre ce genre de mouvement. Je suis désolé, mais vous devrez trouver le bon mouvement seul :(<br>Cela peut apparaître dans les cubes difficiles (Awful, Vicious et Mortal)"
+		"fr": "Cela arrive lorsqu'un mouvement compliqué doit être effectué (comme un mouvement en diagonale). L'algorithme actuel ne sait pas résoudre ce genre de mouvement. Je suis désolé, mais vous devrez trouver le bon mouvement seul :(<br>Cela peut apparaître dans les cubes difficiles (Awful, Vicious et Mortal)",
+		"it": "Questo succede quando un movimento complesso deve essere effettuato (come un movimento in diagonale). L'algoritmo attuale non riesce a risolvere questo tipo di movimenti. Spiacente, ma covrete trovare un buon movimento soli :(<br>Questo appare nei cubi difficili (Awful, Vicious et Mortal))"
 	},
 	"Why are maps of Mortal cubes not available?": {
 		"en": "Why are maps of Mortal cubes not available?",
-		"fr": "Pourquoi les cartes des cubes Mortal ne sont pas disponibles ?"
+		"fr": "Pourquoi les cartes des cubes Mortal ne sont pas disponibles ?",
+		"it": "Perchè le informazioni dei cubo Mortal non sono disponibili ?"
 	},
 	"The goal of Mortal cube is to discover the map levels on your own. If you take maps from someone else, you should better buy a Vicious or an Awful cube ;p": {
 		"en": "The goal of Mortal cube is to discover the map levels on your own. If you take maps from someone else, you should better buy a Vicious or an Awful cube ;p",
-		"fr": "Le but des cubes Mortal est de découvrir les niveaux par vous-même. Si vous les récupérez autrement, autant acheter un cube Vicious ou Awful ;p"
+		"fr": "Le but des cubes Mortal est de découvrir les niveaux par vous-même. Si vous les récupérez autrement, autant acheter un cube Vicious ou Awful ;p",
+		"it": "Lo scopo dei cubi Mortal è scoprire i livelli da soli. Se li scoprite in altro modo, allora tanto vale comprare un cubo Vicious o Awful ;p"
 	},
 	"I really want maps of Mortal cube!": {
 		"en": "I really want maps of Mortal cube!",
-		"fr": "Je désire vraiment les cartes du Mortal !"
+		"fr": "Je désire vraiment les cartes du Mortal !",
+		"it": "Voglio davvero le informazioni del Mortal !"
 	},
 	"Try to find someone who know maps of your cube and import them with the import/export tool.": {
 		"en": "Try to find someone who know maps of your cube and import them with the import/export tool.",
-		"fr": "Trouvez quelqu'un qui les connaît et importez-les avec l'outil d'import/export."
+		"fr": "Trouvez quelqu'un qui les connaît et importez-les avec l'outil d'import/export.",
+		"it": "Trovate qualcuno che le conosce e importatele con lo strumento Importa/Esporta."
 	},
 	"I am looking for all mazes I can create from cubes I own.": {
 		"en": "I am looking for all mazes I can create from cubes I own.",
-		"fr": "Je cherche à connaître toutes les possibilités que je peux créer à partir de mes cubes."
+		"fr": "Je cherche à connaître toutes les possibilités que je peux créer à partir de mes cubes.",
+		"it": "Volgio trovare tutte le possibilità che posso creare a partire dai miei cubi."
 	},
 	"Go to \"Look for new mazes!\", select levels you own and click on \"Look for possible maze\". All combinations you can create will appear. Warning: in some cases it can take a very long time!": {
 		"en": "Go to \"Look for new mazes!\", select levels you own and click on \"Look for possible maze\". All combinations you can create will appear. Warning: in some cases it can take a very long time!",
-		"fr": "Allez dans \"Découvrir d'autres plans !\", choisissez les plateaux que vous possédez et cliquez sur \"Rechercher les combinaisons possibles\". Toutes les combinaisons que vous pouvez créer vont apparaître. Attention: dans certains cas, cela peut prendre beaucoup de temps."
+		"fr": "Allez dans \"Découvrir d'autres plans !\", choisissez les plateaux que vous possédez et cliquez sur \"Rechercher les combinaisons possibles\". Toutes les combinaisons que vous pouvez créer vont apparaître. Attention: dans certains cas, cela peut prendre beaucoup de temps.",
+		"it": "Andate in \"Scopri nuovi labirinti!\", selezionate i livelli che possedete e cliccate su \"Ricercare le possibili combinazioni\". Tutte le combinazione che potete creare appariranno. Attenzione: in certi casi, può essere necessario molto tempo."
 	},
 	"Why the estimated difficulty is different between \"Cube manager\" and \"Look for new mazes!\"?": {
 		"en": "Why the estimated difficulty is different between \"Cube manager\" and \"Look for new mazes!\"?",
-		"fr": "Pourquoi la difficulté estimée est différente entre \"Gérer son cube\" et \"Découvrir d'autres plans !\" ?"
+		"fr": "Pourquoi la difficulté estimée est différente entre \"Gérer son cube\" et \"Découvrir d'autres plans !\" ?",
+		"it": "Perchè la difficoltà stimata è differente tra \"Gestire il mio cubo\" e \"Scopri nuovi labirinti!\" ?"
 	},
 	"In \"Look for new mazes!\" to avoid taking more time to compute, the estimation is based only on the number of available cells and dead-ends.<br>In \"Cube manager\", only one cube is analyzed, so a more complex algorithm is run including the number of needed rotations to solve it.": {
 		"en": "In \"Look for new mazes!\" to avoid taking more time to compute, the estimation is based only on the number of available cells and dead-ends.<br>In \"Cube manager\", only one cube is analyzed, so a more complex algorithm is run including the number of needed rotations to solve it.",
-		"fr": "Dans \"Découvrir d'autres plans !\", pour éviter de consommer trop de temps, l'estimation est calculée uniquement sur le nombre de cases atteignables et le nombre d'impasses.<br>Dans \"Gérer son cube\", comme un seul cube est étudié, un algorithme plus complexe est utilisé qui prend en compte le nombre de rotations nécessaires pour résoudre le cube."
+		"fr": "Dans \"Découvrir d'autres plans !\", pour éviter de consommer trop de temps, l'estimation est calculée uniquement sur le nombre de cases atteignables et le nombre d'impasses.<br>Dans \"Gérer son cube\", comme un seul cube est étudié, un algorithme plus complexe est utilisé qui prend en compte le nombre de rotations nécessaires pour résoudre le cube.",
+		"it": "In \"Scopri nuovi lavirinti!\", per evitare di utilizzare troppo tempo, la stima è calcolata unicamente sul numero di celle disponibli e cammini senza fine.<be> In \"Gestire il mio cubo\", come un solo cubo è anlizzato, un algoritmo più complesso che tiene conto del numero di rotazioni necessarie per risolvere il cubo è utilizzato"
 	},
 	"I would like to save the generated cubes.": {
 		"en": "I would like to save the generated cubes.",
-		"fr": "Je voudrais garder des cubes générés."
+		"fr": "Je voudrais garder des cubes générés.",
+		"it": "Mi piacerebbe salvare i cubi generati."
 	},
 	"When possible solutions are displayed, you can click on them to see what they look like. If you tick their checkbox and then click on \"save\" (%s) they will be saved with the given name (if no name is provided a generated name will be given).": {
 		"en": "When possible solutions are displayed, you can click on them to see what they look like. If you tick their checkbox and then click on \"save\" (%s) they will be saved with the given name (if no name is provided a generated name will be given).",
-		"fr": "Quand les solutions possibles sont affichées, vous pouvez leur cliquer dessus pour voir les plans. Si vous cochez la case puis vous cliquez sur \"enregistrer\" (%s) ils seront enregistrés avec le nom que vous leur avez donné (s'il n'y a pas de nom, un nom automatique leur est donné)."
+		"fr": "Quand les solutions possibles sont affichées, vous pouvez leur cliquer dessus pour voir les plans. Si vous cochez la case puis vous cliquez sur \"enregistrer\" (%s) ils seront enregistrés avec le nom que vous leur avez donné (s'il n'y a pas de nom, un nom automatique leur est donné).",
+		"it": "Quando le soluzioni possibili sono mostrate, potete cliccarci sopra per vedere le instruzioni. Se selezionate l'opzione e cliccate su \"salva\" (%s) saranno registrate con il nome che avete inserito (se non c'è il nome, un nome automatico sarà inserito)."
 	},
 	"Why does it look so awful?": {
 		"en": "Why does it look so awful?",
-		"fr": "Pourquoi est-ce aussi moche ?"
+		"fr": "Pourquoi est-ce aussi moche ?",
+		"it": "Perchè è così brutto ?"
 	},
 	"I am not a designer. If you can improve the application design, I will be glad to accept your work.": {
 		"en": "I am not a designer. If you can improve the application design, I will be glad to accept your work.",
-		"fr": "Je ne suis pas designer. Si vous pouvez améliorer le design de l'application, je serais très heureux d'accepter votre travail."
+		"fr": "Je ne suis pas designer. Si vous pouvez améliorer le design de l'application, je serais très heureux d'accepter votre travail.",
+		"it": "Non sono un designer. Se potete migliorare il design dell'applicazione, sarò ben felice di accettare il vostro lavoro."
 	},
 	"Why is it called \"Inside We cube\"?": {
 		"en": "Why is it called \"Inside We cube\"?",
-		"fr": "Pourquoi est-ce que ça s'appelle \"Inside We Cube\" ?"
+		"fr": "Pourquoi est-ce que ça s'appelle \"Inside We Cube\" ?",
+		"it": "Perchè si chiama \"Inside We Cube\" ?"
 	},
 	"<ol><li>I had to find a name ;)</li><li>When you type \"InsideZeCube\" with a wrong AZERTY↔QWERTY keyboard configuration you get \"InsideWeCube\".</li><li>Because INSIDE this application WE solve CUBEs.</li></ol>": {
 		"en": "<ol><li>I had to find a name ;)</li><li>When you type \"InsideZeCube\" with a wrong AZERTY↔QWERTY keyboard configuration you get \"InsideWeCube\".</li><li>Because INSIDE this application WE solve CUBEs.</li></ol>",
-		"fr": "<ol><li>Je devais bien trouver un nom ;)</li><li>Quand vous tapez \"InsideZeCube\" avec une mauvaise configuration clavier AZERTY↔QWERTY vous obtenez \"InsideWeCube\".</li><li>Parce que dans (INSIDE) cette application nous (WE) résolvons les CUBEs.</li></ol>"
+		"fr": "<ol><li>Je devais bien trouver un nom ;)</li><li>Quand vous tapez \"InsideZeCube\" avec une mauvaise configuration clavier AZERTY↔QWERTY vous obtenez \"InsideWeCube\".</li><li>Parce que dans (INSIDE) cette application nous (WE) résolvons les CUBEs.</li></ol>",
+		"it": "<ol><li>Dovevo trvare un nome ;)</li><li>Quando cliccate \"InsideZeCube\" con una configurazione della tastiera AZERTY↔QWERTY otterrete \"InsideWeCube\".</li><li>Perchè in (INSIDE) questa applicazione noi (WE) risolviamo i cubi (CUBE).</li></ol>"
 	},
 	"Which technologies have been used for this program?": {
 		"en": "Which technologies have been used for this program?",
-		"fr": "Quelles technologies ont été utilisées pour réaliser ce programme ?"
+		"fr": "Quelles technologies ont été utilisées pour réaliser ce programme ?",
+		"it": "Quali tecnologie sono state utilizzate per realizzare questo programma ?"
 	},
 	"This is built only with JavaScript. There is nothing stored outside your browser.<br>No frameworks have been used. The whole application is hand made.": {
 		"en": "This is built only with JavaScript. There is nothing stored outside your browser.<br>No frameworks have been used. The whole application is hand made.",
-		"fr": "Il a été construit uniquement avec du JavaScript. Rien n'est stocké ailleurs que sur votre navigateur.<br>Aucun framework n'a été utilisé. Cette application a été entièrement construite à la main."
+		"fr": "Il a été construit uniquement avec du JavaScript. Rien n'est stocké ailleurs que sur votre navigateur.<br>Aucun framework n'a été utilisé. Cette application a été entièrement construite à la main.",
+		"it": "E' stato costruito unicamente in JavaScript. Nulla è memorizzato fuori dal vostro navigatore.<br>Nessun framework è stato utilizzato. Questa applicazione è stata interamente prodotta a mano."
 	},
 	"This is not my current position!": {
 		"en": "This is not my current position!",
-		"fr": "Ce n'est pas ma position actuelle !"
+		"fr": "Ce n'est pas ma position actuelle !",
+		"it": "Non è la mia posizione attuale !"
 	},
 	"I have lost my ball! I don't know what happened!": {
 		"en": "I have lost my ball! I don't know what happened!",
-		"fr": "J'ai perdu ma bille! Je ne sais plus ce qu'il s'est passé !"
+		"fr": "J'ai perdu ma bille! Je ne sais plus ce qu'il s'est passé !",
+		"it": "Ho perso la pallina! Non so più cosa è successo !"
 	},
 	"Map orientation: ": {
 		"en": "Map orientation: ",
-		"fr": "Orientation de la carte : "
+		"fr": "Orientation de la carte : ",
+		"it": "Orientazione delle instruzioni : "
 	},
 	"INSIDE³ side is at the top": {
 		"en": "INSIDE³ side is at the top",
-		"fr": "la face INSIDE³ est en haut"
+		"fr": "la face INSIDE³ est en haut",
+		"it": "la faccia INSIDE³ è in alto"
 	},
 	"INSIDE³ side is at the bottom": {
 		"en": "INSIDE³ side is at the bottom",
-		"fr": "la face INSIDE³ est en bas"
+		"fr": "la face INSIDE³ est en bas",
+		"it": "la faccia INSIDE³ è in basso"
 	},
 	"Level %d": {
 		"en": "Level %d",
-		"fr": "Niveau %d"
+		"fr": "Niveau %d",
+		"it": "Livello %d"
 	},
 	"I am sorry, I can't help you here :(": {
 		"en": "I am sorry, I can't help you here :(",
-		"fr": "Désolé, je ne peux pas vous aider cette fois-ci :("
+		"fr": "Désolé, je ne peux pas vous aider cette fois-ci :(",
+		"it": "Spiacente, non posso aiutarvi questa volta :("
 	},
 	"The ball is now visible!": {
 		"en": "The ball is now visible!",
-		"fr": "La bille est maintenant visible !"
+		"fr": "La bille est maintenant visible !",
+		"it": "La pallina non è visibile !"
 	},
 	"Something should happen but I don't know what :(": {
 		"en": "Something should happen but I don't know what :(",
-		"fr": "Quelque chose doit se passer mais je ne sais ce que c'est :("
+		"fr": "Quelque chose doit se passer mais je ne sais ce que c'est :(",
+		"it": "Qualcosa deve succedere ma non so cosa :("
 	},
 	"If you don't know where the ball is, please follow the instructions.": {
 		"en": "If you don't know where the ball is, please follow the instructions.",
-		"fr": "Si vous ne savez pas où se trouve la bille, suivez ces instructions."
+		"fr": "Si vous ne savez pas où se trouve la bille, suivez ces instructions.",
+		"it": "Se non sapete dove si trova la pallina, seguite queste instruzioni."
 	},
 	"Are you sure you want to be spoiled?\nDon't you want to try to solve it by yourself?": {
 		"en": "Are you sure you want to be spoiled?\nDon't you want to try to solve it by yourself?",
-		"fr": "Êtes-vous sûr de vouloir voir la solution ?\nNe désirez-vous pas essayer de le résoudre vous-même ?"
+		"fr": "Êtes-vous sûr de vouloir voir la solution ?\nNe désirez-vous pas essayer de le résoudre vous-même ?",
+		"it": "Siete sicuri di voler vedere la soluzione ?\nNon preferite provare a risolverlo da soli ?"
 	},
 	"How to find your ball lost inside the cube? How to build new mazes from your cubes?": {
 		"en": "How to find your ball lost inside the cube? How to build new mazes from your cubes?",
-		"fr": "Vous avez perdu votre bille à l'intérieur du cube ? Vous désirez construire de nouveaux puzzles à partir de vos cubes ?"
+		"fr": "Vous avez perdu votre bille à l'intérieur du cube ? Vous désirez construire de nouveaux puzzles à partir de vos cubes ?",
+		"it": "Avete perso la pallina all'interno del cubo ? Volete costruire dei nuovi labirinti a partire dai vostri cubi ?"
 	},
 	"\"Inside We Cube\" will help you!": {
 		"en": "\"Inside We Cube\" will help you!",
-		"fr": "\"Inside We Cube\" va vous aider !"
+		"fr": "\"Inside We Cube\" va vous aider !",
+		"it": "\"Inside We Cube\" vi aiuterà !"
 	},
 	"Keep your calm stay zen!": {
 		"en": "Keep your calm stay zen!",
-		"fr": "Gardez votre calme, restez zen !"
+		"fr": "Gardez votre calme, restez zen !",
+		"it": "Mantenete la calma, restate zen !"
 	},
 	"Set your cube current position": {
 		"en": "Set your cube current position",
-		"fr": "Définissez la position actuelle du cube"
+		"fr": "Définissez la position actuelle du cube",
+		"it": "Definite la posizione attuale del cubo"
 	},
 	"Original cube can't be removed!": {
 		"en": "Original cube can't be removed!",
-		"fr": "Les cubes d'origines ne peuvent être supprimés !"
+		"fr": "Les cubes d'origines ne peuvent être supprimés !",
+		"it": "I cubi originali non possono essere rimossi !"
 	},
 	"insideWeCube is running in another tab. Its version is deprecated and must be refresh.": {
 		"en": "insideWeCube is running in another tab. Its version is deprecated and must be refresh.",
-		"fr": "insideWeCube est déjà en train de tourner dans un autre onglet. Sa version est obsolète et doit être relancées."
+		"fr": "insideWeCube est déjà en train de tourner dans un autre onglet. Sa version est obsolète et doit être relancées.",
+		"it": "insideWeCube è in esecuzione in una finestra differente. La versione è obsoleta e dovrà essere rilanciata."
 	},
 	"A newer version of insideWeCube is running in another tab. You can't save anymore your change.<br>Please refresh the page.": {
 		"en": "A newer version of insideWeCube is running in another tab. You can't save anymore your change.<br>Please refresh the page.",
-		"fr": "Une nouvelle version de insideWeCube tourne dans un autre onglet. Vous ne pouvez plus garder vos modifications.<br>Veuillez actualiser la page."
+		"fr": "Une nouvelle version de insideWeCube tourne dans un autre onglet. Vous ne pouvez plus garder vos modifications.<br>Veuillez actualiser la page.",
+		"it": "Una versione più recente di insideWeCube è in esecuzione in una finestra differente. Non potete più salvare le vostre modifiche.<br>Ricaricare la pagina."
 	},
 	"hidden": {
 		"en": "hidden",
-		"fr": "caché"
+		"fr": "caché",
+		"it": "nascosta"
 	},
 	"Ok": {
 		"en": "Ok",
-		"fr": "Ok"
+		"fr": "Ok",
+		"it": "Ok"
 	},
 	"Cancel": {
 		"en": "Cancel",
-		"fr": "Annuler"
+		"fr": "Annuler",
+		"it": "Annullare"
 	},
 	"Close": {
 		"en": "Close",
-		"fr": "Fermer"
+		"fr": "Fermer",
+		"it": "Chiudere"
 	},
 	"Delete": {
 		"en": "Delete",
-		"fr": "Supprimer"
+		"fr": "Supprimer",
+		"it": "Cancellare"
 	},
 	"INSIDE³ side is": {
 		"en": "INSIDE³ side is",
-		"fr": "La face INSIDE³ est"
+		"fr": "La face INSIDE³ est",
+		"it": "La faccia INSIDE³ è"
 	},
 	"at the TOP": {
 		"en": "at the TOP",
-		"fr": "en HAUT"
+		"fr": "en HAUT",
+		"it": "in ALTO"
 	},
 	"at the BOTTOM": {
 		"en": "at the BOTTOM",
-		"fr": "en BAS"
+		"fr": "en BAS",
+		"it": "in BASSO"
 	},
 	"Your cube is slightly rotated": {
 		"en": "Your cube is slightly rotated",
-		"fr": "Le cube est légérement penché"
+		"fr": "Le cube est légérement penché",
+		"it": "Il vostro cubo è leggermente inclinato"
 	},
 	"to the LEFT": {
 		"en": "to the LEFT",
-		"fr": "vers la GAUCHE"
+		"fr": "vers la GAUCHE",
+		"it": "a SINISTRA"
 	},
 	"to the RIGHT": {
 		"en": "to the RIGHT",
-		"fr": "vers la DROITE"
+		"fr": "vers la DROITE",
+		"it": "a DESTRA"
 	},
 	"BACKWARD": {
 		"en": "BACKWARD",
-		"fr": "vers VOUS"
+		"fr": "vers VOUS",
+		"it": "verso di VOI"
 	},
 	"FORWARD": {
 		"en": "FORWARD",
-		"fr": "vers l'AVANT"
+		"fr": "vers l'AVANT",
+		"it": "in AVANTI"
 	},
 	"The INSIDE³ side": {
 		"en": "The INSIDE³ side",
-		"fr": "La face INSIDE³"
+		"fr": "La face INSIDE³",
+		"it": "La faccia INSIDE³"
 	},
 	"The InsideZeCube.com side": {
 		"en": "The InsideZeCube.com side",
-		"fr": "La face InsideZeCube.com"
+		"fr": "La face InsideZeCube.com",
+		"it": "La faccia InsideZeCube.com"
 	},
 	"The left side": {
 		"en": "The left side",
-		"fr": "La face de gauche"
+		"fr": "La face de gauche",
+		"it": "La faccia di sinistra"
 	},
 	"The right side": {
 		"en": "The right side",
-		"fr": "La face de droite"
+		"fr": "La face de droite",
+		"it": "La faccia di destra"
 	},
 	"The front side": {
 		"en": "The front side",
-		"fr": "La face de devant"
+		"fr": "La face de devant",
+		"it": "La faccia davanti"
 	},
 	"The rear side": {
 		"en": "The rear side",
-		"fr": "La face de derrière"
+		"fr": "La face de derrière",
+		"it": "La faccia dietro"
 	},
 	"Cube properties": {
 		"en": "Cube properties",
-		"fr": "Propriétés du cube"
+		"fr": "Propriétés du cube",
+		"it": "Le proprietà del cubo"
 	},
 	"Cube should end up in this position:": {
 		"en": "Cube should end up in this position:",
-		"fr": "Le cube doit se retrouver dans cette position :"
+		"fr": "Le cube doit se retrouver dans cette position :",
+		"it": "Il cubo dovrà trovarsi in questa posizione :"
 	},
 	"Tools": {
 		"en": "Tools",
-		"fr": "Outils"
+		"fr": "Outils",
+		"it": "Strumenti"
 	},
 	"Manager": {
 		"en": "Manager",
-		"fr": "Gestion"
+		"fr": "Gestion",
+		"it": "Gestione"
 	},
 	"Load a cube": {
 		"en": "Load a cube",
-		"fr": "Charger un cube"
+		"fr": "Charger un cube",
+		"it": "Caricare un cubo"
 	},
 	"Load a level": {
 		"en": "Load a level",
-		"fr": "Charger un plateau"
+		"fr": "Charger un plateau",
+		"it": "Caricare un livello"
 	},
 	"Rotate the level": {
 		"en": "Rotate the level",
-		"fr": "Tourner le plateau"
+		"fr": "Tourner le plateau",
+		"it": "Routare il livello"
 	},
 	"Rotate 90° clockwise": {
 		"en": "Rotate 90° clockwise",
-		"fr": "Tourner de 90° sens horaire"
+		"fr": "Tourner de 90° sens horaire",
+		"it": "Routare di 90° in senso orario"
 	},
 	"Rotate 90° counter-clockwise": {
 		"en": "Rotate 90° counter-clockwise",
-		"fr": "Tourner de 90° sens anti-horaire"
+		"fr": "Tourner de 90° sens anti-horaire",
+		"it": "Routare di 90° in senso anti-orario"
 	},
 	"Rotate 180°": {
 		"en": "Rotate 180°",
-		"fr": "Tourner de 180°"
+		"fr": "Tourner de 180°",
+		"it": "Routare di 180°"
 	},
 	"Is a lid level:": {
 		"en": "Is a lid level:",
-		"fr": "Est un couvercle :"
+		"fr": "Est un couvercle :",
+		"it": "E' una copertina :"
 	},
 	"Maps preview": {
 		"en": "Maps preview",
-		"fr": "Affichage des plans"
+		"fr": "Affichage des plans",
+		"it": "Mostrare le informazioni"
 	},
 	"Display maps in another tab": {
 		"en": "Display maps in another tab",
-		"fr": "Affiche les plans dans un autre onglet"
+		"fr": "Affiche les plans dans un autre onglet",
+		"it": "Mostrare le informazioni in una altra finestra"
 	},
 	"Reduce the maps preview": {
 		"en": "Reduce the maps preview",
-		"fr": "Réduire la zone d'affichage des plans"
+		"fr": "Réduire la zone d'affichage des plans",
+		"it": "Ridurre la zona per l'illustrazione delle informazioni"
 	},
 	"Show the maps preview": {
 		"en": "Show the maps preview",
-		"fr": "Agrandit la zone d'affichage des plans"
+		"fr": "Agrandit la zone d'affichage des plans",
+		"it": "Ingrandire la zona per l'illustrazione delle informazioni"
 	},
 	"Maps preview: %s": {
 		"en": "Maps preview: %s",
-		"fr": "Plans du cube : %s"
+		"fr": "Plans du cube : %s",
+		"it": "Informazioni del cubo : %s"
 	},
 	"Cube color": {
 		"en": "Cube color",
-		"fr": "Couleur du cube"
+		"fr": "Couleur du cube",
+		"it": "Colore del cubo"
 	},
 	"Watch possible ball locations": {
 		"en": "Watch possible ball locations",
-		"fr": "Voir les positions possible de la bille"
+		"fr": "Voir les positions possible de la bille",
+		"it": "Vedere la possibile posizione della pallina"
 	},
 	"Instructions summary (%d)": {
 		"en": "Instructions summary (%d)",
-		"fr": "Résumé des instructions (%d)"
+		"fr": "Résumé des instructions (%d)",
+		"it": "Riassunto delle inforazioni (%d)"
 	},
 	"The lord of the cubes": {
 		"en": "The lord of the cubes",
@@ -1041,42 +1295,52 @@
 	},
 	"Cube \"%s\" has been replaced by its original version.": {
 		"en": "Cube \"%s\" has been replaced by its original version.",
-		"fr": "Le cube \"%s\" a été remplacé par sa version originale."
+		"fr": "Le cube \"%s\" a été remplacé par sa version originale.",
+		"it": "Il cubo \"%s\" è stato sostituito dalla sua versione originale."
 	},
 	"Cube \"%s\" has been removed from your local storage.": {
 		"en": "Cube \"%s\" has been removed from your local storage.",
-		"fr": "Le cube \"%s\" a été supprimé de votre espace local."
+		"fr": "Le cube \"%s\" a été supprimé de votre espace local.",
+		"it": "Il cubo \"%s\" è stato eliminato dal vostro spazio locale."
 	},
 	"Save of the chosen language for next connection": {
 		"en": "Save of the chosen language for next connection",
-		"fr": "Enregistrement de la langue choisie pour la prochaine connexion"
+		"fr": "Enregistrement de la langue choisie pour la prochaine connexion",
+		"it": "Registrazione della lingua scelta per la prossima connessione"
 	},
 	"Your browser is not compatible. main feature will not work!": {
 		"en": "Your browser is not compatible. main feature will not work!",
-		"fr": "Votre navigateur n'est pas compatible. Des fonctionnalités importantes ne marcherons pas !"
+		"fr": "Votre navigateur n'est pas compatible. Des fonctionnalités importantes ne marcherons pas !",
+		"it": "Il vostro navigatore non è compatibile. Delle funzionalità importanti non funzioneranno !"
 	},
 	"A newer version of insideWeCube is running in another tab. You can't save anymore your change.<br>Please refresh the page.": {
 		"en": "A newer version of insideWeCube is running in another tab. You can't save anymore your change.<br>Please refresh the page.",
-		"fr": "Une nouvelle version de insideWeCube a été lancée dans un autre onglet. Vous ne pouvez plus sauvegarder vos changements dans cette page."
+		"fr": "Une nouvelle version de insideWeCube a été lancée dans un autre onglet. Vous ne pouvez plus sauvegarder vos changements dans cette page.<br>Veuillez actualiser la page.",
+		"it": "Una nuova versione di insideWeCube è stata lanciata in una finestra differente. Non potete più salvare le vostre modifiche su questa pagina.<br>Ricaricare la pagina."
 	},
 	"Some features will not work correctly with your browser:": {
 		"en": "Some features will not work correctly with your browser:",
-		"fr": "Quelques fonctionnalités ne marcherons pas correctement avec votre navigateur :"
+		"fr": "Quelques fonctionnalités ne marcherons pas correctement avec votre navigateur :",
+		"it": "Alcune funzionalità non funzioneranno correttamente sul vostro navigatore :"
 	},
 	"Your browser does not support MessageChannel. You could not use this feature.": {
 		"en": "Your browser does not support MessageChannel. You could not use this feature.",
-		"fr": "Votre navigateur ne supporte pas les MessageChannel. Vous ne pouvez pas utiliser cette fonctionnalité."
+		"fr": "Votre navigateur ne supporte pas les MessageChannel. Vous ne pouvez pas utiliser cette fonctionnalité.",
+		"it": "Il vostro browser non supporta i MessageChannel. Non potrete utilizzare questa funzionalità."
 	},
 	"%d / %d": {
 		"en": "%d / %d",
-		"fr": "%d /%d"
+		"fr": "%d /%d",
+		"it": "%d /%d"
 	},
 	"%D / %D": {
 		"en": "%D / %D",
-		"fr": "%D /%D"
+		"fr": "%D /%D",
+		"it": "%D / %D"
 	},
 	"License: (%s) you are free to use, share and modify it if you keep credits to authors and contributors.": {
 		"en": "License: (%s) you are free to use, share and modify it if you keep credits to authors and contributors.",
-		"fr": "Licence: (%s) vous êtes libre de l'utiliser, de le partager et de le modifier si vous continuez à l'attribuer aux auteurs et contributeurs."
+		"fr": "Licence: (%s) vous êtes libre de l'utiliser, de le partager et de le modifier si vous continuez à l'attribuer aux auteurs et contributeurs.",
+		"it": "Licenza: (%s) siete liberi di utilizzare, condividere e modificare se continuereta ad citare gli autori e i contributori."
 	}
 }
