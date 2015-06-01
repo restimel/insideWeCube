@@ -35,8 +35,8 @@ V1.2
 			+ Not accessible cell
 	✓ add comments to levels
 	✓ give small map with different orientation (other than top/bottom like stickers)
-		* add an option to watch/hide them
-		* display them in print mode
+		✓ add an option to watch/hide them
+		✓ display them in print mode
 
 	Path
 	✓ Change algorithm to something like try all moves and see which is the shortest (done when ball is lost)
@@ -55,6 +55,7 @@ V1.2
 	✓ compute levels to test solvabale cubes
 	✓ create interface to display solvable cubes
 		✓ select cubes user like and save them
+		* identify cubes that are already in database
 	+ interact with manage cube to edit it
 
 /!\ Bugs

@@ -15,7 +15,7 @@ var Helper = {
 			{id: 'right', text: $$('The right side is at the top.')},
 			{id: 'left', text: $$('The left side is at the top.')},
 			{id: 'front', text: $$('The front side is at the top.')},
-			{id: 'back', text: $$('The back side is at the top.')}
+			{id: 'back', text: $$('The rear side is at the top.')}
 		];
 
 		selectors.forEach(function(item) {
@@ -103,7 +103,8 @@ var Helper = {
 		lid: get('lid', true), /* if true, only lid levels can be sleected at last level */
 		pin: get('pin', false), /* if true, the ball is not block by pin */
 		trsfmLvl: get('trsfmLvl', false), /* if true, allow to transform level (rotation, ...) */
-		advanced: get('advanced', false) /* if true it display advanced tools */
+		advanced: get('advanced', false), /* if true it display advanced tools */
+		stickerMaps: get('stickerMaps', false) /* if true, allow to display the sticker maps */
 	}
 
 	function buildGet(property) {
@@ -147,6 +148,11 @@ var Helper = {
 	Object.defineProperty(Helper.config, 'advanced', {
 		get: buildGet('advanced'),
 		set: buildBooleanSet('advanced')
+	});
+
+	Object.defineProperty(Helper.config, 'stickerMaps', {
+		get: buildGet('stickerMaps'),
+		set: buildBooleanSet('stickerMaps')
 	});
 
 	Helper.mainLoaded = function() {

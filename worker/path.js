@@ -811,6 +811,28 @@ Path.prototype.getCubeMaps = function(data) {
 		html: this.cube.renderMap('bottom', accessiblePath)
 	});
 
+	if (Helper.config.stickerMaps) {
+		data.push({
+			orientation: $$('The right side'),
+			html: this.cube.renderMap('right', accessiblePath)
+		});
+
+		data.push({
+			orientation: $$('The front side'),
+			html: this.cube.renderMap('front', accessiblePath)
+		});
+
+		data.push({
+			orientation: $$('The left side'),
+			html: this.cube.renderMap('left', accessiblePath)
+		});
+
+		data.push({
+			orientation: $$('The rear side'),
+			html: this.cube.renderMap('back', accessiblePath)
+		});
+	}
+
 	self.postMessage({data: {
 		action: 'getCubeMaps',
 		data: data

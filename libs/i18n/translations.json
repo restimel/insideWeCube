@@ -487,8 +487,8 @@
 		"en": "The front side is at the top.",
 		"fr": "La face frontale est en haut."
 	},
-	"The back side is at the top.": {
-		"en": "The back side is at the top.",
+	"The rear side is at the top.": {
+		"en": "The rear side is at the top.",
 		"fr": "La face arrière est en haut."
 	},
 	"Your cube is slightly rotated backward.": {
@@ -1010,6 +1010,14 @@
 	"Display maps in another tab": {
 		"en": "Display maps in another tab",
 		"fr": "Affiche les plans dans un autre onglet"
+	},
+	"display sticker maps": {
+		"en": "display sticker maps",
+		"fr": "Afficher les plans des stickers"
+	},
+	"display the side maps in preview": {
+		"en": "display the side maps in preview",
+		"fr": "Afficher les plans des côtés dans l'aperçu"
 	},
 	"Reduce the maps preview": {
 		"en": "Reduce the maps preview",

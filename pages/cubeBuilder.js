@@ -216,6 +216,16 @@ CubeBuilder.prototype.render = function(container) {
 	btn.onclick = this.renderMapStandalone.bind(this);
 	minimapTool.appendChild(btn);
 
+	var label = document.createElement('label');
+	var input = document.createElement('input');
+	input.type = 'checkbox';
+	input.checked = !!Helper.config.stickerMaps;
+	input.onchange = this.changeStickerMaps;
+	label.appendChild(input);
+	label.appendChild(document.createTextNode($$('display sticker maps')));
+	label.title = $$('display the side maps in preview');
+	minimapTool.appendChild(label);
+
 	btn = document.createElement('button');
 	btn.textContent = '\uf00D'; // X (with fontawesome)
 	btn.className = 'reduce-btn';
@@ -649,6 +659,10 @@ CubeBuilder.prototype.changeCube = function(e) {
 		this.startCell(data.info.start);
 		this.endCell(data.info.end);
 	}.bind(this))
+};
+
+CubeBuilder.prototype.changeStickerMaps = function(e) {
+	Helper.config.stickerMaps = !!e.target.checked;
 };
 
 CubeBuilder.prototype.save = function() {
