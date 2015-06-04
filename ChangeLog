@@ -12,6 +12,7 @@ Bugs fixed
 	* Fix error thrown in console when moving to another menu while a temporary message is displayed.
 	* Fix translation issue about loading translation file in workers
 	* Find correct movements for some more difficult passages
+	* Fix % of use cells
 
 v1.0 → v1.1
 New features

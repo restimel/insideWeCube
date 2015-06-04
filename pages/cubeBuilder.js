@@ -376,7 +376,7 @@ CubeBuilder.prototype.renderInfo = function(info) {
 		elHardCells.className = 'noInfo';
 	}
 
-	availability.textContent = $$('%i cells are accessible (%2%%).', available, 10 * available / 24);
+	availability.textContent = $$('%i cells are accessible (%2%%).', available, 100 * available / 252);
 
 	this.cubeInfo.appendChild(finish);
 	this.cubeInfo.appendChild(elDifficulty);
