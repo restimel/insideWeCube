@@ -58,6 +58,7 @@ Level.prototype.rotate = function (rotation) {
 	}
 
 	this.cells = cells;
+	this.hash = null;
 
 	function copy90(x, y) {
 		var c = this.get(y, Lx-x) || {};
@@ -140,6 +141,8 @@ Level.prototype.toggle = function (x, y, property, value) {
 		value = !this.cells[x][y][property];
 	}
 
+	this.hash = null;
+
 	return this.cells[x][y][property] = value;
 };
 
@@ -187,6 +190,96 @@ Level.prototype.normalizeCells = function() {
 			cell.s = cell.s || 0;
 		});
 	});
+
+	this.hash = null;
+};
+
+Level.prototype.compare = function(level) {
+	return this.getHash() === level.getHash();
+};
+
+Level.prototype.getHash = function() {
+	var hash;
+
+	if (this.hash) {
+		return this.hash;
+	}
+
+	hash = '';
+
+	this.cells.forEach(function(row) {
+		row.forEach(function(cell) {
+			hash += Level.cellHash(cell);
+		});
+	});
+
+	this.hash = hash;
+	return hash;
+};
+
+Level.prototype.parseHash = function(hash) {
+	var li = hash.length;
+	var rowSize = Math.sqrt(li);
+	var cells = [];
+	var row = [];
+	var index;
+
+	for(index = 0; index < li; index++) {
+		row.push(Level.createCell(hash.charCodeAt(index)));
+		if (row.length >= rowSize) {
+			cells.push(row);
+			row = [];
+		}
+	}
+
+	this.cells = cells;
+	this.hash = hash;
+};
+
+Level.cellHash = function(cell) {
+	var h = 40;
+
+	if (cell.r) {
+		h += 1;
+	}
+
+	if (cell.d) {
+		h += 2;
+	}
+
+	if (cell.b) {
+		h += 4;
+	}
+
+	if (cell.s === 2) {
+		h += 8;
+	}
+
+	if (cell.s === -2) {
+		h += 16;
+	}
+
+	return String.fromCharCode(h);
+};
+
+Level.createCell = function(hash) {
+	var h = hash - 40;
+	var cell = {
+		r: !!(h&1),
+		d: !!(h&2),
+		b: !!(h&4),
+		s: 0
+	};
+
+	if (h&8) {
+		cell.s = 2;
+	}
+
+	if (h&16) {
+		cell.s = -2;
+	}
+
+	return cell;
 };
 
 function initRow() {

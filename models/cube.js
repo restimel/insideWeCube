@@ -622,6 +622,16 @@ Cube.prototype.computeBestPosition = function(cell, position, doNotChangeCell) {
 	return pst;
 };
 
+Cube.prototype.compare = function(cube) {
+	return this.getHash() === cube.getHash();
+};
+
+Cube.prototype.getHash = function() {
+	return this.levels.reduce(function (hash, lvl) {
+		return hash + lvl.getHash();
+	}, '');
+};
+
 /* Static method */
 
 /*
