@@ -89,6 +89,9 @@ self.onmessage = function(e) {
 				return cube.visible;
 			})), token: token});
 			break;
+		case 'getCubeFromHash':
+			self.postMessage({data: store.getCubeFromHash(args), token: token});
+			break;
 		case 'getCubes':
 			self.postMessage({data: store.getCubes(args), token: token});
 			break;

@@ -47,16 +47,24 @@ V1.2
 →	Auto-Generator
 	✓ create interface to choose levels and options
 		✓ select levels
-		* change start position
-		* allow to rotate levels
+		+ change start position
+		+ allow to rotate levels
 		✓ manage pin for levels selector
 	* manage level by level
 		* add an interface to tell wich level are allowed on each level
 	✓ compute levels to test solvabale cubes
 	✓ create interface to display solvable cubes
 		✓ select cubes user like and save them
-		* identify cubes that are already in database
+		✓ identify cubes that are already in database
+	* Display previous result when coming back to cubeGenerator
 	+ interact with manage cube to edit it
+	+ Performance
+		+ improve speed execution
+		+ improve memory consumption
+			→ hash usage
+		+ improve DOM consumption
+			→ limit results
+			→ Infinity scroll
 
 /!\ Bugs
 	General

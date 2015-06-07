@@ -203,6 +203,14 @@
 		"en": "Save this configuration as a cube",
 		"fr": "Enregistrer cette configuration en tant que cube"
 	},
+	"Cube already saved": {
+		"en": "Cube already saved",
+		"fr": "Ce cube est déjà enregistré"
+	},
+	"This cube is already saved under name: %s": {
+		"en": "This cube is already saved under name: %s",
+		"fr": "Ce cube est déjà enregistré sous le nom : %s"
+	},
 	"(search completed)": {
 		"en": "(search completed)",
 		"fr": "(analyse terminée)"

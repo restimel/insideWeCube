@@ -281,15 +281,17 @@ CubeGenerator.prototype.isRunningValid = function() {
 	return issues;
 };
 
-CubeGenerator.prototype.addCubeBox = function(levels, accessible, difficulty, maxDifficulty) {
+CubeGenerator.prototype.addCubeBox = function(levels, accessible, difficulty, maxDifficulty, hash) {
 	var container = this.elements.cubeSolution;
 	var saveIndex;
 	var saveName;
 
-	var box = document.createElement('div');
+	var box, meter, inputChk, inputName;
+
+	box = document.createElement('div');
 	box.className = 'cube-generated';
 
-	var meter = document.createElement('meter');
+	meter = document.createElement('meter');
 	meter.value = difficulty;
 	meter.optimum = 0;
 	meter.low = maxDifficulty / 3;
@@ -297,11 +299,11 @@ CubeGenerator.prototype.addCubeBox = function(levels, accessible, difficulty, ma
 	meter.max = maxDifficulty;
 	box.appendChild(meter);
 
-	var input = document.createElement('input');
-	input.type = 'checkbox';
-	input.title = $$('Save this configuration as a cube');
-	input.onclick = function(e) {e.stopPropagation();};
-	input.onchange = function(e) {
+	inputChk = document.createElement('input');
+	inputChk.type = 'checkbox';
+	inputChk.title = $$('Save this configuration as a cube');
+	inputChk.onclick = function(e) {e.stopPropagation();};
+	inputChk.onchange = function(e) {
 		var input = e.target;
 
 		if (input.checked) {
@@ -314,20 +316,20 @@ CubeGenerator.prototype.addCubeBox = function(levels, accessible, difficulty, ma
 			this.saveList[saveIndex] = null;
 		}
 	}.bind(this);
-	box.appendChild(input);
+	box.appendChild(inputChk);
 
-	input = document.createElement('input');
-	input.type = 'text';
-	input.placeholder = $$('cube name');
-	input.title = $$('name of the cube when it will be saved');
-	input.onclick = function(e) {e.stopPropagation();};
-	input.onchange = function(e) {
+	inputName = document.createElement('input');
+	inputName.type = 'text';
+	inputName.placeholder = $$('cube name');
+	inputName.title = $$('name of the cube when it will be saved');
+	inputName.onclick = function(e) {e.stopPropagation();};
+	inputName.onchange = function(e) {
 		saveName = e.target.value;
 		if (saveIndex) {
 			this.saveList[saveIndex].name = saveName;
 		}
 	}.bind(this);
-	box.appendChild(input);
+	box.appendChild(inputName);
 
 	box.onclick = function(e) {
 		this.cube.load(levels, function() {
@@ -342,6 +344,22 @@ CubeGenerator.prototype.addCubeBox = function(levels, accessible, difficulty, ma
 	}.bind(this);
 
 	container.appendChild(box);
+
+	main.control.action('getCubeFromHash', hash,
+		function(data) {
+			var name;
+
+			if (data) {
+				name = data.name;
+				inputChk.disabled = true;
+				inputChk.checked = false;
+				inputChk.style.visibility = 'hidden';
+				inputChk.title = $$('Cube already saved');
+				inputName.value = name;
+				inputName.disabled = true;
+				inputName.title = $$('This cube is already saved under name: %s', name);
+			}
+		});
 };
 
 /* Action */
@@ -437,7 +455,7 @@ CubeGenerator.prototype.result = function(data) {
 	// 				 nbDifficultCrossing * 5, // ~15 (current max 3)
 	// 	maxDifficulty = 95,
 
-	this.addCubeBox(data.levels, accessible, difficulty, maxDifficulty);
+	this.addCubeBox(data.levels, accessible, difficulty, maxDifficulty, data.hash);
 };
 
 CubeGenerator.prototype.finished = function(data) {

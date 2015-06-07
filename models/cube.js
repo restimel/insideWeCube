@@ -14,6 +14,7 @@ Cube.prototype.init = function() {
 	for (i = 0; i < nb; i++) {
 		this.levels[i] = new Level();
 	}
+	this.hash = null;
 };
 
 Cube.prototype.clone = function(alsoMetaData) {
@@ -55,6 +56,7 @@ Cube.prototype.load = function (levels, callback) {
 
 Cube.prototype.addLevel = function (z, level) {
 	this.levels[z] = level;
+	this.hash = null;
 };
 
 Cube.prototype.get = function (x, y, z) {
@@ -199,6 +201,7 @@ Cube.prototype.parse = function(json, option) {
 
 	this.levels = [];
 	json.levels.forEach(function(l, i) {this.addLevel(i, new Level(l));}, this);
+	this.hash = null;
 };
 
 /**
@@ -626,10 +629,19 @@ Cube.prototype.compare = function(cube) {
 	return this.getHash() === cube.getHash();
 };
 
-Cube.prototype.getHash = function() {
-	return this.levels.reduce(function (hash, lvl) {
-		return hash + lvl.getHash();
+Cube.prototype.getHash = function(forceCompute) {
+	var hash;
+
+	if (this.hash && !forceCompute) {
+		return this.hash;
+	}
+
+	hash = this.levels.reduce(function (hash, lvl) {
+		return hash + lvl.getHash(forceCompute);
 	}, '');
+
+	this.hash = hash;
+	return this.hash;
 };
 
 /* Static method */

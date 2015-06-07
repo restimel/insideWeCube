@@ -60,6 +60,19 @@ var store = {
 		return list.sort();
 	},
 
+	getCubeFromHash: function(hash) {
+		var cube;
+
+		this.cubes.some(function(cb) {
+			if (cb.getHash() === hash) {
+				cube = cb;
+				return true;
+			}
+		});
+
+		return cube;
+	},
+
 	getLevels: function(options) {
 		options = options || {};
 		var list = [];

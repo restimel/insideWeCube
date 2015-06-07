@@ -36,6 +36,7 @@ Path.prototype.runCompute = function() {
 	var finishCell = this.cube.finishCell || {x: 4, y: 4, z: 6},
 		startCell = this.cube.startCell || {x: 1, y: 1, z: 0};
 	var deepest = 0;
+	var hash;
 
 	var max = Math.max;
 
@@ -158,7 +159,10 @@ Path.prototype.runCompute = function() {
 	createPath();
 
 	info.deepest = deepest;
-	this.result({accessible: p, info: info});
+	if (info.finish) {
+		hash = this.cube.getHash(true);
+	}
+	this.result({accessible: p, info: info, hash: hash});
 };
 
 /* could be override to use results elsewhere */
