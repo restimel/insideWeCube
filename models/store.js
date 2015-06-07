@@ -158,6 +158,12 @@ var store = {
 	removeCube: function(name) {
 		var db = this.db;
 		var i = this.search({name: name}, store.cubes);
+
+		if (i === -1) {
+			self.sendMessage($$('Cube \"%s\" has not been removed.', name), 'error');
+			return;
+		}
+
 		this.cubes.splice(i, 1);
 		db.removeCube(name, removeDone);
 

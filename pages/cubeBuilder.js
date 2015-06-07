@@ -675,6 +675,8 @@ CubeBuilder.prototype.save = function() {
 	main.control.action('saveCube', JSON.stringify(this), function(data) {
 		if (data === 1) {
 			main.message($$('cube "%s" saved.', name), 'success', {timeout: 7000});
+		} else {
+			main.message($$('cube "%s" has not been saved.', name), 'error', {timeout: 7000});
 		}
 	});
 };
@@ -685,7 +687,8 @@ CubeBuilder.prototype.toJSON = function() {
 		color: this.color,
 		levels: this.levels.map(function(l) {return l.toJSON();}),
 		start: this.startCL,
-		end: this.finishCL
+		end: this.finishCL,
+		visible: true
 	};
 };
 

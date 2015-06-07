@@ -43,20 +43,24 @@ CubeRemover.prototype.render = function(container) {
 	dialogBox.showModal();
 
 	function deleteCubes() {
-		if (!this.state.length) {
+		var state = this.state.filter(function(s) {
+			return s[1];
+		});
+
+		if (!state.length) {
 			close();
 		}
 
 		if (!confirm($$('You are about to delete %d cubes:\n\t%s\nAre you sure to continue?',
-			this.state.length,
-			this.state.map(function(s) {
-				return s[0];
+			state.length,
+			state.map(function(s) {
+				return s[2];
 			}).join('\n\t'))))
 		{
 			return false;
 		}
 
-		this.state.forEach(function(s) {
+		state.forEach(function(s) {
 			main.control.action('removeCube', {cubeName: s[0]});
 		});
 
@@ -100,6 +104,7 @@ CubeRemover.prototype.loadCube = function(list) {
 			input = original ? null : document.createElement('input'),
 			label = document.createElement('label'),
 			id = 'cube_remover_' + index;
+		var cubeTitleName = cubeName;
 
 		container.className = 'cube-remover';
 
@@ -107,17 +112,17 @@ CubeRemover.prototype.loadCube = function(list) {
 			input.type = 'checkbox';
 			input.id = id;
 			input.onchange = function () {
-				changeState(cubeName, this.checked);
+				changeState(cubeTitleName, this.checked, cubeName);
 			};
 			container.appendChild(input);
 		}
 
 		if (!visible) {
-			cubeName += ' (' + $$('hidden') + ')';
+			cubeTitleName += ' (' + $$('hidden') + ')';
 		}
 
 		label.htmlFor = id;
-		label.textContent = cubeName;
+		label.textContent = cubeTitleName;
 
 		if (original) {
 			label.className = 'disabled';
@@ -130,13 +135,13 @@ CubeRemover.prototype.loadCube = function(list) {
 	}, this);
 };
 
-CubeRemover.prototype.changeState = function(cubeName, toRemove) {
+CubeRemover.prototype.changeState = function(cubeTitleName, toRemove, cubeName) {
 	if (!this.state.some(function(s) {
 		if (s[0] === cubeName) {
 			s[1] = toRemove;
 			return true;
 		}
 	})) {
-		this.state.push([cubeName, toRemove]);
+		this.state.push([cubeName, toRemove, cubeTitleName]);
 	}
 }

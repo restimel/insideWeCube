@@ -194,8 +194,9 @@ Cube.prototype.parse = function(json, option) {
 		this.finishCell = {x: 4, y: 4, z: 6};
 	}
 
+	this.visible = !!json.visible;
+
 	if (option && option.fromDB) {
-		this.visible = !!json.visible;
 		this.original = !!json.original;
 	}
 

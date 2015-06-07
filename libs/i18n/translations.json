@@ -1079,6 +1079,14 @@
 		"en": "Cube \"%s\" has been removed from your local storage.",
 		"fr": "Le cube \"%s\" a été supprimé de votre espace local."
 	},
+	"Cube \"%s\" has not been removed.": {
+		"en": "Cube \"%s\" has not been removed.",
+		"fr": "Le cube \"%s\" n'a pas pu être supprimé."
+	},
+	"cube \"%s\" has not been saved.": {
+		"en": "cube \"%s\" has not been saved.",
+		"fr": "Le cube \"%s\" n'a pas pu être sauvé."
+	},
 	"Save of the chosen language for next connection": {
 		"en": "Save of the chosen language for next connection",
 		"fr": "Enregistrement de la langue choisie pour la prochaine connexion"
