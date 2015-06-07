@@ -35,8 +35,8 @@ function main(container){
 	Helper.mainLoaded();
 }
 
-main.version = '1.1.7';
-main.lastMainUpdate = new Date('05/31/2015'); // mm/dd/yyyy
+main.version = '1.1.8';
+main.lastMainUpdate = new Date('06/08/2015'); // mm/dd/yyyy
 
 /**
  * Display notification
