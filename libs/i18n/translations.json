@@ -309,22 +309,22 @@
 	"An INSIDE³ solver: ": {
 		"en": "An INSIDE³ solver: ",
 		"fr": "Un résolveur d'INSIDE³ : ",
-		"it": "Un risolutore di INSIDE³ : "
+		"it": "Un risolutore di INSIDE³: "
 	},
 	"Author: %s": {
 		"en": "Author: %s",
 		"fr": "Auteur : %s",
-		"it": "Autore : %s"
+		"it": "Autore: %s"
 	},
 	"Version: %s (%s)": {
 		"en": "Version: %s (%s)",
 		"fr": "Version : %s (%s)",
-		"it": "Versione : %s (%s)"
+		"it": "Versione: %s (%s)"
 	},
 	"Creation date: %s": {
 		"en": "Creation date: %s",
 		"fr": "Date de création : %s",
-		"it": "Data : %s"
+		"it": "Data di creazione: %s"
 	},
 	"Restart analysis": {
 		"en": "Restart analysis",
@@ -394,7 +394,7 @@
 	"You are about to delete %d cubes:\n\t%s\nAre you sure to continue?": {
 		"en": "You are about to delete %d cubes:\n\t%s\nAre you sure to continue?",
 		"fr": "Vous êtes sur le point de supprimer %d cubes :\n\t%s\nÊtes-vous sûr de vouloir continuer ?",
-		"it": "State per cancellare %d cubi :\n\t%s\nSicuri di voler continuare ?"
+		"it": "State per cancellare %d cubi:\n\t%s\nSicuri di voler continuare ?"
 	},
 	"Reset cube": {
 		"en": "Reset cube",
@@ -459,7 +459,7 @@
 	"Cube difficulty: ": {
 		"en": "Cube difficulty: ",
 		"fr": "Difficulté du cube : ",
-		"it": "Difficoltà del cubo : "
+		"it": "Difficoltà del cubo: "
 	},
 	"Cube is not solvable.": {
 		"en": "Cube is not solvable.",
@@ -529,7 +529,7 @@
 	"Many cells fit your observation. It is not possible to differenciate them :( %s": {
 		"en": "Many cells fit your observation. It is not possible to differenciate them :( %s",
 		"fr": "Plusieurs cases correspondent à vos observations. Il n'est pas possible de les différencier :( %s",
-		"it": "Più celle corrispondono alle vostre osservazioni. E' impossibile distinguerle :( %s"
+		"it": "Più celle corrispondono alle vostre osservazioni. E' impossibile distinguerle:( %s"
 	},
 	"The ball location has been found!": {
 		"en": "The ball location has been found!",
@@ -574,7 +574,7 @@
 	"I am sorry, I can't help you here :(": {
 		"en": "I am sorry, I can't help you here :(",
 		"fr": "Désolé, je ne peux pas vous aider là :(",
-		"it": "Chiedo scusa, ma non posso aiutarvi :("
+		"it": "Chiedo scusa, ma non posso aiutarvi:("
 	},
 	"Rotate your cube forward to have the INSIDE³ side at the top.": {
 		"en": "Rotate your cube forward to have the INSIDE³ side at the top.",
@@ -665,7 +665,7 @@
 	"Something should happen but I don't know what :(": {
 		"en": "Something should happen but I don't know what :(",
 		"fr": "Quelque chose doit se passer mais je ne sais pas quoi :(",
-		"it": "Qualcosa deve succedere ma non so cosa :("
+		"it": "Qualcosa deve succedere ma non so cosa:("
 	},
 	"Import cubes": {
 		"en": "Import cubes",
@@ -750,12 +750,12 @@
 	"Contributors: %s": {
 		"en": "Contributors: %s",
 		"fr": "Contributeurs : %s",
-		"it": "Contributori : %s"
+		"it": "Contributori: %s"
 	},
 	"Contribution: Sources are available on %s.": {
 		"en": "Contribution: Sources are available on %s.",
 		"fr": "Contribution : Les sources sont disponibles sur %s.",
-		"it": "Contribuzione : I sorgenti sono disponibili su %s."
+		"it": "Contribuzione: I sorgenti sono disponibili su %s."
 	},
 	"Credits": {
 		"en": "Credits",
@@ -765,17 +765,17 @@
 	"The game: ": {
 		"en": "The game: ",
 		"fr": "Le jeu : ",
-		"it": "Il gioco : "
+		"it": "Il gioco: "
 	},
 	"Languages icons: ": {
 		"en": "Languages icons: ",
 		"fr": "Les icônes de langues : ",
-		"it": "Le icone delle lingue : "
+		"it": "Le icone delle lingue: "
 	},
 	"Font icons: ": {
 		"en": "Font icons: ",
 		"fr": "Icônes textuelles : ",
-		"it": "I font delle icone : "
+		"it": "I font delle icone: "
 	},
 	"The application doesn't seem to work.": {
 		"en": "The application doesn't seem to work.",
@@ -943,7 +943,7 @@
 	"This happen when a complex movement must be done (like a diagonal movement). Current algorithm can not resolve such movement. I am very sorry, you have to find the correct movement on your own :(<br>This may happen in difficult cubes (Awful, Vicious and Mortal)": {
 		"en": "This happen when a complex movement must be done (like a diagonal movement). Current algorithm can not resolve such movement. I am very sorry, you have to find the correct movement on your own :(<br>This may happen in difficult cubes (Awful, Vicious and Mortal)",
 		"fr": "Cela arrive lorsqu'un mouvement compliqué doit être effectué (comme un mouvement en diagonale). L'algorithme actuel ne sait pas résoudre ce genre de mouvement. Je suis désolé, mais vous devrez trouver le bon mouvement seul :(<br>Cela peut apparaître dans les cubes difficiles (Awful, Vicious et Mortal)",
-		"it": "Questo succede quando un movimento complesso deve essere effettuato (come un movimento in diagonale). L'algoritmo attuale non riesce a risolvere questo tipo di movimenti. Spiacente, ma covrete trovare un buon movimento soli :(<br>Questo appare nei cubi difficili (Awful, Vicious et Mortal))"
+		"it": "Questo succede quando un movimento complesso deve essere effettuato (come un movimento in diagonale). L'algoritmo attuale non riesce a risolvere questo tipo di movimenti. Spiacente, ma covrete trovare un buon movimento soli:(<br>Questo appare nei cubi difficili (Awful, Vicious et Mortal))"
 	},
 	"Why are maps of Mortal cubes not available?": {
 		"en": "Why are maps of Mortal cubes not available?",
@@ -1038,7 +1038,7 @@
 	"Map orientation: ": {
 		"en": "Map orientation: ",
 		"fr": "Orientation de la carte : ",
-		"it": "Orientazione delle instruzioni : "
+		"it": "Orientazione delle instruzioni: "
 	},
 	"Level %d": {
 		"en": "Level %d",
@@ -1048,7 +1048,7 @@
 	"I am sorry, I can't help you here :(": {
 		"en": "I am sorry, I can't help you here :(",
 		"fr": "Désolé, je ne peux pas vous aider cette fois-ci :(",
-		"it": "Spiacente, non posso aiutarvi questa volta :("
+		"it": "Spiacente, non posso aiutarvi questa volta:("
 	},
 	"The ball is now visible!": {
 		"en": "The ball is now visible!",
@@ -1058,7 +1058,7 @@
 	"Something should happen but I don't know what :(": {
 		"en": "Something should happen but I don't know what :(",
 		"fr": "Quelque chose doit se passer mais je ne sais ce que c'est :(",
-		"it": "Qualcosa deve succedere ma non so cosa :("
+		"it": "Qualcosa deve succedere ma non so cosa:("
 	},
 	"If you don't know where the ball is, please follow the instructions.": {
 		"en": "If you don't know where the ball is, please follow the instructions.",
@@ -1208,7 +1208,7 @@
 	"Cube should end up in this position:": {
 		"en": "Cube should end up in this position:",
 		"fr": "Le cube doit se retrouver dans cette position :",
-		"it": "Il cubo dovrà trovarsi in questa posizione :"
+		"it": "Il cubo dovrà trovarsi in questa posizione:"
 	},
 	"Tools": {
 		"en": "Tools",
@@ -1253,7 +1253,7 @@
 	"Is a lid level:": {
 		"en": "Is a lid level:",
 		"fr": "Est un couvercle :",
-		"it": "E' una copertina :"
+		"it": "E' una copertina:"
 	},
 	"Maps preview": {
 		"en": "Maps preview",
@@ -1286,7 +1286,7 @@
 	"Maps preview: %s": {
 		"en": "Maps preview: %s",
 		"fr": "Plans du cube : %s",
-		"it": "Informazioni del cubo : %s"
+		"it": "Informazioni del cubo: %s"
 	},
 	"Cube color": {
 		"en": "Cube color",
@@ -1359,7 +1359,7 @@
 	"Some features will not work correctly with your browser:": {
 		"en": "Some features will not work correctly with your browser:",
 		"fr": "Quelques fonctionnalités ne marcherons pas correctement avec votre navigateur :",
-		"it": "Alcune funzionalità non funzioneranno correttamente sul vostro navigatore :"
+		"it": "Alcune funzionalità non funzioneranno correttamente sul vostro navigatore:"
 	},
 	"Your browser does not support MessageChannel. You could not use this feature.": {
 		"en": "Your browser does not support MessageChannel. You could not use this feature.",
