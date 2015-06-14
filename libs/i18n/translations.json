@@ -1367,7 +1367,11 @@
 	"cube \"%s\" has not been saved.": {
 		"en": "cube \"%s\" has not been saved.",
 		"fr": "Le cube \"%s\" n'a pas pu être sauvé.",
+<<<<<<< HEAD
 		"it": "Il cubo \"%s\" non può essere registrato."
+=======
+		"it": "Il cubo \"%s\" non può essere registrato"
+>>>>>>> c250bae16845f3a5d77b9c1efa9b2b4b7fa43467
 	},
 	"Save of the chosen language for next connection": {
 		"en": "Save of the chosen language for next connection",
