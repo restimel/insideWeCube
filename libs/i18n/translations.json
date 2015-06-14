@@ -126,7 +126,8 @@
 	},
 	"note about this level": {
 		"en": "note about this level",
-		"fr": "remarques sur ce plateau"
+		"fr": "remarques sur ce plateau",
+		"it": "note su questo livello"
 	},
 	"Select all levels that can be put inside the cube. (You need to select at least 7 levels)": {
 		"en": "Select all levels that can be put inside the cube. (You need to select at least 7 levels)",
@@ -255,11 +256,13 @@
 	},
 	"Cube already saved": {
 		"en": "Cube already saved",
-		"fr": "Ce cube est déjà enregistré"
+		"fr": "Ce cube est déjà enregistré",
+		"it": "Questo cubo é già registrato"
 	},
 	"This cube is already saved under name: %s": {
 		"en": "This cube is already saved under name: %s",
-		"fr": "Ce cube est déjà enregistré sous le nom : %s"
+		"fr": "Ce cube est déjà enregistré sous le nom : %s",
+		"it": "Questo cubo è già registrato con il nome: %s"
 	},
 	"(search completed)": {
 		"en": "(search completed)",
@@ -324,6 +327,16 @@
 	"Creation date: %s": {
 		"en": "Creation date: %s",
 		"fr": "Date de création : %s",
+		"it": "Data di creazione: %s"
+	},
+	"Version: %s": {
+		"en": "Version: %s",
+		"fr": "Version : %s",
+		"it": "Versione : %s"
+	},
+	"Date: %s": {
+		"en": "Date: %s",
+		"fr": "Date : %s",
 		"it": "Data : %s"
 	},
 	"Restart analysis": {
@@ -603,19 +616,23 @@
 	},
 	"The right side is at the top.": {
 		"en": "The right side is at the top.",
-		"fr": "La face droite est en haut."
+		"fr": "La face droite est en haut.",
+		"it": "La faccia destra è in alto."
 	},
 	"The left side is at the top.": {
 		"en": "The left side is at the top.",
-		"fr": "La face gauche est en haut."
+		"fr": "La face gauche est en haut.",
+		"it": "La faccia sinistra è in alto."
 	},
 	"The front side is at the top.": {
 		"en": "The front side is at the top.",
-		"fr": "La face frontale est en haut."
+		"fr": "La face frontale est en haut.",
+		"it": "La faccia frontale è in alto."
 	},
 	"The rear side is at the top.": {
 		"en": "The rear side is at the top.",
-		"fr": "La face arrière est en haut."
+		"fr": "La face arrière est en haut.",
+		"it": "La faccia posteriore è in alto."
 	},
 	"Your cube is slightly rotated backward.": {
 		"en": "Your cube is slightly rotated backward.",
@@ -784,11 +801,13 @@
 	},
 	"I am not able to load any cubes.": {
 		"en": "I am not able to load any cubes.",
-		"fr": "Je ne vois aucun cube à charger."
+		"fr": "Je ne vois aucun cube à charger.",
+		"it": "Non vedo nessun cubo da caricare"
 	},
 	"This can be a download issue. Try to reload the page (F5).<br>If you still see no cubes check the filter menu, maybe all cubes are hidden.": {
 		"en": "This can be a download issue. Try to reload the page (F5).<br>If you still see no cubes check the filter menu, maybe all cubes are hidden.",
-		"fr": "Il doit s'agir d'un problème de téléchargement. Essayer de recharger la page (F5).<br>Si vous ne voyez toujours aucun cubes, vérifier dans le menu \"Filtrer les cubes\" que les cubes ne soient pas tous cachés."
+		"fr": "Il doit s'agir d'un problème de téléchargement. Essayer de recharger la page (F5).<br>Si vous ne voyez toujours aucun cubes, vérifier dans le menu \"Filtrer les cubes\" que les cubes ne soient pas tous cachés.",
+		"it": "Potrebbe essere un problema di registrazione. Prova a ricaricare la pagina (F5).<br>Se non vedete ancora alcun cubo, verificate nel menu \"Filtrare i cubi\" che i cubi non siano tutti nascosti."
 	},
 	"Try with another browser or a newer version of your browser.<br>This application is written with HTML5 API, only modern browsers can run correctly this application. Some features may not work correctly depending on your browser version.<br>It doesn't work at all on Internet Explorer 9 and prior versions.": {
 		"en": "Try with another browser or a newer version of your browser.<br>This application is written with HTML5 API, only modern browsers can run correctly this application. Some features may not work correctly depending on your browser version.<br>It doesn't work at all on Internet Explorer 9 and prior versions.",
@@ -1267,11 +1286,13 @@
 	},
 	"display sticker maps": {
 		"en": "display sticker maps",
-		"fr": "Afficher les plans des stickers"
+		"fr": "Afficher les plans des stickers",
+		"it": "Mostra la mappa degli stickers"
 	},
 	"display the side maps in preview": {
 		"en": "display the side maps in preview",
-		"fr": "Afficher les plans des côtés dans l'aperçu"
+		"fr": "Afficher les plans des côtés dans l'aperçu",
+		"it": "Mostra la preview delle mappe laterali"
 	},
 	"Reduce the maps preview": {
 		"en": "Reduce the maps preview",
@@ -1305,23 +1326,28 @@
 	},
 	"The lord of the cubes": {
 		"en": "The lord of the cubes",
-		"fr": "Le seigneur des cubes"
+		"fr": "Le seigneur des cubes",
+		"it": "Il signore dei cubi"
 	},
 	"One cube to rule them all": {
 		"en": "One cube to rule them all",
-		"fr": "Un cube pour les gouverner tous"
+		"fr": "Un cube pour les gouverner tous",
+		"it": "Un cubo per domarli"  
 	},
 	"One cube to find them": {
 		"en": "One cube to find them",
-		"fr": "Un cube pour les trouver"
+		"fr": "Un cube pour les trouver",
+		"it": "Un cubo per trovarli"
 	},
 	"One cube to bring them all": {
 		"en": "One cube to bring them all",
-		"fr": "Un cube pour les amener tous"
+		"fr": "Un cube pour les amener tous",
+		"it": "Un cubo per ghermirli"
 	},
 	"And in the darkness to bind them": {
 		"en": "And in the darkness to bind them",
-		"fr": "Et dans les ténèbres les lier"
+		"fr": "Et dans les ténèbres les lier",
+		"it": "E nel buio incatenarli"
 	},
 	"Cube \"%s\" has been replaced by its original version.": {
 		"en": "Cube \"%s\" has been replaced by its original version.",
@@ -1335,11 +1361,13 @@
 	},
 	"Cube \"%s\" has not been removed.": {
 		"en": "Cube \"%s\" has not been removed.",
-		"fr": "Le cube \"%s\" n'a pas pu être supprimé."
+		"fr": "Le cube \"%s\" n'a pas pu être supprimé.",
+		"it": "Il cubo \"%s\" non può essere cancellato."
 	},
 	"cube \"%s\" has not been saved.": {
 		"en": "cube \"%s\" has not been saved.",
-		"fr": "Le cube \"%s\" n'a pas pu être sauvé."
+		"fr": "Le cube \"%s\" n'a pas pu être sauvé.",
+		"it": "Il cubo \"%s\" non può essere registrato"
 	},
 	"Save of the chosen language for next connection": {
 		"en": "Save of the chosen language for next connection",
