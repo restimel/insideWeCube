@@ -257,7 +257,7 @@
 	"Cube already saved": {
 		"en": "Cube already saved",
 		"fr": "Ce cube est déjà enregistré",
-		"it": "Questo cubo é già registrato"
+		"it": "Questo cubo è già registrato"
 	},
 	"This cube is already saved under name: %s": {
 		"en": "This cube is already saved under name: %s",
@@ -792,7 +792,7 @@
 	"I am not able to load any cubes.": {
 		"en": "I am not able to load any cubes.",
 		"fr": "Je ne vois aucun cube à charger.",
-		"it": "Non vedo nessun cubo da caricare"
+		"it": "Non vedo nessun cubo da caricare."
 	},
 	"This can be a download issue. Try to reload the page (F5).<br>If you still see no cubes check the filter menu, maybe all cubes are hidden.": {
 		"en": "This can be a download issue. Try to reload the page (F5).<br>If you still see no cubes check the filter menu, maybe all cubes are hidden.",
@@ -902,7 +902,7 @@
 	"In the \"Cube manager\", you can set configuration with the button %s. If you tick \"more tools\", you will access new tools to change the start/end cell, to set if a cell has a pin. And at the last level you can define it as a lid.": {
 		"en": "In the \"Cube manager\", you can set configuration with the button %s. If you tick \"more tools\", you will access new tools to change the start/end cell, to set if a cell has a pin. And at the last level you can define it as a lid.",
 		"fr": "Dans \"Gérer son cube\", vous pouvez changer la configuration en cliquant sur le bouton %s. Si vous cochez \"plus d'outils\", vous aurez accès à de nouveaux outils pour éditer le cube comme pour changer le début ou la fin, ou définir un embossement. Au dernier niveau, vous pourrez le définir en tant que un \"couvercle\".",
-		"it": "In \"Gestire il mio cubo\" potete cambiare la configurazione cliccando sul bottone %s. Se selezionate \"più strumenti\", avrete accesso a dei nuovi strumenti per editare il cubo come per modificare l'inizio o la fine, definire una protuberanza. All'ultimo livello, potrete definirlo come \"copertina\"."   
+		"it": "In \"Gestire il mio cubo\" potete cambiare la configurazione cliccando sul bottone %s. Se selezionate \"più strumenti\", avrete accesso a dei nuovi strumenti per editare il cubo come per modificare l'inizio o la fine, definire una protuberanza. All'ultimo livello, potrete definirlo come \"copertina\"."
 	},
 	"How can I change that ball is not block by \"pins\"?": {
 		"en": "How can I change that ball is not block by \"pins\"?",
@@ -1322,7 +1322,7 @@
 	"One cube to rule them all": {
 		"en": "One cube to rule them all",
 		"fr": "Un cube pour les gouverner tous",
-		"it": "Un cubo per domarli"  
+		"it": "Un cubo per domarli"
 	},
 	"One cube to find them": {
 		"en": "One cube to find them",
@@ -1357,7 +1357,7 @@
 	"cube \"%s\" has not been saved.": {
 		"en": "cube \"%s\" has not been saved.",
 		"fr": "Le cube \"%s\" n'a pas pu être sauvé.",
-		"it": "Il cubo \"%s\" non può essere registrato"
+		"it": "Il cubo \"%s\" non può essere registrato."
 	},
 	"Save of the chosen language for next connection": {
 		"en": "Save of the chosen language for next connection",
