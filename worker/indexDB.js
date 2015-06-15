@@ -1,4 +1,4 @@
-var dbVersion = 3;
+var dbVersion = 4;
 
 function Dbstore() {
 	if (typeof self.indexedDB === 'undefined') {
@@ -45,6 +45,7 @@ Dbstore.prototype.onupgradeneeded = function(event) {
 			objectStore = this.db.createObjectStore('draft', {keyPath: 'history', autoIncrement: true});
 		case 1:
 		case 2:
+		case 3:
 	}
 };
 
