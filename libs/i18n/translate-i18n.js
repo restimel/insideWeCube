@@ -1,5 +1,5 @@
 (function() {
-	var languages = ['en', 'fr'];
+	var languages = ['en', 'fr', 'it'];
 	var translation = {};
 	var readyCallback = [];
 	var path = './';
@@ -8,23 +8,28 @@
 	var localTranslation = {
 		time_day: {
 			en: 'd',
-			fr: 'j'
+			fr: 'j',
+			it: 'g'
 		},
 		time_hour: {
 			en: 'h',
-			fr: 'h'
+			fr: 'h',
+			it: 'o'
 		},
 		time_min: {
 			en: 'min',
-			fr: 'min'
+			fr: 'min',
+			it: 'min'
 		},
 		time_sec: {
 			en: 's',
-			fr: 's'
+			fr: 's',
+			it: 's'
 		},
 		time_msec: {
 			en: 'ms',
-			fr: 'ms'
+			fr: 'ms',
+			it: 'ms'
 		}
 	};
 
