@@ -8,6 +8,7 @@ var store = {
 		option = option || {};
 
 		if (!option.fromDB) {
+			item.visible = true;
 			this.db.setCube(item, option);
 		}
 
