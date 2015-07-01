@@ -43,6 +43,10 @@ summary {
 	font-style: italic;
 }
 
+.small {
+	font-size: smaller;
+}
+
 .route-menu {
 	height: 3.5em;
 	top: 0;

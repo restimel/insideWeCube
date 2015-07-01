@@ -68,6 +68,21 @@ var Helper = {
 		});
 	},
 
+	ratingCaracs: [
+		'nbAvailable',
+		'pathLength',
+		'dEndLength',
+		'nbChgDir',
+		'nbChgLvl',
+		'nbMovement',
+		'nbMvtRot',
+		'rateRot',
+		'nbOut',
+		'nbDifficultCrs',
+		'nbDEnd',
+		'rateDir'
+	],
+
 	/**
 	 * Configuration (default values)
 	 */
@@ -99,12 +114,55 @@ var Helper = {
 		return value;
 	}
 
+	function getNum(key, dfltValue) {
+		var value, val;
+
+		if (hasLocalStorage) {
+			value = self.localStorage.getItem(key);
+			if (value === null) {
+				value = dfltValue;
+			} else {
+				value = parseFloat(value);
+			}
+		} else {
+			value = dfltValue;
+		}
+
+		return value;
+	}
+
 	Helper.config._values = {
 		lid: get('lid', true), /* if true, only lid levels can be sleected at last level */
 		pin: get('pin', false), /* if true, the ball is not block by pin */
 		trsfmLvl: get('trsfmLvl', false), /* if true, allow to transform level (rotation, ...) */
 		advanced: get('advanced', false), /* if true it display advanced tools */
-		stickerMaps: get('stickerMaps', false) /* if true, allow to display the sticker maps */
+		stickerMaps: get('stickerMaps', false), /* if true, allow to display the sticker maps */
+
+		pnd_nbAvailable: getNum('pnd_nbAvailable', 0),
+		pnd_pathLength: getNum('pnd_pathLength', 0),
+		pnd_dEndLength: getNum('pnd_dEndLength', 0.1),
+		pnd_nbChgDir: getNum('pnd_nbChgDir', 0),
+		pnd_nbChgLvl: getNum('pnd_nbChgLvl', 0.5),
+		pnd_nbMovement: getNum('pnd_nbMovement', 0.5),
+		pnd_nbMvtRot: getNum('pnd_nbMvtRot', 0),
+		pnd_rateRot: getNum('pnd_rateRot', 10),
+		pnd_nbOut: getNum('pnd_nbOut', 2),
+		pnd_nbDifficultCrs: getNum('pnd_nbDifficultCrs', 11),
+		pnd_nbDEnd: getNum('pnd_nbDEnd', 0.2),
+		pnd_rateDir: getNum('pnd_rateDir', 0),
+
+		max_nbAvailable: getNum('max_nbAvailable', 240),
+		max_pathLength: getNum('max_pathLength', 240),
+		max_dEndLength: getNum('max_dEndLength', 100),
+		max_nbChgDir: getNum('max_nbChgDir', 100),
+		max_nbChgLvl: getNum('max_nbChgLvl', 70),
+		max_nbMovement: getNum('max_nbMovement', 110),
+		max_nbMvtRot: getNum('max_nbMvtRot', 25),
+		max_rateRot: getNum('max_rateRot', 0.75),
+		max_nbOut: getNum('max_nbOut', 15),
+		max_nbDifficultCrs: getNum('max_nbDifficultCrs', 5),
+		max_nbDEnd: getNum('max_nbDEnd', 20),
+		max_rateDir: getNum('max_rateDir', 1)
 	}
 
 	function buildGet(property) {
@@ -113,46 +171,57 @@ var Helper = {
 		};
 	}
 
+	function buildSet(property, val) {
+		var obj;
+
+		if (hasLocalStorage) {
+			self.localStorage.setItem(property, val);
+		}
+		if (hasMainControl) {
+			obj = {};
+			obj[property] = val;
+			main.control.action('config', obj);
+		}
+		this._values[property] = val;
+	}
+
 	function buildBooleanSet(property) {
 		return function(val) {
 			val = !!val;
-			var obj;
-
-			if (hasLocalStorage) {
-				self.localStorage.setItem(property, val);
-			}
-			if (hasMainControl) {
-				obj = {};
-				obj[property] = val;
-				main.control.action('config', obj);
-			}
-			this._values[property] = val;
+			buildSet.call(this, property, val);
 		};
 	}
 
-	Object.defineProperty(Helper.config, 'lid', {
-		get: buildGet('lid'),
-		set: buildBooleanSet('lid')
-	});
+	function buildNumberSet(property) {
+		return function(val) {
+			val = parseFloat(val);
+			buildSet.call(this, property, val);
+		};
+	}
 
-	Object.defineProperty(Helper.config, 'pin', {
-		get: buildGet('pin'),
-		set: buildBooleanSet('pin')
+	['lid', 'pin', 'trsfmLvl', 'advanced', 'stickerMaps']
+		.forEach(function(key)
+	{
+		Object.defineProperty(Helper.config, key, {
+			get: buildGet(key),
+			set: buildBooleanSet(key)
+		});
 	});
+	
+	Helper.ratingCaracs.forEach(function(carac) {
+		var key = 'pnd_' + carac;
 
-	Object.defineProperty(Helper.config, 'trsfmLvl', {
-		get: buildGet('trsfmLvl'),
-		set: buildBooleanSet('trsfmLvl')
-	});
+		Object.defineProperty(Helper.config, key, {
+			get: buildGet(key),
+			set: buildNumberSet(key)
+		});
 
-	Object.defineProperty(Helper.config, 'advanced', {
-		get: buildGet('advanced'),
-		set: buildBooleanSet('advanced')
-	});
+		key = 'max_' + carac;
 
-	Object.defineProperty(Helper.config, 'stickerMaps', {
-		get: buildGet('stickerMaps'),
-		set: buildBooleanSet('stickerMaps')
+		Object.defineProperty(Helper.config, key, {
+			get: buildGet(key),
+			set: buildNumberSet(key)
+		});
 	});
 
 	Helper.mainLoaded = function() {

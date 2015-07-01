@@ -7,6 +7,7 @@ New features
 	* Allow to let comments on levels
 	* Search which cube are possible to create from a set of levels
 	* Can display stickers map (the map on sides)
+	* Allow to change the rating coefficients
 
 Bugs fixed
 	* Fix error thrown in console when moving to another menu while a temporary message is displayed.

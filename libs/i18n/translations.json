@@ -59,6 +59,10 @@
 		"fr": "Configuration d'options",
 		"it": "Gestisci le opzioni"
 	},
+	"Manage rating": {
+		"en": "Manage rating",
+		"fr": "Configuration des estimations"
+	},
 	"save level": {
 		"en": "Save level",
 		"fr": "Sauver le niveau",
@@ -478,6 +482,135 @@
 		"en": "%i cells are accessible (%2%%).",
 		"fr": "%i cases sont accessibles (%2%%).",
 		"it": "%i celle sono accessibili (%2%%)."
+	},
+	"Rating options": {
+		"en": "Rating options",
+		"fr": "Options d'estimation"
+	},
+	"Accessible cells": {
+		"en": "Accessible cells",
+		"fr": "Cases accessibles"
+	},
+	"Number of accessible cells": {
+		"en": "Number of accessible cells",
+		"fr": "Nombre de cases accessibles"
+	},
+	"Path length": {
+		"en": "Path length",
+		"fr": "Longueur du chemin"
+	},
+	"Length of the shortest path": {
+		"en": "Length of the shortest path",
+		"fr": "Longueur du chemin le plus court"
+	},
+	"Dead-end cells": {
+		"en": "Dead-end cells",
+		"fr": "Longueur des impasses"
+	},
+	"Number of cells which are not in the shortest path": {
+		"en": "Number of cells which are not in the shortest path",
+		"fr": "Nombre de cases qui ne sont pas dans le plus court chemin"
+	},
+	"Dead-ends": {
+		"en": "Dead-ends",
+		"fr": "Impasses"
+	},
+	"Number of dead-end ways": {
+		"en": "Number of dead-end ways",
+		"fr": "Nombre de chemin menant à des impasses"
+	},
+	"Number of turns": {
+		"en": "Number of turns",
+		"fr": "Nombre de virages"
+	},
+	"Number of turns inside levels": {
+		"en": "Number of turns inside levels",
+		"fr": "Nombre de virages à l'intérieur des plateaux"
+	},
+	"Turns rate": {
+		"en": "Turns rate",
+		"fr": "Taux de virages"
+	},
+	"Rate of turns against the path length": {
+		"en": "Rate of turns against the path length",
+		"fr": "Ratio de virages par rapport à la longueur du chemin"
+	},
+	"Movements through levels": {
+		"en": "Movements through levels",
+		"fr": "Mouvements à travers les plateaux"
+	},
+	"Number of movements through levels": {
+		"en": "Number of movements through levels",
+		"fr": "Nombre de cases à parcourrir  à travers les plateaux"
+	},
+	"Cube rotations": {
+		"en": "Cube rotations",
+		"fr": "Rotations du cube"
+	},
+	"Number of cube rotations needed": {
+		"en": "Number of cube rotations needed",
+		"fr": "Nombre de rotations de cubes nécessaires"
+	},
+	"Cube flips": {
+		"en": "Cube flips",
+		"fr": "Renversements de cube"
+	},
+	"Number of upside-down cube flips needed": {
+		"en": "Number of upside-down cube flips needed",
+		"fr": "Nombre de renversements de cube nécessaires "
+	},
+	"Flip rate": {
+		"en": "Flip rate",
+		"fr": "Taux de renversements"
+	},
+	"Rate of flips against rotations": {
+		"en": "Rate of flips against rotations",
+		"fr": "Ratio de renversements par rapport aux rotations"
+	},
+	"Outside path required": {
+		"en": "Outside path required",
+		"fr": "Sorties de chemin"
+	},
+	"Number of cells the ball must go outside the shortest path": {
+		"en": "Number of cells the ball must go outside the shortest path",
+		"fr": "Nombre de cases où la bille doit sortir du chemin le plus court "
+	},
+	"Hardcore passages": {
+		"en": "Hardcore passages",
+		"fr": "Passages difficiles"
+	},
+	"Number of hardcore passages": {
+		"en": "Number of hardcore passages",
+		"fr": "Nombre de passages difficiles"
+	},
+	"Coefficient rate": {
+		"en": "Coefficient rate",
+		"fr": "Coefficients des options"
+	},
+	"Maximum value": {
+		"en": "Maximum value",
+		"fr": "Valeur maximale"
+	},
+	"Estimated maximum (it can be overhead)": {
+		"en": "Estimated maximum (it can be overhead)",
+		"fr": "Éstimation maximale (peut être dépassée)"
+	},
+	"Cube": {
+		"en": "Cube",
+		"fr": "Cube",
+		"it": "Cubo"
+	},
+	"Current cube values": {
+		"en": "Current cube values",
+		"fr": "Valeur du cube actuel"
+	},
+	"Total": {
+		"en": "Total",
+		"fr": "Total"
+	},
+	"Rating on current cube": {
+		"en": "Rating on current cube",
+		"fr": "Éstimation du cube actuel"
 	},
 	"Please enter a name for the cube.": {
 		"en": "Please enter a name for the cube.",
@@ -1134,6 +1267,11 @@
 		"fr": "Fermer",
 		"it": "Chiudere"
 	},
+	"Save": {
+		"en": "Save",
+		"fr": "Enregistrer",
+		"it": "Salvare"
+	},
 	"Delete": {
 		"en": "Delete",
 		"fr": "Supprimer",
@@ -1386,13 +1524,23 @@
 	},
 	"%d / %d": {
 		"en": "%d / %d",
-		"fr": "%d /%d",
-		"it": "%d /%d"
+		"fr": "%d / %d",
+		"it": "%d / %d"
 	},
 	"%D / %D": {
 		"en": "%D / %D",
-		"fr": "%D /%D",
+		"fr": "%D / %D",
 		"it": "%D / %D"
+	},
+	"%2%%": {
+		"en": "%2%%",
+		"fr": "%2%%",
+		"it": "%2%%"
+	},
+	"%3": {
+		"en": "%3",
+		"fr": "%3",
+		"it": "%3"
 	},
 	"License: (%s) you are free to use, share and modify it if you keep credits to authors and contributors.": {
 		"en": "License: (%s) you are free to use, share and modify it if you keep credits to authors and contributors.",
