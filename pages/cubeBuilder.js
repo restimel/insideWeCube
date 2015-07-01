@@ -132,7 +132,7 @@ CubeBuilder.prototype.render = function(container) {
 	manager.appendChild(btn);
 
 	btn = document.createElement('button');
-	btn.className = 'font-awesome' + (Helper.config.advanced ? '' : ' hidden');
+	btn.className = 'font-awesome advanced-option' + (Helper.config.advanced ? '' : ' hidden');
 	btn.textContent = '\uf1de'; // sliders
 	btn.title = $$('Manage rating');
 	btn.onclick = this.renderRating.bind(this);
@@ -456,11 +456,15 @@ CubeBuilder.prototype.renderRating = function() {
 };
 
 CubeBuilder.prototype.renderAdvTools = function(val) {
-	if (val) {
-		this.toolBox.classList.remove('hidden');
-	} else {
-		this.toolBox.classList.add('hidden');
-	}
+	var list = [this.toolBox, document.querySelector('.advanced-option')];
+
+	list.forEach(function(el) {
+		if (val) {
+			el.classList.remove('hidden');
+		} else {
+			el.classList.add('hidden');
+		}
+	});
 	this.levels[this.levels.length-1].render();
 };
 
