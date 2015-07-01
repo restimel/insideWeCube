@@ -1,6 +1,11 @@
 function CubeBuilder(cubePath) {
 	this.cubePath = cubePath;
 	this.cubeRemover = new CubeRemover();
+	this.rating = new RatingOptions({
+		callback: function() {
+			this.render(this.container);
+		}.bind(this)
+	});
 	this.advancedOptions = new AdvancedOptions({
 		call_lid: function() {
 			this.levels[this.levels.length-1].render();
@@ -124,6 +129,13 @@ CubeBuilder.prototype.render = function(container) {
 	btn.textContent = '\uf085'; // cogs
 	btn.title = $$('Manage options');
 	btn.onclick = this.renderAdvancedTool.bind(this);
+	manager.appendChild(btn);
+
+	btn = document.createElement('button');
+	btn.className = 'font-awesome' + (Helper.config.advanced ? '' : ' hidden');
+	btn.textContent = '\uf1de'; // sliders
+	btn.title = $$('Manage rating');
+	btn.onclick = this.renderRating.bind(this);
 	manager.appendChild(btn);
 
 	header.appendChild(manager);
@@ -270,30 +282,46 @@ CubeBuilder.prototype.renderInfo = function(info) {
 	}
 	this.cubeInfo.innerHTML = '';
 
-	var length = info.length + 1,
-		available = info.available,
-		deadEnd = Math.max(info.deadEnd, 0),
-		chgLevel = info.chgLevel,
-		chgDirection = info.chgDirection,
-		chgTop = info.chgTop,
-		nbMovement = info.nbMovement,
-		nbMvtOutPath = info.nbMvtOutPath,
-		nbDifficultCrossing = info.nbDifficultCrossing,
-		difficulty = //length * 1.13 / 24 + // 11
-					 (available - length) * 0.1 + // 7.7
-					 //chgDirection * 0.3 + // 0
-					 chgLevel * 0.5 + // 37
-					 // chgTop * 1.85 + // ~35 (current max 17)
-					 nbMovement * 0.5 + // 59
-					 chgTop / nbMovement * 10 + // 3
-					 nbMvtOutPath * 2 + //42
-					 nbDifficultCrossing * 11, // 44
-		maxDifficulty = 150,
-		lowDifficulty = maxDifficulty / 3,
-		highDifficulty = maxDifficulty * 2 / 3 -2;
+	var caracs = Helper.ratingCaracs;
+
+	var data = this.dataRating = {};
+	var pathLength = data.pathLength = info.length + 1,
+		nbAvailable = data.nbAvailable = info.available,
+		dEndLength = data.dEndLength = nbAvailable - pathLength,
+		nbDEnd = data.nbDEnd = Math.max(info.deadEnd, 0),
+		nbChgLvl = data.nbChgLvl = info.chgLevel,
+		nbChgDir = data.nbChgDir = info.chgDirection,
+		nbMvtRot = data.nbMvtRot = info.chgTop,
+		nbMovement = data.nbMovement = info.nbMovement,
+		rateRot = data.rateRot = nbMvtRot / nbMovement,
+		nbOut = data.nbOut = info.nbMvtOutPath,
+		nbDifficultCrs = data.nbDifficultCrs = info.nbDifficultCrossing,
+		rateDir = data.rateDir = nbChgDir / pathLength;
+	
+	var difficulty = caracs.reduce(function(sum, carac) {
+		var key = 'pnd_' + carac;
+		return sum + data[carac] * Helper.config[key];
+	}, 0);
+	var maxDifficulty = caracs.reduce(function(sum, carac) {
+		var max_key = 'max_' + carac;
+		var pdn_key = 'pnd_' + carac;
+		return sum + Helper.config[max_key] * Helper.config[pdn_key];
+	}, 0);
+	// //pathLength * 1.13 / 24 + // 11
+	// 				 (nbAvailable - pathLength) * 0.1 + // 7.7
+	// 				 //nbChgDir * 0.3 + // 0
+	// 				 nbChgLvl * 0.5 + // 37
+	// 				 // nbMvtRot * 1.85 + // ~35 (current max 17)
+	// 				 nbMovement * 0.5 + // 59
+	// 				 nbMvtRot / nbMovement * 10 + // 3
+	// 				 nbOut * 2 + //42
+	// 				 nbDifficultCrs * 11, // 44
+		// maxDifficulty = 150,
+	var lowDifficulty = maxDifficulty / 3 - 1,
+		highDifficulty = maxDifficulty * 2 / 3 - 2;
 
 	var finish = document.createElement('section'),
-		pathLength = document.createElement('section'),
+		elPathLength = document.createElement('section'),
 		availability = document.createElement('section'),
 		elDeadEnd =  document.createElement('section'),
 		elDifficulty = document.createElement('section'),
@@ -320,30 +348,30 @@ CubeBuilder.prototype.renderInfo = function(info) {
 		finish.className = 'finish-yes';
 		finish.textContent = $$('Cube can be solved.');
 
-		pathLength.className = 'info';
-		pathLength.textContent = $$('%i cells must be crossed (%2%%).', length, 100 * length/available);
+		elPathLength.className = 'info';
+		elPathLength.textContent = $$('%i cells must be crossed (%2%%).', pathLength, 100 * pathLength/nbAvailable);
 
 		changeShortDisplay(); changeShortDisplay();
 		dspShortPath.onclick = changeShortDisplay;
 		dspShortPath.className = 'font-awesome';
-		pathLength.appendChild(dspShortPath);
+		elPathLength.appendChild(dspShortPath);
 
-		elDeadEnd.textContent = $$('%i dead-ends (%2%%)', deadEnd, 100 * (available - length)/available);
+		elDeadEnd.textContent = $$('%i dead-ends (%2%%)', nbDEnd, 100 * (nbAvailable - pathLength)/nbAvailable);
 
 		elChgDirection.className = 'info';
-		elChgDirection.textContent = $$('%i turns inside levels (%2%%)', chgDirection, 100 * chgDirection/length);
+		elChgDirection.textContent = $$('%i turns inside levels (%2%%)', nbChgDir, 100 * nbChgDir/pathLength);
 
 		elChgLevel.className = 'info';
-		elChgLevel.textContent = $$('%i movements through levels (%2%%)', chgLevel, 100 * chgLevel/length);
+		elChgLevel.textContent = $$('%i movements through levels (%2%%)', nbChgLvl, 100 * nbChgLvl/pathLength);
 
 		elMovement.className = 'info';
 		elMovement.textContent = $$('%i cube rotations are needed (at least)', nbMovement);
 
 		elCbReverse.className = 'info';
-		elCbReverse.textContent = $$('%i upside-down cube flips are needed (at least)', chgTop);
+		elCbReverse.textContent = $$('%i upside-down cube flips are needed (at least)', nbMvtRot);
 
 		elHardCells.className = 'info';
-		elHardCells.textContent = $$('%i hardcore passages', nbDifficultCrossing);
+		elHardCells.textContent = $$('%i hardcore passages', nbDifficultCrs);
 
 		elDifficulty.className = 'info';
 		label = document.createElement('label');
@@ -357,6 +385,7 @@ CubeBuilder.prototype.renderInfo = function(info) {
 		meter.max = maxDifficulty;
 		meter.value = difficulty;
 		meter.textContent = difficulty;
+		meter.title = $$('%2%%', difficulty * 100 / maxDifficulty);
 		label.appendChild(meter);
 
 		elDifficulty.appendChild(label);
@@ -364,9 +393,9 @@ CubeBuilder.prototype.renderInfo = function(info) {
 		finish.className = 'finish-no';
 		finish.textContent = $$('Cube is not solvable.');
 
-		pathLength.className = 'noInfo';
+		elPathLength.className = 'noInfo';
 
-		elDeadEnd.textContent = $$('%i dead-ends', deadEnd);
+		elDeadEnd.textContent = $$('%i dead-ends', nbDEnd);
 
 		elChgDirection.className = 'noInfo';
 		elChgLevel.className = 'noInfo';
@@ -376,12 +405,12 @@ CubeBuilder.prototype.renderInfo = function(info) {
 		elHardCells.className = 'noInfo';
 	}
 
-	availability.textContent = $$('%i cells are accessible (%2%%).', available, 100 * available / 252);
+	availability.textContent = $$('%i cells are accessible (%2%%).', nbAvailable, 100 * nbAvailable / 252);
 
 	this.cubeInfo.appendChild(finish);
 	this.cubeInfo.appendChild(elDifficulty);
 	this.cubeInfo.appendChild(availability);
-	this.cubeInfo.appendChild(pathLength);
+	this.cubeInfo.appendChild(elPathLength);
 	this.cubeInfo.appendChild(elDeadEnd);
 	this.cubeInfo.appendChild(elChgLevel);
 	this.cubeInfo.appendChild(elChgDirection);
@@ -420,6 +449,10 @@ CubeBuilder.prototype.renderMapStandalone = function() {
 
 CubeBuilder.prototype.renderAdvancedTool = function() {
 	this.advancedOptions.render();
+};
+
+CubeBuilder.prototype.renderRating = function() {
+	this.rating.render(this.dataRating);
 };
 
 CubeBuilder.prototype.renderAdvTools = function(val) {
