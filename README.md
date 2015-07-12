@@ -54,11 +54,21 @@ To help, you can run the following command (nodeJS should be already installed o
 A local webserver will run at background. Port 8000 is used by this webserver.
 Then you can access the application with url: http://localhost:8000/index.html
 
+### Languages
+
+Currently insideWeCube is available in English, French and Italian.
+
+To update or complete sentences, you can edit the file libs/i18n/translations.json
+
+To add a new language, you can add a new entry in translationss.json to each sentences. You'll need also to add the key language in libs/i18n/translate-i18n.js
+
 ## Contributing
 
 All bugs reported are welcome. You can do it with the github interface.
 
 Any contribution is greatly appreciated. Fork the github project, do your change and pull request your contribution.
+
+Do not hesitate to contact to have more information.
 
 
 ## Thanks
