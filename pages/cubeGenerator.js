@@ -199,7 +199,7 @@ CubeGenerator.prototype.renderInfo = function(data) {
 	div = document.createElement('div');
 	div.innerHTML = $$('Number of combinations: %d', nbPossibilities) +
 					'<br>' +
-				    $$('Estimated time: %T', Math.ceil(nbPossibilities * 0.006));
+				    $$('Estimated time: %{u:s}t', Math.ceil(nbPossibilities * 0.006));
 	container.appendChild(div);
 };
 

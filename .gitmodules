@@ -1,0 +1,3 @@
+[submodule "utils/i18n-js-parser"]
+	path = utils/i18n-js-parser
+	url = https://github.com/restimel/i18n-js-parser.git

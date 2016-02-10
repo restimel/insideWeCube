@@ -349,20 +349,20 @@ CubeBuilder.prototype.renderInfo = function(info) {
 		finish.textContent = $$('Cube can be solved.');
 
 		elPathLength.className = 'info';
-		elPathLength.textContent = $$('%i cells must be crossed (%2%%).', pathLength, 100 * pathLength/nbAvailable);
+		elPathLength.textContent = $$('%i cells must be crossed (%{.2}d%%).', pathLength, 100 * pathLength/nbAvailable);
 
 		changeShortDisplay(); changeShortDisplay();
 		dspShortPath.onclick = changeShortDisplay;
 		dspShortPath.className = 'font-awesome';
 		elPathLength.appendChild(dspShortPath);
 
-		elDeadEnd.textContent = $$('%i dead-ends (%2%%)', nbDEnd, 100 * (nbAvailable - pathLength)/nbAvailable);
+		elDeadEnd.textContent = $$('%i dead-ends (%{.2}d%%)', nbDEnd, 100 * (nbAvailable - pathLength)/nbAvailable);
 
 		elChgDirection.className = 'info';
-		elChgDirection.textContent = $$('%i turns inside levels (%2%%)', nbChgDir, 100 * nbChgDir/pathLength);
+		elChgDirection.textContent = $$('%i turns inside levels (%{.2}d%%)', nbChgDir, 100 * nbChgDir/pathLength);
 
 		elChgLevel.className = 'info';
-		elChgLevel.textContent = $$('%i movements through levels (%2%%)', nbChgLvl, 100 * nbChgLvl/pathLength);
+		elChgLevel.textContent = $$('%i movements through levels (%{.2}d%%)', nbChgLvl, 100 * nbChgLvl/pathLength);
 
 		elMovement.className = 'info';
 		elMovement.textContent = $$('%i cube rotations are needed (at least)', nbMovement);
@@ -385,7 +385,7 @@ CubeBuilder.prototype.renderInfo = function(info) {
 		meter.max = maxDifficulty;
 		meter.value = difficulty;
 		meter.textContent = difficulty;
-		meter.title = $$('%2%%', difficulty * 100 / maxDifficulty);
+		meter.title = $$('%{.2}d%%', difficulty * 100 / maxDifficulty);
 		label.appendChild(meter);
 
 		elDifficulty.appendChild(label);
@@ -405,7 +405,7 @@ CubeBuilder.prototype.renderInfo = function(info) {
 		elHardCells.className = 'noInfo';
 	}
 
-	availability.textContent = $$('%i cells are accessible (%2%%).', nbAvailable, 100 * nbAvailable / 252);
+	availability.textContent = $$('%i cells are accessible (%{.2}d%%).', nbAvailable, 100 * nbAvailable / 252);
 
 	this.cubeInfo.appendChild(finish);
 	this.cubeInfo.appendChild(elDifficulty);
