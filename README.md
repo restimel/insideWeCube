@@ -60,7 +60,15 @@ Currently insideWeCube is available in English, French and Italian.
 
 To update or complete sentences, you can edit the file libs/i18n/translations.json
 
-To add a new language, you can add a new entry in translationss.json to each sentences. You'll need also to add the key language in libs/i18n/translate-i18n.js
+To add a new language, you can add a new entry in translationss.json to each sentences.
+You can use the i18n-js-parser tool to do the missing translation easily.
+To do so run the script
+
+```
+	$ ./utils/translator.sh
+```
+
+Then open your browser to given url (http://localhost:8000 by default).
 
 ## Contributing
 

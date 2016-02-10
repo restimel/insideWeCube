@@ -220,7 +220,7 @@ RatingOptions.prototype.loadOption = function(list) {
 
 		td = document.createElement('td');
 		td.className = 'small';
-		td.textContent = '(' + (value % 1 ? $$('%3', value) : value) + ')';
+		td.textContent = '(' + $$.parse('%{.3}d', value) + ')';
 		tr.appendChild(td);
 
 		table.appendChild(tr);
@@ -308,13 +308,13 @@ RatingOptions.prototype.updateValues = function(evt) {
 		total += range;
 		meter += option.pnd * (this.data[id] || 0);
 		this.dialogBox.querySelector('#range_' + id).value = range;
-		this.dialogBox.querySelector('#output_' + id).value = $$('%2%%', range);
+		this.dialogBox.querySelector('#output_' + id).value = $$('%{.2}d%%', range);
 		this.dialogBox.querySelector('#max_' + id).value = option.max;
 	}, this);
 	meter /= this.totalMax;
 	meter *= 100;
 
-	this.dialogBox.querySelector('#output_total').value =  $$('%2%%', total);
+	this.dialogBox.querySelector('#output_total').value =  $$('%{.2}d%%', total);
 	this.dialogBox.querySelector('#output_meter').value = meter;
 };
 

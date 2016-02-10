@@ -49,7 +49,7 @@ Generator.prototype.backWorkerMessage = function(e) {
 
 	switch(action) {
 		case 'finished':
-			console.info($$('Spent time to find out solutions: %T', (performance.now() - this.timer)/1000))
+			console.info($$('Spent time to find out solutions: %{u:s}t', (performance.now() - this.timer)/1000))
 			this.worker.status = 'waiting';
 		case 'runningState':
 		case 'result':

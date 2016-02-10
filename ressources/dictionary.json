@@ -428,25 +428,25 @@
 		"fr": "Le cube peut être résolu.",
 		"it": "Il cubo può essere risolto"
 	},
-	"%i cells must be crossed (%2%%).": {
-		"en": "%i cells must be crossed (%2%%).",
-		"fr": "%i cases doivent être traversées (%2%%).",
-		"it": "%i celle devono essere attraversate (%2%%)."
+	"%i cells must be crossed (%{.2}d%%).": {
+		"en": "%i cells must be crossed (%{.2}d%%).",
+		"fr": "%i cases doivent être traversées (%{.2}d%%).",
+		"it": "%i celle devono essere attraversate (%{.2}d%%)."
 	},
-	"%i dead-ends (%2%%)": {
-		"en": "%i dead-ends (%2%%)",
-		"fr": "%i impasses (%2%%)",
-		"it": "%i cammini senza soluzione (%2%%)"
+	"%i dead-ends (%{.2}d%%)": {
+		"en": "%i dead-ends (%{.2}d%%)",
+		"fr": "%i impasses (%{.2}d%%)",
+		"it": "%i cammini senza soluzione (%{.2}d%%)"
 	},
-	"%i turns inside levels (%2%%)": {
-		"en": "%i turns inside levels (%2%%)",
-		"fr": "%i virages à l'intérieur des niveaux (%2%%)",
-		"it": "%i curve all'interno del livello (%2%%)"
+	"%i turns inside levels (%{.2}d%%)": {
+		"en": "%i turns inside levels (%{.2}d%%)",
+		"fr": "%i virages à l'intérieur des niveaux (%{.2}d%%)",
+		"it": "%i curve all'interno del livello (%{.2}d%%)"
 	},
-	"%i movements through levels (%2%%)": {
-		"en": "%i movements through levels (%2%%)",
-		"fr": "%i déplacements à travers les niveaux (%2%%)",
-		"it": "%i movimenti all'interno del livello (%2%%)"
+	"%i movements through levels (%{.2}d%%)": {
+		"en": "%i movements through levels (%{.2}d%%)",
+		"fr": "%i déplacements à travers les niveaux (%{.2}d%%)",
+		"it": "%i movimenti all'interno del livello (%{.2}d%%)"
 	},
 	"%i cube rotations are needed (at least)": {
 		"en": "%i cube rotations are needed (at least)",
@@ -478,10 +478,10 @@
 		"fr": "%i impasses",
 		"it": "%i cammini senza soluzione"
 	},
-	"%i cells are accessible (%2%%).": {
-		"en": "%i cells are accessible (%2%%).",
-		"fr": "%i cases sont accessibles (%2%%).",
-		"it": "%i celle sono accessibili (%2%%)."
+	"%i cells are accessible (%{.2}d%%).": {
+		"en": "%i cells are accessible (%{.2}d%%).",
+		"fr": "%i cases sont accessibles (%{.2}d%%).",
+		"it": "%i celle sono accessibili (%{.2}d%%)."
 	},
 	"Rating options": {
 		"en": "Rating options",
@@ -1532,15 +1532,10 @@
 		"fr": "%D / %D",
 		"it": "%D / %D"
 	},
-	"%2%%": {
-		"en": "%2%%",
-		"fr": "%2%%",
-		"it": "%2%%"
-	},
-	"%3": {
-		"en": "%3",
-		"fr": "%3",
-		"it": "%3"
+	"%{.2}d%%": {
+		"en": "%{.2}d%%",
+		"fr": "%{.2}d%%",
+		"it": "%{.2}d%%"
 	},
 	"License: (%s) you are free to use, share and modify it if you keep credits to authors and contributors.": {
 		"en": "License: (%s) you are free to use, share and modify it if you keep credits to authors and contributors.",

@@ -218,15 +218,15 @@
 		"fr": "Nb de combinaisons: %d",
 		"it": "Numero di combinazioni: %d"
 	},
-	"Estimated time: %T": {
-		"en": "Estimated time: %T",
-		"fr": "Temps estimé: %T",
-		"it": "Tempo stimato: %T"
+	"Estimated time: %{u:s}t": {
+		"en": "Estimated time: %{u:s}t",
+		"fr": "Temps estimé: %{u:s}t",
+		"it": "Tempo stimato: %{u:s}t"
 	},
-	"Spent time to find out solutions: %T": {
-		"en": "Spent time to find out solutions: %T",
-		"fr": "Temps mis pour trouver les solutions: %T",
-		"it": "Tempo utilizzato per trovare le soluzioni: %T"
+	"Spent time to find out solutions: %{u:s}t": {
+		"en": "Spent time to find out solutions: %{u:s}t",
+		"fr": "Temps mis pour trouver les solutions: %{u:s}t",
+		"it": "Tempo utilizzato per trovare le soluzioni: %{u:s}t"
 	},
 	"Change configuration to do a new analysis": {
 		"en": "Change configuration to do a new analysis",
