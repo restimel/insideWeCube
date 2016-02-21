@@ -462,7 +462,7 @@ summary {
 	font-family: fontAwesome;
 }
 .cell-wall, .cell-wallR-fill, .cell-wallD-fill {
-	background-color: rgb(0, 0, 0);	
+	background-color: rgb(0, 0, 0);
 }
 
 .accessible-path {
@@ -550,6 +550,10 @@ summary {
 }
 .mini-map .pin-top:before {
 	content: '\f078'; /* v */
+	font-family: fontAwesome;
+}
+.mini-map .phantom:before {
+	content: '\f0a2'; /* bell */
 	font-family: fontAwesome;
 }
 
