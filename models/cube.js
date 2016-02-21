@@ -5,6 +5,7 @@ function Cube (name) {
 
 	this.startCell = {x: 1, y: 1, z: 0};
 	this.finishCell = {x: 4, y: 4, z: 6};
+	this.phantomBalls = [];
 }
 
 Cube.prototype.init = function() {
@@ -147,7 +148,10 @@ Cube.prototype.toJSON = function() {
 	var json = {
 		name: this.name,
 		color: this.color,
-		levels: this.levels.map(function(l) {return l.toJSON();})
+		levels: this.levels.map(function(l) {return l.toJSON();}),
+		ghost: this.phantomBalls.map(Cube.convertFromCell).filter(function(c) { return !!c; }),
+		size: this.size,
+		mapSize: this.mapSize
 	};
 
 	if (this.startCell.x !== 1 || this.startCell.y !== 1 || this.startCell.z !== 0) {
@@ -176,6 +180,18 @@ Cube.prototype.parse = function(json, option) {
 	this.name = json.name;
 	if (json.color) {
 		this.color = json.color;
+	}
+	this.size = json.size || 7;
+	this.mapSize = json.mapSize || 6;
+
+	if (typeof json.ghost === 'object' && json.ghost instanceof Array) {
+		this.phantomBalls = json.ghost.map(function(cell) {
+			return Cube.convertToCell(cell);
+		}).filter(function(cell) {
+			return Cube.checkCell(cell);
+		});
+	} else {
+		this.phantomBalls = [];
 	}
 
 	if (Cube.checkCell(json.start)) {
@@ -207,7 +223,7 @@ Cube.prototype.parse = function(json, option) {
 
 /**
  * get the ball movement when the cube is in a particular position
- * 
+ *
  * From:
  *  1 → / -1 ←
  *  2 ↑ / -2 ↓
@@ -354,18 +370,44 @@ Cube.prototype.couldMove = function(cellPos, cubePosition) {
 	return false;
 };
 
+Cube.prototype.isPhantomCell = function(cell) {
+	if (!this.phantomBalls || !this.phantomBalls.length) {
+		return false;
+	}
+
+	return this.phantomBalls.some(function(ghost) {
+		return Cube.comparePosition(ghost, cell);
+	});
+};
+
 Cube.prototype.getClassFromCell = function(cell, classList, x, y, z) {
-	if (Cube.comparePosition(this.startCell, {x: x, y: y, z: z}) || cell.s === 1) {
+	var isPositive = cell.s > 0;
+	var cellPosition = {x: x, y: y, z: z};
+	var ngbCell;
+
+	/* XXX: -1 and -2 are kept to support compatibility with old maps */
+	/* special cells
+	 * 1: start
+	 * 2: inner Pin
+	 * 4: finish
+	 * 8: outer Pin
+	 */
+
+	if (Cube.comparePosition(this.startCell, cellPosition) || (isPositive && cell.s & 1)) {
 		classList.push('start-cell');
 	}
-	if (Cube.comparePosition(this.finishCell, {x: x, y: y, z: z}) || cell.s === -1) {
+	if (Cube.comparePosition(this.finishCell, cellPosition) || cell.s === -1 || (isPositive && cell.s & 4)) {
 		classList.push('end-cell');
 	}
-	if (cell.s === 2) {
+	if (isPositive && cell.s & 2) {
 		classList.push('pin');
 	}
-	if (this.get(x, y, z-1).s === -2) {
+	ngbCell = this.get(x, y, z-1).s;
+	if (ngbCell === -2 || (ngbCell > 0 && ngbCell & 8)) {
 		classList.push('pin-top');
+	}
+	if (this.isPhantomCell(cellPosition)) {
+		classList.push('phantom');
 	}
 };
 
@@ -684,7 +726,7 @@ Cube.comparePosition = function(c1, c2) {
 };
 
 /*
-return 
+return
  1 → / -1 ←
  2 ↑ / -2 ↓
  3 ↥ / -3 ↧
@@ -740,7 +782,24 @@ Cube.copyPosition = function(position) {
 	};
 };
 
-
 Cube.checkCell = function (cell) {
 	return typeof cell === 'object' && typeof cell.x === 'number' && typeof cell.y === 'number' && typeof cell.z === 'number';
-}
+};
+
+Cube.convertToCell = function(aCell) {
+	if (!aCell || !(aCell instanceof Array)) {
+		return;
+	}
+	return {
+		x: aCell[0],
+		y: aCell[1],
+		z: aCell[2]
+	};
+};
+
+Cube.convertFromCell = function(cell) {
+	if (!Cube.checkCell(cell)) {
+		return;
+	}
+	return [cell.x, cell.y, cell.z];
+};
