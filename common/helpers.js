@@ -137,6 +137,7 @@ var Helper = {
 		trsfmLvl: get('trsfmLvl', false), /* if true, allow to transform level (rotation, ...) */
 		advanced: get('advanced', false), /* if true it display advanced tools */
 		stickerMaps: get('stickerMaps', false), /* if true, allow to display the sticker maps */
+		phantomBalls: get('phantomBalls', true), /* if true, phantom area are considered as visible */
 
 		pnd_nbAvailable: getNum('pnd_nbAvailable', 0),
 		pnd_pathLength: getNum('pnd_pathLength', 0),
@@ -199,7 +200,7 @@ var Helper = {
 		};
 	}
 
-	['lid', 'pin', 'trsfmLvl', 'advanced', 'stickerMaps']
+	['lid', 'pin', 'trsfmLvl', 'advanced', 'stickerMaps', 'phantomBalls']
 		.forEach(function(key)
 	{
 		Object.defineProperty(Helper.config, key, {
