@@ -15,6 +15,7 @@ function CubeBuilder(cubePath) {
 			this.levels.forEach(function(lvl) {lvl.checkInfo();});
 		}.bind(this),
 		call_trsfmLvl: this.renderTransform.bind(this),
+		call_phantomBalls: this.renderPhantoms.bind(this),
 		call_adv: this.renderAdvTools.bind(this)
 	});
 	cubePath.setBuilder(this);
@@ -469,6 +470,12 @@ CubeBuilder.prototype.renderAdvTools = function(val) {
 };
 
 CubeBuilder.prototype.renderTransform = function(val) {
+	this.levels.forEach(function(lvl) {
+		lvl.renderTransform(val);
+	});
+};
+
+CubeBuilder.prototype.renderPhantoms = function(val) {
 	this.levels.forEach(function(lvl) {
 		lvl.renderTransform(val);
 	});

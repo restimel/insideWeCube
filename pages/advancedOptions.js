@@ -3,6 +3,7 @@ function AdvancedOptions(option) {
 	this.call_pin = option.call_pin;
 	this.call_adv = option.call_adv;
 	this.call_trsfmLvl = option.call_trsfmLvl;
+	this.call_phantomBalls = option.call_phantomBalls;
 
 	this.hideOptions = option.hideOptions;
 }
@@ -49,6 +50,13 @@ AdvancedOptions.prototype.render = function(container) {
 			longName: $$('If selected, allow to rotate levels'),
 			selected: Helper.config.trsfmLvl,
 			callback: this.call_trsfmLvl
+		},
+		{
+			id: 'phantomBalls',
+			shortName: $$('watch phantoms'),
+			longName: $$('If selected, display the phantom ball areas'),
+			selected: Helper.config.phantomBalls,
+			callback: this.call_phantomBalls
 		},
 		{
 			id: 'advanced',
