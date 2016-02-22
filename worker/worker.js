@@ -69,8 +69,7 @@ importScripts(
 	'generator.js',
 	'heuristic.js',
 	'createWorker.js',
-	'../libs/i18n-js-parser/pages/lib/i18n-js-formatter/i18n-js-formatter.js',
-	'../libs/i18n-js-parser/pages/lib/i18n-js-formatter/script/s_formatter.js',
+	'../libs/i18n-js-formatter.full.min.js',
 	'../common/helpers.js'
 );
 
