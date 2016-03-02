@@ -46,16 +46,21 @@ V1.2
 
 V1.3
 	General
-	+ Support cubes with not normal size
-		+ Allow to create cube with not normal size
-	* accept key shortcut (see how to manage them through menu)
+	* Support cubes with not normal size
+		* Allow to create cube with not normal size
+	+ accept key shortcut (see how to manage them through menu)
 	+ Minification: do a minify version
 
 	Build Cube
+	✓ See phantom ball
+	✓ Defines phantom in cubes
 	* auto-save to draft
 		→ FAQ: What is draft cube
 	* key Shortcut (Ctrl+S / Ctrl+z)
 	+ Add not accessible cell for advanced tool
+
+	Cube analyzer
+	* allow to find moves with a phantom ball
 
 	Auto-Generator
 	upgrade interface to choose levels and options

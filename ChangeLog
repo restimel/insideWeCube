@@ -1,3 +1,8 @@
+v1.2 → v1.3
+New features
+	* Use i18n-js-formatter lib and i18n-js-parser tool to manage translations
+	* Allow to see phantom ball on maps
+
 v1.1 → v1.2
 New features
 	* Manage level characteristics such as lid (which can not be moved to other levels) and pin (which can block the ball or can block level below)
