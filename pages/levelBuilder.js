@@ -118,6 +118,8 @@ LevelConstructor.prototype.renderLevel = function(container) {
 		table = document.createElement('table'),
 		row1, row2,	el, cell, x, y, bord;
 
+	var mapSize = this.cube.cube.mapSize;
+
 	bord = document.createElement('td');
 	bord.className = 'cell-wall';
 
@@ -125,17 +127,17 @@ LevelConstructor.prototype.renderLevel = function(container) {
 
 	row1  = document.createElement('tr');
 	row1.appendChild(bord.cloneNode());
-	for (x = 0; x < 6; x++) {
+	for (x = 0; x < mapSize; x++) {
 		row1.appendChild(bord.cloneNode());
 		row1.appendChild(bord.cloneNode());
 	}
 	table.appendChild(row1);
 
-	for (x = 0; x < 6; x++) {
+	for (x = 0; x < mapSize; x++) {
 		row1  = document.createElement('tr');
 		row2  = document.createElement('tr');
 
-		for (y = 0; y < 6; y++) {
+		for (y = 0; y < mapSize; y++) {
 			cell = this.level.get(x, y);
 
 			if (y === 0) {

@@ -33,7 +33,7 @@ Path.prototype.calculatePath = function() {
 };
 
 Path.prototype.runCompute = function() {
-	var finishCell = this.cube.finishCell || {x: 4, y: 4, z: 6},
+	var finishCell = this.cube.finishCell || {x: this.cube.mapSize - 2, y: this.cube.mapSize - 2, z: this.cube.size - 1},
 		startCell = this.cube.startCell || {x: 1, y: 1, z: 0};
 	var deepest = 0;
 	var hash;

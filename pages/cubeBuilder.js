@@ -1,4 +1,5 @@
 function CubeBuilder(cubePath) {
+	this.cube = new Cube();
 	this.cubePath = cubePath;
 	this.cubeRemover = new CubeRemover();
 	this.rating = new RatingOptions({
@@ -29,17 +30,23 @@ CubeBuilder.prototype.init = function() {
 	this.color = 'blue';
 	this.displayingShortPath = false;
 
-	var nbLevels = 7;
+	var nbLevels = this.cube.size;
+	var mapSize = this.cube.mapSize;
 
-	this.levels = [1, 2, 3, 4, 5, 6, 7].map(function(_, i) {
+	var levels = [];
+	for (var i=0, li = nbLevels; i < li; i++) {
+		levels.push(i+1);
+	}
+
+	this.levels = levels.map(function(_, i) {
 		return new LevelConstructor(i, cubePath, this, this.color, {
 			lid: _ === nbLevels,
 			lastLevel: _ === nbLevels,
 			s: [
 				[1,1,0,1], // start
-				[4,4,6,-1], // end
+				[mapSize - 2, mapSize - 2, nbLevels - 1,-1], // end
 				[1,2,0,2], // pin on first level
-				[4,3,5,-2] // pin on previous last level
+				[mapSize - 2,mapSize - 3,nbLevels - 2,-2] // pin on previous last level
 			]
 		});
 	}, this);
@@ -624,9 +631,9 @@ CubeBuilder.prototype.endCell = function(id) {
 			};
 		} else if (!this.finishCL) {
 			this.finishCL = {
-				x: 4,
-				y: 4,
-				z: 6
+				x: this.cube.mapSize - 2,
+				y: this.cube.mapSize - 2,
+				z: this.cube.size - 1
 			};
 		}
 		id = [this.finishCL.x, this.finishCL.y, this.finishCL.z];
@@ -643,6 +650,8 @@ CubeBuilder.prototype.endCell = function(id) {
 
 CubeBuilder.prototype.reset = function() {
 	this.cubePath.reset();
+	this.cube.size = 7;
+	this.cube.mapSize = 6;
 	this.init();
 	this.render(this.container);
 };
@@ -694,15 +703,18 @@ CubeBuilder.prototype.changeCube = function(e) {
 
 	this.changeName(name);
 
-	this.levels.forEach(function(lvl, i) {
-		lvl.changeLevel(name + '-' + (i + 1));
-	});
-
 	main.control.action('getCubeInfo', {name: name}, function(data) {
+		this.cube.size = data.info.size;
+		this.cube.mapSize = data.info.mapSize;
 		this.changeColor(data.info.color);
 		this.startCell(data.info.start);
 		this.endCell(data.info.end);
+		console.log('cubeInfo')
 	}.bind(this))
+
+	this.levels.forEach(function(lvl, i) {
+		lvl.changeLevel(name + '-' + (i + 1));
+	});
 };
 
 CubeBuilder.prototype.changeStickerMaps = function(e) {
@@ -740,8 +752,9 @@ CubeBuilder.prototype.parse = function(json) {
 	if (typeof json === 'string') {
 		json = JSON.parse(json);
 	}
+	this.cube.parse(json);
 	this.name = json.name;
 	this.startCL = json.start || {x: 1, y: 1, z: 0};
-	this.finishCL = json.end || {x: 4, y:4, z: 6};
-	levels: this.levels.map(function(l, i) {return l.parse(json.levels[i]);})
+	this.finishCL = json.end || {x: this.cube.mapSize - 2, y:this.cube.mapSize - 2, z: this.cube.size - 1};
+	this.levels.map(function(l, i) {return l.parse(json.levels[i]);});
 };
