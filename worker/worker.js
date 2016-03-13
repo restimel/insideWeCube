@@ -235,7 +235,9 @@ function getCubeInfo(name) {
 		name: cube.name,
 		color: cube.color,
 		start: cube.startCell,
-		end: cube.finishCell
+		end: cube.finishCell,
+		size: cube.size,
+		mapSize: cube.mapSize
 	};
 }
 

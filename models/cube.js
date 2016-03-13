@@ -2,14 +2,16 @@ function Cube (name) {
 	this.name = name;
 	this.levels = [];
 	this.visible = true;
+	this.size = 7;
+	this.mapSize = 6;
 
 	this.startCell = {x: 1, y: 1, z: 0};
-	this.finishCell = {x: 4, y: 4, z: 6};
+	this.finishCell = {x: this.mapSize - 2, y: this.mapSize - 2, z: this.size - 1};
 	this.phantomBalls = [];
 }
 
 Cube.prototype.init = function() {
-	var nb = 7,
+	var nb = this.size,
 		i;
 
 	for (i = 0; i < nb; i++) {
@@ -61,7 +63,7 @@ Cube.prototype.addLevel = function (z, level) {
 };
 
 Cube.prototype.get = function (x, y, z) {
-	if (z<0 || z>6 || x<0 || x>5 || y<0 || y>5) {
+	if (z<0 || z>=this.size || x<0 || x>=this.mapSize || y<0 || y>=this.mapSize) {
 		return {};
 	}
 	return this.levels[z].get(x, y);
@@ -82,7 +84,7 @@ Cube.prototype.getNeighbours = function (x, y, z) {
 		cell = this.get(x, y, z);
 
 	// down
-	if (x < 5 && cell.d && this.isFree(x+1, y, z)) {
+	if (x < this.mapSize - 1 && cell.d && this.isFree(x+1, y, z)) {
 		directions.push({
 			x: x + 1,
 			y: y,
@@ -92,7 +94,7 @@ Cube.prototype.getNeighbours = function (x, y, z) {
 	}
 
 	// right
-	if (y < 5 && cell.r && this.isFree(x, y+1, z)) {
+	if (y < this.mapSize - 1 && cell.r && this.isFree(x, y+1, z)) {
 		directions.push({
 			x: x ,
 			y: y + 1,
@@ -102,7 +104,7 @@ Cube.prototype.getNeighbours = function (x, y, z) {
 	}
 
 	// bottom
-	if (z < 6 && cell.b) {
+	if (z < (this.size - 1) && cell.b) {
 		directions.push({
 			x: x ,
 			y: y ,
@@ -162,7 +164,7 @@ Cube.prototype.toJSON = function() {
 		};
 	}
 
-	if (this.finishCell.x !== 4 || this.finishCell.y !== 4 || this.finishCell.z !== 6) {
+	if (this.finishCell.x !== this.mapSize - 2 || this.finishCell.y !== this.mapSize - 2 || this.finishCell.z !== this.size - 1) {
 		json.end = {
 			x: this.finishCell.x,
 			y: this.finishCell.y,
@@ -207,7 +209,7 @@ Cube.prototype.parse = function(json, option) {
 	} else if (Cube.checkCell(json.finishCell)) {
 		this.finishCell = json.finishCell;
 	} else {
-		this.finishCell = {x: 4, y: 4, z: 6};
+		this.finishCell = {x: this.mapSize - 2, y: this.mapSize - 2, z: this.size - 1};
 	}
 
 	this.visible = !!json.visible;
@@ -520,8 +522,8 @@ Cube.prototype.renderMap = function(orientation, available, uid) {
 	switch(orientation) {
 		case 'top':
 		case 'bottom':
-			lx = 6;
-			ly = 6;
+			lx = this.mapSize;
+			ly = this.mapSize;
 			lz = this.levels.length;
 			break;
 
@@ -529,9 +531,9 @@ Cube.prototype.renderMap = function(orientation, available, uid) {
 		case 'left':
 		case 'front':
 		case 'back':
-			lx = 6;
+			lx = this.mapSize;
 			ly = this.levels.length;
-			lz = 6;
+			lz = this.mapSize;
 			break;
 	}
 
