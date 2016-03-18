@@ -32,9 +32,56 @@ Path.prototype.calculatePath = function() {
 	}.bind(this), 10);
 };
 
+Path.prototype.getAvailableCells = function(cell) {
+	var list = [];
+	var toAnalyzed = [cell];
+
+	var manageCell = function(cell) {
+		var links = cell.linked;
+		var i, li, nextCell;
+
+		list.push(cell);
+		if (!links) {
+			cell.linked = links = this.cube.getNeighbours(cell.x, cell.y, cell.z);
+		}
+
+		for (i = 0, li = links.length; i < li; i++) {
+			nextCell = searchCell(links[i]);
+
+			if (!nextCell) {
+				toAnalyzed.push(links[i]);
+			}
+		}
+	}.bind(this);
+
+	var searchCell = function(cell) {
+		var i;
+		for (i = list.length -1; i; i--) {
+			if (Cube.comparePosition(list[i], cell)) {
+				return list[i];
+			}
+		}
+
+		for (i = toAnalyzed.length -1; i; i--) {
+			if (Cube.comparePosition(toAnalyzed[i], cell)) {
+				return toAnalyzed[i];
+			}
+		}
+
+		return false;
+	};
+
+	while (toAnalyzed.length) {
+		cell = toAnalyzed.pop();
+		manageCell(cell);
+	}
+
+	return list;
+};
+
 Path.prototype.runCompute = function() {
-	var finishCell = this.cube.finishCell || {x: this.cube.mapSize - 2, y: this.cube.mapSize - 2, z: this.cube.size - 1},
-		startCell = this.cube.startCell || {x: 1, y: 1, z: 0};
+	var finishCell = this.cube.finishCell || {x: this.cube.mapSize - 2, y: this.cube.mapSize - 2, z: this.cube.size - 1};
+	var startCell = this.cube.startCell || {x: 1, y: 1, z: 0};
 	var deepest = 0;
 	var hash;
 
@@ -46,8 +93,8 @@ Path.prototype.runCompute = function() {
 	this.setTarget(finishCell);
 
 	// SPY.start('runCompute-createVar');
-	var p = [],
-		w = [],
+	var allCells = [],
+		cellsToAnalyzed = [],
 		info = {
 			finish: false,
 			length: 1,
@@ -57,27 +104,27 @@ Path.prototype.runCompute = function() {
 		searchCell = function(cell){
 			// SPY.start('searchCell');
 			var r = (function(cell) {
-			var i, li = p.length;
+				var i, li = allCells.length;
 
-			for (i = li - 1; i >= 0; i--) {
-				if (Cube.comparePosition(p[i], cell)) {
-					return p[i];
-				}
-			}
-
-			li = w.length;
-			for (i = 0; i < li; i++) {
-				if (Cube.comparePosition(w[i], cell)) {
-					if (w[i].dst > cell.dst) {
-						w[i].dst = cell.dst;
-						w[i].parent = cell.parent;
+				for (i = li - 1; i >= 0; i--) {
+					if (Cube.comparePosition(allCells[i], cell)) {
+						return allCells[i];
 					}
-					return w[i];
 				}
-			}
 
-			return false;
-		})(cell);
+				li = cellsToAnalyzed.length;
+				for (i = 0; i < li; i++) {
+					if (Cube.comparePosition(cellsToAnalyzed[i], cell)) {
+						if (cellsToAnalyzed[i].dst > cell.dst) {
+							cellsToAnalyzed[i].dst = cell.dst;
+							cellsToAnalyzed[i].parent = cell.parent;
+						}
+						return cellsToAnalyzed[i];
+					}
+				}
+
+				return false;
+			})(cell);
 		// SPY.stop('searchCell');
 		return r;},
 		addCell = function(ocell) {
@@ -87,7 +134,7 @@ Path.prototype.runCompute = function() {
 				nextCells = this.cube.getNeighbours(ocell.x, ocell.y, ocell.z);
 			// SPY.stop('addCell-1');
 			// SPY.start('addCell-2');
-			p.push(ocell);
+			allCells.push(ocell);
 			deepest = max(deepest, ocell.z);
 			// SPY.stop('addCell-2');
 
@@ -105,7 +152,7 @@ Path.prototype.runCompute = function() {
 				var f = searchCell(cell);
 				if (!f) {
 					cell.parent = ocell;
-					w.push(cell);
+					cellsToAnalyzed.push(cell);
 					ocell.linked.push(cell);
 				} else {
 					if (nextCells.length === 1) {
@@ -122,11 +169,11 @@ Path.prototype.runCompute = function() {
 			// SPY.start('findClosest');
 			var dst = Infinity,
 				pos = -1,
-				i, li = w.length;
+				i, li = cellsToAnalyzed.length;
 
 			for (i = 0; i < li; i++) {
-				if (w[i].dst < dst) {
-					dst = w[i].dst;
+				if (cellsToAnalyzed[i].dst < dst) {
+					dst = cellsToAnalyzed[i].dst;
 					pos = i;
 				}
 			}
@@ -137,10 +184,10 @@ Path.prototype.runCompute = function() {
 		createPath = function() {
 			// SPY.start('createPath');
 			var i, cell;
-			while (w.length) {
+			while (cellsToAnalyzed.length) {
 				i = findClosest();
-				cell = w[i];
-				w.splice(i, 1);
+				cell = cellsToAnalyzed[i];
+				cellsToAnalyzed.splice(i, 1);
 
 				if (Cube.comparePosition(cell, finishCell)) {
 					info.finish = cell;
@@ -155,14 +202,19 @@ Path.prototype.runCompute = function() {
 	// SPY.stop('runCompute-createVar');
 
 	firstCell.dst = 0;
-	w.push(firstCell);
+	cellsToAnalyzed.push(firstCell);
 	createPath();
 
 	info.deepest = deepest;
 	if (info.finish) {
 		hash = this.cube.getHash(true);
 	}
-	this.result({accessible: p, info: info, hash: hash});
+	//TODO p must also include possibilities of phantom bals (regarding options)
+	if (watchGhost) {
+		for all ghost 
+			moreAvvailable = this.getAvailableCells(ghost);
+	}
+	this.result({accessible: allCells, info: info, hash: hash});
 };
 
 /* could be override to use results elsewhere */
