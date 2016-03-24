@@ -54,7 +54,7 @@ V1.3
 	Build Cube
 	✓ See phantom ball
 	✓ Defines phantom in cubes
-	* auto-save to draft
+	+ auto-save to draft
 		→ FAQ: What is draft cube
 	* key Shortcut (Ctrl+S / Ctrl+z)
 	+ Add not accessible cell for advanced tool

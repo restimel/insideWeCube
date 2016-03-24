@@ -219,7 +219,8 @@ Path.prototype.runCompute = function() {
 
 /* could be override to use results elsewhere */
 Path.prototype.result = function(rslt) {
-	self.postMessage({data: {action: 'getPath', data: rslt}, token: this.token});
+	this.storeData = rslt || this.storeData;
+	self.postMessage({data: {action: 'getPath', data: this.storeData}, token: this.token});
 };
 
 /*
@@ -803,7 +804,14 @@ Path.prototype.setCell = function(args) {
 		type = args.type,
 		value = args.value;
 
-	if (type === 's' && value === 1) {
+	if (type === 'P') {
+		this.cube.togglePhantom({
+			x: x,
+			y: y,
+			z: z
+		});
+		return this.result();
+	} else if (type === 's' && value === 1) {
 		this.cube.startCell = {
 			x: x,
 			y: y,

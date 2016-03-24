@@ -461,6 +461,10 @@ summary {
 	content: '\f111'; /* ⬤ */
 	font-family: fontAwesome;
 }
+.cell-phantom:before {
+	content: '\f0a2'; /* bell */
+	font-family: fontAwesome;
+}
 .cell-wall, .cell-wallR-fill, .cell-wallD-fill {
 	background-color: rgb(0, 0, 0);
 }
