@@ -116,7 +116,8 @@ LevelConstructor.prototype.renderLevel = function(container) {
 
 	var tableContainer = document.createElement('div'),
 		table = document.createElement('table'),
-		row1, row2,	el, cell, x, y, bord;
+		row1, row2,	el, cell, x, y, bord,
+		classNames;
 
 	var mapSize = this.cube.cube.mapSize;
 
@@ -147,7 +148,11 @@ LevelConstructor.prototype.renderLevel = function(container) {
 
 			el = document.createElement('td');
 			el.id = 'main-' + x + '-' + y + '-' + this.index;
-			el.className = 'cell-main-' + (cell.b ? 'hole' : 'fill');
+			classNames = 'cell-main-' + (cell.b ? 'hole' : 'fill');
+			if (this.cube.cube.isPhantomCell({x:x, y:y, z:this.index})) {
+				classNames += ' cell-phantom'
+			}
+			el.className = classNames;
 
 			if (this.startCL && x === this.startCL[0] && y === this.startCL[1]) {
 				this.setCell(el, 's1', true);
@@ -358,6 +363,7 @@ LevelConstructor.prototype.change = function(e) {
 
 	id = id.split('-');
 
+	cellEvent:
 	switch (id[0]){
 		case 'main':
 			switch (this.action) {
@@ -366,6 +372,11 @@ LevelConstructor.prototype.change = function(e) {
 				case -1: type = 's'; val = -1; this.cube.endCell(id.slice(1).map(parseFloat)); break;
 				case 2:	type = 's'; val = 2; break;
 				case -2: type = 's'; val = -2; break;
+				case -255:
+					type = 'P';
+					this.cube.cube.togglePhantom(Cube.convertToCell([id[1], id[2], this.index]));
+					el.classList.toggle('cell-phantom');
+					break cellEvent;
 				default: return;
 			}
 

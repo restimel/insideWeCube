@@ -197,6 +197,14 @@ CubeBuilder.prototype.render = function(container) {
 	btn.value = -2;
 	this.toolBox.appendChild(btn);
 
+	btn = document.createElement('button');
+	btn.className = 'font-awesome';
+	btn.textContent = '\uf0a2'; // bell
+	btn.title = $$('Phantom ball');
+	btn.onclick = this.setAction.bind(this);
+	btn.value = -255;
+	this.toolBox.appendChild(btn);
+
 	header.appendChild(this.toolBox);
 
 	container.appendChild(header);
@@ -709,7 +717,6 @@ CubeBuilder.prototype.changeCube = function(e) {
 		this.changeColor(data.info.color);
 		this.startCell(data.info.start);
 		this.endCell(data.info.end);
-		console.log('cubeInfo')
 	}.bind(this))
 
 	this.levels.forEach(function(lvl, i) {

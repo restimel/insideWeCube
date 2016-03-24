@@ -382,6 +382,29 @@ Cube.prototype.isPhantomCell = function(cell) {
 	});
 };
 
+Cube.prototype.togglePhantom = function(cell, toggle) {
+	var index = -1;
+
+	this.phantomBalls.some(function(ghost, idx) {
+		var same = Cube.comparePosition(ghost, cell);
+
+		if (same) {
+			index = idx;
+		}
+		return same;
+	});
+
+	toggle = typeof toggle === 'boolean' ? !!toggle : index === -1;
+
+	if (toggle && index === -1) {
+		this.phantomBalls.push(cell);
+	} else if (!toggle && index !== -1) {
+		this.phantomBalls.splice(index, 1);
+	}
+
+	return toggle;
+};
+
 Cube.prototype.getClassFromCell = function(cell, classList, x, y, z) {
 	var isPositive = cell.s > 0;
 	var cellPosition = {x: x, y: y, z: z};
