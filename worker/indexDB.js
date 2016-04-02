@@ -1,4 +1,4 @@
-var dbVersion = 4;
+var dbVersion = 5;
 
 function Dbstore() {
 	if (typeof self.indexedDB === 'undefined') {
@@ -46,6 +46,7 @@ Dbstore.prototype.onupgradeneeded = function(event) {
 		case 1:
 		case 2:
 		case 3:
+		case 4:
 	}
 };
 
