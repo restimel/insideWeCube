@@ -4,12 +4,28 @@
 			"files": ["./index.html", "./*.js"],
 			"except": ["*/libs/*", "/demo/*", "/utils/*"]
 		},
+		"dictionaries": {
+			"globals": ["./ressources/dictionary.json"]
+		},
 		"parsedFile": "./ressources/parsed.json",
 		"rawDictionary": "./ressources/rawDictionary.json",
-		"dictionary": "./ressources/local_dictionary.json"
+		"dictionary": "./ressources/local_dictionary.json",
+		"log": ""
+	},
+	"project": {
+		"lng": ["en", "fr", "it"]
 	},
 	"parser": {
 		"keys": ["$$"]
+	},
+	"adapter": {
+		"rules": {
+			"newItem": {"source": "},"},
+			"getKey": {"source": "\"((?:[^\"\\\\]+|\\\\.)+)\"\\s*:\\s*\\{"},
+			"getContext": {"source": "\"__context:([^:]+):\""},
+			"getLabels": {"source": "\\{([\\s\\S]+)$"},
+			"getLabel": {"source": "\"([^\"]+)\"\\s*:\\s*\"((?:[^\"\\\\]+|\\\\.)+)\"", "flags": "g"}
+		}
 	},
 	"templates": {
 		"item": "\"@KEY~esc@\": {@context{CONTEXT}@ @label[LABELS](,)@}",

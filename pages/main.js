@@ -35,7 +35,7 @@ function main(container){
 	Helper.mainLoaded();
 }
 
-main.version = '1.2.1';
+main.version = '1.2.2';
 main.lastMainUpdate = new Date('03/18/2016'); // mm/dd/yyyy
 
 /**
