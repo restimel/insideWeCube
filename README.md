@@ -68,7 +68,7 @@ To do so run the script
 	$ ./utils/translator.sh
 ```
 
-Then open your browser to given url (http://localhost:8000 by default).
+Then open your browser to given url (http://localhost:8001 by default).
 
 ## Contributing
 

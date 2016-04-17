@@ -26,7 +26,7 @@ if ! type "node" >& /dev/null; then
   exit 1
 fi
 
-echo "You can fill dictionaries with application available at: http://localhost:8000/index.html";
-node main.js ../../i18n-configuration.json
+echo "You can fill dictionaries with application available at: http://localhost:8001/index.html";
+node main.js ../../i18n-configuration.json -p 8001
 
 cd -
