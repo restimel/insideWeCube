@@ -5,7 +5,10 @@
 			"except": ["*/libs/*", "/demo/*", "/utils/*"]
 		},
 		"dictionaries": {
-			"globals": ["./ressources/dictionary.json"]
+			"globals": [{
+				"path": "./ressources/dictionary.json",
+				"format": "DICTIONARY"
+			}]
 		},
 		"parsedFile": "./ressources/parsed.json",
 		"rawDictionary": "./ressources/rawDictionary.json",
@@ -18,22 +21,8 @@
 	"parser": {
 		"keys": ["$$"]
 	},
-	"adapter": {
-		"rules": {
-			"newItem": {"source": "},"},
-			"getKey": {"source": "\"((?:[^\"\\\\]+|\\\\.)+)\"\\s*:\\s*\\{"},
-			"getContext": {"source": "\"__context:([^:]+):\""},
-			"getLabels": {"source": "\\{([\\s\\S]+)$"},
-			"getLabel": {"source": "\"([^\"]+)\"\\s*:\\s*\"((?:[^\"\\\\]+|\\\\.)+)\"", "flags": "g"}
-		}
-	},
-	"templates": {
-		"item": "\"@KEY~esc@\": {@context{CONTEXT}@ @label[LABELS](,)@}",
-		"context": "\"context\":\"@CONTEXT~esc@\",",
-		"label": "\"@LNG@\":\"@LABEL~esc@\""
-	},
 	"output": [{
 		"path": "./ressources/dictionary.json",
-		"format": "{@item[ITEMS](,)@}"
+		"format": "DICTIONARY"
 	}]
 }
