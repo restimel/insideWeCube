@@ -491,9 +491,7 @@ CubeBuilder.prototype.renderTransform = function(val) {
 };
 
 CubeBuilder.prototype.renderPhantoms = function(val) {
-	this.levels.forEach(function(lvl) {
-		lvl.renderTransform(val);
-	});
+	this.cubePath.computePath();
 };
 
 CubeBuilder.prototype.propagateAction = function() {
