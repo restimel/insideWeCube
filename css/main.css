@@ -661,6 +661,11 @@ summary {
 }
 
 /* Dialog */
+dialog {
+	max-height: 70%;
+	overflow-y: auto;
+}
+
 dialog.dialog-cube-position {
 	width: 50%;
 	min-width: 29.5em;
