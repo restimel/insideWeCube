@@ -254,6 +254,10 @@ RatingOptions.prototype.loadOption = function(list) {
 	output.high = 66;
 	output.max = 100;
 	td.appendChild(output);
+
+	output = document.createElement('label');
+	output.id = 'output_meter_label';
+	td.appendChild(output);
 	tr.appendChild(td);
 	table.appendChild(tr);
 
@@ -314,8 +318,13 @@ RatingOptions.prototype.updateValues = function(evt) {
 	meter /= this.totalMax;
 	meter *= 100;
 
+	if (meter < 0) {
+		meter = 0;
+	}
+
 	this.dialogBox.querySelector('#output_total').value =  $$('%{.2}d%%', total);
 	this.dialogBox.querySelector('#output_meter').value = meter;
+	this.dialogBox.querySelector('#output_meter_label').textContent = $$('%{.2}d%%', meter);
 };
 
 RatingOptions.prototype.computeRanges = function(evt) {

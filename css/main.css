@@ -689,6 +689,10 @@ dialog.dialog-cube-position > .body-cube-position {
 	min-height: 10em;
 }
 
+#output_meter_label {
+	margin-left: 1em;
+}
+
 .form-cube-position {
 	display: block;
 	position: absolute;
