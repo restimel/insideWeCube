@@ -194,10 +194,16 @@ summary {
 .generator-menu {
 	position: absolute;
 	left: 0;
-	width: 300px;
+	width: 400px;
 	top: 10px;
 	height: 50px;
 	text-align: center;
+}
+.generator-menu > * {
+	display: inline-block;
+}
+.generator-menu > *:first-child {
+	margin-right: 1em;
 }
 
 .generator-level-selector {
@@ -217,7 +223,7 @@ summary {
 	position: absolute;
 	top: 10px;
 	height: 50px;
-	left: 300px;
+	left: 400px;
 	right: 0;
 	padding: 0.5em;
 	text-align: center;
@@ -225,6 +231,7 @@ summary {
 
 .generator-information div{
 	display: inline-block;
+	margin-right: 2em;
 }
 
 .generator-research-status {

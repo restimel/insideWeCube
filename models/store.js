@@ -81,10 +81,15 @@ var store = {
 		var lid = !!options.lid;
 		var allLvl = !!options.allLevels;
 		var groupByCube = !!options.groupByCube;
+		var filter = options.filter || -1;
 		var name;
 
 		this.cubes.forEach(function(cube) {
 			if (cube.visible) {
+				if (filter !== -1 && cube.size !== filter) {
+					return;
+				}
+
 				lvlList = [];
 				cube.levels.forEach(function(level, i) {
 					if (!allLvl && lid != level.lid && (!lid || Helper.config.lid)) {

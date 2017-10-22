@@ -133,15 +133,15 @@
 		"fr": "remarques sur ce plateau",
 		"it": "note su questo livello"
 	},
-	"Select all levels that can be put inside the cube. (You need to select at least 7 levels)": {
-		"en": "Select all levels that can be put inside the cube. (You need to select at least 7 levels)",
-		"fr": "Sélectionnez tous les plateaux que vous voulez éventuellement mettre dans le cube. (Vous devez choisir au moins 7 plateaux)",
-		"it": "Seleziona tutti i livelli che possono essere inseriti nel cubo. (Dovete selezionare almeno 7 livelli)"
+	"Select all levels that can be put inside the cube. (You need to select at least %d levels)": {
+		"en": "Select all levels that can be put inside the cube. (You need to select at least %d levels)",
+		"fr": "Sélectionnez tous les plateaux que vous voulez éventuellement mettre dans le cube. (Vous devez choisir au moins %d plateaux)",
+		"it": "Seleziona tutti i livelli che possono essere inseriti nel cubo. (Dovete selezionare almeno %d livelli)"
 	},
-	"Select at least 7 levels": {
-		"en": "Select at least 7 levels",
-		"fr": "Choisissez au moins 7 plateaux",
-		"it": "Scegliete almeno 7 livelli"
+	"Select at least %d levels": {
+		"en": "Select at least %d levels",
+		"fr": "Choisissez au moins %d plateaux",
+		"it": "Scegliete almeno %d livelli"
 	},
 	"Please select at least 1 lid level": {
 		"en": "Please select at least 1 lid level",

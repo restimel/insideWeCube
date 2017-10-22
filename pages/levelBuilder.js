@@ -12,6 +12,7 @@ function LevelConstructor(index, cubePath, parentCube, cubeColor, options) {
 	this.color = cubeColor;
 	this.lastLevel = !!options.lastLevel;
 	this.action = 0;
+	this.isActive = true;
 }
 
 LevelConstructor.prototype.render = function(container) {
@@ -285,6 +286,15 @@ LevelConstructor.prototype.changeLevel = function(e) {
 	}.bind(this));
 
 	this.cubePath.loadLevel(this.index, lvl);
+};
+
+LevelConstructor.prototype.showLevel = function(display) {
+	if (display) {
+		this.container.style.display = '';
+	} else {
+		this.container.style.display = 'none';
+	}
+	this.isActive = !!display;
 };
 
 LevelConstructor.prototype.changeLidLevel = function(input) {

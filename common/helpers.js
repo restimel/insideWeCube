@@ -34,10 +34,14 @@ var Helper = {
 		return label;
 	},
 
-	buildSelect: function buildSelect(select, list, selectedList) {
+	buildSelect: function buildSelect(select, list, selectedList, clearOptions) {
 		selectedList = selectedList || [];
 		if (!(selectedList instanceof Array)) {
 			selectedList = [selectedList];
+		}
+
+		if (clearOptions) {
+			select.innerHTML=  '';
 		}
 
 		list.forEach(function(opt) {

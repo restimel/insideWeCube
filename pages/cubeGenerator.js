@@ -3,6 +3,7 @@ function CubeGenerator() {
 	this.token = main.control.add(this.onMessage.bind(this));
 	this.cube = new Cube();
 	this.saveList = [null];
+	this.cubeSize = 7;
 
 	this.init();
 }
@@ -68,7 +69,7 @@ CubeGenerator.prototype.render = function(container) {
 
 CubeGenerator.prototype.renderMenu = function() {
 	var container = this.elements.menu,
-		button;
+		button, select;
 
 	container.innerHTML = '';
 	if (this.state === 'config') {
@@ -84,6 +85,20 @@ CubeGenerator.prototype.renderMenu = function() {
 		button.title = $$('Manage options');
 		button.onclick = this.advancedOptions.render.bind(this.advancedOptions);
 		container.appendChild(button);
+
+		select = document.createElement('select');
+		select.onchange = this.changeCubeSize.bind(this, select);
+		Helper.buildSelect(select, [{
+			name: $$('only normal cubes'),
+			id: 7
+		}, {
+			name: $$('only novice cubes'),
+			id: 5
+		}, {
+			name: $$('All cubes'),
+			id: -1
+		}], this.cubeSize);
+		container.appendChild(select);
 	} else {
 		button = document.createElement('button');
 		button.className = 'font-awesome'
@@ -113,7 +128,7 @@ CubeGenerator.prototype.renderLevelSelector = function() {
 	fieldset.appendChild(legend);
 
 	label = document.createElement('aside');
-	label.textContent = $$('Select all levels that can be put inside the cube. (You need to select at least 7 levels)');
+	label.textContent = $$('Select all levels that can be put inside the cube. (You need to select at least %d levels)', this.cubeSize > 0 ? this.cubeSize : 7);
 	fieldset.appendChild(label);
 
 	select = document.createElement('select');
@@ -139,9 +154,14 @@ CubeGenerator.prototype.renderLevelSelector = function() {
 	container.appendChild(fieldset);
 
 	/* initialisation */
+	this.getLvlList();
+};
+
+CubeGenerator.prototype.getLvlList = function() {
 	main.control.action('getLevels', {
 		allLevels: true,
-		groupByCube: true
+		groupByCube: true,
+		filter: this.cubeSize
 	}, this.getLevels.bind(this));
 };
 
@@ -271,11 +291,22 @@ CubeGenerator.prototype.changeState = function(state) {
 	}
 };
 
+CubeGenerator.prototype.changeCubeSize = function(select) {
+	this.cubeSize = +select.value;
+	this.renderLevelSelector();
+	// this.getLvlList();
+};
+
 CubeGenerator.prototype.isRunningValid = function() {
+	var size = 7;
 	var issues = [];
 
-	if (this.computeOption.levels.length < 7) {
-		issues.push($$('Select at least 7 levels'));
+	if (this.cubeSize > 0) {
+		size = this.cubeSize;
+	}
+
+	if (this.computeOption.levels.length < size) {
+		issues.push($$('Select at least %d levels', size));
 	}
 
 	return issues;
@@ -374,7 +405,8 @@ CubeGenerator.prototype.changeLevelSelected = function(evt) {
 	main.control.action('generator', {
 		action: 'loadLevels',
 		data: {
-			levels: this.computeOption.levels
+			levels: this.computeOption.levels,
+			size: this.cubeSize
 		}
 	}, this.token);
 };
@@ -407,7 +439,8 @@ CubeGenerator.prototype.cancelSearch = function() {
 /* Action from worker */
 
 CubeGenerator.prototype.getLevels = function(list) {
-	Helper.buildSelect(this.elements.levelsSelect, list, this.computeOption.levels);
+	Helper.buildSelect(this.elements.levelsSelect, list, this.computeOption.levels, true);
+	this.changeLevelSelected({target: this.elements.levelsSelect});
 };
 
 CubeGenerator.prototype.issueBeforeRun = function(issues) {

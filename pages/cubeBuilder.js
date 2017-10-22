@@ -716,11 +716,17 @@ CubeBuilder.prototype.changeCube = function(e) {
 		this.changeColor(data.info.color);
 		this.startCell(data.info.start);
 		this.endCell(data.info.end);
-	}.bind(this))
 
-	this.levels.forEach(function(lvl, i) {
-		lvl.changeLevel(name + '-' + (i + 1));
-	});
+		this.levels.forEach(function(lvl, i) {
+			lvl.lastLevel = i === this.cube.size - 1;
+			if (i < this.cube.size) {
+				lvl.changeLevel(name + '-' + (i + 1));
+				lvl.showLevel(true);
+			} else {
+				lvl.showLevel(false);
+			}
+		}, this);
+	}.bind(this))
 };
 
 CubeBuilder.prototype.changeStickerMaps = function(e) {
@@ -744,14 +750,21 @@ CubeBuilder.prototype.save = function() {
 };
 
 CubeBuilder.prototype.toJSON = function() {
-	return {
+	var dbg= {
 		name: this.name,
 		color: this.color,
-		levels: this.levels.map(function(l) {return l.toJSON();}),
+		levels: this.levels.reduce(function(lvls, l) {
+			if (l.isActive) {
+				lvls.push(l.toJSON());
+			}
+			return lvls;
+		}, []),
 		start: this.startCL,
 		end: this.finishCL,
 		visible: true
 	};
+	console.log(dbg)
+	return dbg;
 };
 
 CubeBuilder.prototype.parse = function(json) {

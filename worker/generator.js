@@ -232,6 +232,7 @@ Generator.prototype.startCompute = function(data, attempts) {
 Generator.prototype.loadLevels = function(data) {
 	var levels = data.levels;
 	var backWorker = data.backWorker;
+	this.size = data.size > 0 ? data.size : this.size;
 	this.prepareLevels(levels);
 
 	this.backWorker = backWorker;

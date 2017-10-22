@@ -448,102 +448,105 @@ Cube.prototype.renderMap = function(orientation, available, uid) {
 	var cl, clName;
 	var that = this;
 	var computeClass = {
-			'top': function(ox, oy, oz) {
-				var x = ox,
-					y = oy,
-					z = oz;
-				var map = {
-					TOP: 'TOP',
-					BOTTOM: 'BOTTOM',
-					RIGHT: 'RIGHT',
-					LEFT: 'LEFT',
-					DOWN: 'DOWN',
-					UP: 'UP'
-				}
-
-				clName = clName.concat(getClassName(x, y, z, map));
-			},
-			'bottom': function(ox, oy, oz) {
-				var x = lx - ox - 1,
-					y = oy,
-					z = lz - oz - 1;
-
-				var map = {
-					TOP: 'BOTTOM',
-					BOTTOM: 'TOP',
-					RIGHT: 'RIGHT',
-					LEFT: 'LEFT',
-					DOWN: 'UP',
-					UP: 'DOWN'
-				}
-
-				clName = clName.concat(getClassName(x, y, z, map));
-			},
-			'right': function(ox, oy, oz) {
-				var x = ox,
-					y = lz - oz - 1,
-					z = oy;
-
-				var map = {
-					TOP: 'RIGHT',
-					BOTTOM: 'LEFT',
-					RIGHT: 'BOTTOM',
-					LEFT: 'TOP',
-					DOWN: 'DOWN',
-					UP: 'UP'
-				}
-
-				clName = clName.concat(getClassName(x, y, z, map));
-			},
-			'left': function(ox, oy, oz) {
-				var x = lx - ox - 1,
-					y = oz,
-					z = oy;
-
-				var map = {
-					TOP: 'LEFT',
-					BOTTOM: 'RIGHT',
-					RIGHT: 'BOTTOM',
-					LEFT: 'TOP',
-					DOWN: 'UP',
-					UP: 'DOWN'
-				}
-
-				clName = clName.concat(getClassName(x, y, z, map));
-			},
-			'front': function(ox, oy, oz) {
-				var x = lz - oz - 1,
-					y = lx - ox - 1,
-					z = oy;
-
-				var map = {
-					TOP: 'DOWN',
-					BOTTOM: 'UP',
-					RIGHT: 'BOTTOM',
-					LEFT: 'TOP',
-					DOWN: 'LEFT',
-					UP: 'RIGHT'
-				}
-
-				clName = clName.concat(getClassName(x, y, z, map));
-			},
-			'back': function(ox, oy, oz) {
-				var x = oz,
-					y = ox,
-					z = oy;
-
-				var map = {
-					TOP: 'UP',
-					BOTTOM: 'DOWN',
-					RIGHT: 'BOTTOM',
-					LEFT: 'TOP',
-					DOWN: 'RIGHT',
-					UP: 'LEFT'
-				}
-
-				clName = clName.concat(getClassName(x, y, z, map));
+		'top': function(ox, oy, oz) {
+			var x = ox,
+				y = oy,
+				z = oz;
+			var map = {
+				TOP: 'TOP',
+				BOTTOM: 'BOTTOM',
+				RIGHT: 'RIGHT',
+				LEFT: 'LEFT',
+				DOWN: 'DOWN',
+				UP: 'UP'
 			}
-		}[orientation];
+
+			clName = clName.concat(getClassName(x, y, z, map));
+		},
+		'bottom': function(ox, oy, oz) {
+			var x = lx - ox - 1,
+				y = oy,
+				z = lz - oz - 1;
+
+			var map = {
+				TOP: 'BOTTOM',
+				BOTTOM: 'TOP',
+				RIGHT: 'RIGHT',
+				LEFT: 'LEFT',
+				DOWN: 'UP',
+				UP: 'DOWN'
+			}
+
+			clName = clName.concat(getClassName(x, y, z, map));
+		},
+		'right': function(ox, oy, oz) {
+			var x = ox,
+				y = lz - oz - 1,
+				z = oy;
+
+			var map = {
+				TOP: 'RIGHT',
+				BOTTOM: 'LEFT',
+				RIGHT: 'BOTTOM',
+				LEFT: 'TOP',
+				DOWN: 'DOWN',
+				UP: 'UP'
+			}
+
+			clName = clName.concat(getClassName(x, y, z, map));
+		},
+		'left': function(ox, oy, oz) {
+			var x = lx - ox - 1,
+				y = oz,
+				z = oy;
+
+			var map = {
+				TOP: 'LEFT',
+				BOTTOM: 'RIGHT',
+				RIGHT: 'BOTTOM',
+				LEFT: 'TOP',
+				DOWN: 'UP',
+				UP: 'DOWN'
+			}
+
+			clName = clName.concat(getClassName(x, y, z, map));
+		},
+		'front': function(ox, oy, oz) {
+			var x = lz - oz - 1,
+				y = lx - ox - 1,
+				z = oy;
+
+			var map = {
+				TOP: 'DOWN',
+				BOTTOM: 'UP',
+				RIGHT: 'BOTTOM',
+				LEFT: 'TOP',
+				DOWN: 'LEFT',
+				UP: 'RIGHT'
+			}
+
+			clName = clName.concat(getClassName(x, y, z, map));
+		},
+		'back': function(ox, oy, oz) {
+			var x = oz,
+				y = ox,
+				z = oy;
+
+			var map = {
+				TOP: 'UP',
+				BOTTOM: 'DOWN',
+				RIGHT: 'BOTTOM',
+				LEFT: 'TOP',
+				DOWN: 'RIGHT',
+				UP: 'LEFT'
+			}
+
+			clName = clName.concat(getClassName(x, y, z, map));
+		}
+	}[orientation];
+	// var lvlLength = this.levels.reduce(function(total, lvl) {
+	// 	return total + (lvl.isActive ? 1 : 0);
+	// }, 0);
 
 	switch(orientation) {
 		case 'top':
