@@ -117,6 +117,7 @@ Generator.prototype.runningCompute = function() {
 	// this.result('debug',{name:'next', time: measure.t2, mean: measure.t2/count});
 };
 
+/* called when cube has been analyzed */
 Generator.prototype.pathResult = function(rslt) {
 	if (rslt.info.finish) {
 		rslt.levels = this.lastGLevel.getLevels().map(LevelGenerator._getLvlId);
@@ -201,7 +202,11 @@ Generator.prototype.stop = function(data) {
 	if (this.worker && this.worker.status === 'running') {
 		this.worker.terminate();
 		this.createWorker(true);
-		this.sendToWorker('loadLevels', {levels: this.rawLevels, backWorker: true});
+		this.sendToWorker('loadLevels', {
+			levels: this.rawLevels, backWorker: true,
+			size: this.size,
+			mapSize: this.size > 6 ? this.size - 1 : this.size
+		});
 	} else {
 		console.log('issue with worker status', this.worker && this.worker.status);
 	}
@@ -232,14 +237,26 @@ Generator.prototype.startCompute = function(data, attempts) {
 Generator.prototype.loadLevels = function(data) {
 	var levels = data.levels;
 	var backWorker = data.backWorker;
+	var oldSize = this.size;
+
 	this.size = data.size > 0 ? data.size : this.size;
+	if (oldSize !== this.size) {
+		this.path.cube.reset({
+			size: this.size,
+			mapSize: data.mapSize > 0 ? data.mapSize : 6
+		});
+	}
 	this.prepareLevels(levels);
 
 	this.backWorker = backWorker;
 
 	if (!backWorker) {
 		this.createWorker(false);
-		this.sendToWorker('loadLevels', {levels: levels, backWorker: true});
+		this.sendToWorker('loadLevels', {
+			levels: levels, backWorker: true,
+			size: this.size,
+			mapSize: this.size > 6 ? this.size - 1 : this.size
+		});
 
 		this.rawLevels = levels;
 

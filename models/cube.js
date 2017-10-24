@@ -2,11 +2,8 @@ function Cube (name) {
 	this.name = name;
 	this.levels = [];
 	this.visible = true;
-	this.size = 7;
-	this.mapSize = 6;
+	this.reset({});
 
-	this.startCell = {x: 1, y: 1, z: 0};
-	this.finishCell = {x: this.mapSize - 2, y: this.mapSize - 2, z: this.size - 1};
 	this.phantomBalls = [];
 }
 
@@ -19,6 +16,13 @@ Cube.prototype.init = function() {
 	}
 	this.hash = null;
 };
+
+Cube.prototype.reset = function(args) {
+	this.size = args.size || 7;
+	this.mapSize = args.mapSize || 6;
+	this.startCell = {x: 1, y: 1, z: 0};
+	this.finishCell = {x: this.mapSize - 2, y: this.mapSize - 2, z: this.size - 1};
+}
 
 Cube.prototype.clone = function(alsoMetaData) {
 	var cube = new Cube();

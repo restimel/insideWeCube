@@ -406,7 +406,8 @@ CubeGenerator.prototype.changeLevelSelected = function(evt) {
 		action: 'loadLevels',
 		data: {
 			levels: this.computeOption.levels,
-			size: this.cubeSize
+			size: this.cubeSize,
+			mapSize: this.cubeSize > 6 ? this.cubeSize - 1 : this.cubeSize
 		}
 	}, this.token);
 };
