@@ -793,8 +793,11 @@ Path.prototype.rotateLevel = function(args) {
 };
 
 Path.prototype.reset = function(args) {
+	var color = this.cube.color;
 	this.cube = new Cube();
+	this.cube.reset(args);
 	this.cube.init();
+	this.cube.color = color;
 };
 
 /**

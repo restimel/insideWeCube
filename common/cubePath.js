@@ -32,9 +32,10 @@ CubePath.prototype.rotateLevel = function(index, rotation) {
 	main.control.action('path', data, this.token);
 };
 
-CubePath.prototype.reset = function(index, levelName) {
+CubePath.prototype.reset = function(info) {
 	var data = {
-		action: 'reset'
+		action: 'reset',
+		data: info || {}
 	};
 
 	main.control.action('path', data, this.token);

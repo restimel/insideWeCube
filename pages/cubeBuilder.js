@@ -710,12 +710,21 @@ CubeBuilder.prototype.changeCube = function(e) {
 	this.changeName(name);
 
 	main.control.action('getCubeInfo', {name: name}, function(data) {
-		this.cube.size = data.info.size;
-		this.cube.mapSize = data.info.mapSize;
+		this.cube.reset({
+			size: data.info.size,
+			mapSize: data.info.mapSize
+		});
 		this.cube.phantomBalls = data.info.phantomBalls;
 		this.changeColor(data.info.color);
 		this.startCell(data.info.start);
 		this.endCell(data.info.end);
+
+		this.cubePath.reset({
+			size: this.cube.size,
+			mapSize: this.cube.mapSize,
+			startCell: this.cube.startCell,
+			finishCell: this.cube.finishCell
+		});
 
 		this.levels.forEach(function(lvl, i) {
 			lvl.lastLevel = i === this.cube.size - 1;
@@ -750,7 +759,7 @@ CubeBuilder.prototype.save = function() {
 };
 
 CubeBuilder.prototype.toJSON = function() {
-	var dbg= {
+	return {
 		name: this.name,
 		color: this.color,
 		levels: this.levels.reduce(function(lvls, l) {
@@ -763,8 +772,6 @@ CubeBuilder.prototype.toJSON = function() {
 		end: this.finishCL,
 		visible: true
 	};
-	console.log(dbg)
-	return dbg;
 };
 
 CubeBuilder.prototype.parse = function(json) {

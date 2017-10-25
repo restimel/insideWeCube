@@ -20,8 +20,8 @@ Cube.prototype.init = function() {
 Cube.prototype.reset = function(args) {
 	this.size = args.size || 7;
 	this.mapSize = args.mapSize || 6;
-	this.startCell = {x: 1, y: 1, z: 0};
-	this.finishCell = {x: this.mapSize - 2, y: this.mapSize - 2, z: this.size - 1};
+	this.startCell = args.startCell || {x: 1, y: 1, z: 0};
+	this.finishCell = args.finishCell || {x: this.mapSize - 2, y: this.mapSize - 2, z: this.size - 1};
 }
 
 Cube.prototype.clone = function(alsoMetaData) {
