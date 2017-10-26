@@ -290,6 +290,7 @@ CubeBuilder.prototype.renderLevel = function(level, i) {
 
 	level.render(sct);
 	this.cubeContainer.appendChild(sct);
+	level.showLevel(i < this.cube.size);
 };
 
 CubeBuilder.prototype.renderInfo = function(info) {

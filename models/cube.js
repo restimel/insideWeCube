@@ -190,8 +190,8 @@ Cube.prototype.parse = function(json, option) {
 	if (json.color) {
 		this.color = json.color;
 	}
-	this.size = json.size || 7;
-	this.mapSize = json.mapSize || 6;
+	this.size = json.size || json.levels.length || 7;
+	this.mapSize = json.mapSize || json.levels[0] && json.levels[0].cells.length || 6;
 
 	if (typeof json.ghost === 'object' && json.ghost instanceof Array && json.ghost.length) {
 		this.phantomBalls = json.ghost.map(function(cell) {
