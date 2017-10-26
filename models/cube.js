@@ -1,5 +1,7 @@
+var uid = 0;
+
 function Cube (name) {
-	this.name = name;
+	this.name = name || uid++;
 	this.levels = [];
 	this.visible = true;
 	this.reset({});

@@ -1,4 +1,4 @@
-var dbVersion = 5;
+var dbVersion = 6;
 
 function Dbstore() {
 	if (typeof self.indexedDB === 'undefined') {
@@ -43,10 +43,8 @@ Dbstore.prototype.onupgradeneeded = function(event) {
 			objectStore.createIndex('name', 'name', {unique: false});
 
 			objectStore = this.db.createObjectStore('draft', {keyPath: 'history', autoIncrement: true});
-		case 1:
-		case 2:
-		case 3:
-		case 4:
+		case 1: case 2: case 3: case 4:
+		case 5: /* new cubes */
 	}
 };
 
