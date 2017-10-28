@@ -1,4 +1,4 @@
-var dbVersion = 6;
+var dbVersion = 7;
 
 function Dbstore() {
 	if (typeof self.indexedDB === 'undefined') {
@@ -37,15 +37,13 @@ Dbstore.prototype.onupgradeneeded = function(event) {
 
 	var objectStore;
 
-	switch(event.oldVersion) {
-		case 0:
-			objectStore = this.db.createObjectStore('cubes');
-			objectStore.createIndex('name', 'name', {unique: false});
+	if (event.oldVersion === 0) {
+		objectStore = this.db.createObjectStore('cubes');
+		objectStore.createIndex('name', 'name', {unique: false});
 
-			objectStore = this.db.createObjectStore('draft', {keyPath: 'history', autoIncrement: true});
-		case 1: case 2: case 3: case 4:
-		case 5: /* new cubes */
+		objectStore = this.db.createObjectStore('draft', {keyPath: 'history', autoIncrement: true});
 	}
+	/* other versions are to reload cube.json */
 };
 
 Dbstore.prototype.onVersionChange = function(event) {

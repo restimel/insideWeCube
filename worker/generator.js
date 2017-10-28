@@ -243,7 +243,9 @@ Generator.prototype.loadLevels = function(data) {
 	if (oldSize !== this.size) {
 		this.path.cube.reset({
 			size: this.size,
-			mapSize: data.mapSize > 0 ? data.mapSize : 6
+			mapSize: data.mapSize > 0 ? data.mapSize : 6,
+			startCell: data.startCell,
+			finishCell: data.finishCell
 		});
 	}
 	this.prepareLevels(levels);

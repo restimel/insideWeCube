@@ -1,48 +1,10 @@
 Legend:
  * task that should be done for this version
- + task which could be great to do but will be done if enough motivation or in a later version
+ + task which could be great to do but will be done if enough motivation or in a future version
  ✓ task done in this version
  ✗ dropped task
  ? need more thinking on this task
  → some note or some new important task
-
-V1.2
-	Build Cube
-	✓ Change start/Finish position
-	✓ Consider Pin on level that block the ball
-		✓ simple movement with Pin
-		✓ consider pin that blocks below level to be build (no right wall for the cell bellow)
-	✓ Block level7 at level7
-	✓ Do not propose other levels at level7
-		✓ add an option to deactivate it
-	✓ create an advanced tool for different options
-		✓ level7
-		✓ blockers cell
-		✓ cell tools
-			✓ hole (default)
-			✓ Start/Finish
-			✓ pin
-	✓ add comments to levels
-	✓ give small map with different orientation (other than top/bottom like stickers)
-		✓ add an option to watch/hide them
-		✓ display them in print mode
-
-	Path
-	✓ Change algorithm to something like try all moves and see which is the shortest (done when ball is lost)
-		→ should fix:
-			There are still issues if ball reach another valid path
-			Some hard passages
-
-→	Auto-Generator
-	✓ create interface to choose levels and options
-		✓ select levels
-		+ change start position
-		+ allow to rotate levels
-		✓ manage pin for levels selector
-	✓ compute levels to test solvabale cubes
-	✓ create interface to display solvable cubes
-		✓ select cubes user like and save them
-		✓ identify cubes that are already in database
 
 V1.3
 	General
@@ -54,6 +16,7 @@ V1.3
 	Build Cube
 	✓ See phantom ball
 	✓ Defines phantom in cubes
+	✓ Display novice cubes as 5x5x5
 	+ auto-save to draft
 		→ FAQ: What is draft cube
 	* key Shortcut (Ctrl+S / Ctrl+z)
@@ -66,6 +29,7 @@ V1.3
 	upgrade interface to choose levels and options
 		+ change start position
 		+ allow to rotate levels
+		✓ Choose only specific cubes (normal or novice)
 	* manage level by level
 		* add an interface to tell wich level are allowed on each level
 	* add a filter to find good levels only which match the filter
@@ -91,6 +55,10 @@ V1.3
 
 ──────────────────────────────────────────────────────
 V2.0 (or later... if enough motivation)
+
+	General
+	+ Add tests (why I haven't start with that :'( )
+	+ Rebuilt interface by using a framework (like VueJS)
 
 	Build cube
 	? switch level (need idea about design)

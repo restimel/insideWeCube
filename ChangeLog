@@ -2,6 +2,8 @@ v1.2 → v1.3
 New features
 	* Use i18n-js-formatter lib and i18n-js-parser tool to manage translations
 	* Allow to see phantom ball on maps
+	* Novice cube are displayed as 5x5x5
+	* It is possible to generate novice cubes
 
 v1.1 → v1.2
 New features
