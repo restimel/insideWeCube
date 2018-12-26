@@ -49,7 +49,7 @@ if (typeof console === 'undefined') {
 						}
 					}
 					break;
-				default: 
+				default:
 					return v;
 			}
 		}
@@ -73,10 +73,16 @@ importScripts(
 	'../common/helpers.js'
 );
 
+var dictionaryPath = self.rootPath;
+if (dictionaryPath && !/\/$/.test(dictionaryPath)) {
+	dictionaryPath += '/';
+}
+dictionaryPath += 'ressources/dictionary.json';
+
 $$.configuration({
 	locales: ['en', 'fr', 'it'],
 	localeName: {en: 'English', fr: 'Français', it: 'Italiano'},
-    dictionary: self.rootPath + 'ressources/dictionary.json',
+    dictionary: dictionaryPath,
     storage: ['localStorage:language', 'cookie:language'],
     syncLoading: true
 });

@@ -22,7 +22,7 @@ var Helper = {
 			var option = document.createElement('option');
 			option.value = item.id;
 			option.textContent = item.text;
-			
+
 			if (item.id === value) {
 				option.selected = true;
 			}
@@ -212,7 +212,7 @@ var Helper = {
 			set: buildBooleanSet(key)
 		});
 	});
-	
+
 	Helper.ratingCaracs.forEach(function(carac) {
 		var key = 'pnd_' + carac;
 

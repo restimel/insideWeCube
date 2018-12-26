@@ -139,16 +139,22 @@ CubeGenerator.prototype.renderLevelSelector = function() {
 	select.onmousedown = function(evt) {
 		var el = evt.target;
 
-		if (evt.altKey || evt.ctrlKey || evt.metaKey || evt.shiftKey || el.tagName.toLowerCase() !== 'option' || typeof MouseEvent === 'undefined') {
+		if (evt.altKey || evt.ctrlKey || evt.metaKey || evt.shiftKey || el.tagName.toLowerCase() !== 'option') {
 			return; /* use the default behavior */
 		}
 
 		evt.preventDefault();
 		evt.stopPropagation();
 
-		var evtMouse = new MouseEvent('mousedown', {ctrlKey: true, 'bubbles':true, 'cancelable':false});
-		el.dispatchEvent(evtMouse);
+		var currentValue = el.selected;
+		if (typeof MouseEvent !== 'undefined') {
+			var evtMouse = new MouseEvent('mousedown', {ctrlKey: true, 'bubbles':true, 'cancelable':false});
+			el.dispatchEvent(evtMouse);
+		}
+		el.selected = !currentValue;
+		select.onchange(evt);
 	};
+	select.style.resize = 'both';
 	fieldset.appendChild(select);
 
 	container.appendChild(fieldset);
@@ -396,7 +402,8 @@ CubeGenerator.prototype.addCubeBox = function(levels, accessible, difficulty, ma
 /* Action */
 
 CubeGenerator.prototype.changeLevelSelected = function(evt) {
-	this.computeOption.levels = Array.prototype.filter.call(evt.target.options, function(el) {
+	var el = evt.currentTarget || evt.target;
+	this.computeOption.levels = Array.prototype.filter.call(el.options, function(el) {
 		return el.selected;
 	}).map(function(el) {
 		return el.value;
@@ -414,10 +421,10 @@ CubeGenerator.prototype.changeLevelSelected = function(evt) {
 
 CubeGenerator.prototype.saveCubes = function() {
 	var list = this.saveList.filter(function(item) { return item;});
-	
+
 	if (confirm($$('will you save these %d cubes?', list.length) + '\n' + list.map(function(c) {return c.name || $$('unnamed cube')}).join('\n'))) {
 		list.forEach(function(cube) {
-			main.control.action('saveCubeFromLevels', cube, 
+			main.control.action('saveCubeFromLevels', cube,
 		cubeSaved);
 		});
 	};
