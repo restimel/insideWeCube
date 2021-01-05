@@ -72,6 +72,64 @@ var Helper = {
 		});
 	},
 
+	buildStats: function(info) {
+		var caracs = Helper.ratingCaracs;
+		var pathLength = info.length + 1,
+			nbAvailable = info.available,
+			dEndLength = nbAvailable - pathLength,
+			nbDEnd = Math.max(info.deadEnd, 0),
+			nbChgLvl = info.chgLevel,
+			nbChgDir = info.chgDirection,
+			nbMvtRot = info.chgTop,
+			nbMovement = info.nbMovement,
+			rateRot = nbMvtRot / nbMovement,
+			nbOut = info.nbMvtOutPath,
+			nbDifficultCrs = info.nbDifficultCrossing,
+			rateDir = nbChgDir / pathLength;
+
+		var data = {
+			pathLength: pathLength,
+			nbAvailable: nbAvailable,
+			dEndLength: dEndLength,
+			nbDEnd: nbDEnd,
+			nbChgLvl: nbChgLvl,
+			nbChgDir: nbChgDir,
+			nbMvtRot: nbMvtRot,
+			nbMovement: nbMovement,
+			rateRot: rateRot,
+			nbOut: nbOut,
+			nbDifficultCrs: nbDifficultCrs,
+			rateDir: rateDir,
+		};
+
+		var difficulty = caracs.reduce(function (sum, carac) {
+			var key = 'pnd_' + carac;
+			return sum + data[carac] * Helper.config[key];
+		}, 0);
+		var maxDifficulty = caracs.reduce(function (sum, carac) {
+			var max_key = 'max_' + carac;
+			var pdn_key = 'pnd_' + carac;
+			return sum + Helper.config[max_key] * Helper.config[pdn_key];
+		}, 0);
+
+		return {
+			pathLength: pathLength,
+			nbAvailable: nbAvailable,
+			dEndLength: dEndLength,
+			nbDEnd: nbDEnd,
+			nbChgLvl: nbChgLvl,
+			nbChgDir: nbChgDir,
+			nbMvtRot: nbMvtRot,
+			nbMovement: nbMovement,
+			rateRot: rateRot,
+			nbOut: nbOut,
+			nbDifficultCrs: nbDifficultCrs,
+			rateDir: rateDir,
+			difficulty: difficulty,
+			maxDifficulty: maxDifficulty,
+		};
+	},
+
 	ratingCaracs: [
 		'nbAvailable',
 		'pathLength',

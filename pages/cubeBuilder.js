@@ -299,41 +299,18 @@ CubeBuilder.prototype.renderInfo = function(info) {
 	}
 	this.cubeInfo.innerHTML = '';
 
-	var caracs = Helper.ratingCaracs;
-
-	var data = this.dataRating = {};
-	var pathLength = data.pathLength = info.length + 1,
-		nbAvailable = data.nbAvailable = info.available,
-		dEndLength = data.dEndLength = nbAvailable - pathLength,
-		nbDEnd = data.nbDEnd = Math.max(info.deadEnd, 0),
-		nbChgLvl = data.nbChgLvl = info.chgLevel,
-		nbChgDir = data.nbChgDir = info.chgDirection,
-		nbMvtRot = data.nbMvtRot = info.chgTop,
-		nbMovement = data.nbMovement = info.nbMovement,
-		rateRot = data.rateRot = nbMvtRot / nbMovement,
-		nbOut = data.nbOut = info.nbMvtOutPath,
-		nbDifficultCrs = data.nbDifficultCrs = info.nbDifficultCrossing,
-		rateDir = data.rateDir = nbChgDir / pathLength;
+	var data = this.dataRating = Helper.buildStats(info);
+	var difficulty = data.difficulty;
+	var maxDifficulty = data.maxDifficulty;
+	var nbDEnd = data.nbDEnd;
+	var pathLength = data.pathLength;
+	var nbAvailable = data.nbAvailable;
+	var nbChgDir = data.nbChgDir;
+	var nbChgLvl = data.nbChgLvl;
+	var nbMovement = data.nbMovement;
+	var nbMvtRot = data.nbMvtRot;
+	var nbDifficultCrs = data.nbDifficultCrs;
 	
-	var difficulty = caracs.reduce(function(sum, carac) {
-		var key = 'pnd_' + carac;
-		return sum + data[carac] * Helper.config[key];
-	}, 0);
-	var maxDifficulty = caracs.reduce(function(sum, carac) {
-		var max_key = 'max_' + carac;
-		var pdn_key = 'pnd_' + carac;
-		return sum + Helper.config[max_key] * Helper.config[pdn_key];
-	}, 0);
-	// //pathLength * 1.13 / 24 + // 11
-	// 				 (nbAvailable - pathLength) * 0.1 + // 7.7
-	// 				 //nbChgDir * 0.3 + // 0
-	// 				 nbChgLvl * 0.5 + // 37
-	// 				 // nbMvtRot * 1.85 + // ~35 (current max 17)
-	// 				 nbMovement * 0.5 + // 59
-	// 				 nbMvtRot / nbMovement * 10 + // 3
-	// 				 nbOut * 2 + //42
-	// 				 nbDifficultCrs * 11, // 44
-		// maxDifficulty = 150,
 	var lowDifficulty = maxDifficulty / 3 - 1,
 		highDifficulty = maxDifficulty * 2 / 3 - 2;
 

@@ -915,7 +915,7 @@ Path.prototype.getCubeMaps = function(data) {
 	}, token: this.token});
 };
 
-Path.prototype.getPathInfo = function(data) {
+Path.prototype.getPathInfo = function(data, innerWorker) {
 	var cells = data.accessible,
 		last = cells[cells.length - 1],
 		info = data.info,
@@ -961,5 +961,9 @@ Path.prototype.getPathInfo = function(data) {
 		this.countMovement(path, info, cells);
 	}
 
-	self.postMessage({data: {action: 'getPathInfo', data: info}, token: this.token});
+	if (!innerWorker) {
+		self.postMessage({data: {action: 'getPathInfo', data: info}, token: this.token});
+	} else {
+		return info;
+	}
 };

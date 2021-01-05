@@ -121,6 +121,7 @@ Generator.prototype.runningCompute = function() {
 Generator.prototype.pathResult = function(rslt) {
 	if (rslt.info.finish) {
 		rslt.levels = this.lastGLevel.getLevels().map(LevelGenerator._getLvlId);
+		this.path.getPathInfo(rslt, true);
 		this.result(rslt);
 	}
 	this.deepest = rslt.info.deepest;

@@ -475,26 +475,10 @@ CubeGenerator.prototype.result = function(data) {
 	this.elements.nbFound.title = $$('Number of solvable cubes: %d', this.countSolvable);
 
 	var accessible = data.accessible;
-	var available = accessible.length;
-	var length = data.info.length;
-	var deadEnd = data.info.deadEnd;
-	// var difficulty = available; //TODO
-	// var maxDifficulty = 216;
-
-	var difficulty = length * 1.2 / 24 + // 12
-					 (available - length) * 1.5 / 24 + // 15;
-					 deadEnd * 0.3;
-	var maxDifficulty = 35;
-
-	// difficulty = length * 1.1 / 24 + // 11
-	// 				 (available - length) * 1.5 / 24 + // 15
-	// 				 //chgDirection * 0.3 + // 0
-	// 				 chgLevel * 1.5 / 7 + // ~15 (current max ~7)
-	// 				 chgTop * 1.85 + // ~35 (current max 17)
-	// 				 nbMovement * 0.1 + // ~5 (current max ~3.5)
-	// 				 nbMvtOutPath * 0.1 +
-	// 				 nbDifficultCrossing * 5, // ~15 (current max 3)
-	// 	maxDifficulty = 95,
+	var info = data.info;
+	var stats = Helper.buildStats(info);
+	var difficulty = stats.difficulty;
+	var maxDifficulty = stats.maxDifficulty;
 
 	this.addCubeBox(data.levels, accessible, difficulty, maxDifficulty, data.hash);
 };
