@@ -1,5 +1,3 @@
-var rowSize = [1,2,3,4,5,6];
-
 function Level (name, options) {
 	options = options || {};
 
@@ -8,7 +6,7 @@ function Level (name, options) {
 	} else {
 		this.name = name;
 		this.lid = !!options.lid;
-		this.cells = rowSize.map(initRow);
+		this.resetCells(options.mapSize || 6);
 		this.cmt = '';
 
 		if (options.s instanceof Array) {
@@ -18,6 +16,14 @@ function Level (name, options) {
 		}
 	}
 }
+
+Level.prototype.resetCells = function(size) {
+	size = size || 6;
+	this.cells = [];
+	for (var i = 0; i < size; i++) {
+		this.cells.push(initRow(size));
+	}
+};
 
 Level.prototype.clone = function() {
 	var lvl = new Level();
@@ -282,14 +288,16 @@ Level.createCell = function(hash) {
 	return cell;
 };
 
-function initRow() {
-	var row = rowSize.map(function() {
-		return {
+function initRow(size) {
+	var row = [];
+
+	for (var i = 0; i < size; i++) {
+		row.push({
 			r: 0, //move to Right
 			d: 0, //move to Down
 			b: 0, //move bottom side (through level)
 			s: 0 // 0: normal, 1: start, -1: finish, 2: pin at the current level, -2: pin at level bellow
-		};
-	});
+		});
+	}
 	return row;
 }

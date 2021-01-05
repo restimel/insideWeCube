@@ -14,7 +14,7 @@ Cube.prototype.init = function() {
 		i;
 
 	for (i = 0; i < nb; i++) {
-		this.levels[i] = new Level();
+		this.levels[i] = new Level(undefined, {mapSize: this.mapSize});
 	}
 	this.hash = null;
 };
@@ -24,6 +24,10 @@ Cube.prototype.reset = function(args) {
 	this.mapSize = args.mapSize || 6;
 	this.startCell = args.startCell || {x: 1, y: 1, z: 0};
 	this.finishCell = args.finishCell || {x: this.mapSize - 2, y: this.mapSize - 2, z: this.size - 1};
+	this.levels.forEach(function(lvl) {
+		lvl.resetCells(this.mapSize);
+	}, this);
+	this.hash = null;
 }
 
 Cube.prototype.clone = function(alsoMetaData) {
