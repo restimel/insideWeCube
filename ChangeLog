@@ -5,6 +5,9 @@ New features
 	* Novice cube are displayed as 5x5x5
 	* It is possible to generate novice cubes
 
+Bugs fixed:
+	* Fix rating cube were different in generation and in analysis.
+
 v1.1 → v1.2
 New features
 	* Manage level characteristics such as lid (which can not be moved to other levels) and pin (which can block the ball or can block level below)
