@@ -36,11 +36,11 @@ function main(container){
 }
 
 main.version = '1.3.2';
-main.lastMainUpdate = new Date('01/06/2020'); // mm/dd/yyyy
+main.lastMainUpdate = new Date('01/06/2021'); // mm/dd/yyyy
 
 /**
  * Display notification
- * 
+ *
  * options:
  * 	 - keep {Boolean}: keep previous messages
  * 	 - html {Boolean}: display message as HTML (must be XSS safe)
